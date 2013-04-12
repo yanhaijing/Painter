@@ -5,12 +5,24 @@
 
 Painter is the painter base on html5's Canvas
 
+##Platform
+
+* firefox
+* chrome
+* opera
+* safira
+* ie10+
+
 ##Authors
 
 **yanhaijing**
 
 - [Twitter](http://t.qq.com/yanhaijing1234 "yanhaijing's Twitter")
 - [Email](http://yanhaijing1234@gmail.com "yanhaijing's Email")
+
+**luyu**
+
+- [Twitter](http://t.qq.com/wsluyu/ "luyu's Twitter")
 
 ##Copyright and license
 
