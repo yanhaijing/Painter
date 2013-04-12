@@ -9,8 +9,8 @@ Painter is the painter base on html5's Canvas
 
 **yanhaijing**
 
--[Twitter](http://t.qq.com/yanhaijing1234 "yanhaijing's Twitter")
--[Email](http://yanhaijing1234@gmail.com "yanhaijing's Email")
+- [Twitter](http://t.qq.com/yanhaijing1234 "yanhaijing's Twitter")
+- [Email](http://yanhaijing1234@gmail.com "yanhaijing's Email")
 
 ##Copyright and license
 
