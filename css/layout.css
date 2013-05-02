@@ -1,0 +1,49 @@
+html{
+	width:100%;
+	height:100%;
+	min-height:600px;
+	min-width:800px
+}
+body{
+	height:100%;
+	margin:0;
+	background:#fff
+}
+/**
+ * 	=============================
+ *  container-fluid
+ */
+.container-fluid{
+	height: 100%
+}
+/**
+ * 	=================================
+ * 页面主要区域
+ */
+.main-wrap{
+	height:400px
+}
+/**
+ * 	主要绘图区
+ * -----------------------------------
+ */
+.canvas-wrap{
+	outline:1px solid #f00;
+	height:100%
+}
+/**
+ * 	信息区
+ * -------------------------------
+ */
+.info{
+	outline:1px solid #f00;
+	height:100%
+}
+/**
+ * 	=================================
+ * 工具区域
+ */
+.tool-wrap{
+	height:100px;
+	outline:1px solid #f00
+}
