@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<link rel="stylesheet"  href="css/tutu.css"/>
+		<script src="js/tutu.js"></script>
+	</head>
+	<body>
+		<canvas id="drawingCanvas" width="500" height="300"> </canvas>
+		<div class="Toolbar">
+		<img id="redpen" src="images/pen_red.jpg" alt="Red pen" onclick="changeColor('rgba(212,21,29,0.1)',this)">
+		<img id="greenpen" src="images/pen_green.jpg" alt="Green pen" onclick="changeColor('rgb(131,190,61)',this)">
+		<img id="yellowpen" src="images/pen_yellow.jpg" alt="yellow pen" onclick="changeColor('rgb(255,255,0)',this)">
+		</div>
+		<img id="saveImageCopy" style="border: 1px solid black"/>
+		<button onclick="saveCanvas()">save</button>
+	</body>
+</html>

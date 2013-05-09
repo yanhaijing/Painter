@@ -1,0 +1,16 @@
+canvas{
+	border: 1px solid black;
+}
+.Toolbar {
+	background: #f495de;
+	width: 500px;
+	height: 300px;
+}
+.Toolbar img{
+	height: 100%;
+	
+}
+.Selected{
+	border: 1px solid black;
+}
+
