@@ -20,7 +20,8 @@ nav h1{
  * ---------------------------------------
  */
 .canvas-wrap{
-	position: relative
+	position: relative;
+	background:#ffffff
 }
 .canvas-paint{
 	width:100%;

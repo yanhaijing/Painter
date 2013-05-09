@@ -11,7 +11,6 @@
      * @extends Shap.prototype
      */
 	var Shap = function(){
-		
 	};
 	
 	/**
