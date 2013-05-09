@@ -7,7 +7,8 @@ html{
 body{
 	height:100%;
 	margin:0;
-	background:#fff
+	background:#fff;
+	background:#F6F6F6
 }
 /**
  * 	=============================
@@ -16,12 +17,21 @@ body{
 .container-fluid{
 	height: 100%
 }
+
+/**
+ * 	导航
+ * ================================
+ */
+.navbar{
+	height:7%;
+}
+
 /**
  * 	=================================
  * 页面主要区域
  */
 .main-wrap{
-	height:400px
+	height:66.666666666666666666666666666667%
 }
 /**
  * 	主要绘图区
@@ -44,6 +54,19 @@ body{
  * 工具区域
  */
 .tool-wrap{
-	height:100px;
-	outline:1px solid #f00
+	height:16.666666666666666666666666666667%;
+	margin-top:10px
+}
+.tool{
+	margin:auto;
+	height:50%
+}
+.tool button{
+	width:40px;
+	height:40px;
+	margin:10px 0 0 10px
+}
+.tool-panel{
+	background:#FFFFFF;
+	height:50%
 }
