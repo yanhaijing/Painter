@@ -89,9 +89,9 @@
 						<button class="rectangle" title="矩形"></button>
 						<button class="round-rectangle" title="圆角矩形"></button>
 						<button class="ellipes" title="椭圆"></button>	
-						<div id="tool-shape-attribute-panel" class="tool-attribute-panel" title="属性面板">
-							<label>粗细：<input type="range" max="100" /><span>10%</span></label>
-							<label>透明度：<input type="range" max="100" /><span>10%</span></label>							
+						<div id="tool-shape-attribute-panel" class="tool-attribute-panel" title="形状属性面板">
+							<label>粗细：<input class="width" type="range" max="100" value="1" /><span>1</span></label>
+							<label>透明度：<input class="opacity" type="range" max="100" value="100" /><span>100</span></label>							
 						</div>					
 					</div><!-- end .shape -->
 					
@@ -135,7 +135,10 @@
 		<script src="plugins/jqueryui/ui/jquery.ui.resizable.js"></script>
 		<script src="plugins/jqueryui/ui/jquery.ui.dialog.js"></script>
 		
-		<!-- import my js -->
+		<!-- import my js -->		
+		<!-- import tool js -->
+		<script src="js/model/toolModel.js"></script>
+		<script src="js/model/currentToolModel.js"></script>
 		<script src="js/controler/tool.js"></script>
 	</body>
 </html>
