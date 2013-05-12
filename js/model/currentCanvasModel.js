@@ -1,10 +1,9 @@
 /**
- * 工具栏数据
+ * 当前的画布
  * @author yan
  * @namespace model
- * @module currentToolModel
+ * @module currentCanvasModel
  */
-
 (function($, global){
     "use strict";
     
@@ -13,7 +12,7 @@
      * @class CurrentToolModel
      * @static
      */
-    var CurrentToolModel = {
+    var CurrentCanvasModel = {
         /**
          * 当前的工具对象
          * @property currentTool
@@ -36,12 +35,7 @@
          * @param {Object} tool 设置的工具对象
          * @return {Bollean} 是否设置成功
          */
-        setCurrentTool:function(tool){
-            tool = tool || new window.painter.model.toolModel.Line();
-            tool.init();
-            
-            this.currentTool = tool;
-            
+        setCurrentCanvas:function(tool){           
             return true;
         },
         
@@ -50,16 +44,16 @@
          * @method getCurrentTool
          * @return {Object} 当前工具对象
          */
-        getCurrentTool:function(){
+        getCurrentCanvas:function(){
             return this.currentTool;
         }
     };
     
     //初始化当前工具
-    CurrentToolModel.init();
+    CurrentCanvasModel.init();
     
     //添加对象到model模块
     global.painter = global.painter || {};
     global.painter.model = global.painter.model || {};
-    global.painter.model.CurrentToolModel = CurrentToolModel; 
+    global.painter.model.CurrentCanvasModel = CurrentCanvasModel;
 }(jQuery, window));

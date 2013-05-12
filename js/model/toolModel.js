@@ -113,8 +113,8 @@
 	Line.prototype = new Tool();
 	
 	//添加工具到数据层
-	window.painter = window.painter || {};
-	window.painter.model = window.painter.model || {};
-	window.painter.model.toolModel = window.painter.model.toolModel || {};
-	window.painter.model.toolModel.Line = Line;
+	global.painter = global.painter || {};
+	global.painter.model = global.painter.model || {};
+	global.painter.model.toolModel = global.painter.model.toolModel || {};
+	global.painter.model.toolModel.Line = Line;
 }(jQuery, window));
