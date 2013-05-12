@@ -9,11 +9,11 @@
     
     /**
      * 画布对象
-     * @class Canvas
+     * @class CanvasModel
      * @constructor
-     * @extends Canvas.prorotype
+     * @extends CanvasModel.prorotype
      */
-    var Canvas = function(){
+    var CanvasModel = function(){
         /**
          * 当前画布对象帮顶的画布元素
          * @property canvas
@@ -53,14 +53,30 @@
          * @default null
          */
         this.context2D = null;
+        
+        /**
+         * 当前画布元素距离页面顶端的高度
+         * @property top
+         * @type Number
+         * @default 0
+         */
+        this.top = 0;
+        
+        /**
+         * 当前画布元素距离页面左边的宽度
+         * @property left
+         * @type Number
+         * @default 0
+         */
+        this.left = 0;
     };
     
     /**
      * 画布对象原型
-     * @class Canvas.prorotype
+     * @class CanvasModel.prorotype
      * @strict
      */
-    Canvas.prototype = {
+    CanvasModel.prototype = {
         /**
          * 初始化画布类对象
          * @method init
@@ -71,6 +87,8 @@
            this.initContext2D();//初始化上下文对象
            this.initHeight();//初始化画布高度
            this.initWidth();//初始化画布宽度
+           this.initLeft();//初始化left
+           this.initTop();//初始化top
         },
         /**
          * 初始化画布对象
@@ -143,6 +161,92 @@
         },
         
         /**
+         * 初始化left
+         * @method initLeft
+         */
+        initLeft:function(){
+            this.updateLeft();
+        },
+        
+        /**
+         * 更新top
+         * @method updateLeft
+         * @return {Number} 返回left值
+         */
+        updateLeft:function(){
+            var
+                canvas = this.getCanvas(),
+                left = 0;
+            function getElementLeft(element){
+                var 
+                    actuaLeft = element.offsetLeft,
+                    current = element.offsetParent;
+                    
+                while(current !== null){
+                    actuaLeft += current.offsetLeft;
+                    current = current.offsetParent;
+                }
+                
+                return actuaLeft;
+            }
+            left = getElementLeft(canvas);
+            this.left =left;
+            return left;
+        },
+        /**
+         * 获取left
+         * @method getLeft
+         * @return {Number} left值
+         */
+        getLeft:function(){
+            return this.left;
+        },
+        
+        /**
+         * 初始化top
+         * @method initTop
+         */
+        initTop:function(){
+            this.updateTop();
+        },
+        
+        /**
+         * 更新top
+         * @method updateTop
+         * @return {Number} 返回Top值
+         */
+        updateTop:function(){
+            var
+                canvas = this.getCanvas(),
+                top = 0;
+            function getElementTop(element){
+                var 
+                    actuaTop = element.offsetTop,
+                    current = element.offsetParent;
+                    
+                while(current !== null){
+                    actuaTop += current.offsetTop;
+                    current = current.offsetParent;
+                }
+                
+                return actuaTop;
+            }
+            
+            top = getElementTop(canvas);
+            this.top =top;
+            return top;
+        },
+        
+        /**
+         * 获取Top
+         * @method getTop
+         * @return {Number} Top值
+         */
+        getTop:function(){
+            return this.top;
+        },
+        
+        /**
          * 初始化高度
          * @method initHeight
          */
@@ -204,6 +308,38 @@
          */
         getWidth:function(){
            return this.width; 
+        },        
+        
+        /**
+         * 初始化图形队列
+         * @method initShapeList
+         */
+        initShapeList:function(){
+           this.clearShapeList(); 
+        },
+        
+        /**
+         * 添加一个图形
+         * @method addShape
+         * @param {Object} shape 要添加的图形对象
+         */
+        addShape:function(shape){
+            this.shapeList.push(shape);
+        },
+        /**
+         * 删除队尾图形
+         * @method deleteShape
+         */
+        deleteShape:function(){
+            this.shapeList.pop();
+        },
+        /**
+         * 清除图形队列
+         * @method clearShapeList
+         * 
+         */
+        clearShapeList:function(){
+            this.shapeList = [];
         },
         
         /**
@@ -248,38 +384,10 @@
         clear:function(){
             this.clearContext();
             this.clearShapeList();
-        },
-        
-        /**
-         * 初始化图形队列
-         * @method initShapeList
-         */
-        initShapeList:function(){
-           this.clearShapeList(); 
-        },
-        
-        /**
-         * 添加一个图形
-         * @method addShape
-         * @param {Object} shape 要添加的图形对象
-         */
-        addShape:function(shape){
-            this.shapeList.push(shape);
-        },
-        /**
-         * 删除队尾图形
-         * @method deleteShape
-         */
-        deleteShape:function(){
-            this.shapeList.pop();
-        },
-        /**
-         * 清除图形队列
-         * @method clearShapeList
-         * 
-         */
-        clearShapeList:function(){
-            this.shapeList = [];
         }
     };
+    
+    global.painter = global.painter || {};
+    global.painter.model = global.painter.model || {};
+    global.painter.model.CanvasModel = CanvasModel;
 }(jQuery, window));

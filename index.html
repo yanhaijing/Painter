@@ -65,7 +65,7 @@
 					<canvas id="canvas-background" class="canvas-paint canvas-background"></canvas>
 					<canvas class="canvas-paint canvas-layer"></canvas>
 					<canvas class="canvas-paint canvas-buffer"></canvas>
-					<canvas class="canvas-paint canvas-mouse"></canvas>
+					<canvas id="canvas-mouse" class="canvas-paint canvas-mouse"></canvas>
 				</div><!-- end .canvas-wrap -->
 				<!-- <div class="span3 info">
 					
@@ -140,9 +140,14 @@
 		<!-- import shape js -->
 		<script src="js/model/shapeModel.js"></script>
 		
+		<!-- import canvas -->
+		<script src="js/model/canvasModel.js"></script>
+		<script src="js/model/canvasContainerModel.js"></script>
+		<script src="js/controler/canvas.js"></script>
+		
 		<!-- import tool js -->
 		<script src="js/model/toolModel.js"></script>
-		<script src="js/model/currentToolModel.js"></script>
+		<script src="js/model/toolContainerModel.js"></script>
 		<script src="js/controler/tool.js"></script>
 	</body>
 </html>

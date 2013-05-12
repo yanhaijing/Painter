@@ -40,6 +40,11 @@
 			this.bindEvent();
 			
 			this.initAttributePanel();
+			
+			//初始化当前默认工具
+			global.painter.tool = global.painter.tool || {};
+			global.painter.tool.currentTool = Object.create(global.painter.model.ToolContainerModel);
+			global.painter.tool.currentTool.init(new global.painter.model.toolModel.Line());
 		},
 		
 		/**

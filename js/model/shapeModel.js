@@ -1,43 +1,149 @@
 /**
  * @author yan
- * @namespace shap
+ * @namespace shape
  */
 
 (function($, global){
+    "use strict";
+    var
+        Shape = function(){},
+        ImageObject = function(){},
+        Line = function(){};
     /**
-     * Shap 构造函数
-     * @class Shap
+     * Shape 构造函数
+     * @class Shape
      * @constructor
-     * @extends Shap.prototype
+     * @extends Shape.prototype
      */
-	var Shap = function(){
+	Shape = function(){
+	    /**
+	     * 名称
+	     * @property name
+	     * @type String
+	     * @default Shapee 
+	     */
+	    this.name = 'Shape';
+	    
+	    /**
+	     * 图形参数
+	     * @property option
+	     * @type Object
+	     * @default null 
+	     */
+	    this.option = null;
 	};
 	
 	/**
-	 * Shap 原型
-	 * @class Shap.prototype
+	 * Shape 原型
+	 * @class Shape.prototype
 	 * @static
 	 */
 	
-	Shap.prototype = {
+	Shape.prototype = {	   
 	    /**
-	     * 清除图形
-	     * @method clear
-	     */
-	    clear:function(){
-	        
-	    },
+	     * 初始化对象
+	     * @method init
+	     * @param {Object} option 参数
+	     */ 
+	     init:function(option){
+	         this.initOption(option);
+	     },
+        /**
+         * 获取名称
+         * @method getName
+         * @return {String} 当前对象的名称 
+         */
+        getName:function(){
+            return this.name;
+        },
+        
+        /**
+         * 初始化当前参数为传递参数
+         * @method initOption
+         * @param {Object} option 参数
+         */
+        initOption:function(option){
+            this.setOption(option);
+        },
+        /**
+         * 设置工具参数对象
+         * @method setOption
+         * @param {Object} option 设置的参数集和
+         * @return {Bollean} 是否设置成功
+         */
+        setOption:function(option){
+            this.option = option;
+        },
+        
+        /**
+         * 获取工具参数对象
+         * @method getOption 
+         * @return {Object} 返回当前工具参数对象
+         */
+        getOption:function(){
+            return this.option;
+        }
+	};
+	
+	ImageObject = function(){
+	    this.name = 'image';
+	};
+	
+	ImageObject.prototype = new Shape();
+	
+	/**
+	 * 直线对象
+	 * @class Line
+	 * @constructor
+	 * @extends Line.protorype 
+	 */
+	Line = function(){
+	    /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shapee 
+         */
+	    this.name = 'line';
+	    
 	    /**
 	     * 绘制图形
 	     * @method paint
+	     * @param {Object} context 绘图上下文 
 	     */
-	    paint:function(){
+	    this.paint = function(context){
+	        var option = this.getOption();
 	        
-	    }
+	        context.save();//保存上下文信息
+	        context.beginPath();
+	        
+	        //描述直线
+            context.moveTo(option.startX,option.startY);
+            context.lineTo(option.endX,option.endY);
+            
+            //设置直线属性
+            context.strokeStyle = option.strokeStyle;
+            context.lineWidth = option.lineWidth;
+            context.globalAlaph = option.opacity;
+            
+            //绘制直线
+            context.closePath();
+            context.stroke();
+            context.restore();//回复上下文
+	    };
 	};
+	
+	/**
+	 * 直线对象原型
+	 * @class Line.prototype
+	 * @static 
+	 */
+	Line.prototype = new Shape();
 	
 	//添加变量
 	global.painter = global.painter || {};
-	global.painter.shap = global.painter.shap || {};
-	global.painter.shap.Shap = global.painter.shap.Shap || Shap;
+	global.painter.shape = global.painter.shape || {};
+	global.painter.shape.Shape = global.painter.shape.Shape || Shape;
+	global.painter.shape.ImageObject = global.painter.shape.ImageObject || ImageObject;
+	global.painter.shape.ImageObject = global.painter.shape.ImageObject || ImageObject;
 }(jQuery, window));
