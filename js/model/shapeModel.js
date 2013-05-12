@@ -104,7 +104,7 @@
          * @type String
          * @default Shapee 
          */
-	    this.name = 'line';
+	    this.name = 'Line';
 	    
 	    /**
 	     * 绘制图形
@@ -112,19 +112,26 @@
 	     * @param {Object} context 绘图上下文 
 	     */
 	    this.paint = function(context){
-	        var option = this.getOption();
+	        var 
+	           option = this.getOption(),
+	           startPoint = option.pointList.getStart(),
+	           endPoint = option.pointList.getEnd(),
+	           startX = startPoint.x,
+	           startY = startPoint.y,
+	           endX = endPoint.x,
+	           endY = endPoint.y;
 	        
 	        context.save();//保存上下文信息
 	        context.beginPath();
 	        
 	        //描述直线
-            context.moveTo(option.startX,option.startY);
-            context.lineTo(option.endX,option.endY);
+            context.moveTo(startX, startY);
+            context.lineTo(endX, endY);
             
             //设置直线属性
             context.strokeStyle = option.strokeStyle;
             context.lineWidth = option.lineWidth;
-            context.globalAlaph = option.opacity;
+            context.globalAlaph = option.opacity / 100;
             
             //绘制直线
             context.closePath();
@@ -142,8 +149,8 @@
 	
 	//添加变量
 	global.painter = global.painter || {};
-	global.painter.shape = global.painter.shape || {};
-	global.painter.shape.Shape = global.painter.shape.Shape || Shape;
-	global.painter.shape.ImageObject = global.painter.shape.ImageObject || ImageObject;
-	global.painter.shape.ImageObject = global.painter.shape.ImageObject || ImageObject;
+	global.painter.model = global.painter.model || {};
+	global.painter.model.shapeModel = global.painter.model.shapeModel || {};
+	global.painter.model.shapeModel.Shape = Shape;
+	global.painter.model.shapeModel.Line = Line;
 }(jQuery, window));

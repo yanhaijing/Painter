@@ -15,6 +15,68 @@
      */
     var Canvas = {
         /**
+         * 当前鼠标点击状态
+         * @property clickStatus
+         * @type Bollean
+         * @default false
+         */
+        clickStatus:false,
+        
+        /**
+         * 鼠标移动点的坐标
+         * @property startPoint
+         * @type Object
+         */
+        pointList:{
+            list:[],
+            add:function(point){
+                this.list.push(point);
+                return this.list;
+            },
+            getStart:function(){
+                return this.list[0];
+            },
+            getEnd:function(){
+                return this.list[this.list.length - 1];
+            },
+            getList:function(){
+                return this.list;
+            },
+            init:function(){
+                this.list = [];
+                return this.list;   
+            }
+        },
+        
+        /**
+         * 设置开始点 
+         * @method getPointList
+         * @return {Object} 坐标点列表对象
+         */
+        getPointList:function(){
+            return this.pointList;
+        },
+        
+        /*
+         * 检查鼠标状态
+         * @method getClickStatus
+         * @return {Bollean} 当前鼠标点击状态
+         */
+        getClickStatus:function(){
+           return this.clickStatus; 
+        },
+        /**
+         * 设置鼠标点击状态
+         * @method setClickStatus
+         * @param {Bollean} status 是否按下鼠标
+         * @return {Bollean} status
+         */
+        setClickStatus:function(status){
+            status = status || false;
+            this.clickStatus = status;
+            return status; 
+        },
+        /**
          * 初始化
          * @method init
          */
@@ -62,17 +124,60 @@
             var
                 $document = $(document),
                 mouseCanvas = global.painter.canvas.mouseCanvasContainer.getCanvas(),
+                bufferCanvas = global.painter.canvas.bufferCanvasContainer.getCanvas(),
                 offsetLeft = mouseCanvas.getLeft(),
-                offsetTop = mouseCanvas.getTop();
+                offsetTop = mouseCanvas.getTop(),
+                that = this,
+                
+                //当前的工具
+                currentTool = global.painter.tool.currentToolContainer.getTool();
                 
             //绑定鼠标画布图层鼠标移动事件
-            $document.delegate('#canvas-mouse', 'mousemove', function(){
+            $document.delegate('#canvas-mouse', 'mousemove', function(e){
+                var
+                    point = {
+                        x:e.pageX - offsetLeft,
+                        y:e.pageY - offsetTop
+                    },
+                    pointList = that.getPointList(),
+                    index = currentTool.getName(),
+                    shape = new global.painter.model.shapeModel[index](),
+                    option = null,
+                    status = that.getClickStatus();
                 
+                if(status){
+                    //添加鼠标坐标
+                    pointList.add(point);
+                    option = currentTool.setOption({pointList: pointList});    
+                    shape.init(option); 
+                    bufferCanvas.clearContext();
+                    bufferCanvas.paint(shape);  
+                }                           
             });
             
-            //绑定鼠标点击事件
-            $document.delegate('#canvas-mouse', 'click', function(e){
-                
+            //绑定鼠标按下事件
+            $document.delegate('#canvas-mouse', 'mousedown', function(e){
+                var
+                    point = {
+                        x:e.pageX - offsetLeft,
+                        y:e.pageY - offsetTop
+                    };
+                    
+                that.getPointList().add(point);//添加鼠标坐标
+                that.setClickStatus(true);
+                that.currentTool = global.painter.tool.currentToolContainer.getTool();//更新当前工具
+            });
+            
+            //绑定鼠标弹起事件
+            $document.delegate('#canvas-mouse', 'mouseup', function(e){
+                var
+                    point = {
+                        x:e.pageX - offsetLeft,
+                        y:e.pageY - offsetTop
+                    };
+                    
+                that.getPointList().add(point);//添加鼠标坐标
+                that.setClickStatus(false);//更新鼠标点击状态
             });
         }
     };

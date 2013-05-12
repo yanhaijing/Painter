@@ -16,7 +16,7 @@
 	 * @extend Tool.prototype
 	 */
 	Tool = function(option){
-		this.name = 'tool';
+		this.name = 'Tool';
 		this.option = {
 			strokeStyle:'#000',
 			fillStyle:'#000',
@@ -46,16 +46,16 @@
 		 * 设置工具参数对象
 		 * @method setOption
 		 * @param {Object} option 设置的参数集和
-		 * @return {Bollean} 是否设置成功
+		 * @return {Object} 成功返回设置对象，失败返回null
 		 */
 		setOption:function(option){
 			//检查入口参数是否是对象
 			if(typeof option === 'object'){
-				$.extend(this.option, option);
-				return true;
+				$.extend(true, this.option, option);
+				return this.option;
 			} 
 			
-			return false;
+			return null;
 		},
 		
 		/**
@@ -81,7 +81,7 @@
 	     * @type String
 	     * @defult 'line' 
 	     */
-		this.name = 'line';
+		this.name = 'Line';
 		
 		/**
 		 * 初始化

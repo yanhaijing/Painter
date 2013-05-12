@@ -154,7 +154,7 @@
         clearContext:function(){
             var
                 height = this.getHeight(),
-                width = this.getWidht(),
+                width = this.getWidth(),
                 context = this.getContext2D();
             
             context.clearRect(0, 0, width, height);

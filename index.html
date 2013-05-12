@@ -81,7 +81,7 @@
 					<button class="eye-dropper" title="习惯工具" data-tool-panel="eye-dropper"></button>
 					<button class="select" title="选择工具" data-tool-panel="select"></button>
 					<button class="text" title="文字工具" data-tool-panel="text"></button>
-					<input class="color" type="color" title="颜色" />					
+					<input class="color" type="color" title="颜色" value="#000000"/>					
 				</div><!-- end .tool -->
 				<div class="tool-panel">
 					<div class="shape wrap">
@@ -140,14 +140,15 @@
 		<!-- import shape js -->
 		<script src="js/model/shapeModel.js"></script>
 		
+		<!-- import tool js -->
+		<script src="js/model/toolModel.js"></script>
+		<script src="js/model/toolContainerModel.js"></script>
+		<script src="js/controler/tool.js"></script>
+		
 		<!-- import canvas -->
 		<script src="js/model/canvasModel.js"></script>
 		<script src="js/model/canvasContainerModel.js"></script>
 		<script src="js/controler/canvas.js"></script>
 		
-		<!-- import tool js -->
-		<script src="js/model/toolModel.js"></script>
-		<script src="js/model/toolContainerModel.js"></script>
-		<script src="js/controler/tool.js"></script>
 	</body>
 </html>
