@@ -254,20 +254,31 @@
             this.updateHeight();  
         },
         /**
-         * 更新高度,从画布元素重新获取高度
+         * 更新高度,更新画布元素高度为父元素高度，并设置画布类高度
          * @method updateHeight
+         * @return {Number} 更新后画布的高度
          */
         updateHeight:function(){
-          this.height = $(this.getCanvas()).height();
+            var 
+                canvas = this.getCanvas(),
+                $canvas = $(canvas),
+                $canvasWrap = $canvas.parent(),
+                height = $canvasWrap.height();
+                
+            $canvas.attr('height', height);
+            
+            return this.setHeight(height);   
         },
         /**
          * 设置当前画布类对象高度
          * @method setHeight
          * @param {Number} [height=600] 要设置的高度
+         * @return {Number} 设置的高度
          */
         setHeight:function(height){
            height = height || 600;
            this.height = height;
+           return height;
         },
         /**
          * 获取当前花布列对象高度
@@ -288,18 +299,29 @@
         /**
          * 更新高度,从画布元素重新获取高度
          * @method updateWidth
+         * @return {Number} 当前画布高度
          */
         updateWidth:function(){
-          this.width = $(this.getCanvas()).width();
+            var 
+                canvas = this.getCanvas(),
+                $canvas = $(canvas),
+                $canvasWrap = $canvas.parent(),
+                width = $canvasWrap.width();
+                
+            $canvas.attr('width', width);
+            return this.setWidth(width);
         },
         /**
          * 设置当前画布类对象高度
          * @method setWidth
          * @param {Number} [width=600] 要设置的高度
+         * @return {Number} 当前画布高度
          */
         setWidth:function(width){
            width = width || 600;
            this.width = width;
+           
+           return this.width;
         },
         /**
          * 获取当前花布列对象高度

@@ -125,13 +125,14 @@
                 $document = $(document),
                 mouseCanvas = global.painter.canvas.mouseCanvasContainer.getCanvas(),
                 bufferCanvas = global.painter.canvas.bufferCanvasContainer.getCanvas(),
+                currentCanvas = global.painter.canvas.currentCanvasContainer.getCanvas(),
                 offsetLeft = mouseCanvas.getLeft(),
                 offsetTop = mouseCanvas.getTop(),
                 that = this,
                 
                 //当前的工具
                 currentTool = global.painter.tool.currentToolContainer.getTool();
-                
+               
             //绑定鼠标画布图层鼠标移动事件
             $document.delegate('#canvas-mouse', 'mousemove', function(e){
                 var
@@ -148,9 +149,9 @@
                 if(status){
                     //添加鼠标坐标
                     pointList.add(point);
-                    option = currentTool.setOption({pointList: pointList});    
+                    option = currentTool.setPoint(pointList);    
                     shape.init(option); 
-                    bufferCanvas.clearContext();
+                    bufferCanvas.clear();
                     bufferCanvas.paint(shape);  
                 }                           
             });
@@ -161,11 +162,23 @@
                     point = {
                         x:e.pageX - offsetLeft,
                         y:e.pageY - offsetTop
-                    };
-                    
+                    },
+                    pointList = that.getPointList(),
+                    index = currentTool.getName(),
+                    shape = null,
+                    option = null;
+                
+                that.getPointList().init();//初始化坐标列表    
                 that.getPointList().add(point);//添加鼠标坐标
                 that.setClickStatus(true);
                 that.currentTool = global.painter.tool.currentToolContainer.getTool();//更新当前工具
+                
+                //绘制图形
+                shape = new global.painter.model.shapeModel[index]()
+                option = currentTool.setPoint(pointList);    
+                shape.init(option); 
+                bufferCanvas.clear();
+                bufferCanvas.paint(shape);
             });
             
             //绑定鼠标弹起事件
@@ -174,10 +187,19 @@
                     point = {
                         x:e.pageX - offsetLeft,
                         y:e.pageY - offsetTop
-                    };
+                    },
+                    pointList = that.getPointList(),
+                    index = currentTool.getName(),
+                    shape = null,
+                    option = null;
                     
                 that.getPointList().add(point);//添加鼠标坐标
                 that.setClickStatus(false);//更新鼠标点击状态
+                //绘制图形
+                shape = new global.painter.model.shapeModel[index]()
+                option = currentTool.setPoint(pointList);    
+                shape.init(option); 
+                currentCanvas.paint(shape);
             });
         }
     };

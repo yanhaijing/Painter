@@ -113,20 +113,14 @@
 	     */
 	    this.paint = function(context){
 	        var 
-	           option = this.getOption(),
-	           startPoint = option.pointList.getStart(),
-	           endPoint = option.pointList.getEnd(),
-	           startX = startPoint.x,
-	           startY = startPoint.y,
-	           endX = endPoint.x,
-	           endY = endPoint.y;
+	           option = this.getOption();
 	        
 	        context.save();//保存上下文信息
 	        context.beginPath();
 	        
 	        //描述直线
-            context.moveTo(startX, startY);
-            context.lineTo(endX, endY);
+            context.moveTo(option.startX, option.startY);
+            context.lineTo(option.endX, option.endY);
             
             //设置直线属性
             context.strokeStyle = option.strokeStyle;

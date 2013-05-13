@@ -103,6 +103,29 @@
                 strokeStyle: color
             });
 		};
+		
+		/**
+		 * 设置坐标参数参数
+		 * @method setPoint
+		 * @param {Object} 参数
+		 * @return {Object} 设置完的参数
+		 */
+		this.setPoint = function(pointList){
+		    var 
+               startPoint = pointList.getStart(),
+               endPoint = pointList.getEnd(),
+               startX = startPoint.x,
+               startY = startPoint.y,
+               endX = endPoint.x,
+               endY = endPoint.y;
+               
+             return this.setOption({
+                 startX: startX,
+                 startY: startY,
+                 endX: endX,
+                 endY: endY
+             });
+		}
 	};
 	
 	/**
