@@ -34,6 +34,13 @@
                 currentCanvas.undo();//撤销上一部
                 global.console.log("撤销按钮被电击了");
             });
+            
+            //帮顶清空按钮事件
+            $document.delegate("#nav-edit-clear", "click", function(e){
+                var currentCanvas = global.painter.canvas.currentCanvasContainer.getCanvas();
+                currentCanvas.clear();//撤销上一部
+                global.console.log("清空按钮被点击了");
+            });
        }
     };
     
