@@ -52,7 +52,7 @@
 			//检查入口参数是否是对象
 			if(typeof option === 'object'){
 				$.extend(true, this.option, option);
-				return this.option;
+				return this.getOption();
 			} 
 			
 			return null;
@@ -64,7 +64,7 @@
 		 * @return {Object} 返回当前工具参数对象
 		 */
 		getOption:function(){
-			return this.option;
+			return $.extend(true, {}, this.option);//放回选项对象的深拷贝
 		}
 	};
 	

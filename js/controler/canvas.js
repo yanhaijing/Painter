@@ -196,6 +196,8 @@
                 option = currentTool.setPoint(pointList);    
                 shape.init(option); 
                 currentCanvas.paint(shape);
+                
+                bufferCanvas.clear();//清除缓冲画布
             });
         }
     };

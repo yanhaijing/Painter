@@ -227,7 +227,7 @@
          * @type String
          * @default Shape
          */
-        this.name = 'Rectangle';
+        this.name = 'Ellipes';
         
         /**
          * 绘制矩形图形

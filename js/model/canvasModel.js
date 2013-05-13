@@ -34,17 +34,17 @@
          * 当前画布的宽度
          * @property width
          * @type Number
-         * @default 0
+         * @default 1000
          */
-        this.width = 0;
+        this.width = 1000;
         
         /**
          * 当前画布的高度
          * @property height
          * @type Number
-         * @default 0
+         * @default 400
          */
-        this.height = 0;
+        this.height = 400;
         
         /**
          * 当前的画布上下文
@@ -84,11 +84,11 @@
          */
         init:function(canvas){
            this.initCanvas(canvas); //初始化画布对象
-           this.initContext2D();//初始化上下文对象
            this.initHeight();//初始化画布高度
            this.initWidth();//初始化画布宽度
            this.initLeft();//初始化left
            this.initTop();//初始化top
+           this.initContext2D();//初始化上下文对象
         },
         /**
          * 初始化画布对象
@@ -150,6 +150,7 @@
         /**
          * 清除当前上下文
          * @method clearContext
+         * @return {Object} 画图上下文
          */
         clearContext:function(){
             var
@@ -158,6 +159,8 @@
                 context = this.getContext2D();
             
             context.clearRect(0, 0, width, height);
+            
+            return context;
         },
         
         /**
@@ -380,11 +383,12 @@
          */
         repaint:function(){
             var 
-                context = this.getContext2d(),
+                context = null,
                 list = this.shapeList,
                 len = list.length,
                 i = 0;
-           this.clearContext();//清除当前画布     
+           context = this.clearContext();//清除当前画布     
+           
            for(i; i<len; i=i+1){
                list[i].paint(context);
            } 
