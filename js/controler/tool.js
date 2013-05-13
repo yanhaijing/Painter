@@ -145,6 +145,18 @@
 		         $tool.attr('data-current-tool', dataToolClass);//更新按钮点击事件
 		         $tool.trigger('click');//触发点击事件
 			});
+			
+			//帮顶颜色更改事件
+			$document.delegate("#tool-wrap .color", "change", function(e){
+			    var 
+			         color = $(this).val(),
+			         currentTool = global.painter.tool.currentToolContainer.getTool();
+			         
+			     currentTool.setOption({
+			         fillStyle:color,
+			         strokeStyle:color
+			     });
+			})
 		}
 	};
 	
