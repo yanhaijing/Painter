@@ -6,7 +6,7 @@
 (function($, global){
 	"use strict";
 	
-	var Tool,Line;
+	var Tool,Line,Rectangle;
 	
 	/**
 	 * 工具对象
@@ -69,7 +69,7 @@
 	};
 	
 	/**
-	 * 工具对象
+	 * 直线工具对象
 	 * @class Line
 	 * @constructor
 	 * @extend Line.prototype
@@ -125,7 +125,7 @@
                  endX: endX,
                  endY: endY
              });
-		}
+		};
 	};
 	
 	/**
@@ -135,9 +135,78 @@
 	 */
 	Line.prototype = new Tool();
 	
+	/**
+     * 矩形工具对象
+     * @class Rectangle
+     * @constructor
+     * @extend Rectangle.prototype
+     */
+    Rectangle = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = 'Rectangle';
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            var 
+              $attributePanel = $('#tool-shape-attribute-panel'),
+              width = $('.width',$attributePanel).eq(0).val(),
+              opacity = $('.opacity',$attributePanel).eq(0).val(),
+              color = $('#tool-wrap .tool .color').eq(0).val();       
+            
+            //设置参数
+            return this.setOption({
+                lineWidth: width,
+                opacity: opacity,
+                strokeStyle: color,
+                fillStyle:color
+            });
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var 
+               startPoint = pointList.getStart(),
+               endPoint = pointList.getEnd(),
+               left = startPoint.x,
+               top = startPoint.y,
+               width = endPoint.x - left,
+               height = endPoint.y - top;
+               
+             return this.setOption({
+                 left: left,
+                 top: top,
+                 width: width,
+                 height: height
+             });
+        };
+    };
+    
+    /**
+     * 矩形工具原型
+     * @class Rectangle.prototype
+     * @strict
+     */
+    Rectangle.prototype = new Tool();
+	
 	//添加工具到数据层
 	global.painter = global.painter || {};
 	global.painter.model = global.painter.model || {};
 	global.painter.model.toolModel = global.painter.model.toolModel || {};
 	global.painter.model.toolModel.Line = Line;
+	global.painter.model.toolModel.Rectangle = Rectangle;
 }(jQuery, window));

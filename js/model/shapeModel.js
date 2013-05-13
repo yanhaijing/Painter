@@ -6,9 +6,10 @@
 (function($, global){
     "use strict";
     var
-        Shape = function(){},
-        ImageObject = function(){},
-        Line = function(){};
+        Shape = null,
+        ImageObject = null,
+        Line = null,
+        Rectangle = null;
     /**
      * Shape 构造函数
      * @class Shape
@@ -102,7 +103,7 @@
          * 名称
          * @property name
          * @type String
-         * @default Shapee 
+         * @default Shape
          */
 	    this.name = 'Line';
 	    
@@ -141,10 +142,57 @@
 	 */
 	Line.prototype = new Shape();
 	
+	/**
+	 * 矩形对象
+	 * @class Rectangle
+	 * @constructor
+	 * @extends Rectangle.prorotype 
+	 */
+	Rectangle = function(){
+	   /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = 'Rectangle';
+        
+        /**
+         * 绘制矩形图形
+         * @method paint
+         * @param {Object} context 绘图上下文 
+         */
+        this.paint = function(context){
+            var 
+               option = this.getOption();
+            
+            context.save();//保存上下文信息            
+            
+            //设置属性
+            context.strokeStyle = option.strokeStyle;
+            context.fillStyle = option.fillStyle;
+            context.lineWidth = option.lineWidth;
+            context.globalAlaph = option.opacity / 100;            
+            
+            //绘制
+            context.fillRect(option.left, option.top, option.width, option.height);
+            context.strokeRect(option.left, option.top, option.width, option.height);
+            context.restore();//回复上下文
+        };
+	};
+	
+	/**
+     * 矩形对象原型
+     * @class Rectangle.prototype
+     * @static 
+     */
+    Rectangle.prototype = new Shape();
+	
 	//添加变量
 	global.painter = global.painter || {};
 	global.painter.model = global.painter.model || {};
 	global.painter.model.shapeModel = global.painter.model.shapeModel || {};
 	global.painter.model.shapeModel.Shape = Shape;
 	global.painter.model.shapeModel.Line = Line;
+	global.painter.model.shapeModel.Rectangle = Rectangle;
 }(jQuery, window));

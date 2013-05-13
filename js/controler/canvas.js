@@ -96,21 +96,21 @@
             currentCanvas.init(currentCanvasDom);
             currentCanvasContainer.init(currentCanvas);
             global.painter = global.painter || {};
-            global.painter.canvas = global.painter || {};
+            global.painter.canvas = global.painter.canvas || {};
             global.painter.canvas.currentCanvasContainer = currentCanvasContainer;
             
             //初始化当前缓冲画布
             bufferCanvas.init(bufferCanvasDom);
             bufferCanvasContainer.init(bufferCanvas);
             global.painter = global.painter || {};
-            global.painter.canvas = global.painter || {};
+            global.painter.canvas = global.painter.canvas || {};
             global.painter.canvas.bufferCanvasContainer = bufferCanvasContainer;
             
             //初始化鼠标画布
             mouseCanvas.init(mouseCanvasDom);
             mouseCanvasContainer.init(mouseCanvas);
             global.painter = global.painter || {};
-            global.painter.canvas = global.painter || {};
+            global.painter.canvas = global.painter.canvas || {};
             global.painter.canvas.mouseCanvasContainer = mouseCanvasContainer;
             
             this.bindEvent();//版定事件
