@@ -61,6 +61,9 @@ nav h1{
 .tool button[data-current-tool="RoundRectangle"]{
 	background-image:url("../images/tool-button-round-rectangle.gif");
 }
+.tool button[data-current-tool="Ellipes"]{
+	background-image:url("../images/tool-button-ellipes.gif");
+}
 /**
  * 	画笔类按钮
  */

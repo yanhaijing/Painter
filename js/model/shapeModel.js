@@ -10,7 +10,8 @@
         ImageObject = null,
         Line = null,
         Rectangle = null,
-        RoundRectangle = null;
+        RoundRectangle = null,
+        Ellipes = null;
     /**
      * Shape 构造函数
      * @class Shape
@@ -212,6 +213,55 @@
      * @static 
      */
     RoundRectangle.prototype = new Rectangle();
+    
+    /**
+     * 椭圆对象
+     * @class Ellipes
+     * @constructor
+     * @extends Ellipes.prorotype 
+     */
+    Ellipes = function(){
+       /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = 'Rectangle';
+        
+        /**
+         * 绘制矩形图形
+         * @method paint
+         * @param {Object} context 绘图上下文 
+         */
+        this.paint = function(context){
+            var 
+               option = this.getOption();
+            
+            context.save();//保存上下文信息            
+            
+            //设置属性
+            context.strokeStyle = option.strokeStyle;
+            context.fillStyle = option.fillStyle;
+            context.lineWidth = option.lineWidth;
+            context.globalAlaph = option.opacity / 100;           
+            
+            //绘制
+            context.beginPath();
+            context.arc(option.x, option.y, option.radius, 0, Math.PI * 2, true);
+            context.closePath();
+            context.fill();
+            context.stroke();
+            context.restore();//回复上下文
+        };
+    };
+    
+    /**
+     * 圆形对象原型
+     * @class Ellipes.prototype
+     * @static 
+     */
+    Ellipes.prototype = new Shape();
 	
 	//添加变量
 	global.painter = global.painter || {};
@@ -221,4 +271,5 @@
 	global.painter.model.shapeModel.Line = Line;
 	global.painter.model.shapeModel.Rectangle = Rectangle;
 	global.painter.model.shapeModel.RoundRectangle = RoundRectangle;
+	global.painter.model.shapeModel.Ellipes = Ellipes;
 }(jQuery, window));

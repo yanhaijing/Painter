@@ -175,13 +175,6 @@
                 //更新当前工具
                 currentTool = global.painter.tool.currentToolContainer.getTool();
                 index = currentTool.getName()
-                
-                //绘制图形
-                shape = new global.painter.model.shapeModel[index]()
-                option = currentTool.setPoint(pointList);    
-                shape.init(option); 
-                bufferCanvas.clear();
-                bufferCanvas.paint(shape);
             });
             
             //绑定鼠标弹起事件

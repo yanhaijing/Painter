@@ -240,7 +240,7 @@
                 fillStyle:color,
                 lineJoin:"round"
             });
-        };
+        };        
     };
     
     /**
@@ -283,9 +283,30 @@
                 lineWidth: width,
                 opacity: opacity,
                 strokeStyle: color,
-                fillStyle:color,
-                lineJoin:"round"
+                fillStyle:color
             });
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var 
+               startPoint = pointList.getStart(),
+               endPoint = pointList.getEnd(),
+               x = (startPoint.x + endPoint.x) / 2,//计算园中心坐标
+               y = (startPoint.y + endPoint.y) / 2,
+               radius = Math.abs(Math.sqrt(Math.pow(startPoint.x, 2) + Math.pow(startPoint.y, 2)) - 
+                    Math.sqrt(Math.pow(endPoint.x, 2) + Math.pow(endPoint.y, 2))) / 2;
+               
+             return this.setOption({
+                 x:x,
+                 y:y,
+                 radius:radius
+             });
         };
     };
     
