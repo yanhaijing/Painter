@@ -9,7 +9,8 @@
         Shape = null,
         ImageObject = null,
         Line = null,
-        Rectangle = null;
+        Rectangle = null,
+        RoundRectangle = null;
     /**
      * Shape 构造函数
      * @class Shape
@@ -172,7 +173,8 @@
             context.strokeStyle = option.strokeStyle;
             context.fillStyle = option.fillStyle;
             context.lineWidth = option.lineWidth;
-            context.globalAlaph = option.opacity / 100;            
+            context.globalAlaph = option.opacity / 100;  
+            context.lineJoin = option.lineJoin;          
             
             //绘制
             context.fillRect(option.left, option.top, option.width, option.height);
@@ -187,6 +189,29 @@
      * @static 
      */
     Rectangle.prototype = new Shape();
+    
+    /**
+     * 圆角矩形对象
+     * @class RoundRectangle
+     * @constructor
+     * @extends RoundRectangle.prorotype 
+     */
+    RoundRectangle = function(){
+       /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = 'RoundRectangle';
+    };
+    
+    /**
+     * 矩形对象原型
+     * @class RoundRectangle.prototype
+     * @static 
+     */
+    RoundRectangle.prototype = new Rectangle();
 	
 	//添加变量
 	global.painter = global.painter || {};
@@ -195,4 +220,5 @@
 	global.painter.model.shapeModel.Shape = Shape;
 	global.painter.model.shapeModel.Line = Line;
 	global.painter.model.shapeModel.Rectangle = Rectangle;
+	global.painter.model.shapeModel.RoundRectangle = RoundRectangle;
 }(jQuery, window));

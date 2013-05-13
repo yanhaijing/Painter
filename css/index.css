@@ -39,16 +39,31 @@ nav h1{
 .tool button{
 	border:0;
 	border-radius: 5px;
+	background-repeat:no-repeat;
+	background-size:80% 80%;
+	background-position: center center
 }
 .tool button:hover{
 	background-color:#E5DEDE
 }
 .tool button.active{
-	background-color:#888
+	background-color:#888;
 }
-.tool .shape{
-	background: transparent url("../images/tool-button-line.gif") no-repeat center center/80% 80%;
+/**
+ * 	图形类按钮
+ */
+.tool button[data-current-tool="Line"]{
+	background-image:url("../images/tool-button-line.gif");
 }
+.tool button[data-current-tool="Rectangle"]{
+	background-image:url("../images/tool-button-rectangle.gif");
+}
+.tool button[data-current-tool="RoundRectangle"]{
+	background-image:url("../images/tool-button-round-rectangle.gif");
+}
+/**
+ * 	画笔类按钮
+ */
 .tool .brush{
 	background: transparent url("../images/tool-button-brush.gif") no-repeat center center/80% 80%;
 }

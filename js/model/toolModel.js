@@ -6,7 +6,7 @@
 (function($, global){
 	"use strict";
 	
-	var Tool,Line,Rectangle;
+	var Tool,Line,Rectangle,RoundRectangle;
 	
 	/**
 	 * 工具对象
@@ -168,7 +168,8 @@
                 lineWidth: width,
                 opacity: opacity,
                 strokeStyle: color,
-                fillStyle:color
+                fillStyle:color,
+                lineJoin:"miter"
             });
         };
         
@@ -202,6 +203,52 @@
      * @strict
      */
     Rectangle.prototype = new Tool();
+    
+    /**
+     * 圆角矩形工具对象
+     * @class RoundRectangle
+     * @constructor
+     * @extend RoundRectangle.prototype
+     */
+    RoundRectangle = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = 'RoundRectangle';
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            var 
+              $attributePanel = $('#tool-shape-attribute-panel'),
+              width = $('.width',$attributePanel).eq(0).val(),
+              opacity = $('.opacity',$attributePanel).eq(0).val(),
+              color = $('#tool-wrap .tool .color').eq(0).val();       
+            
+            //设置参数
+            return this.setOption({
+                lineWidth: width,
+                opacity: opacity,
+                strokeStyle: color,
+                fillStyle:color,
+                lineJoin:"round"
+            });
+        };
+    };
+    
+    /**
+     * 圆角矩形工具原型
+     * @class RoundRectangle.prototype
+     * @strict
+     */
+    RoundRectangle.prototype = new Rectangle();
 	
 	//添加工具到数据层
 	global.painter = global.painter || {};
@@ -209,4 +256,5 @@
 	global.painter.model.toolModel = global.painter.model.toolModel || {};
 	global.painter.model.toolModel.Line = Line;
 	global.painter.model.toolModel.Rectangle = Rectangle;
+	global.painter.model.toolModel.RoundRectangle = RoundRectangle;
 }(jQuery, window));

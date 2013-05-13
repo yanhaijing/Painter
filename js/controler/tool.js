@@ -107,14 +107,15 @@
 			     $toolWrap = $('#tool-wrap'),
 			     that = this;
 			     
-			//绑定工具点击事件，所有按钮的点击效果
+			//绑定工具栏按钮点击事件，所有按钮的点击效果
 			$document.delegate('#tool-wrap .tool button', 'click', function(){
 			    var 
 			         $this = $(this),
 			         temp = $this.attr('data-tool-panel'),
 			         $toolPanel = $('.tool-panel .' + temp, $toolWrap),//点击要显示面板
 			         $currentToolPanel = $('.tool-panel .wrap:visible', $toolWrap),//当前可见工具面板
-			         $currentToolAttributePanel = $('#tool-' + temp + '-attribute-panel');//当前属性工具面板			         
+			         $currentToolAttributePanel = $('#tool-' + temp + '-attribute-panel'),
+			         currentTool = $this.attr('data-current-tool');//当前属性工具面板			         
 			    
 			    //为按钮添加点击效果     
 			    $('.tool button.active', $toolWrap).removeClass('active');
@@ -127,6 +128,22 @@
 			    //操作属性面板
 			    that.setCurrentAttributePanel($currentToolAttributePanel);//设置所有面板
                 that.openAttributePanel($currentToolAttributePanel);//打开当前面板
+                
+                //新建工具类，更新当前工具类
+                //初始化当前默认工具
+                global.painter.tool.currentToolContainer.init(new global.painter.model.toolModel[currentTool]());
+			});
+			
+			//工具面板按钮点击事件
+			$document.delegate("#tool-wrap .tool-panel .shape > button", 'click', function(e){
+			    var 
+			         $this = $(this),
+			         dataTool = $this.attr('data-tool'),
+			         dataToolClass = $this.attr('data-tool-class'),
+			         $tool = $("#tool-wrap .tool button[data-tool-panel='" + dataTool + "']");
+			         
+		         $tool.attr('data-current-tool', dataToolClass);//更新按钮点击事件
+		         $tool.trigger('click');//触发点击事件
 			});
 		}
 	};

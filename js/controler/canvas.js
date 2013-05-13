@@ -164,14 +164,17 @@
                         y:e.pageY - offsetTop
                     },
                     pointList = that.getPointList(),
-                    index = currentTool.getName(),
+                    index = '',
                     shape = null,
                     option = null;
                 
                 that.getPointList().init();//初始化坐标列表    
                 that.getPointList().add(point);//添加鼠标坐标
                 that.setClickStatus(true);
-                that.currentTool = global.painter.tool.currentToolContainer.getTool();//更新当前工具
+                
+                //更新当前工具
+                currentTool = global.painter.tool.currentToolContainer.getTool();
+                index = currentTool.getName()
                 
                 //绘制图形
                 shape = new global.painter.model.shapeModel[index]()
