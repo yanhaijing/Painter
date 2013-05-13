@@ -6,7 +6,7 @@
 (function($, global){
 	"use strict";
 	
-	var Tool,Line,Rectangle,RoundRectangle;
+	var Tool,Line,Rectangle,RoundRectangle,Ellipes;
 	
 	/**
 	 * 工具对象
@@ -249,6 +249,52 @@
      * @strict
      */
     RoundRectangle.prototype = new Rectangle();
+    
+    /**
+     * 椭圆工具对象
+     * @class Ellipes
+     * @constructor
+     * @extend Ellipes.prototype
+     */
+    Ellipes = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = 'Ellipes';
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            var 
+              $attributePanel = $('#tool-shape-attribute-panel'),
+              width = $('.width',$attributePanel).eq(0).val(),
+              opacity = $('.opacity',$attributePanel).eq(0).val(),
+              color = $('#tool-wrap .tool .color').eq(0).val();       
+            
+            //设置参数
+            return this.setOption({
+                lineWidth: width,
+                opacity: opacity,
+                strokeStyle: color,
+                fillStyle:color,
+                lineJoin:"round"
+            });
+        };
+    };
+    
+    /**
+     * 椭圆工具原型
+     * @class Ellipes.prototype
+     * @strict
+     */
+    Ellipes.prototype = new Tool();
 	
 	//添加工具到数据层
 	global.painter = global.painter || {};
@@ -257,4 +303,5 @@
 	global.painter.model.toolModel.Line = Line;
 	global.painter.model.toolModel.Rectangle = Rectangle;
 	global.painter.model.toolModel.RoundRectangle = RoundRectangle;
+	global.painter.model.toolModel.Ellipes = Ellipes;
 }(jQuery, window));
