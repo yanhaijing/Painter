@@ -40,8 +40,7 @@
                 return this.list[this.list.length - 1];
             },
             getList:function(){
-                return $.extend(true, [], this.list);
-                //this.list;
+                return this.list;
             },
             init:function(){
                 this.list = [];

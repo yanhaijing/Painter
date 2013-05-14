@@ -362,7 +362,8 @@
         this.setPoint = function(pointList){
             var 
                list = pointList.getList();
-               
+             
+             this.option.list = [];//更新当前列表  
              return this.setOption({
                  list:list
              });

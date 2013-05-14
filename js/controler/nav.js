@@ -27,7 +27,17 @@
         */
        bindEvent:function(){          
            var $document = $(document);
-           
+           //帮顶保存按钮事件
+           $document.delegate("#nav-file-save", "click", function(e){
+                var 
+                    currentCanvasDom = global.painter.canvas.currentCanvasContainer.getCanvas().getCanvas(),
+                    img = new Image(),
+                    win = window.open("", "图片", "height=600,width=800,top=0,left=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no");               
+                img.src = currentCanvasDom.toDataURL();
+                win.document.write("右键图片图片另存为");
+                win.document.write("<img src='" + img.src + "' border=1>");
+                global.console.log("保存按钮被点击了");
+            });
             //帮顶撤销按钮事件
             $document.delegate("#nav-edit-undo", "click", function(e){
                 var currentCanvas = global.painter.canvas.currentCanvasContainer.getCanvas();
