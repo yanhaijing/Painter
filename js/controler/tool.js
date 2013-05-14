@@ -146,7 +146,7 @@
 		         $tool.trigger('click');//触发点击事件
 			});
 			
-			//帮顶颜色更改事件
+			//绑定颜色更改事件
 			$document.delegate("#tool-wrap .color", "change", function(e){
 			    var 
 			         color = $(this).val(),
@@ -156,7 +156,25 @@
 			         fillStyle:color,
 			         strokeStyle:color
 			     });
-			})
+			});
+			
+			//绑定属性面板属性更改事件
+			$document.delegate('.tool-attribute-panel input', "change", function(e){
+			    var
+			         $this = $(this),
+			         attr = $this.attr('data-attr'),
+			         value = $this.val(),
+			         currentTool = global.painter.tool.currentToolContainer.getTool(),
+			         option = {},
+			         $info = $this.next();
+			    
+			    //更新当前工具对象参数     
+			    option[attr] = value;
+			    currentTool.setOption(option);
+			    
+			    //更新提示
+			    $info.html(value);
+			});
 		}
 	};
 	

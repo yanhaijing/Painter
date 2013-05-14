@@ -40,7 +40,8 @@
                 return this.list[this.list.length - 1];
             },
             getList:function(){
-                return this.list;
+                return $.extend(true, [], this.list);
+                //this.list;
             },
             init:function(){
                 this.list = [];
@@ -136,20 +137,25 @@
             //绑定鼠标画布图层鼠标移动事件
             $document.delegate('#canvas-mouse', 'mousemove', function(e){
                 var
-                    point = {
-                        x:e.pageX - offsetLeft,
-                        y:e.pageY - offsetTop
-                    },
-                    pointList = that.getPointList(),
-                    index = currentTool.getName(),
-                    shape = new global.painter.model.shapeModel[index](),
+                    point = null,
+                    pointList = null,
+                    index = "",
+                    shape = null,
                     option = null,
                     status = that.getClickStatus();
                 
                 if(status){
+                    point = {
+                        x:e.pageX - offsetLeft,
+                        y:e.pageY - offsetTop
+                    };
+                    pointList = that.getPointList();
+                    index = currentTool.getName();                    
                     //添加鼠标坐标
                     pointList.add(point);
-                    option = currentTool.setPoint(pointList);    
+                    option = currentTool.setPoint(pointList);  
+                    
+                    shape = new global.painter.model.shapeModel[index]();  
                     shape.init(option); 
                     bufferCanvas.clear();
                     bufferCanvas.paint(shape);  
@@ -174,7 +180,6 @@
                 
                 //更新当前工具
                 currentTool = global.painter.tool.currentToolContainer.getTool();
-                index = currentTool.getName()
             });
             
             //绑定鼠标弹起事件

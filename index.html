@@ -51,6 +51,9 @@
 								<li>
 									<a id="nav-edit-clear" href="#"><b class="icon-trash"></b> 清空</a>
 								</li>
+								<li>
+									<a id="nav-edit" href="#"><b class="icon-trash"></b> 反绘</a>
+								</li>
 							</ul>
 						</li>
 					</ul><!-- end .nav -->
@@ -72,7 +75,7 @@
 			<div id="tool-wrap" class="tool-wrap">
 				<div class="tool">
 					<button class="shape active" title="形状工具" data-current-tool="Line" data-tool-panel="shape"></button>					
-					<button class="brush" title="画笔工具" data-tool-panel="brush"></button>
+					<button class="brush" title="画笔工具" data-current-tool="Pen" data-tool-panel="brush"></button>
 					<button class="eraser" title="橡皮擦工具" data-tool-panel="eraser"></button>
 					<button class="flood-fill" title="填充工具" data-tool-panel="flood-fill"></button>
 					<button class="eye-dropper" title="习惯工具" data-tool-panel="eye-dropper"></button>
@@ -87,19 +90,19 @@
 						<button class="round-rectangle" title="圆角矩形" data-tool="shape" data-tool-class="RoundRectangle"></button>
 						<button class="ellipes" title="椭圆" data-tool="shape" data-tool-class="Ellipes"></button>	
 						<div id="tool-shape-attribute-panel" class="tool-attribute-panel" title="形状属性面板">
-							<label>粗细：<input class="width" type="range" min="1" max="100" value="1" /><span>1</span></label>
-							<label>透明度：<input class="opacity" type="range" max="100" value="100" /><span>100</span></label>							
+							<label>size：<input class="width" type="range" min="1" max="100" value="1" data-attr="lineWidth" /><span>1</span></label>
+							<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>							
 						</div>					
 					</div><!-- end .shape -->
 					
 					<div class="brush wrap">
-						<button class="line" title="直线"></button>
+						<button class="pen" title="铅笔" data-tool="brush" data-tool-class="Pen"> </button>
 						<button class="rectangle" title="矩形"></button>
 						<button class="round-rectangle" title="圆角矩形"></button>
 						<button class="ellipes" title="椭圆"></button>	
-						<div id="tool-brush-attribute-panel" class="tool-attribute-panel" title="属性面板">
-							<label>粗细：<input type="range" max="100" /><span>10%</span></label>
-							<label>透明度：<input type="range" max="100" /><span>10%</span></label>							
+						<div id="tool-brush-attribute-panel" class="tool-attribute-panel" title="画笔属性面板">
+							<label>size：<input type="range" min="1" max="100" data-attr="lineWidth" value="1" /><span>1</span></label>
+							<label>opacity：<input type="range" max="100" data-attr="opacity" value="100" /><span>100</span></label>							
 						</div>					
 					</div><!-- end .brush -->
 				</div><!-- end .tool-panel -->

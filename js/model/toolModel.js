@@ -6,7 +6,7 @@
 (function($, global){
 	"use strict";
 	
-	var Tool,Line,Rectangle,RoundRectangle,Ellipes;
+	var Tool,Line,Rectangle,RoundRectangle,Ellipes,Pen;
 	
 	/**
 	 * 工具对象
@@ -316,6 +316,65 @@
      * @strict
      */
     Ellipes.prototype = new Tool();
+    
+    /**
+     * 铅笔工具对象
+     * @class Pen
+     * @constructor
+     * @extend Pen.prototype
+     */
+    Pen = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = 'Pen';
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            var 
+              $attributePanel = $('#tool-shape-attribute-panel'),
+              width = $('.width',$attributePanel).eq(0).val(),
+              opacity = $('.opacity',$attributePanel).eq(0).val(),
+              color = $('#tool-wrap .tool .color').eq(0).val();       
+            
+            //设置参数
+            return this.setOption({
+                lineWidth: width,
+                opacity: opacity,
+                strokeStyle: color
+            });
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var 
+               list = pointList.getList();
+               
+             return this.setOption({
+                 list:list
+             });
+        };
+    };
+    
+    /**
+     * 铅笔工具原型
+     * @class Pen.prototype
+     * @strict
+     */
+    Pen.prototype = new Tool();
 	
 	//添加工具到数据层
 	global.painter = global.painter || {};
@@ -325,4 +384,5 @@
 	global.painter.model.toolModel.Rectangle = Rectangle;
 	global.painter.model.toolModel.RoundRectangle = RoundRectangle;
 	global.painter.model.toolModel.Ellipes = Ellipes;
+	global.painter.model.toolModel.Pen = Pen;
 }(jQuery, window));

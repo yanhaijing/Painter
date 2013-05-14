@@ -11,7 +11,8 @@
         Line = null,
         Rectangle = null,
         RoundRectangle = null,
-        Ellipes = null;
+        Ellipes = null,
+        Pen = null;
     /**
      * Shape 构造函数
      * @class Shape
@@ -128,7 +129,7 @@
             //设置直线属性
             context.strokeStyle = option.strokeStyle;
             context.lineWidth = option.lineWidth;
-            context.globalAlaph = option.opacity / 100;
+            context.globalAlpha = option.opacity / 100;
             
             //绘制直线
             context.closePath();
@@ -174,7 +175,7 @@
             context.strokeStyle = option.strokeStyle;
             context.fillStyle = option.fillStyle;
             context.lineWidth = option.lineWidth;
-            context.globalAlaph = option.opacity / 100;  
+            context.globalAlpha = option.opacity / 100;  
             context.lineJoin = option.lineJoin;          
             
             //绘制
@@ -244,7 +245,7 @@
             context.strokeStyle = option.strokeStyle;
             context.fillStyle = option.fillStyle;
             context.lineWidth = option.lineWidth;
-            context.globalAlaph = option.opacity / 100;           
+            context.globalAlpha = option.opacity / 100;           
             
             //绘制
             context.beginPath();
@@ -262,6 +263,60 @@
      * @static 
      */
     Ellipes.prototype = new Shape();
+    
+    /**
+     * 铅笔对象
+     * @class Pen
+     * @constructor
+     * @extends Pen.prorotype 
+     */
+    Pen = function(){
+       /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = 'Pen';
+        
+        /**
+         * 绘制矩形图形
+         * @method paint
+         * @param {Object} context 绘图上下文 
+         */
+        this.paint = function(context){
+            var 
+               option = this.getOption(),
+               list = option.list,
+               start = list[0],
+               len = list.length,
+               i = 0;
+            
+            context.save();//保存上下文信息            
+            
+            //设置属性
+            context.strokeStyle = option.strokeStyle;
+            context.lineWidth = option.lineWidth;
+            context.globalAlpha = option.opacity / 100;           
+            
+            //绘制
+            context.beginPath();
+            
+            context.moveTo(start.x, start.y);
+            for(i; i<len; i=i+1){
+               context.lineTo(list[i].x, list[i].y); 
+            }
+            context.stroke();
+            context.restore();//回复上下文
+        };
+    };
+    
+    /**
+     * 铅笔对象原型
+     * @class Pen.prototype
+     * @static 
+     */
+    Pen.prototype = new Shape();
 	
 	//添加变量
 	global.painter = global.painter || {};
@@ -272,4 +327,5 @@
 	global.painter.model.shapeModel.Rectangle = Rectangle;
 	global.painter.model.shapeModel.RoundRectangle = RoundRectangle;
 	global.painter.model.shapeModel.Ellipes = Ellipes;
+	global.painter.model.shapeModel.Pen = Pen;
 }(jQuery, window));
