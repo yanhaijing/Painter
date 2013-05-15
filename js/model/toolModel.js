@@ -6,7 +6,7 @@
 (function($, global){
 	"use strict";
 	
-	var Tool,Line,Rectangle,RoundRectangle,Ellipes,Pen,CurveClosed,Eraser,FloodFill,EyeDropper;
+	var Tool,Line,Rect,RectRound,Circle,Pen,CurveClosed,Eraser,FloodFill,EyeDropper;
 	
 	/**
 	 * 工具对象
@@ -137,18 +137,18 @@
 	
 	/**
      * 矩形工具对象
-     * @class Rectangle
+     * @class Rect
      * @constructor
-     * @extend Rectangle.prototype
+     * @extend Rect.prototype
      */
-    Rectangle = function(){
+    Rect = function(){
         /**
          * 名称
          * @property name
          * @type String
          * @defult 'line' 
          */
-        this.name = 'Rectangle';
+        this.name = 'Rect';
         
         /**
          * 初始化
@@ -199,25 +199,25 @@
     
     /**
      * 矩形工具原型
-     * @class Rectangle.prototype
+     * @class Rect.prototype
      * @strict
      */
-    Rectangle.prototype = new Tool();
+    Rect.prototype = new Tool();
     
     /**
      * 圆角矩形工具对象
-     * @class RoundRectangle
+     * @class RectRound
      * @constructor
-     * @extend RoundRectangle.prototype
+     * @extend RectRound.prototype
      */
-    RoundRectangle = function(){
+    RectRound = function(){
         /**
          * 名称
          * @property name
          * @type String
          * @defult 'line' 
          */
-        this.name = 'RoundRectangle';
+        this.name = 'RectRound';
         
         /**
          * 初始化
@@ -245,25 +245,25 @@
     
     /**
      * 圆角矩形工具原型
-     * @class RoundRectangle.prototype
+     * @class RectRound.prototype
      * @strict
      */
-    RoundRectangle.prototype = new Rectangle();
+    RectRound.prototype = new Rect();
     
     /**
      * 椭圆工具对象
-     * @class Ellipes
+     * @class Circle
      * @constructor
-     * @extend Ellipes.prototype
+     * @extend Circle.prototype
      */
-    Ellipes = function(){
+    Circle = function(){
         /**
          * 名称
          * @property name
          * @type String
          * @defult 'line' 
          */
-        this.name = 'Ellipes';
+        this.name = 'Circle';
         
         /**
          * 初始化
@@ -312,10 +312,10 @@
     
     /**
      * 椭圆工具原型
-     * @class Ellipes.prototype
+     * @class Circle.prototype
      * @strict
      */
-    Ellipes.prototype = new Tool();
+    Circle.prototype = new Tool();
     
     /**
      * 铅笔工具对象
@@ -568,9 +568,9 @@
 	global.painter.model = global.painter.model || {};
 	global.painter.model.toolModel = global.painter.model.toolModel || {};
 	global.painter.model.toolModel.Line = Line;
-	global.painter.model.toolModel.Rectangle = Rectangle;
-	global.painter.model.toolModel.RoundRectangle = RoundRectangle;
-	global.painter.model.toolModel.Ellipes = Ellipes;
+	global.painter.model.toolModel.Rect = Rect;
+	global.painter.model.toolModel.RectRound = RectRound;
+	global.painter.model.toolModel.Circle = Circle;
 	global.painter.model.toolModel.Pen = Pen;
 	global.painter.model.toolModel.CurveClosed = CurveClosed;
 	global.painter.model.toolModel.Eraser = Eraser;

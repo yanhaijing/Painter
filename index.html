@@ -86,9 +86,10 @@
 				<div class="tool-panel">
 					<div class="shape wrap">
 						<button class="line" title="直线" data-tool="shape" data-tool-class="Line"></button>
-						<button class="rectangle" title="矩形" data-tool="shape" data-tool-class="Rectangle"></button>
-						<button class="round-rectangle" title="圆角矩形" data-tool="shape" data-tool-class="RoundRectangle"></button>
-						<button class="ellipes" title="椭圆" data-tool="shape" data-tool-class="Ellipes"></button>	
+						<button class="curve-closed" title="闭合曲线" data-tool="shape" data-tool-class="CurveClosed"></button>
+						<button class="rect" title="矩形" data-tool="shape" data-tool-class="Rect"></button>
+						<button class="rect-round" title="圆角矩形" data-tool="shape" data-tool-class="RectRound"></button>
+						<button class="circle" title="椭圆" data-tool="shape" data-tool-class="Circle"></button>	
 						<div id="tool-shape-attribute-panel" class="tool-attribute-panel" title="形状属性面板">
 							<label>size：<input class="width" type="range" min="1" max="100" value="1" data-attr="lineWidth" /><span>1</span></label>
 							<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>							
@@ -97,7 +98,7 @@
 					
 					<div class="stroke wrap">
 						<button class="pen" title="铅笔" data-tool="stroke" data-tool-class="Pen"> </button>
-						<button class="curve-closed" title="闭合曲线" data-tool="stroke" data-tool-class="CurveClosed"></button>
+						<button class="curve-closed-stroke" title="闭合曲线" data-tool="stroke" data-tool-class="CurveClosedStroke"></button>
 						<button class="rect-stroke" title="矩形" data-tool="stroke" data-tool-class="RectStroke"> </button>
 						<button class="rect-round-stroke" title="圆角矩形" data-tool="stroke" data-tool-class="RectRoundStroke"></button>
 						<button class="circle-stroke" title="圆形" data-tool="stroke" data-tool-class="CircleStroke"></button>

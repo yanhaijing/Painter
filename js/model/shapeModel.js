@@ -9,9 +9,9 @@
         Shape = null,
         ImageObject = null,
         Line = null,
-        Rectangle = null,
-        RoundRectangle = null,
-        Ellipes = null,
+        Rect = null,
+        RectRound = null,
+        Circle = null,
         Pen = null,
         CurveClosed,
         Eraser,
@@ -151,18 +151,18 @@
 	
 	/**
 	 * 矩形对象
-	 * @class Rectangle
+	 * @class Rect
 	 * @constructor
-	 * @extends Rectangle.prorotype 
+	 * @extends Rect.prorotype 
 	 */
-	Rectangle = function(){
+	Rect = function(){
 	   /**
          * 名称
          * @property name
          * @type String
          * @default Shape
          */
-        this.name = 'Rectangle';
+        this.name = 'Rect';
         
         /**
          * 绘制矩形图形
@@ -191,48 +191,48 @@
 	
 	/**
      * 矩形对象原型
-     * @class Rectangle.prototype
+     * @class Rect.prototype
      * @static 
      */
-    Rectangle.prototype = new Shape();
+    Rect.prototype = new Shape();
     
     /**
      * 圆角矩形对象
-     * @class RoundRectangle
+     * @class RectRound
      * @constructor
-     * @extends RoundRectangle.prorotype 
+     * @extends RectRound.prorotype 
      */
-    RoundRectangle = function(){
+    RectRound = function(){
        /**
          * 名称
          * @property name
          * @type String
          * @default Shape
          */
-        this.name = 'RoundRectangle';
+        this.name = 'RectRound';
     };
     
     /**
      * 矩形对象原型
-     * @class RoundRectangle.prototype
+     * @class RectRound.prototype
      * @static 
      */
-    RoundRectangle.prototype = new Rectangle();
+    RectRound.prototype = new Rect();
     
     /**
      * 椭圆对象
-     * @class Ellipes
+     * @class Circle
      * @constructor
-     * @extends Ellipes.prorotype 
+     * @extends Circle.prorotype 
      */
-    Ellipes = function(){
+    Circle = function(){
        /**
          * 名称
          * @property name
          * @type String
          * @default Shape
          */
-        this.name = 'Ellipes';
+        this.name = 'Circle';
         
         /**
          * 绘制矩形图形
@@ -263,10 +263,10 @@
     
     /**
      * 圆形对象原型
-     * @class Ellipes.prototype
+     * @class Circle.prototype
      * @static 
      */
-    Ellipes.prototype = new Shape();
+    Circle.prototype = new Shape();
     
     /**
      * 铅笔对象
@@ -517,9 +517,9 @@
 	global.painter.model.shapeModel = global.painter.model.shapeModel || {};
 	global.painter.model.shapeModel.Shape = Shape;
 	global.painter.model.shapeModel.Line = Line;
-	global.painter.model.shapeModel.Rectangle = Rectangle;
-	global.painter.model.shapeModel.RoundRectangle = RoundRectangle;
-	global.painter.model.shapeModel.Ellipes = Ellipes;
+	global.painter.model.shapeModel.Rect = Rect;
+	global.painter.model.shapeModel.RectRound = RectRound;
+	global.painter.model.shapeModel.Circle = Circle;
 	global.painter.model.shapeModel.Pen = Pen;
 	global.painter.model.shapeModel.CurveClosed = CurveClosed;
 	global.painter.model.shapeModel.Eraser = Eraser;
