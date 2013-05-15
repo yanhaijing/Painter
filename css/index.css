@@ -1,0 +1,134 @@
+/*
+ * header
+ * ================================
+ */
+nav h1{
+	padding-left:40px;
+	background:url("../images/Painter.gif") no-repeat left center/auto 80%;
+	display:inline-block;
+	float: left;
+	margin:0;
+	font-size: 16px;
+	line-height: 1.2em
+}
+/**
+ * 	主要区域
+ * =======================================
+ */
+/**
+ * 	绘图区域
+ * ---------------------------------------
+ */
+.canvas-wrap{
+	position: relative;
+	background:#ffffff
+}
+.canvas-paint{
+	position: absolute;
+	top:0;
+	left:0
+}
+/**
+ * 	工具栏
+ * ================================
+ */
+/**
+ * 	工具栏
+ * -----------------------------------
+ */
+.tool button{
+	border:0;
+	border-radius: 5px;
+	background-repeat:no-repeat;
+	background-size:80% 80%;
+	background-position: center center
+}
+.tool button:hover{
+	background-color:#E5DEDE
+}
+.tool button.active{
+	background-color:#888;
+}
+/**
+ * 	图形类按钮
+ */
+.tool button[data-current-tool="Line"]{
+	background-image:url("../images/tool-button-line.gif");
+}
+.tool button[data-current-tool="Rectangle"]{
+	background-image:url("../images/tool-button-rectangle.gif");
+}
+.tool button[data-current-tool="RoundRectangle"]{
+	background-image:url("../images/tool-button-round-rectangle.gif");
+}
+.tool button[data-current-tool="Ellipes"]{
+	background-image:url("../images/tool-button-ellipes.gif");
+}
+/**
+ * 	画笔类按钮
+ */
+.tool .brush{
+	background: transparent url("../images/tool-button-brush.gif") no-repeat center center/80% 80%;
+}
+.tool .flood-fill{
+	background: transparent url("../images/tool-button-floodfill.gif") no-repeat center center/80% 80%;
+}
+.tool .eraser{
+	background: transparent url("../images/tool-button-eraser.gif") no-repeat center center/80% 80%;
+}
+.tool .select{
+	background: transparent url("../images/tool-button-select.gif") no-repeat center center/80% 80%;
+}
+.tool .text{
+	background: transparent url("../images/tool-button-text.gif") no-repeat center center/80% 80%;
+}
+.tool .eye-dropper{
+	background: transparent url("../images/tool-button-eyedropper.gif") no-repeat center center/80% 80%;
+}
+.tool .color{
+	width:25px;
+	height:25px;
+	margin:10px 0 0 10px
+}
+/**
+ * 	工具面板
+ * -----------------------------------
+ */
+.tool-panel button{
+	border:0;
+	border-radius:5px
+}
+.tool-panel .wrap{
+	display:none;
+}
+.tool-panel .wrap button:hover{
+	background-color:#E5DEDE
+}
+.tool-attribute-panel{
+	display: inline-block
+}
+.tool-attribute-panel input{
+	width:80px
+}
+.tool-panel .shape{
+	display:block
+}
+.tool-panel .shape .line{
+	background: transparent url("../images/tool-button-line.gif") no-repeat center center/80% 80%;
+}
+.tool-panel .shape .rectangle{
+	background: transparent url("../images/tool-button-rectangle.gif") no-repeat center center/80% 80%;
+}
+.tool-panel .shape .round-rectangle{
+	background: transparent url("../images/tool-button-round-rectangle.gif") no-repeat center center/80% 80%;
+}
+.tool-panel .shape .ellipes{
+	background:transparent url("../images/tool-button-ellipes.gif") no-repeat center center/80% 80%;
+}
+/**
+ * 	footer
+ * ==============================
+ */
+footer p{
+	text-align:center
+}

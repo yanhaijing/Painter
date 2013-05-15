@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<link rel="stylesheet"  href="css/tutu.css"/>
+		<script src="js/tutu.js"></script>
+	</head>
+	<body>
+		<div class="Toolbar">
+			<img id="redpen" src="images/pen_red.jpg" alt="Red pen" onclick="changeColor('rgba(212,21,29,0.1)',this)">
+			<img id="greenpen" src="images/pen_green.jpg" alt="Green pen" onclick="changeColor('rgb(131,190,61)',this)">
+			<img id="yellowpen" src="images/pen_yellow.jpg" alt="yellow pen" onclick="changeColor('rgb(255,255,0)',this)">
+		</div>
+		
+		<div class="Toolthickness">
+			<img id="small" src="images/small.jpg" alt="Small pen" onclick="changeThickness(10,this)"/>
+			<img id="medium" src="images/medium.jpg" alt="Medium pen" onclick="changeThickness(20,this)"/>
+			<img id="big" src="images/big.jpg" alt="Big pen" onclick="changeThickness(30,this)"/>
+		</div>
+		<canvas id="drawingCanvas" width="500" height="300" > </canvas>
+		
+		
+		<div class="Toolbar" style="background: #cdf7f7;">
+			<button onclick="saveCanvas()">save the canvas</button>
+			<button onclick="clearCanvas()">clear</button>
+		</div>
+		<img id="saveImageCopy" style="border: 1px solid black; clear: both;display: block; width: 300;height: 200;"/>
+	</body>
+</html>

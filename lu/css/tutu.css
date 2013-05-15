@@ -1,0 +1,25 @@
+canvas{
+	border: 1px solid black;
+	position: relative;
+	clear: both;
+	display: block;
+}
+.Toolbar,.Toolthickness {
+	/*background: #f495de;*/
+	float: left;
+	
+	font-size: 14px;
+	padding: 10px 15px 3px 10px;
+	margin-bottom: 1px;
+	margin-right: 1px;
+	border: 1px solid #7B899B;
+}
+.Toolbar img{
+	width: 30px;
+	height: 50px;
+	
+}
+
+.Selected{
+	border: 1px solid black;
+}

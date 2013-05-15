@@ -1,0 +1,80 @@
+html{
+	width:100%;
+	height:100%;
+	min-height:600px;
+	min-width:960px
+}
+body{
+	height:100%;
+	margin:0;
+	background:#fff;
+	background:#F6F6F6
+}
+/**
+ * 	=============================
+ *  container-fluid
+ */
+.container-fluid{
+	height: 100%
+}
+
+/**
+ * 	导航
+ * ================================
+ */
+.navbar{
+	height:7%;
+	margin-bottom: 1%
+}
+
+/**
+ * 	=================================
+ * 页面主要区域
+ */
+.main-wrap{
+	height:66.666666666666666666666666666667%
+}
+/**
+ * 	主要绘图区
+ * -----------------------------------
+ */
+.canvas-wrap{
+	height:100%
+}
+/**
+ * 	信息区
+ * -------------------------------
+ */
+.info{
+	height:100%
+}
+/**
+ * 	=================================
+ * 工具区域
+ */
+.tool-wrap{
+	height:16.666666666666666666666666666667%;
+	margin-top:10px
+}
+.tool{
+	margin:auto;
+	height:50%
+}
+.tool button{
+	width:40px;
+	height:40px;
+	margin:10px 0 0 10px
+}
+.tool-panel{
+	background:#FFFFFF;
+	height:50%
+}
+/**
+ * 	工具面板
+ * -----------------------------------
+ */
+.tool-panel button{
+	width:40px;
+	height:40px;
+	margin:10px 0 0 10px
+}
