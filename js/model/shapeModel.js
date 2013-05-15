@@ -12,7 +12,11 @@
         Rectangle = null,
         RoundRectangle = null,
         Ellipes = null,
-        Pen = null;
+        Pen = null,
+        ClosedCurve,
+        Eraser,
+        FloodFill,
+        EyeDropper;
     /**
      * Shape 构造函数
      * @class Shape
@@ -317,6 +321,195 @@
      * @static 
      */
     Pen.prototype = new Shape();
+    
+    /**
+     * 铅笔对象
+     * @class ClosedCurve
+     * @constructor
+     * @extends ClosedCurve.prorotype 
+     */
+    ClosedCurve = function(){
+       /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = 'ClosedCurve';
+        
+        /**
+         * 绘制矩形图形
+         * @method paint
+         * @param {Object} context 绘图上下文 
+         */
+        this.paint = function(context){
+            var 
+               option = this.getOption(),
+               list = option.list,
+               start = list[0],
+               len = list.length,
+               i = 0;
+            
+            context.save();//保存上下文信息            
+            
+            //设置属性
+            context.strokeStyle = option.strokeStyle;
+            context.lineWidth = option.lineWidth;
+            context.globalAlpha = option.opacity / 100;           
+            
+            //绘制
+            context.beginPath();
+            
+            context.moveTo(start.x, start.y);
+            for(i; i<len; i=i+1){
+               context.lineTo(list[i].x, list[i].y); 
+            }
+            context.closePath();
+            context.stroke();
+            context.restore();//回复上下文
+        };
+    };
+    
+    /**
+     * 铅笔对象原型
+     * @class ClosedCurve.prototype
+     * @static 
+     */
+    ClosedCurve.prototype = new Shape();
+    
+    /**
+     * 铅笔对象
+     * @class ClosedCurve
+     * @constructor
+     * @extends ClosedCurve.prorotype 
+     */
+    Eraser = function(){
+       /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = 'Eraser';
+        
+        /**
+         * 绘制矩形图形
+         * @method paint
+         * @param {Object} context 绘图上下文 
+         */
+        this.paint = function(context){
+            var 
+               option = this.getOption(),
+               list = option.list,
+               start = list[0],
+               len = list.length,
+               i = 0;
+            
+            context.save();//保存上下文信息            
+            
+            //设置属性
+            context.strokeStyle = option.color;
+            context.lineWidth = option.lineWidth;          
+            
+            //绘制
+            context.beginPath();
+            
+            context.moveTo(start.x, start.y);
+            for(i; i<len; i=i+1){
+               context.lineTo(list[i].x, list[i].y); 
+            }
+            context.stroke();
+            context.restore();//回复上下文
+        };
+    };
+    
+    /**
+     * 铅笔对象原型
+     * @class Eraser.prototype
+     * @static 
+     */
+    Eraser.prototype = new Shape();
+    
+        /**
+     * 铅笔对象
+     * @class FloodFill
+     * @constructor
+     * @extends FloodFill.prorotype 
+     */
+    FloodFill = function(){
+       /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = 'Eraser';
+        
+        /**
+         * 绘制矩形图形
+         * @method paint
+         * @param {Object} context 绘图上下文 
+         */
+        this.paint = function(context){
+            var 
+               option = this.getOption();
+            
+            context.save();//保存上下文信息            
+            
+            //设置属性
+            context.fillStyle = option.fillStyle;          
+            
+            //绘制
+            context.fillRect(0,0,1000,400);
+            context.restore();//回复上下文
+        };
+    };
+    
+    /**
+     * 铅笔对象原型
+     * @class FloodFill.prototype
+     * @static 
+     */
+    FloodFill.prototype = new Shape();
+    
+            /**
+     * 铅笔对象
+     * @class EyeDropper
+     * @constructor
+     * @extends EyeDropper.prorotype 
+     */
+    EyeDropper = function(){
+       /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = 'EyeDropper';
+        
+        /**
+         * 绘制矩形图形
+         * @method paint
+         * @param {Object} context 绘图上下文 
+         */
+        this.paint = function(context){
+            var 
+               option = this.getOption(),
+               $color = $('#tool-wrap .tool .color'),
+               lists;
+               
+            lists = context.getImageData(option.x, option.y, 10,10);
+            
+            global.console.log(lists);
+        };   
+    };
+    
+    /**
+     * 铅笔对象原型
+     * @class EyeDropper.prototype
+     * @static 
+     */
+    EyeDropper.prototype = new Shape();
 	
 	//添加变量
 	global.painter = global.painter || {};
@@ -328,4 +521,8 @@
 	global.painter.model.shapeModel.RoundRectangle = RoundRectangle;
 	global.painter.model.shapeModel.Ellipes = Ellipes;
 	global.painter.model.shapeModel.Pen = Pen;
+	global.painter.model.shapeModel.ClosedCurve = ClosedCurve;
+	global.painter.model.shapeModel.Eraser = Eraser;
+	global.painter.model.shapeModel.FloodFill = FloodFill;
+	global.painter.model.shapeModel.EyeDropper = EyeDropper;
 }(jQuery, window));
