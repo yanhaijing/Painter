@@ -75,7 +75,7 @@
 			<div id="tool-wrap" class="tool-wrap">
 				<div class="tool">
 					<button class="shape active" title="形状工具" data-current-tool="Line" data-tool-panel="shape"></button>					
-					<button class="brush" title="画笔工具" data-current-tool="Pen" data-tool-panel="brush"></button>
+					<button class="stroke" title="轮廓工具" data-current-tool="Pen" data-tool-panel="stroke"></button>
 					<button class="eraser" title="橡皮擦工具" data-current-tool="Eraser" data-tool-panel="eraser"></button>
 					<button class="flood-fill" title="填充工具" data-current-tool="FloodFill" data-tool-panel="flood-fill"></button>
 					<button class="eye-dropper" title="吸管工具" data-current-tool="EyeDropper" data-tool-panel="eye-dropper"></button>
@@ -95,10 +95,13 @@
 						</div>					
 					</div><!-- end .shape -->
 					
-					<div class="brush wrap">
-						<button class="pen" title="铅笔" data-tool="brush" data-tool-class="Pen"> </button>
-						<button class="closed-curve" title="闭合曲线" data-tool="brush" data-tool-class="ClosedCurve"></button>
-						<div id="tool-brush-attribute-panel" class="tool-attribute-panel" title="画笔属性面板">
+					<div class="stroke wrap">
+						<button class="pen" title="铅笔" data-tool="stroke" data-tool-class="Pen"> </button>
+						<button class="curve-closed" title="闭合曲线" data-tool="stroke" data-tool-class="CurveClosed"></button>
+						<button class="rect-stroke" title="矩形" data-tool="stroke" data-tool-class="RectStroke"> </button>
+						<button class="rect-round-stroke" title="圆角矩形" data-tool="stroke" data-tool-class="RectRoundStroke"></button>
+						<button class="circle-stroke" title="圆形" data-tool="stroke" data-tool-class="CircleStroke"></button>
+						<div id="tool-stroke-attribute-panel" class="tool-attribute-panel" title="轮廓属性面板">
 							<label>size：<input type="range" min="1" max="100" data-attr="lineWidth" value="1" /><span>1</span></label>
 							<label>opacity：<input type="range" max="100" data-attr="opacity" value="100" /><span>100</span></label>							
 						</div>					

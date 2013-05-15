@@ -67,9 +67,14 @@ nav h1{
 /**
  * 	画笔类按钮
  */
-.tool .brush{
-	background: transparent url("../images/tool-button-brush.gif") no-repeat center center/80% 80%;
+.tool button[data-current-tool="Pen"]{
+	background-image:url("../images/tool-button-pen.gif");
 }
+
+.tool button[data-current-tool="CurveClosed"]{
+	background-image:url("../images/tool-button-curve-closed.gif");
+}
+
 .tool .flood-fill{
 	background: transparent url("../images/tool-button-floodfill.gif") no-repeat center center/80% 80%;
 }
@@ -91,12 +96,25 @@ nav h1{
 	margin:10px 0 0 10px
 }
 /**
+ * 	工具属性面版
+ * -------------------------
+ */
+.tool-attribute-panel{
+	display: inline-block
+}
+.tool-attribute-panel input{
+	width:80px
+}
+/**
  * 	工具面板
  * -----------------------------------
  */
 .tool-panel button{
 	border:0;
-	border-radius:5px
+	border-radius:5px;
+	background-repeat:no-repeat;
+	background-size:80% 80%;
+	background-position: center center
 }
 .tool-panel .wrap{
 	display:none;
@@ -104,26 +122,43 @@ nav h1{
 .tool-panel .wrap button:hover{
 	background-color:#E5DEDE
 }
-.tool-attribute-panel{
-	display: inline-block
-}
-.tool-attribute-panel input{
-	width:80px
-}
+/**
+ * 	图形工具面板
+ * ------------------------
+ */
 .tool-panel .shape{
 	display:block
 }
 .tool-panel .shape .line{
-	background: transparent url("../images/tool-button-line.gif") no-repeat center center/80% 80%;
+	background-image:url("../images/tool-button-line.gif");
 }
 .tool-panel .shape .rectangle{
-	background: transparent url("../images/tool-button-rectangle.gif") no-repeat center center/80% 80%;
+	background-image:url("../images/tool-button-rectangle.gif");
 }
 .tool-panel .shape .round-rectangle{
-	background: transparent url("../images/tool-button-round-rectangle.gif") no-repeat center center/80% 80%;
+	background-image:url("../images/tool-button-round-rectangle.gif");
 }
 .tool-panel .shape .ellipes{
-	background:transparent url("../images/tool-button-ellipes.gif") no-repeat center center/80% 80%;
+	background-image:url("../images/tool-button-ellipes.gif");
+}
+/**
+ * 	画笔工具面板
+ * --------------------------------
+ */
+.tool-panel .stroke .pen{
+	background-image:url("../images/tool-button-pen.gif");
+}
+.tool-panel .stroke .curve-closed{
+	background-image:url("../images/tool-button-curve-closed.gif");
+}
+.tool-panel .stroke .rect-stroke{
+	background-image:url("../images/tool-button-rect-stroke.gif");
+}
+.tool-panel .stroke .rect-round-stroke{
+	background-image:url("../images/tool-button-rect-round-stroke.gif");
+}
+.tool-panel .stroke .circle-stroke{
+	background-image:url("../images/tool-button-circle-stroke.gif");
 }
 /**
  * 	footer

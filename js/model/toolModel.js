@@ -6,7 +6,7 @@
 (function($, global){
 	"use strict";
 	
-	var Tool,Line,Rectangle,RoundRectangle,Ellipes,Pen,ClosedCurve,Eraser,FloodFill,EyeDropper;
+	var Tool,Line,Rectangle,RoundRectangle,Ellipes,Pen,CurveClosed,Eraser,FloodFill,EyeDropper;
 	
 	/**
 	 * 工具对象
@@ -379,26 +379,26 @@
     
     /**
      * 闭合曲线工具对象
-     * @class ClosedCurve
+     * @class CurveClosed
      * @constructor
      * @extend Pen.prototype
      */
-    ClosedCurve = function(){
+    CurveClosed = function(){
         /**
          * 名称
          * @property name
          * @type String
          * @defult 'line' 
          */
-        this.name = 'ClosedCurve';
+        this.name = 'CurveClosed';
     };
     
     /**
      * 闭合曲线工具原型
-     * @class ClosedCurve.prototype
+     * @class CurveClosed.prototype
      * @strict
      */
-    ClosedCurve.prototype = new Pen();
+    CurveClosed.prototype = new Pen();
     
     /**
      * 橡皮工具对象
@@ -572,7 +572,7 @@
 	global.painter.model.toolModel.RoundRectangle = RoundRectangle;
 	global.painter.model.toolModel.Ellipes = Ellipes;
 	global.painter.model.toolModel.Pen = Pen;
-	global.painter.model.toolModel.ClosedCurve = ClosedCurve;
+	global.painter.model.toolModel.CurveClosed = CurveClosed;
 	global.painter.model.toolModel.Eraser = Eraser;
 	global.painter.model.toolModel.FloodFill = FloodFill;
 	global.painter.model.toolModel.EyeDropper = EyeDropper;

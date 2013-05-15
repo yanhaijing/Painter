@@ -13,7 +13,7 @@
         RoundRectangle = null,
         Ellipes = null,
         Pen = null,
-        ClosedCurve,
+        CurveClosed,
         Eraser,
         FloodFill,
         EyeDropper;
@@ -324,18 +324,18 @@
     
     /**
      * 铅笔对象
-     * @class ClosedCurve
+     * @class CurveClosed
      * @constructor
-     * @extends ClosedCurve.prorotype 
+     * @extends CurveClosed.prorotype 
      */
-    ClosedCurve = function(){
+    CurveClosed = function(){
        /**
          * 名称
          * @property name
          * @type String
          * @default Shape
          */
-        this.name = 'ClosedCurve';
+        this.name = 'CurveClosed';
         
         /**
          * 绘制矩形图形
@@ -372,16 +372,16 @@
     
     /**
      * 铅笔对象原型
-     * @class ClosedCurve.prototype
+     * @class CurveClosed.prototype
      * @static 
      */
-    ClosedCurve.prototype = new Shape();
+    CurveClosed.prototype = new Shape();
     
     /**
      * 铅笔对象
-     * @class ClosedCurve
+     * @class CurveClosed
      * @constructor
-     * @extends ClosedCurve.prorotype 
+     * @extends CurveClosed.prorotype 
      */
     Eraser = function(){
        /**
@@ -521,7 +521,7 @@
 	global.painter.model.shapeModel.RoundRectangle = RoundRectangle;
 	global.painter.model.shapeModel.Ellipes = Ellipes;
 	global.painter.model.shapeModel.Pen = Pen;
-	global.painter.model.shapeModel.ClosedCurve = ClosedCurve;
+	global.painter.model.shapeModel.CurveClosed = CurveClosed;
 	global.painter.model.shapeModel.Eraser = Eraser;
 	global.painter.model.shapeModel.FloodFill = FloodFill;
 	global.painter.model.shapeModel.EyeDropper = EyeDropper;
