@@ -76,9 +76,9 @@
 				<div class="tool">
 					<button class="shape active" title="形状工具" data-current-tool="Line" data-tool-panel="shape"></button>					
 					<button class="brush" title="画笔工具" data-current-tool="Pen" data-tool-panel="brush"></button>
-					<button class="eraser" title="橡皮擦工具" data-tool-panel="eraser"></button>
-					<button class="flood-fill" title="填充工具" data-tool-panel="flood-fill"></button>
-					<button class="eye-dropper" title="习惯工具" data-tool-panel="eye-dropper"></button>
+					<button class="eraser" title="橡皮擦工具" data-current-tool="Eraser" data-tool-panel="eraser"></button>
+					<button class="flood-fill" title="填充工具" data-current-tool="FloodFill" data-tool-panel="flood-fill"></button>
+					<button class="eye-dropper" title="吸管工具" data-current-tool="EyeDropper" data-tool-panel="eye-dropper"></button>
 					<button class="select" title="选择工具" data-tool-panel="select"></button>
 					<button class="text" title="文字工具" data-tool-panel="text"></button>
 					<input class="color" type="color" title="颜色" value="#000000"/>					
@@ -97,12 +97,24 @@
 					
 					<div class="brush wrap">
 						<button class="pen" title="铅笔" data-tool="brush" data-tool-class="Pen"> </button>
-						<button class="rectangle" title="矩形"></button>
-						<button class="round-rectangle" title="圆角矩形"></button>
-						<button class="ellipes" title="椭圆"></button>	
+						<button class="closed-curve" title="闭合曲线" data-tool="brush" data-tool-class="ClosedCurve"></button>
 						<div id="tool-brush-attribute-panel" class="tool-attribute-panel" title="画笔属性面板">
 							<label>size：<input type="range" min="1" max="100" data-attr="lineWidth" value="1" /><span>1</span></label>
 							<label>opacity：<input type="range" max="100" data-attr="opacity" value="100" /><span>100</span></label>							
+						</div>					
+					</div><!-- end .brush -->
+					
+					<div class="eraser wrap">
+						<button class="eraser" title="橡皮" data-tool="eraser" data-tool-class="Eraser"> </button>	
+						<div id="tool-eraser-attribute-panel" class="tool-attribute-panel" title="橡皮属性面板">
+							<label>size：<input type="range" min="1" max="100" data-attr="lineWidth" value="1" /><span>1</span></label>						
+						</div>					
+					</div><!-- end .brush -->
+					
+					<div class="flood-fill wrap">
+						<button class="flood-fill" title="油漆桶" data-tool="flood-fill" data-tool-class="FloodFill"> </button>	
+						<div id="tool-flood-fill-attribute-panel" class="tool-attribute-panel" title="油漆桶属性面板">
+							
 						</div>					
 					</div><!-- end .brush -->
 				</div><!-- end .tool-panel -->
@@ -110,7 +122,7 @@
 			
 			<footer>
 				<p>
-					Copyright &copy; <a href="https://github.com/yanhaijing/">颜海镜</a>. All Rights Reserved
+					Copyright &copy; <a href="https://github.com/yanhaijing/"></a>. All Rights Reserved
 				</p>
 			</footer>
 		</div><!-- end .container -->

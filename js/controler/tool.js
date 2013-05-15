@@ -135,7 +135,7 @@
 			});
 			
 			//工具面板按钮点击事件
-			$document.delegate("#tool-wrap .tool-panel .shape > button", 'click', function(e){
+			$document.delegate("#tool-wrap .tool-panel .wrap > button", 'click', function(e){
 			    var 
 			         $this = $(this),
 			         dataTool = $this.attr('data-tool'),

@@ -6,7 +6,7 @@
 (function($, global){
 	"use strict";
 	
-	var Tool,Line,Rectangle,RoundRectangle,Ellipes,Pen;
+	var Tool,Line,Rectangle,RoundRectangle,Ellipes,Pen,ClosedCurve,Eraser,FloodFill,EyeDropper;
 	
 	/**
 	 * 工具对象
@@ -340,7 +340,7 @@
         this.init = function(){
             //获取当前属性
             var 
-              $attributePanel = $('#tool-shape-attribute-panel'),
+              $attributePanel = $('#tool-brush-attribute-panel'),
               width = $('.width',$attributePanel).eq(0).val(),
               opacity = $('.opacity',$attributePanel).eq(0).val(),
               color = $('#tool-wrap .tool .color').eq(0).val();       
@@ -376,6 +376,192 @@
      * @strict
      */
     Pen.prototype = new Tool();
+    
+    /**
+     * 闭合曲线工具对象
+     * @class ClosedCurve
+     * @constructor
+     * @extend Pen.prototype
+     */
+    ClosedCurve = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = 'ClosedCurve';
+    };
+    
+    /**
+     * 闭合曲线工具原型
+     * @class ClosedCurve.prototype
+     * @strict
+     */
+    ClosedCurve.prototype = new Pen();
+    
+    /**
+     * 橡皮工具对象
+     * @class Eraser
+     * @constructor
+     * @extend Eraser.prototype
+     */
+    Eraser = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = 'Eraser';
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            var 
+              $attributePanel = $('#tool-eraser-attribute-panel'),
+              width = $('.width',$attributePanel).eq(0).val(),
+              opacity = $('.opacity',$attributePanel).eq(0).val(),
+              color = $('#tool-wrap .tool .color').eq(0).val();       
+            
+            //设置参数
+            return this.setOption({
+                lineWidth: width,
+                color:'#fff'
+            });
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var 
+               list = pointList.getList();
+             
+             this.option.list = [];//更新当前列表  
+             return this.setOption({
+                 list:list
+             });
+        };
+    };
+    
+    /**
+     * 橡皮工具原型
+     * @class Eraser.prototype
+     * @strict
+     */
+    Eraser.prototype = new Tool();
+    
+    /**
+     * 橡皮工具对象
+     * @class FloodFill
+     * @constructor
+     * @extend FloodFill.prototype
+     */
+    FloodFill = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = 'FloodFill';
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            var 
+              $attributePanel = $('#tool-eraser-attribute-panel'),
+              width = $('.width',$attributePanel).eq(0).val(),
+              opacity = $('.opacity',$attributePanel).eq(0).val(),
+              color = $('#tool-wrap .tool .color').eq(0).val();       
+            
+            //设置参数
+            return this.setOption({
+                fillStyle:color
+            });
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            return this.getOption();
+        };
+    };
+    
+    /**
+     * 橡皮工具原型
+     * @class FloodFill.prototype
+     * @strict
+     */
+    FloodFill.prototype = new Tool();
+    
+    /**
+     * 橡皮工具对象
+     * @class EyeDropper
+     * @constructor
+     * @extend EyeDropper.prototype
+     */
+    EyeDropper = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = 'EyeDropper';
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //设置参数
+            return this.setOption({
+                
+            });
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var
+                endPoint = pointList.getEnd(),
+                x = endPoint.x,
+                y = endPoint.y;
+            return this.getOption({
+                x:x,
+                y:y
+            });
+        };
+    };
+    
+    /**
+     * 橡皮工具原型
+     * @class FloodFill.prototype
+     * @strict
+     */
+    EyeDropper.prototype = new Tool();
 	
 	//添加工具到数据层
 	global.painter = global.painter || {};
@@ -386,4 +572,8 @@
 	global.painter.model.toolModel.RoundRectangle = RoundRectangle;
 	global.painter.model.toolModel.Ellipes = Ellipes;
 	global.painter.model.toolModel.Pen = Pen;
+	global.painter.model.toolModel.ClosedCurve = ClosedCurve;
+	global.painter.model.toolModel.Eraser = Eraser;
+	global.painter.model.toolModel.FloodFill = FloodFill;
+	global.painter.model.toolModel.EyeDropper = EyeDropper;
 }(jQuery, window));
