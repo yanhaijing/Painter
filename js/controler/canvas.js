@@ -123,7 +123,6 @@
                     shape = null,
                     option = null,
                     status = that.getClickStatus(),
-                    tempPointList = Object.create(global.painter.model.PointList),
                     mouseTool = null,
                     mouse = '',
                     mouseOption = null,
@@ -133,16 +132,11 @@
                     x:e.pageX - offsetLeft,
                     y:e.pageY - offsetTop
                 };                                
-                mouse = currentTool.getMouse();
-                mouseTool = new global.painter.model.toolModel[mouse]();//创建鼠标工具
-                mouseTool.init();
-                
-                //添加鼠标坐标
-                tempPointList.add(point);
-                mouseOption = mouseTool.setPoint(tempPointList);
-                mouseShape = new global.painter.model.shapeModel[mouse]();//创建鼠标层图形               
-                
-                mouseShape.init(mouseOption); 
+                mouse = currentTool.getMouse();//获取鼠标名称
+                mouseOption = currentTool.getOption();//获取参数
+                mouseShape = new global.painter.model.mouseModel[mouse]();//创建鼠标对象                            
+                mouseShape.init(mouseOption, point);//初始化鼠标图形
+                //绘制鼠标图形到鼠标层
                 mouseCanvas.clear();
                 mouseCanvas.paint(mouseShape); 
                 

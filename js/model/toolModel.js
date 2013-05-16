@@ -39,7 +39,7 @@
 		 * @type String
 		 * @default 'Tool'
 		 */
-		this.mouse = "Tool";
+		this.mouse = "Cross";
 		this.option = {
 			strokeStyle:'#000',
 			fillStyle:'#000',
@@ -659,6 +659,7 @@
          * @defult 'line' 
          */
         this.name = 'Eraser';
+        this.mouse = "Eraser";
         
         /**
          * 初始化

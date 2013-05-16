@@ -546,7 +546,6 @@
             
             //设置属性
             context.strokeStyle = option.strokeStyle;
-            context.fillStyle = option.fillStyle;
             context.lineWidth = option.lineWidth;
             context.globalAlpha = option.opacity / 100;           
             
