@@ -112,7 +112,7 @@
             this.setOption({
                 strokeStyle:'#000',
                 opacity:50,
-                radius:parseInt(option.lineWidth, 10) + 2
+                radius:Math.ceil(option.lineWidth / 2, 10)
             });
             this.setPoints(points);//设置点    
             //设置鼠标图形
