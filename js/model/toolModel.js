@@ -354,7 +354,7 @@
         this.init = function(){
             //获取当前属性
             var 
-              $attributePanel = $('#tool-brush-attribute-panel'),
+              $attributePanel = $('#tool-stroke-attribute-panel'),
               width = $('.width',$attributePanel).eq(0).val(),
               opacity = $('.opacity',$attributePanel).eq(0).val(),
               color = $('#tool-wrap .tool .color').eq(0).val();       
@@ -460,7 +460,7 @@
         this.init = function(){
             //获取当前属性
             var 
-              $attributePanel = $('#tool-shape-attribute-panel'),
+              $attributePanel = $('#tool-stroke-attribute-panel'),
               width = $('.width',$attributePanel).eq(0).val(),
               opacity = $('.opacity',$attributePanel).eq(0).val(),
               color = $('#tool-wrap .tool .color').eq(0).val();       
@@ -529,7 +529,7 @@
         this.init = function(){
             //获取当前属性
             var 
-              $attributePanel = $('#tool-shape-attribute-panel'),
+              $attributePanel = $('#tool-stroke-attribute-panel'),
               width = $('.width',$attributePanel).eq(0).val(),
               opacity = $('.opacity',$attributePanel).eq(0).val(),
               color = $('#tool-wrap .tool .color').eq(0).val();       
@@ -575,7 +575,7 @@
         this.init = function(){
             //获取当前属性
             var 
-              $attributePanel = $('#tool-shape-attribute-panel'),
+              $attributePanel = $('#tool-stroke-attribute-panel'),
               width = $('.width',$attributePanel).eq(0).val(),
               opacity = $('.opacity',$attributePanel).eq(0).val(),
               color = $('#tool-wrap .tool .color').eq(0).val();       
