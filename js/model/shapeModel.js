@@ -7,13 +7,16 @@
     "use strict";
     var
         Shape = null,
-        ImageObject = null,
         Line = null,
+        CurveClosed,
         Rect = null,
         RectRound = null,
         Circle = null,
         Pen = null,
-        CurveClosed,
+        CurveClosedStroke,
+        RectStroke = null,
+        RectRoundStroke = null,
+        CircleStroke = null,
         Eraser,
         FloodFill,
         EyeDropper;
@@ -87,17 +90,20 @@
          * 获取工具参数对象
          * @method getOption 
          * @return {Object} 返回当前工具参数对象
-         */
+         */       
         getOption:function(){
             return this.option;
-        }
+        },
+        
+        /**
+         * 重绘图形方法
+         * @method repaint
+         * @param {Object} context 要绘制到的上下文
+         */
+         repaint:function(context){
+            this.paint(context);
+         }
 	};
-	
-	ImageObject = function(){
-	    this.name = 'image';
-	};
-	
-	ImageObject.prototype = new Shape();
 	
 	/**
 	 * 直线对象
@@ -149,6 +155,63 @@
 	 */
 	Line.prototype = new Shape();
 	
+	/**
+     * 闭合曲线对象
+     * @class CurveClosed
+     * @constructor
+     * @extends CurveClosed.prorotype 
+     */
+    CurveClosed = function(){
+       /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = 'CurveClosed';
+        
+        /**
+         * 绘制矩形图形
+         * @method paint
+         * @param {Object} context 绘图上下文 
+         */
+        this.paint = function(context){
+            var 
+               option = this.getOption(),
+               list = option.list,
+               start = list[0],
+               len = list.length,
+               i = 0;
+            
+            context.save();//保存上下文信息            
+            
+            //设置属性
+            context.strokeStyle = option.strokeStyle;
+            context.fillStyle = option.fillStyle;
+            context.lineWidth = option.lineWidth;
+            context.globalAlpha = option.opacity / 100;           
+            
+            //绘制
+            context.beginPath();
+            
+            context.moveTo(start.x, start.y);
+            for(i; i<len; i=i+1){
+               context.lineTo(list[i].x, list[i].y); 
+            }
+            context.closePath();
+            context.fill();
+            context.stroke();
+            context.restore();//回复上下文
+        };
+    };
+    
+    /**
+     * 闭合曲线对象原型
+     * @class CurveClosed.prototype
+     * @static 
+     */
+    CurveClosed.prototype = new Shape();
+    
 	/**
 	 * 矩形对象
 	 * @class Rect
@@ -324,18 +387,18 @@
     
     /**
      * 铅笔对象
-     * @class CurveClosed
+     * @class CurveClosedStroke
      * @constructor
-     * @extends CurveClosed.prorotype 
+     * @extends CurveClosedStroke.prorotype 
      */
-    CurveClosed = function(){
+    CurveClosedStroke = function(){
        /**
          * 名称
          * @property name
          * @type String
          * @default Shape
          */
-        this.name = 'CurveClosed';
+        this.name = 'CurveClosedStroke';
         
         /**
          * 绘制矩形图形
@@ -372,17 +435,135 @@
     
     /**
      * 铅笔对象原型
-     * @class CurveClosed.prototype
+     * @class CurveClosedStroke.prototype
      * @static 
      */
-    CurveClosed.prototype = new Shape();
+    CurveClosedStroke.prototype = new Shape();
     
     /**
      * 铅笔对象
-     * @class CurveClosed
+     * @class CurveClosedStroke
      * @constructor
-     * @extends CurveClosed.prorotype 
+     * @extends CurveClosedStroke.prorotype 
      */
+    
+    /**
+     * 矩形对象
+     * @class RectStroke
+     * @constructor
+     * @extends RectStroke.prorotype 
+     */
+    RectStroke = function(){
+       /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = 'RectStroke';
+        
+        /**
+         * 绘制矩形图形
+         * @method paint
+         * @param {Object} context 绘图上下文 
+         */
+        this.paint = function(context){
+            var 
+               option = this.getOption();
+            
+            context.save();//保存上下文信息            
+            
+            //设置属性
+            context.strokeStyle = option.strokeStyle;
+            context.fillStyle = option.fillStyle;
+            context.lineWidth = option.lineWidth;
+            context.globalAlpha = option.opacity / 100;  
+            context.lineJoin = option.lineJoin;          
+            
+            //绘制
+            context.strokeRect(option.left, option.top, option.width, option.height);
+            context.restore();//回复上下文
+        };
+    };
+    
+    /**
+     * 矩形对象原型
+     * @class RectStroke.prototype
+     * @static 
+     */
+    RectStroke.prototype = new Shape();
+    
+    /**
+     * 圆角矩形对象
+     * @class RectRoundStroke
+     * @constructor
+     * @extends RectRoundStroke.prorotype 
+     */
+    RectRoundStroke = function(){
+       /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = 'RectRoundStroke';
+    };
+    
+    /**
+     * 矩形对象原型
+     * @class RectRoundStroke.prototype
+     * @static 
+     */
+    RectRoundStroke.prototype = new RectStroke();
+    
+    /**
+     * 椭圆对象
+     * @class CircleStroke
+     * @constructor
+     * @extends CircleStroke.prorotype 
+     */
+    CircleStroke = function(){
+       /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = 'CircleStroke';
+        
+        /**
+         * 绘制矩形图形
+         * @method paint
+         * @param {Object} context 绘图上下文 
+         */
+        this.paint = function(context){
+            var 
+               option = this.getOption();
+            
+            context.save();//保存上下文信息            
+            
+            //设置属性
+            context.strokeStyle = option.strokeStyle;
+            context.fillStyle = option.fillStyle;
+            context.lineWidth = option.lineWidth;
+            context.globalAlpha = option.opacity / 100;           
+            
+            //绘制
+            context.beginPath();
+            context.arc(option.x, option.y, option.radius, 0, Math.PI * 2, true);
+            context.closePath();
+            context.stroke();
+            context.restore();//回复上下文
+        };
+    };
+    
+    /**
+     * 圆形对象原型
+     * @class CircleStroke.prototype
+     * @static 
+     */
+    CircleStroke.prototype = new Shape();
+    
     Eraser = function(){
        /**
          * 名称
@@ -515,13 +696,16 @@
 	global.painter = global.painter || {};
 	global.painter.model = global.painter.model || {};
 	global.painter.model.shapeModel = global.painter.model.shapeModel || {};
-	global.painter.model.shapeModel.Shape = Shape;
 	global.painter.model.shapeModel.Line = Line;
+	global.painter.model.shapeModel.CurveClosed = CurveClosed;
 	global.painter.model.shapeModel.Rect = Rect;
 	global.painter.model.shapeModel.RectRound = RectRound;
 	global.painter.model.shapeModel.Circle = Circle;
 	global.painter.model.shapeModel.Pen = Pen;
-	global.painter.model.shapeModel.CurveClosed = CurveClosed;
+	global.painter.model.shapeModel.CurveClosedStroke = CurveClosedStroke;
+	global.painter.model.shapeModel.RectStroke = RectStroke;
+    global.painter.model.shapeModel.RectRoundStroke = RectRoundStroke;
+    global.painter.model.shapeModel.CircleStroke = CircleStroke;
 	global.painter.model.shapeModel.Eraser = Eraser;
 	global.painter.model.shapeModel.FloodFill = FloodFill;
 	global.painter.model.shapeModel.EyeDropper = EyeDropper;

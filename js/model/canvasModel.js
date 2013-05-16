@@ -390,7 +390,7 @@
            context = this.clearContext();//清除当前画布     
            
            for(i; i<len; i=i+1){
-               list[i].paint(context);
+               list[i].repaint(context);
            } 
         },
         

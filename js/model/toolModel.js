@@ -6,7 +6,21 @@
 (function($, global){
 	"use strict";
 	
-	var Tool,Line,Rect,RectRound,Circle,Pen,CurveClosed,Eraser,FloodFill,EyeDropper;
+	var 
+	   Tool,
+	   Line,
+	   CurveClosed,
+	   Rect,
+	   RectRound,
+	   Circle,
+	   Pen,
+	   CurveClosedStroke,
+	   RectStroke,
+       RectRoundStroke,
+       CircleStroke,
+	   Eraser,
+	   FloodFill,
+	   EyeDropper;
 	
 	/**
 	 * 工具对象
@@ -379,6 +393,29 @@
     
     /**
      * 闭合曲线工具对象
+     * @class CurveClosedStroke
+     * @constructor
+     * @extend Pen.prototype
+     */
+    CurveClosedStroke = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = 'CurveClosedStroke';
+    };
+    
+    /**
+     * 闭合曲线工具原型
+     * @class CurveClosedStroke.prototype
+     * @strict
+     */
+    CurveClosedStroke.prototype = new Pen();
+    
+        /**
+     * 闭合曲线工具对象
      * @class CurveClosed
      * @constructor
      * @extend Pen.prototype
@@ -399,6 +436,188 @@
      * @strict
      */
     CurveClosed.prototype = new Pen();
+    
+    /**
+     * 矩形工具对象
+     * @class RectStroke
+     * @constructor
+     * @extend RectStroke.prototype
+     */
+    RectStroke = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = 'RectStroke';
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            var 
+              $attributePanel = $('#tool-shape-attribute-panel'),
+              width = $('.width',$attributePanel).eq(0).val(),
+              opacity = $('.opacity',$attributePanel).eq(0).val(),
+              color = $('#tool-wrap .tool .color').eq(0).val();       
+            
+            //设置参数
+            return this.setOption({
+                lineWidth: width,
+                opacity: opacity,
+                strokeStyle: color,
+                fillStyle:color,
+                lineJoin:"miter"
+            });
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var 
+               startPoint = pointList.getStart(),
+               endPoint = pointList.getEnd(),
+               left = startPoint.x,
+               top = startPoint.y,
+               width = endPoint.x - left,
+               height = endPoint.y - top;
+               
+             return this.setOption({
+                 left: left,
+                 top: top,
+                 width: width,
+                 height: height
+             });
+        };
+    };
+    
+    /**
+     * 矩形工具原型
+     * @class RectStroke.prototype
+     * @strict
+     */
+    RectStroke.prototype = new Tool();
+    
+    /**
+     * 圆角矩形工具对象
+     * @class RectRoundStroke
+     * @constructor
+     * @extend RectRoundStroke.prototype
+     */
+    RectRoundStroke = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = 'RectRoundStroke';
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            var 
+              $attributePanel = $('#tool-shape-attribute-panel'),
+              width = $('.width',$attributePanel).eq(0).val(),
+              opacity = $('.opacity',$attributePanel).eq(0).val(),
+              color = $('#tool-wrap .tool .color').eq(0).val();       
+            
+            //设置参数
+            return this.setOption({
+                lineWidth: width,
+                opacity: opacity,
+                strokeStyle: color,
+                fillStyle:color,
+                lineJoin:"round"
+            });
+        };        
+    };
+    
+    /**
+     * 圆角矩形工具原型
+     * @class RectRoundStroke.prototype
+     * @strict
+     */
+    RectRoundStroke.prototype = new RectStroke();
+    
+    /**
+     * 椭圆工具对象
+     * @class CircleStroke
+     * @constructor
+     * @extend CircleStroke.prototype
+     */
+    CircleStroke = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = 'CircleStroke';
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            var 
+              $attributePanel = $('#tool-shape-attribute-panel'),
+              width = $('.width',$attributePanel).eq(0).val(),
+              opacity = $('.opacity',$attributePanel).eq(0).val(),
+              color = $('#tool-wrap .tool .color').eq(0).val();       
+            
+            //设置参数
+            return this.setOption({
+                lineWidth: width,
+                opacity: opacity,
+                strokeStyle: color,
+                fillStyle:color
+            });
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var 
+               startPoint = pointList.getStart(),
+               endPoint = pointList.getEnd(),
+               x = (startPoint.x + endPoint.x) / 2,//计算园中心坐标
+               y = (startPoint.y + endPoint.y) / 2,
+               radius = Math.abs(Math.sqrt(Math.pow(startPoint.x, 2) + Math.pow(startPoint.y, 2)) - 
+                    Math.sqrt(Math.pow(endPoint.x, 2) + Math.pow(endPoint.y, 2))) / 2;
+               
+             return this.setOption({
+                 x:x,
+                 y:y,
+                 radius:radius
+             });
+        };
+    };
+    
+    /**
+     * 椭圆工具原型
+     * @class CircleStroke.prototype
+     * @strict
+     */
+    CircleStroke.prototype = new Tool();
     
     /**
      * 橡皮工具对象
@@ -568,11 +787,15 @@
 	global.painter.model = global.painter.model || {};
 	global.painter.model.toolModel = global.painter.model.toolModel || {};
 	global.painter.model.toolModel.Line = Line;
+	global.painter.model.toolModel.CurveClosed = CurveClosed;
 	global.painter.model.toolModel.Rect = Rect;
 	global.painter.model.toolModel.RectRound = RectRound;
 	global.painter.model.toolModel.Circle = Circle;
 	global.painter.model.toolModel.Pen = Pen;
-	global.painter.model.toolModel.CurveClosed = CurveClosed;
+	global.painter.model.toolModel.CurveClosedStroke = CurveClosedStroke;
+	global.painter.model.toolModel.RectStroke = RectStroke;
+    global.painter.model.toolModel.RectRoundStroke = RectRoundStroke;
+    global.painter.model.toolModel.CircleStroke = CircleStroke;
 	global.painter.model.toolModel.Eraser = Eraser;
 	global.painter.model.toolModel.FloodFill = FloodFill;
 	global.painter.model.toolModel.EyeDropper = EyeDropper;
