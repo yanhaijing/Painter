@@ -27,26 +27,7 @@
          * @property startPoint
          * @type Object
          */
-        pointList:{
-            list:[],
-            add:function(point){
-                this.list.push(point);
-                return this.list;
-            },
-            getStart:function(){
-                return this.list[0];
-            },
-            getEnd:function(){
-                return this.list[this.list.length - 1];
-            },
-            getList:function(){
-                return this.list;
-            },
-            init:function(){
-                this.list = [];
-                return this.list;   
-            }
-        },
+        pointList:Object.create(global.painter.model.PointList),
         
         /**
          * 设置开始点 
@@ -141,17 +122,37 @@
                     index = "",
                     shape = null,
                     option = null,
-                    status = that.getClickStatus();
+                    status = that.getClickStatus(),
+                    tempPointList = Object.create(global.painter.model.PointList),
+                    mouseTool = null,
+                    mouse = '',
+                    mouseOption = null,
+                    mouseShape = null;
                 
-                if(status){
-                    point = {
-                        x:e.pageX - offsetLeft,
-                        y:e.pageY - offsetTop
-                    };
-                    pointList = that.getPointList();
-                    index = currentTool.getName();                    
+                point = {
+                    x:e.pageX - offsetLeft,
+                    y:e.pageY - offsetTop
+                };                                
+                mouse = currentTool.getMouse();
+                mouseTool = new global.painter.model.toolModel[mouse]();//创建鼠标工具
+                mouseTool.init();
+                
+                //添加鼠标坐标
+                tempPointList.add(point);
+                mouseOption = mouseTool.setPoint(tempPointList);
+                mouseShape = new global.painter.model.shapeModel[mouse]();//创建鼠标层图形               
+                
+                mouseShape.init(mouseOption); 
+                mouseCanvas.clear();
+                mouseCanvas.paint(mouseShape); 
+                
+                
+                //鼠标按下绘制图形操作
+                if(status){     
+                    index = currentTool.getName();
                     //添加鼠标坐标
-                    pointList.add(point);
+                    pointList = that.getPointList();
+                    pointList.add(point);                                                                                               
                     option = currentTool.setPoint(pointList);  
                     
                     shape = new global.painter.model.shapeModel[index]();  
@@ -202,6 +203,11 @@
                 currentCanvas.paint(shape);
                 
                 bufferCanvas.clear();//清除缓冲画布
+            });
+            
+            //绑定鼠标离开
+            $document.delegate('#canvas-mouse', 'mouseleave', function(e){
+                mouseCanvas.clear();
             });
         }
     };

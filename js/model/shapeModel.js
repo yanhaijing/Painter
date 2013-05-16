@@ -19,7 +19,9 @@
         CircleStroke = null,
         Eraser,
         FloodFill,
-        EyeDropper;
+        EyeDropper,
+        //十字类
+        Cross;
     /**
      * Shape 构造函数
      * @class Shape
@@ -691,6 +693,68 @@
      * @static 
      */
     EyeDropper.prototype = new Shape();
+    
+    /**
+     * 十字类对象
+     * @class Cross
+     * @constructor
+     * @extends Cross.prorotype 
+     */
+    Cross = function(){
+       /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = 'Cross';
+        
+        /**
+         * 绘制矩形图形
+         * @method paint
+         * @param {Object} context 绘图上下文 
+         */
+        this.paint = function(context){
+           var 
+               option = this.getOption(),
+               x = option.x,
+               y = option.y,
+               len = option.length,
+               line1StartX = x - len,
+               line1StartY = y,
+               line1EndX = x + len,
+               line1EndY = y,
+               line2StartX = x,
+               line2StartY = y - len,
+               line2EndX = x,
+               line2EndY = y + len;
+            
+            context.save();//保存上下文信息            
+            
+            //设置属性
+            context.strokeStyle = option.strokeStyle;
+            context.lineWidth = option.LineWidth; 
+            
+            //描述图形
+            context.beginPath();
+            context.moveTo(line1StartX, line1StartY); 
+            context.lineTo(line1EndX, line1EndY);
+            context.moveTo(line2StartX, line2StartY); 
+            context.lineTo(line2EndX, line2EndY);
+            context.closePath();        
+            
+            //绘制  
+            context.stroke();          
+            context.restore();//回复上下文
+        };   
+    };
+    
+    /**
+     * 十字类原型
+     * @class Cross.prototype
+     * @static 
+     */
+    Cross.prototype = new Shape();
 	
 	//添加变量
 	global.painter = global.painter || {};
@@ -709,4 +773,5 @@
 	global.painter.model.shapeModel.Eraser = Eraser;
 	global.painter.model.shapeModel.FloodFill = FloodFill;
 	global.painter.model.shapeModel.EyeDropper = EyeDropper;
+	global.painter.model.shapeModel.Cross = Cross;
 }(jQuery, window));

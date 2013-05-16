@@ -26,7 +26,8 @@ nav h1{
 .canvas-paint{
 	position: absolute;
 	top:0;
-	left:0
+	left:0;
+	cursor: none
 }
 /**
  * 	工具栏

@@ -20,7 +20,9 @@
        CircleStroke,
 	   Eraser,
 	   FloodFill,
-	   EyeDropper;
+	   EyeDropper,
+	   //十字工具类
+	   Cross;
 	
 	/**
 	 * 工具对象
@@ -31,6 +33,13 @@
 	 */
 	Tool = function(option){
 		this.name = 'Tool';
+		/**
+		 * 当前工具对应的鼠标对象
+		 * @property mouse
+		 * @type String
+		 * @default 'Tool'
+		 */
+		this.mouse = "Tool";
 		this.option = {
 			strokeStyle:'#000',
 			fillStyle:'#000',
@@ -79,6 +88,15 @@
 		 */
 		getOption:function(){
 			return $.extend(true, {}, this.option);//放回选项对象的深拷贝
+		},
+		
+		/**
+		 * 获取当前工具对应的鼠标
+		 * @method getMouse
+		 * @param {String} 鼠标的索引
+		 */
+		getMouse:function(){
+		    return this.mouse;
 		}
 	};
 	
@@ -96,6 +114,14 @@
 	     * @defult 'line' 
 	     */
 		this.name = 'Line';
+		
+		/**
+         * 当前工具对应的鼠标对象
+         * @property mouse
+         * @type String
+         * @default 'Tool'
+         */
+        this.mouse = "Cross";
 		
 		/**
 		 * 初始化
@@ -768,7 +794,7 @@
                 endPoint = pointList.getEnd(),
                 x = endPoint.x,
                 y = endPoint.y;
-            return this.getOption({
+            return this.setOption({
                 x:x,
                 y:y
             });
@@ -781,6 +807,60 @@
      * @strict
      */
     EyeDropper.prototype = new Tool();
+    
+    /**
+     * 十字工具对象
+     * @class Cross
+     * @constructor
+     * @extend Cross.prototype
+     */
+    Cross = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = 'Cross';
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //设置参数
+            return this.setOption({
+                lineWidth:1,
+                strokeStyle:'#000000',
+                length:10
+            });
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var
+                endPoint = pointList.getEnd(),
+                x = endPoint.x,
+                y = endPoint.y;
+            return this.setOption({
+                x:x,
+                y:y
+            });
+        };
+    };
+    
+    /**
+     * 十字工具原型
+     * @class Cross.prototype
+     * @strict
+     */
+    Cross.prototype = new Tool();
 	
 	//添加工具到数据层
 	global.painter = global.painter || {};
@@ -799,4 +879,6 @@
 	global.painter.model.toolModel.Eraser = Eraser;
 	global.painter.model.toolModel.FloodFill = FloodFill;
 	global.painter.model.toolModel.EyeDropper = EyeDropper;
+	global.painter.model.toolModel.Cross = Cross;
+	;
 }(jQuery, window));
