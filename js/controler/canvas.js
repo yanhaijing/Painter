@@ -170,10 +170,7 @@
                 
                 that.getPointList().init();//初始化坐标列表    
                 that.getPointList().add(point);//添加鼠标坐标
-                that.setClickStatus(true);
-                
-                //更新当前工具
-                currentTool = global.painter.tool.currentToolContainer.getTool();
+                that.setClickStatus(true);                                
             });
             
             //绑定鼠标弹起事件
@@ -202,6 +199,13 @@
             //绑定鼠标离开
             $document.delegate('#canvas-mouse', 'mouseleave', function(e){
                 mouseCanvas.clear();
+            });
+            
+            //绑定鼠标进入
+            $document.delegate('#canvas-mouse', 'mouseenter', function(e){
+                mouseCanvas.clear();
+                //更新当前工具
+                currentTool = global.painter.tool.currentToolContainer.getTool();
             });
         }
     };

@@ -39,7 +39,7 @@
 		 * @type String
 		 * @default 'Tool'
 		 */
-		this.mouse = "Cross";
+		this.mouse = "Mouse";
 		this.option = {
 			strokeStyle:'#000',
 			fillStyle:'#000',
@@ -189,7 +189,7 @@
          * @defult 'line' 
          */
         this.name = 'Rect';
-        
+        this.mouse = "Cross";
         /**
          * 初始化
          * @method init 
@@ -258,6 +258,7 @@
          * @defult 'line' 
          */
         this.name = 'RectRound';
+        this.mouse = "Cross";
         
         /**
          * 初始化
@@ -304,6 +305,7 @@
          * @defult 'line' 
          */
         this.name = 'Circle';
+        this.mouse = "Cross";
         
         /**
          * 初始化
@@ -371,6 +373,7 @@
          * @defult 'line' 
          */
         this.name = 'Pen';
+        this.mouse ="Pen"
         
         /**
          * 初始化
@@ -431,6 +434,7 @@
          * @defult 'line' 
          */
         this.name = 'CurveClosedStroke';
+        this.mouse = "Cross";
     };
     
     /**
@@ -454,6 +458,7 @@
          * @defult 'line' 
          */
         this.name = 'CurveClosed';
+        this.mouse = "Cross";
     };
     
     /**
@@ -477,6 +482,7 @@
          * @defult 'line' 
          */
         this.name = 'RectStroke';
+        this.mouse = "Cross";
         
         /**
          * 初始化
@@ -546,6 +552,7 @@
          * @defult 'line' 
          */
         this.name = 'RectRoundStroke';
+        this.mouse = "Cross";
         
         /**
          * 初始化
@@ -592,6 +599,7 @@
          * @defult 'line' 
          */
         this.name = 'CircleStroke';
+        this.mouse = "Cross";
         
         /**
          * 初始化

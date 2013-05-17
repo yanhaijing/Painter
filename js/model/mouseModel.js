@@ -9,6 +9,7 @@
     var
         Mouse,
         Cross,
+        Pen,
         Eraser;
     
     /**
@@ -21,6 +22,27 @@
         this.name = "Mouse";
         this.option = {};
         this.mouseShape = null;
+        
+        this.init = function(option, points){
+            var 
+                index = 'CircleStroke';
+            //设置参数
+            this.setOption({
+                lineWidth:1,
+                strokeStyle:option.strokeStyle,
+                radius:Math.ceil(option.lineWidth /2),
+                opacity:80
+            });
+            this.setPoints(points);//设置点    
+            //设置鼠标图形
+            this.setMouseShape(new global.painter.model.shapeModel[index]());
+            this.initMouseShape();//初始化鼠标图形
+            this.setImage();//设置鼠标图片
+        };
+        
+        this.paint = function(context){
+            this.getMouseShape().paint(context);
+        };
     };
     
     /**
@@ -76,6 +98,14 @@
         },
         initMouseShape:function(){
             this.getMouseShape().init(this.getOption());
+        },
+        setImage:function(){
+            var
+                $mouseCanvas = $('#canvas-mouse'),
+                name = this.getName();
+            
+            $mouseCanvas.attr("data-mouse", name)
+            return true;
         }
     };
     
@@ -88,7 +118,7 @@
             this.setOption({
                 length:10,
                 lineHeight:1,
-                strokeStyle:'#000'
+                strokeStyle:option.strokeStyle
             });
             this.setPoints(points);//设置点    
             //设置鼠标图形
@@ -102,6 +132,12 @@
     };
     
     Cross.prototype = new Mouse();
+    
+    Pen = function(){
+        this.name = "Pen";
+    };
+    
+    Pen.prototype = new Mouse();
     
     Eraser = function(){
         this.name = "Eraser";
@@ -131,7 +167,8 @@
     global.painter = global.painter || {};
     global.painter.model = global.painter.model || {};
     global.painter.model.mouseModel = global.painter.model.mouseModel || {};
+    global.painter.model.mouseModel.Mouse = Mouse;
     global.painter.model.mouseModel.Cross = Cross;
+    global.painter.model.mouseModel.Pen = Pen;
     global.painter.model.mouseModel.Eraser = Eraser;
 }(jQuery, window));
-

@@ -29,6 +29,9 @@ nav h1{
 	left:0;
 	cursor: none
 }
+#canvas-mouse[data-mouse="Pen"]{
+	cursor: url("../images/tool-button-pen.gif")
+}
 /**
  * 	工具栏
  * ================================

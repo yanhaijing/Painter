@@ -732,7 +732,7 @@
             
             //设置属性
             context.strokeStyle = option.strokeStyle;
-            context.lineWidth = option.LineWidth; 
+            context.lineWidth = option.lineWidth; 
             
             //描述图形
             context.beginPath();
