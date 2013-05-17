@@ -104,7 +104,7 @@
                 $mouseCanvas = $('#canvas-mouse'),
                 name = this.getName();
             
-            $mouseCanvas.attr("data-mouse", name)
+            $mouseCanvas.attr("data-mouse", name);
             return true;
         }
     };
@@ -124,6 +124,7 @@
             //设置鼠标图形
             this.setMouseShape(new global.painter.model.shapeModel[index]());
             this.initMouseShape();//初始化鼠标图形
+            this.setImage();//设置鼠标图片
         };
         
         this.paint = function(context){

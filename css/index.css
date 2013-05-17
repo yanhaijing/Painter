@@ -30,7 +30,7 @@ nav h1{
 	cursor: none
 }
 #canvas-mouse[data-mouse="Pen"]{
-	cursor: url("../images/tool-button-pen.gif")
+	cursor: url("../images/mouse-pen.gif")0 28, crosshair;
 }
 /**
  * 	工具栏
