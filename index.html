@@ -41,7 +41,7 @@
 									<a id="nav-file-save" href="#"><b class="icon-ok"></b> 保存</a>
 								</li>
 							</ul>
-						</li>
+						</li><!-- end .file -->
 						<li class="dropdown edit">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#">编辑 <b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -55,8 +55,21 @@
 									<a id="nav-edit-convert" href="#"><b class="icon-random"></b> 倒置</a>
 								</li>
 							</ul>
-						</li>
-						
+						</li><!-- end .edit -->						
+						<li class="dropdown share">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">分享 <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a version="1.0" id="nav-share-qzone" class="qzOpenerDiv" href="#" target="_blank">QQ空间</a>
+								</li>
+								<li>
+									<a id="nav-edit-clear" href="#"><b class="icon-share"></b> 清空</a>
+								</li>
+								<li>
+									<a id="nav-edit-convert" href="#"><b class="icon-share"></b> 倒置</a>
+								</li>
+							</ul>
+						</li><!-- end .share -->						
 						<li class="dropdown help">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#">帮助 <b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -70,7 +83,7 @@
 									<a target="_blank" href="https://github.com/yanhaijing/Painter#readme"><b class="icon-question-sign"></b> 关于Painter</a>
 								</li>
 							</ul>
-						</li>
+						</li><!-- end .help -->
 					</ul><!-- end .nav -->
 				</div><!-- end .navbar-inner -->
 			</nav>
@@ -187,6 +200,10 @@
 		<!-- import canvas -->
 		<script src="js/model/canvasModel.js"></script>
 		<script src="js/model/canvasContainerModel.js"></script>
-		<script src="js/controler/canvas.js"></script>		
+		<script src="js/controler/canvas.js"></script>
+		
+		<!-- 分享组件js -->
+		<script src="js/controler/share.js"></script>
+		<script src="http://qzonestyle.gtimg.cn/qzone/app/qzlike/qzopensl.js#jsdate=20111201" charset="utf-8"></script>
 	</body>
 </html>
