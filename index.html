@@ -38,7 +38,7 @@
 									<a href="#"><b class="icon-folder-open"></b> 打开</a>
 								</li>
 								<li>
-									<a id="nav-file-save" href="#"><b class="icon-ok"></b> 保存</a>
+									<a href="#myModal" data-toggle="modal" id="nav-file-save" href="#"><b class="icon-ok"></b> 保存</a>
 								</li>
 							</ul>
 						</li><!-- end .file -->
@@ -154,8 +154,21 @@
 					Copyright &copy; <a href="https://github.com/yanhaijing/"></a>. All Rights Reserved
 				</p>
 			</footer>
+			
+			<!-- 保存图片预览 -->
+			<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-header">
+			    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			    <h3 id="myModalLabel">保存图片-右键-图片另存为</h3>
+			  </div>
+			  <div class="modal-body">
+			    <p><img id="save-image" src="images/Painter.gif" style="outline: 1px solid #ff0"></p>
+			  </div>
+			  <div class="modal-footer">
+			    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+			  </div>
+			</div>
 		</div><!-- end .container -->
-		
 		<!-- import jquery js -->
 		<script src="js/jquery-1.7.1.js"></script>
 		

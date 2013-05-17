@@ -17,4 +17,4 @@
         s.push(i + '=' + encodeURIComponent(p[i] || ''));
     }
     $("#nav-share-qzone > a").attr("href", "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?" + s.join('&'));
-})(); 
+})();

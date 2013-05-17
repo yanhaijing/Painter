@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>MDC Example</title>
+
+</head>
+ 
+<body>
+<canvas id="canvas"></canvas>
+
+<script type="text/javascript">
+window.onload = function(){
+	var canvas = document.getElementById("canvas");
+ canvas.toBlob(function(blob) {
+    var newImg = document.createElement("img"),
+        url = URL.createObjectURL(blob);
+    newImg.onload = function() {
+        // no longer need to read the blob so it's revoked
+        URL.revokeObjectURL(url);
+    };
+    newImg.src = url;
+    document.body.appendChild(newImg);
+ });
+}
+
+</script>
+</body>
+</html>
