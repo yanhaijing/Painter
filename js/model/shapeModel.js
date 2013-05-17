@@ -677,12 +677,16 @@
         this.paint = function(context){
             var 
                option = this.getOption(),
-               $color = $('#tool-wrap .tool .color'),
-               lists;
+               $color = $('#tool-wrap .tool .color').eq(0),
+               datas = context.getImageData(option.x, option.y, 1,1).data,
+               r = datas[0],
+               g = datas[1],
+               b = datas[2],
+               a = datas[3] / 255,
+               color = "rgba(".concat(r, ",", g, ",", b, ",", a, ")");
                
-            lists = context.getImageData(option.x, option.y, 10,10);
-            
-            global.console.log(lists);
+            $color.spectrum("set", color);
+            global.console.log(color,datas);
         };   
     };
     

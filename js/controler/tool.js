@@ -40,6 +40,7 @@
 			this.bindEvent();
 			
 			this.initAttributePanel();
+			this.initColor();
 			
 			//初始化当前默认工具
 			global.painter.tool = global.painter.tool || {};
@@ -60,6 +61,34 @@
 		    
 		    this.setCurrentAttributePanel($defaultAttributePanel);//设置所有面板
 		    this.openAttributePanel($defaultAttributePanel);//打开当前面板
+		},
+		
+		/**
+		 * 初始化颜色工具
+		 * @method initColor
+		 */
+		initColor:function(){
+		    var   
+		      $color = $("#tool-wrap .tool .color").eq(0);
+            
+	        $color.spectrum({
+                color: "#000",
+                flat: false,
+                showInput: true,
+                showInitial: true,
+                showAlpha: true,
+                localStorageKey: "yanhaijing.github.io/Painter/",
+                showSelectionPalette: true,
+                clickoutFiresChange: true,
+                className: "spectrum-color",
+                preferredFormat: "rgb",
+                showPalette: true,
+                palette: [
+                    ['black', 'white', 'blanchedalmond',
+                    'rgb(255, 128, 0);', 'hsv 100 70 50'],
+                    ['red', 'yellow', 'green', 'blue', 'violet']
+                ]
+            });   
 		},
 		
 		/**
