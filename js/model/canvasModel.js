@@ -30,6 +30,8 @@
          */
         this.shapeList = [];
         
+        this.convertStatus = 'source-over';
+        
         /**
          * 当前画布的宽度
          * @property width
@@ -333,7 +335,7 @@
          */
         getWidth:function(){
            return this.width; 
-        },        
+        },                
         
         /**
          * 初始化图形队列
@@ -410,6 +412,21 @@
         clear:function(){
             this.clearContext();
             this.clearShapeList();
+        },
+        
+        /**
+         * 反置图形
+         * @method convert
+         */
+        convert:function(){
+            var
+                context = this.getContext2D(),
+                tempx = context.globalCompositeOperation,
+                globalCompositeOperation = (this.convertStatus === "source-over" ? "destination-over" : "source-over");
+            this.convertStatus = globalCompositeOperation;
+            context.globalCompositeOperation = globalCompositeOperation;
+            this.repaint();
+            context.globalCompositeOperation = tempx;
         }
     };
     
