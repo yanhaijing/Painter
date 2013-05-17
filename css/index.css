@@ -11,6 +11,14 @@ nav h1{
 	font-size: 16px;
 	line-height: 1.2em
 }
+#nav-share-qzone{
+	padding: 10px 0 0 20px;
+	height:30px
+}
+#nav-share-qweibo{
+	height:30px;
+	padding: 5px 0 10px 20px;
+}
 /**
  * 	主要区域
  * =======================================
