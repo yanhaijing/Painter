@@ -19,6 +19,15 @@ nav h1{
 	height:30px;
 	padding: 5px 0 10px 20px;
 }
+#menu > li >ul >li{
+	position:relative
+}
+#menu > li >ul >li i{
+	position:absolute;
+	right:15px;
+	color:#888888;
+	opacity:0.8
+}
 /**
  * 	主要区域
  * =======================================

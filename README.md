@@ -3,7 +3,9 @@
 </a>
 #[Painter](https://github.com/yanhaijing/Painter)
 
-Painter is the painter base on html5's Canvas
+Painter is the painter base on html5's Canvas,You just need a support html5 browsers that you like.
+
+ 
 
 ##Platform
 
