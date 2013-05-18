@@ -15,7 +15,7 @@ nav h1{
 	padding: 10px 0 0 20px;
 	height:30px
 }
-#nav-share-qzone,#nav-share-qweibo,#nav-share-myweibo,#nav-share-myqweibo{
+#nav-share-qzone,#nav-share-qweibo{
 	height:30px;
 	padding: 5px 0 0px 20px;
 }
@@ -116,6 +116,17 @@ nav h1{
 	background-image:url("../images/tool-button-ellipes-stroke.gif");
 }
 
+/**
+ * 	文本工具
+ */
+.tool button[data-current-tool="Text"]{
+	background-image:url("../images/tool-button-text.gif");
+}
+.tool button[data-current-tool="TextStroke"]{
+	background-image:url("../images/tool-button-text-stroke.gif");
+}
+
+
 .tool .flood-fill{
 	background: transparent url("../images/tool-button-floodfill.gif") no-repeat center center/80% 80%;
 }
@@ -125,16 +136,8 @@ nav h1{
 .tool .select{
 	background: transparent url("../images/tool-button-select.gif") no-repeat center center/80% 80%;
 }
-.tool .text{
-	background: transparent url("../images/tool-button-text.gif") no-repeat center center/80% 80%;
-}
 .tool .eye-dropper{
 	background: transparent url("../images/tool-button-eyedropper.gif") no-repeat center center/80% 80%;
-}
-.tool .color{
-	width:25px;
-	height:25px;
-	margin:10px 0 0 10px
 }
 /**
  * 	工具属性面版
@@ -213,6 +216,15 @@ nav h1{
 /**
  * 	文字工具面板
  * --------------------------------
+ */
+.tool-panel .text .text{
+	background-image:url("../images/tool-button-text.gif");
+}
+.tool-panel .text .text-stroke{
+	background-image:url("../images/tool-button-text-stroke.gif");
+}
+/**
+ * 	文字工具属性面板
  */
 #tool-text-attribute-panel .text{
 	width:100%

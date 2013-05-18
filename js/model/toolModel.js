@@ -27,7 +27,9 @@
 	   Ellipes,
 	   EllipesStroke,
 	   //文字类
-	   Text;
+	   Text,
+	   //文字轮廓类
+	   TextStroke;
 	
 	/**
 	 * 工具对象
@@ -1050,6 +1052,65 @@
      * @strict
      */
     Text.prototype = new Tool();
+    
+    /**
+     * 十字工具对象
+     * @class TextStroke
+     * @constructor
+     * @extend TextStroke.prototype
+     */
+    TextStroke = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = 'TextStroke';
+        this.mouse = "Cross";
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            var 
+              $attributePanel = $('#tool-text-attribute-panel'),
+              opacity = $('.opacity',$attributePanel).eq(0).val(),
+              color = $('#tool-wrap .tool .color').eq(0).val();
+            //设置参数
+            return this.setOption({
+                strokeStyle:color,
+                opacity:opacity
+            });
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var
+                startPoint = pointList.getStart(),
+                x = startPoint.x,//计算园中心坐标
+                y = startPoint.y;
+            return this.setOption({
+                x:x,
+                y:y
+            });
+        };      
+    };
+    
+    /**
+     * 十字工具原型
+     * @class TextStroke.prototype
+     * @strict
+     */
+    TextStroke.prototype = new Tool();
 	
 	//添加工具到数据层
 	global.painter = global.painter || {};
@@ -1072,4 +1133,5 @@
 	global.painter.model.toolModel.Ellipes = Ellipes;
 	global.painter.model.toolModel.EllipesStroke = EllipesStroke;
 	global.painter.model.toolModel.Text = Text;
+	global.painter.model.toolModel.TextStroke = TextStroke;
 }(jQuery, window));

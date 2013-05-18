@@ -27,7 +27,9 @@
         //椭圆类
         EllipesStroke,
         //文字类
-        Text;
+        Text,
+        //文本轮廓类
+        TextStroke;
     /**
      * Shape 构造函数
      * @class Shape
@@ -933,6 +935,53 @@
      * @static 
      */
     Text.prototype = new Shape();
+    
+    /**
+     * 椭圆类对象
+     * @class TextStroke
+     * @constructor
+     * @extends TextStroke.prorotype 
+     */
+    TextStroke = function(){
+       /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = 'Text';
+        
+        /**
+         * 绘制矩形图形
+         * @method paint
+         * @param {Object} context 绘图上下文 
+         */
+        this.paint = function(context){
+           var 
+               option = this.getOption(),
+               x = option.x,
+               y = option.y,
+               text = option.text;
+            
+            context.save();//保存上下文信息            
+            
+            //设置属性
+            context.strokeStyle = option.strokeStyle;
+            context.fillStyle = option.fillStyle;
+            context.globalAlpha = option.opacity / 100; 
+            
+            //绘制图形      
+            context.strokeText(text, x, y);          
+            context.restore();//回复上下文
+        };   
+    };
+        
+    /**
+     * 椭圆类原型
+     * @class TextStroke.prototype
+     * @static 
+     */
+    TextStroke.prototype = new Shape();
 	
 	//添加变量
 	global.painter = global.painter || {};
@@ -955,4 +1004,5 @@
 	global.painter.model.shapeModel.Ellipes = Ellipes;
 	global.painter.model.shapeModel.EllipesStroke = EllipesStroke;
 	global.painter.model.shapeModel.Text = Text;
+	global.painter.model.shapeModel.TextStroke = TextStroke;
 }(jQuery, window));
