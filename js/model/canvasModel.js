@@ -21,6 +21,7 @@
          * @default null
          */
         this.canvas = null;
+        this.name = "Canvas";
         
         /**
          * 当前画布上的图形对象队列
@@ -84,13 +85,25 @@
          * @method init
          * @param {Object} canvas 要绑定的画布对象
          */
-        init:function(canvas){
+        init:function(canvas, name){
            this.initCanvas(canvas); //初始化画布对象
            this.initHeight();//初始化画布高度
            this.initWidth();//初始化画布宽度
            this.initLeft();//初始化left
            this.initTop();//初始化top
            this.initContext2D();//初始化上下文对象
+           this.initName(name);
+           this.load();//载入图形
+        },
+        initName:function(name){
+            this.setName(name);
+        },
+        
+        setName:function(name){
+            this.name = name;  
+        },
+        getName:function(){
+           return this.name; 
         },
         /**
          * 初始化画布对象
@@ -346,6 +359,29 @@
         },
         
         /**
+         * 获取图形列表
+         * @method getShapeList
+         * @return {Array} 返回图形列表的深拷贝
+         */
+        getShapeList:function(){
+           return $.extend(true, [], this.shapeList);
+        },
+        
+        /**
+         * 设置图形列表
+         * @method setShapeList
+         * @param {Array} list 图形列表
+         * @return {Array} 图形列表 
+         */
+        setShapeList:function(list){
+            this.clearShapeList();//先清除
+            //深拷贝参数
+            $.extend(true, this.shapeList, list);
+            
+            return list;
+        },
+        
+        /**
          * 添加一个图形
          * @method addShape
          * @param {Object} shape 要添加的图形对象
@@ -427,6 +463,77 @@
             context.globalCompositeOperation = globalCompositeOperation;
             this.repaint();
             context.globalCompositeOperation = tempx;
+        },
+        
+        /**
+         * 存储数据
+         * @method save
+         */
+        save:function(){
+            var
+                storage = new global.painter.model.StorageModel(),
+                tempList = [],
+                list = this.shapeList,
+                len = list.length,
+                i = 0,
+                key = this.getName(),
+                value = '';
+            storage.init();    
+            if(storage.getStorage() !== false){
+                for(i; i<len; i=i+1){
+                    tempList[i] = {
+                        name:list[i].getName(),
+                        option:list[i].getOption()
+                    };
+                }
+                value = global.JSON.stringify(tempList);
+                storage.save(key, value);               
+                global.console.log("保存数据");
+            }                                   
+        },
+        
+        /**
+         * 载入数据
+         * @method load
+         * 
+         */
+        load:function(){
+            var
+                storage = new global.painter.model.StorageModel(),
+                tempList = [],
+                len ,
+                i = 0,
+                key = this.getName(),
+                value,
+                list = this.shapeList;
+            
+            storage.init();    
+            if(storage.getStorage() !== false){
+                value = storage.load(key) || '[]';
+                tempList = global.JSON.parse(value);//转换
+                len = tempList.length;
+                for(i; i<len; i=i+1){
+                    list[i] = new global.painter.model.shapeModel[tempList[i].name]();
+                    list[i].init(tempList[i].option);
+                }
+                
+                //重绘
+                this.repaint();
+                global.console.log("载入数据");
+            }
+        },
+        
+        /**
+         * 自动保存
+         * @method autoSave
+         * @param {Number} time 多长时间自动保存一次
+         */
+        autoSave:function(time){
+            var that = this;
+            global.setInterval(function(){
+                that.save();
+                $.fn.TorangeNotice({type:'info', content:'自动为您保存图片'});//弹出提示
+            }, time);
         }
     };
     

@@ -21,12 +21,10 @@
          },
          
          bindEvent:function(){
-             var 
-                $document = $(document);
-            //绑定全局键盘事件
-            $document.bind('keydown', function(e){
-                
-            });
          }
     };
+    
+    $(document).ready(function(){
+        Index.init();
+    })
 }(jQuery, window));

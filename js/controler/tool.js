@@ -77,7 +77,7 @@
                 showInput: true,
                 showInitial: true,
                 showAlpha: true,
-                localStorageKey: "yanhaijing.github.io/Painter/",
+                localStorageKey: "spectrum",
                 showSelectionPalette: true,
                 clickoutFiresChange: true,
                 className: "spectrum-color",

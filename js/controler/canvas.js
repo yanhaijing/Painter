@@ -74,21 +74,22 @@
                 mouseCanvasContainer = Object.create(global.painter.model.CanvasContainerModel);
                 
             //初始化当前画布
-            currentCanvas.init(currentCanvasDom);
+            currentCanvas.init(currentCanvasDom, "currentCanvas");
+            currentCanvas.autoSave(60000);//1分钟自动保存一次
             currentCanvasContainer.init(currentCanvas);
             global.painter = global.painter || {};
             global.painter.canvas = global.painter.canvas || {};
             global.painter.canvas.currentCanvasContainer = currentCanvasContainer;
             
             //初始化当前缓冲画布
-            bufferCanvas.init(bufferCanvasDom);
+            bufferCanvas.init(bufferCanvasDom, "bufferCanvas");
             bufferCanvasContainer.init(bufferCanvas);
             global.painter = global.painter || {};
             global.painter.canvas = global.painter.canvas || {};
             global.painter.canvas.bufferCanvasContainer = bufferCanvasContainer;
             
             //初始化鼠标画布
-            mouseCanvas.init(mouseCanvasDom);
+            mouseCanvas.init(mouseCanvasDom, "mouseCanvas");
             mouseCanvasContainer.init(mouseCanvas);
             global.painter = global.painter || {};
             global.painter.canvas = global.painter.canvas || {};

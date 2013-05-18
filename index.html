@@ -38,7 +38,10 @@
 									<a href="#"><b class="icon-folder-open"></b> 打开</a>
 								</li>
 								<li>
-									<a href="#myModal" data-toggle="modal" id="nav-file-save" href="#"><b class="icon-ok"></b> 保存</a>
+									<a id="nav-file-save" href="#"><b class="icon-ok"></b> 保存</a>
+								</li>
+								<li>
+									<a href="#myModal" data-toggle="modal" id="nav-file-export" href="#"><b class="icon-share-alt"></b> 导出</a>
 								</li>
 							</ul>
 						</li><!-- end .file -->
@@ -193,6 +196,8 @@
 		
 		<!-- import my js -->
 		
+		<!-- 添加存储类js -->
+		<script src="js/model/storageModel.js"></script>
 		<!-- 添加鼠标模型类 -->
 		<script src="js/model/mouseModel.js"></script>
 		
@@ -204,6 +209,9 @@
 		<!-- import nav js -->
 		<script src="js/controler/nav.js"></script>
 		
+		<!-- 导入主页js -->
+		<script src="js/controler/index.js"></script>
+		
 		<!-- import tool js -->
 		<script src="js/model/toolModel.js"></script>
 		<script src="js/model/toolContainerModel.js"></script>
@@ -214,6 +222,8 @@
 		<script src="js/model/canvasContainerModel.js"></script>
 		<script src="js/controler/canvas.js"></script>
 		
+		<!-- 提示消息js -->
+		<script src="plugins/torangetek/torangetek.messager.js"></script>
 		<!-- 分享组件js -->
 		<script src="js/controler/share.js"></script>
 		<script src="http://qzonestyle.gtimg.cn/qzone/app/qzlike/qzopensl.js#jsdate=20111201" charset="utf-8"></script>
