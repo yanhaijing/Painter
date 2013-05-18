@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove context if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>ellipes</title>
+		<meta name="description" content="" />
+		<meta name="author" content="yan" />
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+	</head>
+
+	<body>
+		<div>
+			<canvas id="canvas" width="600" height="400" style="border: 1px solid #f00"></canvas>
+		</div>
+		
+		<script>
+			function oval (context, x, y, width, height) {
+			     var k = (width/0.75)/2,
+			       w = width/2,
+			       h = height/2;
+			   context.beginPath();
+			   context.moveTo(x, y-h);
+			   context.bezierCurveTo(x+k, y-h, x+k, y+h, x, y+h);
+			   context.bezierCurveTo(x-k, y+h, x-k, y-h, x, y-h);
+			   context.closePath();
+			   return context;
+			}
+			
+			var context = document.getElementById("canvas").getContext('2d');
+			oval(context, 100, 100, 200, 100);
+			context.fill();
+		</script>
+	</body>
+</html>

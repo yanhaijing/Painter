@@ -21,7 +21,11 @@
         FloodFill,
         EyeDropper,
         //十字类
-        Cross;
+        Cross,
+        //椭圆类
+        Ellipes,
+        //椭圆类
+        EllipesStroke;
     /**
      * Shape 构造函数
      * @class Shape
@@ -761,6 +765,121 @@
      * @static 
      */
     Cross.prototype = new Shape();
+    
+    //绘制椭圆方法
+    function EllipesDraw(context, x, y, width, height){
+       var k = (width/0.75)/2,
+           w = width/2,
+           h = height/2;
+       context.beginPath();
+       context.moveTo(x, y-h);
+       context.bezierCurveTo(x+k, y-h, x+k, y+h, x, y+h);
+       context.bezierCurveTo(x-k, y+h, x-k, y-h, x, y-h);
+       context.closePath();
+       return context;
+    }
+    /**
+     * 椭圆类对象
+     * @class Ellipes
+     * @constructor
+     * @extends Ellipes.prorotype 
+     */
+    Ellipes = function(){
+       /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = 'Ellipes';
+        
+        /**
+         * 绘制矩形图形
+         * @method paint
+         * @param {Object} context 绘图上下文 
+         */
+        this.paint = function(context){
+           var 
+               option = this.getOption(),
+               x = option.x,
+               y = option.y,
+               width = option.width,
+               height = option.height;
+            
+            context.save();//保存上下文信息            
+            
+            //设置属性
+            context.strokeStyle = option.strokeStyle;
+            context.lineWidth = option.lineWidth;
+            context.fillStyle = option.fillStyle; 
+            
+            //描述图形
+            EllipesDraw(context, x, y, width, height);        
+            
+            //绘制  
+            context.fill();
+            context.stroke();          
+            context.restore();//回复上下文
+        };   
+    };
+        
+    /**
+     * 椭圆类原型
+     * @class Ellipes.prototype
+     * @static 
+     */
+    Ellipes.prototype = new Shape();
+    
+    /**
+     * 椭圆类对象
+     * @class EllipesStroke
+     * @constructor
+     * @extends EllipesStroke.prorotype 
+     */
+    EllipesStroke = function(){
+       /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = 'EllipesStroke';
+        
+        /**
+         * 绘制矩形图形
+         * @method paint
+         * @param {Object} context 绘图上下文 
+         */
+        this.paint = function(context){
+           var 
+               option = this.getOption(),
+               x = option.x,
+               y = option.y,
+               width = option.width,
+               height = option.height;
+            
+            context.save();//保存上下文信息            
+            
+            //设置属性
+            context.strokeStyle = option.strokeStyle;
+            context.lineWidth = option.lineWidth;
+            context.fillStyle = option.fillStyle; 
+            
+            //描述图形
+            EllipesDraw(context, x, y, width, height);       
+            
+            //绘制  
+            context.stroke();          
+            context.restore();//回复上下文
+        };   
+    };
+        
+    /**
+     * 椭圆类原型
+     * @class EllipesStroke.prototype
+     * @static 
+     */
+    EllipesStroke.prototype = new Shape();
 	
 	//添加变量
 	global.painter = global.painter || {};
@@ -780,4 +899,6 @@
 	global.painter.model.shapeModel.FloodFill = FloodFill;
 	global.painter.model.shapeModel.EyeDropper = EyeDropper;
 	global.painter.model.shapeModel.Cross = Cross;
+	global.painter.model.shapeModel.Ellipes = Ellipes;
+	global.painter.model.shapeModel.EllipesStroke = EllipesStroke;
 }(jQuery, window));

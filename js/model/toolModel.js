@@ -22,7 +22,10 @@
 	   FloodFill,
 	   EyeDropper,
 	   //十字工具类
-	   Cross;
+	   Cross,
+	   //椭圆工具类
+	   Ellipes,
+	   EllipesStroke;
 	
 	/**
 	 * 工具对象
@@ -870,6 +873,117 @@
      * @strict
      */
     Cross.prototype = new Tool();
+    
+    /**
+     * 十字工具对象
+     * @class Ellipes
+     * @constructor
+     * @extend Ellipes.prototype
+     */
+    Ellipes = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = 'Ellipes';
+        this.mouse = "Cross";
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            var 
+              $attributePanel = $('#tool-shape-attribute-panel'),
+              width = $('.width',$attributePanel).eq(0).val(),
+              opacity = $('.opacity',$attributePanel).eq(0).val(),
+              color = $('#tool-wrap .tool .color').eq(0).val();
+            //设置参数
+            return this.setOption({
+                lineWidth:width,
+                strokeStyle:color,
+                opacity:opacity,
+                fillStyle:color
+            });
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var
+                startPoint = pointList.getStart(),
+                endPoint = pointList.getEnd(),
+                x = (startPoint.x + endPoint.x) / 2,//计算园中心坐标
+                y = (startPoint.y + endPoint.y) / 2,
+                width = Math.abs(startPoint.x - endPoint.x),
+                height = Math.abs(startPoint.y - endPoint.y);
+            return this.setOption({
+                x:x,
+                y:y,
+                width:width,
+                height:height
+            });
+        };
+    };
+    
+    /**
+     * 十字工具原型
+     * @class Ellipes.prototype
+     * @strict
+     */
+    Ellipes.prototype = new Tool();
+    
+    /**
+     * 十字工具对象
+     * @class EllipesStroke
+     * @constructor
+     * @extend EllipesStroke.prototype
+     */
+    EllipesStroke = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = 'EllipesStroke';
+        this.mouse = "Cross";
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            var 
+              $attributePanel = $('#tool-stroke-attribute-panel'),
+              width = $('.width',$attributePanel).eq(0).val(),
+              opacity = $('.opacity',$attributePanel).eq(0).val(),
+              color = $('#tool-wrap .tool .color').eq(0).val();
+            //设置参数
+            return this.setOption({
+                lineWidth:width,
+                strokeStyle:color,
+                opacity:opacity
+            });
+        };      
+    };
+    
+    /**
+     * 十字工具原型
+     * @class EllipesStroke.prototype
+     * @strict
+     */
+    EllipesStroke.prototype = new Ellipes();
 	
 	//添加工具到数据层
 	global.painter = global.painter || {};
@@ -889,5 +1003,6 @@
 	global.painter.model.toolModel.FloodFill = FloodFill;
 	global.painter.model.toolModel.EyeDropper = EyeDropper;
 	global.painter.model.toolModel.Cross = Cross;
-	;
+	global.painter.model.toolModel.Ellipes = Ellipes;
+	global.painter.model.toolModel.EllipesStroke = EllipesStroke;
 }(jQuery, window));

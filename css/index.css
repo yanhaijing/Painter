@@ -79,6 +79,9 @@ nav h1{
 .tool button[data-current-tool="Circle"]{
 	background-image:url("../images/tool-button-circle.gif");
 }
+.tool button[data-current-tool="Ellipes"]{
+	background-image:url("../images/tool-button-ellipes.gif");
+}
 /**
  * 	轮廓类按钮
  */
@@ -96,6 +99,9 @@ nav h1{
 }
 .tool button[data-current-tool="CircleStroke"]{
 	background-image:url("../images/tool-button-circle-stroke.gif");
+}
+.tool button[data-current-tool="EllipesStroke"]{
+	background-image:url("../images/tool-button-ellipes-stroke.gif");
 }
 
 .tool .flood-fill{
@@ -167,6 +173,9 @@ nav h1{
 .tool-panel .shape .circle{
 	background-image:url("../images/tool-button-circle.gif");
 }
+.tool-panel .shape .ellipes{
+	background-image:url("../images/tool-button-ellipes.gif");
+}
 /**
  * 	画笔工具面板
  * --------------------------------
@@ -185,6 +194,9 @@ nav h1{
 }
 .tool-panel .stroke .circle-stroke{
 	background-image:url("../images/tool-button-circle-stroke.gif");
+}
+.tool-panel .stroke .ellipes-stroke{
+	background-image:url("../images/tool-button-ellipes-stroke.gif");
 }
 /**
  * 	footer
