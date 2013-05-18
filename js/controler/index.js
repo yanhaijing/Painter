@@ -57,11 +57,28 @@
                     e.preventDefault();//阻止默认事件
                 }         
              }); 
-             //帮顶反转事件
+             //帮顶倒置事件
              $document.bind("keydown", function(e){
                 if(e.ctrlKey && e.keyCode === 82){
                     //撤销事件
                     $("#nav-edit-convert").trigger('click');//触发撤销按钮事件
+                    e.preventDefault();//阻止默认事件
+                }         
+             });
+             
+             //帮顶水平翻转快捷键事件
+             $document.bind("keydown", function(e){
+                if(e.ctrlKey && e.keyCode === 72){
+                    //撤销事件
+                    $("#nav-edit-flipx").trigger('click');//触发撤销按钮事件
+                    e.preventDefault();//阻止默认事件
+                }         
+             });
+             //帮顶垂直翻转反转事件
+             $document.bind("keydown", function(e){
+                if(e.ctrlKey && e.keyCode === 86){
+                    //撤销事件
+                    $("#nav-edit-flipy").trigger('click');//触发撤销按钮事件
                     e.preventDefault();//阻止默认事件
                 }         
              });            
@@ -70,5 +87,5 @@
     
     $(document).ready(function(){
         Index.init();
-    })
+    });
 }(jQuery, window));

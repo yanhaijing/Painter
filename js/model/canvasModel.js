@@ -32,6 +32,8 @@
         this.shapeList = [];
         
         this.convertStatus = 'source-over';
+        this.flipXStatus = false;
+        this.flipYStatus = false;
         
         /**
          * 当前画布的宽度
@@ -71,7 +73,7 @@
          * @type Number
          * @default 0
          */
-        this.left = 0;
+        this.left = 0;        
     };
     
     /**
@@ -534,6 +536,41 @@
                 that.save();
                 $.fn.TorangeNotice({type:'info', content:'自动为您保存图片'});//弹出提示
             }, time);
+        },
+        
+        flipX:function(){
+            var
+                context = this.getContext2D(),
+                width = this.getWidth();
+            // 水平“翻转”画布
+            context.save();
+            if(!this.flipXStatus){
+                this.flipXStatus = true;
+                context.translate(width, 0);
+                context.scale(-1, 1);
+            }else{
+                this.flipXStatus = false;
+            }            
+            this.repaint();
+            // 画布恢复正常
+            context.restore();
+        },
+        flipY:function(){
+            var
+                context = this.getContext2D(),
+                height = this.getHeight();
+            // 水平“翻转”画布
+            context.save();
+            if(!this.flipYStatus){
+                this.flipYStatus = true;
+                context.translate(0, height);
+                context.scale(1, -1);
+            }else{
+                this.flipYStatus = false;
+            } 
+            this.repaint();
+            // 画布恢复正常
+            context.restore();
         }
     };
     

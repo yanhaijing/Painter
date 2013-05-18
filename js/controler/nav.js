@@ -63,6 +63,18 @@
                 var currentCanvas = global.painter.canvas.currentCanvasContainer.getCanvas();
                 currentCanvas.convert();//撤销上一部
                 global.console.log("倒置按钮被点击了");
+            });
+            //帮顶水平按钮事件
+            $document.delegate("#nav-edit-flipx", "click", function(e){
+                var currentCanvas = global.painter.canvas.currentCanvasContainer.getCanvas();
+                currentCanvas.flipX();//撤销上一部
+                global.console.log("水平翻转按钮被点击了");
+            });
+            //帮顶垂直翻转按钮事件
+            $document.delegate("#nav-edit-flipy", "click", function(e){
+                var currentCanvas = global.painter.canvas.currentCanvasContainer.getCanvas();
+                currentCanvas.flipY();//撤销上一部
+                global.console.log("水平翻转按钮被点击了");
             });                        
        }
     };
