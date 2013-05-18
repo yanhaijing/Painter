@@ -113,8 +113,7 @@
 					<button class="eraser" title="橡皮擦工具" data-current-tool="Eraser" data-tool-panel="eraser"></button>
 					<button class="flood-fill" title="填充工具" data-current-tool="FloodFill" data-tool-panel="flood-fill"></button>
 					<button class="eye-dropper" title="吸管工具" data-current-tool="EyeDropper" data-tool-panel="eye-dropper"></button>
-					<button class="select" title="选择工具" data-tool-panel="select"></button>
-					<button class="text" title="文字工具" data-tool-panel="text"></button>
+					<button class="text" title="文字工具" data-tool-panel="text" data-current-tool="Text"></button>
 					<input class="color" type="text" title="颜色" value="#000000"/>					
 				</div><!-- end .tool -->
 				<div class="tool-panel">
@@ -144,10 +143,19 @@
 						</div>					
 					</div><!-- end .brush -->
 					
-					<div class="eraser wrap">
-						<button class="eraser" title="橡皮" data-tool="eraser" data-tool-class="Eraser"> </button>	
+					<div class="eraser wrap">	
 						<div id="tool-eraser-attribute-panel" class="tool-attribute-panel" title="橡皮属性面板">
 							<label>size：<input type="range" min="1" max="100" data-attr="lineWidth" value="1" /><span>1</span></label>						
+						</div>					
+					</div><!-- end .brush -->
+					
+					<div class="text wrap">
+						<button class="pen" title="铅笔" data-tool="stroke" data-tool-class="Pen"> </button>
+						<button class="pen" title="铅笔" data-tool="stroke" data-tool-class="Pen"> </button>
+						在属性面板输入要输入的文字，在画布上想要输入的位置拖动鼠标	
+						<div id="tool-text-attribute-panel" class="tool-attribute-panel" title="文字属性面板">
+							<label>text: <input class="text" type="text" placeholder="输入要输入的文字" data-attr="text" /></label>
+							<label>opacity：<input class="opacity" type="range" max="100" data-attr="opacity" value="100" /><span>100</span></label>	
 						</div>					
 					</div><!-- end .brush -->
 					

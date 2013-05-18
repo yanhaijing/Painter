@@ -208,6 +208,13 @@ nav h1{
 	background-image:url("../images/tool-button-ellipes-stroke.gif");
 }
 /**
+ * 	文字工具面板
+ * --------------------------------
+ */
+#tool-text-attribute-panel .text{
+	width:100%
+}
+/**
  * 	footer
  * ==============================
  */

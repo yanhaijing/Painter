@@ -29,6 +29,7 @@
                 if(e.ctrlKey && e.keyCode === 90){
                     //撤销事件
                     $("#nav-edit-undo").trigger('click');//触发撤销按钮事件
+                    e.preventDefault();//阻止默认事件
                 }         
              });
              //帮顶保存键盘事件ctrl+s
@@ -40,7 +41,7 @@
                 }         
              });
              
-             //帮顶导出事件
+             //帮顶清楚事件
              $document.bind("keydown", function(e){
                 if(e.ctrlKey && e.keyCode === 68){
                     //撤销事件
