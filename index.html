@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" xmlns:wb=“http://open.weibo.com/wb”>
 	<head>
 		<meta charset="utf-8" />
 
@@ -79,15 +79,47 @@
 								</li>
 							</ul>
 						</li><!-- end .help -->
-						<li class="dropdown share">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#">分享 <b class="caret"></b></a>
+						<li class="dropdown social">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">社交 <b class="caret"></b></a>
 							<ul class="dropdown-menu">
+								<li id="nav-share-qq">
+									<a class="qcShareQQDiv" href="#" target="_blank">分享到QQ</a>
+								</li>
 								<li id="nav-share-qzone">
 									<a version="1.0" class="qzOpenerDiv" href="#" target="_blank">QQ空间</a>
 								</li>
 								<li id="nav-share-qweibo">
 									<div id="qqwb_share__" data-appkey="801358347" data-icon="1" data-counter="1" data-counter_pos="right" data-content="Painter" data-richcontent="Html5|Canvas|Javascript" data-pic="http://yanhaijing.github.io/Painter/images/Painter.gif"></div>
 								</li>
+								<li id="nav-share-myqweibo">
+									<iframe src="http://follow.v.t.qq.com/index.php?c=follow&a=quick&name=yanhaijing1234&style=5&t=1368883326106&f=1" frameborder="0" scrolling="auto" width="178" height="24" marginwidth="0" marginheight="0" allowtransparency="true"></iframe>
+								</li>
+								<li id="nav-share-myweibo">
+									<wb:follow-button uid="1649383554" type="red_2" width="136" height="24" ></wb:follow-button>
+								</li>
+								<li id="nav-share-weibo">
+									<script type="text/javascript" charset="utf-8">
+									(function(){
+									  var _w = 90 , _h = 24;
+									  var param = {
+									    url:location.href,
+									    type:'2',
+									    count:'1', /**是否显示分享数，1显示(可选)*/
+									    appkey:'', /**您申请的应用appkey,显示分享来源(可选)*/
+									    title:'Painter', /**分享的文字内容(可选，默认为所在页面的title)*/
+									    pic:'http://yanhaijing.github.io/Painter/images/Painter.gif', /**分享图片的路径(可选)*/
+									    ralateUid:'yanhaijing123456@sina.com', /**关联用户的UID，分享微博会@该用户(可选)*/
+										language:'zh_cn', /**设置语言，zh_cn|zh_tw(可选)*/
+									    rnd:new Date().valueOf()
+									  }
+									  var temp = [];
+									  for( var p in param ){
+									    temp.push(p + '=' + encodeURIComponent( param[p] || '' ) )
+									  }
+									  document.write('<iframe allowTransparency="true" frameborder="0" scrolling="no" src="http://hits.sinajs.cn/A1/weiboshare.html?' + temp.join('&') + '" width="'+ _w+'" height="'+_h+'"></iframe>')
+									})()
+									</script>
+								</li>																
 							</ul>
 						</li><!-- end .share -->
 					</ul><!-- end .nav -->
@@ -171,6 +203,7 @@
 			<footer>
 				<p>
 					Copyright &copy; <a href="https://github.com/yanhaijing/">yanhaijing</a>. All Rights Reserved
+					
 				</p>
 			</footer>
 			
@@ -242,5 +275,7 @@
 		<script src="js/controler/share.js"></script>
 		<script src="http://qzonestyle.gtimg.cn/qzone/app/qzlike/qzopensl.js#jsdate=20111201" charset="utf-8"></script>
 		<script src="http://mat1.gtimg.com/app/openjs/openjs.js#autoboot=no&debug=no"></script>
+		<script src="http://connect.qq.com/widget/loader/loader.js" widget="shareqq" charset="utf-8"></script>
+		<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>

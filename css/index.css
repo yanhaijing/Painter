@@ -11,12 +11,15 @@ nav h1{
 	font-size: 16px;
 	line-height: 1.2em
 }
-#nav-share-qzone{
+#nav-share-qq{
 	padding: 10px 0 0 20px;
 	height:30px
 }
-#nav-share-qweibo{
+#nav-share-qzone,#nav-share-qweibo,#nav-share-myweibo,#nav-share-myqweibo{
 	height:30px;
+	padding: 5px 0 0px 20px;
+}
+#nav-share-weibo{
 	padding: 5px 0 10px 20px;
 }
 #menu > li >ul >li{
