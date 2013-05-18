@@ -629,7 +629,7 @@
          * @type String
          * @default Shape
          */
-        this.name = 'Eraser';
+        this.name = 'FloodFill';
         
         /**
          * 绘制矩形图形
@@ -638,15 +638,18 @@
          */
         this.paint = function(context){
             var 
-               option = this.getOption();
+               option = this.getOption(),
+               width = option.width,
+               height = option.height;
             
             context.save();//保存上下文信息            
             
             //设置属性
-            context.fillStyle = option.fillStyle;          
+            context.fillStyle = option.fillStyle;
+            context.globalAlpha = option.opacity / 100;          
             
             //绘制
-            context.fillRect(0,0,1000,400);
+            context.fillRect(0,0,width,height);
             context.restore();//回复上下文
         };
     };

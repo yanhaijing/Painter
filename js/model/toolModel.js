@@ -740,13 +740,17 @@
             //获取当前属性
             var 
               $attributePanel = $('#tool-eraser-attribute-panel'),
-              width = $('.width',$attributePanel).eq(0).val(),
               opacity = $('.opacity',$attributePanel).eq(0).val(),
-              color = $('#tool-wrap .tool .color').eq(0).val();       
+              color = $('#tool-wrap .tool .color').eq(0).val(),
+              canvas = global.painter.canvas.currentCanvasContainer.getCanvas(),
+              width = canvas.getWidth(),
+              height = canvas.getHeight();       
             
             //设置参数
             return this.setOption({
-                fillStyle:color
+                fillStyle:color,
+                width:width,
+                height:height
             });
         };
         
