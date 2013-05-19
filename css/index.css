@@ -223,6 +223,12 @@ nav h1{
 .tool-panel .text .text-stroke{
 	background-image:url("../images/tool-button-text-stroke.gif");
 }
+#tool-text-attribute-panel .font .serif{
+	font-family: serif
+}
+#tool-text-attribute-panel .font .sans-serif{
+	font-family:sans-serif
+}
 /**
  * 	文字工具属性面板
  */

@@ -79,7 +79,7 @@
 								</li>
 							</ul>
 						</li><!-- end .help -->
-						<li class="dropdown social">
+						<!-- <li class="dropdown social">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#">社交 <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li id="nav-share-qq">
@@ -115,7 +115,7 @@
 									</script>
 								</li>																
 							</ul>
-						</li><!-- end .share -->
+						</li><!-- end .share --> -->
 					</ul><!-- end .nav -->
 				</div><!-- end .navbar-inner -->
 			</nav>
@@ -178,9 +178,23 @@
 					<div class="text wrap">
 						<button class="text" title="文本" data-tool="text" data-tool-class="Text"> </button>
 						<button class="text-stroke" title="文本轮廓" data-tool="text" data-tool-class="TextStroke"> </button>
-						在属性面板输入要输入的文字，在画布上想要输入的位置拖动鼠标	
+						在属性面板输入要输入的文字，在画布上想要输入的位置点击	
 						<div id="tool-text-attribute-panel" class="tool-attribute-panel" title="文字属性面板">
 							<label>text: <input class="text" type="text" placeholder="输入要输入的文字" data-attr="text" /></label>
+							<label>font:
+								<select class="font" data-attr="family">
+									<option selected="true" class="serif" value="serif">serif</option>
+									<option class="sans-serif" value="sans-serif">sans-serif</option>								
+								</select>	
+							</label>
+							<label><b>bold:</b>
+							  <input class="bold" type="checkbox" value="bold" data-attr="bold">
+							</label>
+							<label><i>italic:</i>
+							  <input class="italic" type="checkbox" value="italic" data-attr="italic">
+							</label>							
+							<label>size：<input class="size" type="range" min="8" max="100" data-attr="size" value="10" /><span>10</span><span>px</span></label>	
+							<label>border：<input class="border" type="range" min="1" max="100" data-attr="border" value="1" /><span>1</span><span></span></label>
 							<label>opacity：<input class="opacity" type="range" max="100" data-attr="opacity" value="100" /><span>100</span></label>	
 						</div>					
 					</div><!-- end .brush -->
@@ -266,9 +280,9 @@
 		<!-- 提示消息js -->
 		<script src="plugins/torangetek/torangetek.messager.js"></script>
 		<!-- 分享组件js -->
-		<script src="js/controler/share.js"></script>
+		<!-- <script src="js/controler/share.js"></script>
 		<script src="http://qzonestyle.gtimg.cn/qzone/app/qzlike/qzopensl.js#jsdate=20111201" charset="utf-8"></script>
 		<script src="http://mat1.gtimg.com/app/openjs/openjs.js#autoboot=no&debug=no"></script>
-		<script src="http://connect.qq.com/widget/loader/loader.js" widget="shareqq" charset="utf-8"></script>		
+		<script src="http://connect.qq.com/widget/loader/loader.js" widget="shareqq" charset="utf-8"></script> -->		
 	</body>
 </html>

@@ -188,7 +188,7 @@
 			});
 			
 			//绑定属性面板属性更改事件
-			$document.delegate('.tool-attribute-panel input', "change", function(e){
+			$document.delegate('.tool-attribute-panel input[type!="checkbox"],.tool-attribute-panel select', "change", function(e){
 			    var
 			         $this = $(this),
 			         attr = $this.attr('data-attr'),
@@ -203,7 +203,24 @@
 			    
 			    //更新提示
 			    $info.html(value);
+			    global.console.log($this.val());
 			});
+			//绑定属性面板复选框属性更改事件
+			$document.delegate('.tool-attribute-panel :checkbox', "change", function(e){
+                var
+                     $this = $(this),
+                     attr = $this.attr('data-attr'),
+                     value = $this.val(),
+                     checked = $this.attr("checked"),
+                     currentTool = global.painter.tool.currentToolContainer.getTool(),
+                     option = {};
+                
+                //更新当前工具对象参数     
+                option[attr] = checked === "checked" ? value : "";//获取数据
+                currentTool.setOption(option);
+
+                global.console.log(option[attr]);
+            });
 		}
 	};
 	

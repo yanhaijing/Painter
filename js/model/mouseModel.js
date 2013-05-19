@@ -10,7 +10,8 @@
         Mouse,
         Cross,
         Pen,
-        Eraser;
+        Eraser,
+        Text;
     
     /**
      * 鼠标类
@@ -159,10 +160,50 @@
         
         this.paint = function(context){
             this.getMouseShape().paint(context);
-        };
+        };        
     };
     
     Eraser.prototype = new Mouse();
+    
+    Text = function(){
+        this.name = "Text";
+        this.init = function(option, points){
+            var 
+                index = "Line";
+            //设置参数
+            this.setOption({
+                strokeStyle:'#000',
+                opacity:50,
+                size:option.size
+            });
+            this.setPoints(points);//设置点    
+            //设置鼠标图形
+            this.setMouseShape(new global.painter.model.shapeModel[index]());
+            this.initMouseShape();//初始化鼠标图形
+        };
+        
+        this.paint = function(context){
+            this.getMouseShape().paint(context);
+        };
+        
+        this.setPoints = function(points){
+            var                
+                len = this.option.size,
+                startX = points.x,
+                startY = points.y - len,
+                endX = points.x,
+                endY = points.y,
+                temp = {
+                    startX:startX,
+                    startY:startY,
+                    endX:endX,
+                    endY:endY
+                };
+            return this.setOption(temp);                
+        };
+    };
+    
+    Text.prototype = new Mouse();
     
     //添加工具到数据层
     global.painter = global.painter || {};
@@ -172,4 +213,5 @@
     global.painter.model.mouseModel.Cross = Cross;
     global.painter.model.mouseModel.Pen = Pen;
     global.painter.model.mouseModel.Eraser = Eraser;
+    global.painter.model.mouseModel.Text = Text;
 }(jQuery, window));

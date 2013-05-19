@@ -1007,7 +1007,7 @@
          * @defult 'line' 
          */
         this.name = 'Text';
-        this.mouse = "Cross";
+        this.mouse = "Text";
         
         /**
          * 初始化
@@ -1019,12 +1019,24 @@
             var 
               $attributePanel = $('#tool-text-attribute-panel'),
               opacity = $('.opacity',$attributePanel).eq(0).val(),
+              text = $('.text',$attributePanel).eq(0).val(),
+              size = $('.size',$attributePanel).eq(0).val(),
+              border = $('.border',$attributePanel).eq(0).val(),
+              family = $('.font',$attributePanel).eq(0).val(),
+              bold = $('.bold',$attributePanel).eq(0).attr("checked") === "checked" ? "bold" : "",
+              italic = $('.italic',$attributePanel).eq(0).attr("checked") === "checked" ? "italic" : "",
               color = $('#tool-wrap .tool .color').eq(0).val();
             //设置参数
             return this.setOption({
                 strokeStyle:color,
                 opacity:opacity,
-                fillStyle:color
+                fillStyle:color,
+                text:text,
+                size:size,
+                border:border,
+                family:family,
+                bold:bold,
+                italic:italic
             });
         };
         
@@ -1037,11 +1049,14 @@
         this.setPoint = function(pointList){
             var
                 startPoint = pointList.getStart(),
+                endPoint = pointList.getEnd(),
                 x = startPoint.x,//计算园中心坐标
-                y = startPoint.y;
+                y = startPoint.y,
+                textAlign = x <= endPoint.x ? "left" : "right";
             return this.setOption({
                 x:x,
-                y:y
+                y:y,
+                textAlign:textAlign
             });
         };      
     };
@@ -1066,43 +1081,7 @@
          * @type String
          * @defult 'line' 
          */
-        this.name = 'TextStroke';
-        this.mouse = "Cross";
-        
-        /**
-         * 初始化
-         * @method init 
-         * @return {Bollean} 初始化是否成功
-         */
-        this.init = function(){
-            //获取当前属性
-            var 
-              $attributePanel = $('#tool-text-attribute-panel'),
-              opacity = $('.opacity',$attributePanel).eq(0).val(),
-              color = $('#tool-wrap .tool .color').eq(0).val();
-            //设置参数
-            return this.setOption({
-                strokeStyle:color,
-                opacity:opacity
-            });
-        };
-        
-        /**
-         * 设置坐标参数参数
-         * @method setPoint
-         * @param {Object} 参数
-         * @return {Object} 设置完的参数
-         */
-        this.setPoint = function(pointList){
-            var
-                startPoint = pointList.getStart(),
-                x = startPoint.x,//计算园中心坐标
-                y = startPoint.y;
-            return this.setOption({
-                x:x,
-                y:y
-            });
-        };      
+        this.name = 'TextStroke';            
     };
     
     /**
@@ -1110,7 +1089,7 @@
      * @class TextStroke.prototype
      * @strict
      */
-    TextStroke.prototype = new Tool();
+    TextStroke.prototype = new Text();
 	
 	//添加工具到数据层
 	global.painter = global.painter || {};

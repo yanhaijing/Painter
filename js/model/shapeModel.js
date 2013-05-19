@@ -920,7 +920,10 @@
             //设置属性
             context.strokeStyle = option.strokeStyle;
             context.fillStyle = option.fillStyle;
-            context.globalAlpha = option.opacity / 100; 
+            context.globalAlpha = option.opacity / 100;
+            context.font = option.italic + " " + option.bold + " " + option.size + "px " + option.family;
+            context.lineWidth = option.border;
+            context.textAlign = option.textAlign; 
             
             //绘制图形
             context.fillText(text, x, y);       
@@ -967,8 +970,11 @@
             
             //设置属性
             context.strokeStyle = option.strokeStyle;
-            context.fillStyle = option.fillStyle;
-            context.globalAlpha = option.opacity / 100; 
+            context.globalAlpha = option.opacity / 100;
+            context.font = option.size + "px";
+            context.font = $.trim(option.italic + " " + option.bold + " " + option.size + "px " + option.family);
+            context.lineWidth = option.border;
+            context.textAlign = option.textAlign; 
             
             //绘制图形      
             context.strokeText(text, x, y);          
