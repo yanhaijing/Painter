@@ -63,7 +63,7 @@ nav h1{
 	position: absolute;
 	top:0;
 	left:0;
-	cursor: none
+	cursor: none, crosshair
 }
 #canvas-mouse[data-mouse="Pen"]{
 	cursor: url("../images/tool-button-pen.gif") 0 24, crosshair;
