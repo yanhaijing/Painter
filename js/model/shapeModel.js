@@ -139,18 +139,21 @@
 	        var 
 	           option = this.getOption();
 	        
-	        context.save();//保存上下文信息
-	        context.beginPath();
+	        context.save();//保存上下文信
 	        
-	        //描述直线
-            context.moveTo(option.startX, option.startY);
-            context.lineTo(option.endX, option.endY);
-            
-            //设置直线属性
+	        //设置直线属性
             context.strokeStyle = option.strokeStyle;
             context.lineWidth = option.lineWidth;
             context.globalAlpha = option.opacity / 100;
-            
+            context.lineJoin = option.lineJoin;
+            context.lineCap = option.lineCap;
+	        
+	        
+	        //描述直线
+	        context.beginPath();
+            context.moveTo(option.startX, option.startY);
+            context.lineTo(option.endX, option.endY);
+                                   
             //绘制直线
             context.closePath();
             context.stroke();

@@ -145,13 +145,17 @@
 		      $attributePanel = $('#tool-shape-attribute-panel'),
 		      width = $('.width',$attributePanel).eq(0).val(),
 		      opacity = $('.opacity',$attributePanel).eq(0).val(),
-		      color = $('#tool-wrap .tool .color').eq(0).val();	      
+		      color = $('#tool-wrap .tool .color').eq(0).val(),
+		      lineJoin = $(':radio[name="line-join"]',$attributePanel).val(),
+		      lineCap = $(':radio[name="line-cap"]',$attributePanel).val();	      
 			
 			//设置参数
 			return this.setOption({
                 lineWidth: width,
                 opacity: opacity,
-                strokeStyle: color
+                strokeStyle: color,
+                lineJoin:lineJoin,
+                lineCap:lineCap
             });
 		};
 		

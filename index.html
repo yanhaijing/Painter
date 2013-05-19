@@ -136,7 +136,27 @@
 						<button class="ellipes" title="椭圆" data-tool="shape" data-tool-class="Ellipes"></button>	
 						<div id="tool-shape-attribute-panel" class="tool-attribute-panel" title="形状属性面板">
 							<label>size：<input class="width" type="range" min="1" max="100" value="1" data-attr="lineWidth" /><span>1</span></label>
-							<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>							
+							<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>	
+							lineJoin:
+							<label class="checkbox">
+								<input data-attr="lineJoin" name="line-join" type="radio" value="miter" checked="true" /><span>miter</span>
+							</label>
+							<label class="checkbox">
+								<input data-attr="lineJoin" name="line-join" type="radio" value="bevel" /><span>bevel</span>
+							</label>
+							<label class="checkbox">
+								<input data-attr="lineJoin" name="line-join" type="radio" value="round" /><span>round</span>
+							</label>						
+							lineCap:
+							<label class="checkbox">
+								<input name="line-cap" type="radio" data-attr="lineCap" value="butt" checked="true" /><span>butt</span>
+							</label>
+							<label class="checkbox">
+								<input name="line-cap" type="radio" data-attr="lineCap" value="round" /><span>round</span>
+							</label>
+							<label class="checkbox">
+								<input name="line-cap" type="radio" data-attr="lineCap" value="square" /><span>square</span>
+							</label>													
 						</div>					
 					</div><!-- end .shape -->
 					
