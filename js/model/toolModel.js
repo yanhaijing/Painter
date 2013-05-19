@@ -734,6 +734,7 @@
          * @defult 'line' 
          */
         this.name = 'FloodFill';
+        this.mouse = "FloodFill";
         
         /**
          * 初始化
@@ -790,6 +791,7 @@
          * @defult 'line' 
          */
         this.name = 'EyeDropper';
+        this.mouse = "EyeDropper";
         
         /**
          * 初始化

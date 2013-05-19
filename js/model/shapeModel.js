@@ -633,7 +633,7 @@
          * @type String
          * @default Shape
          */
-        this.name = 'FloodFill';
+        this.name = 'FloodFill';        
         
         /**
          * 绘制矩形图形

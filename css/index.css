@@ -66,7 +66,19 @@ nav h1{
 	cursor: none
 }
 #canvas-mouse[data-mouse="Pen"]{
-	cursor: url("../images/mouse-pen.gif")0 28, crosshair;
+	cursor: url("../images/tool-button-pen.gif") 0 24, crosshair;
+}
+#canvas-mouse[data-mouse="Eraser"]{
+	cursor: url("../images/tool-button-eraser.gif") 9 24, crosshair;
+}
+#canvas-mouse[data-mouse="FloodFill"]{
+	cursor: url("../images/tool-button-floodfill.gif") 9 24, crosshair;
+}
+#canvas-mouse[data-mouse="EyeDropper"]{
+	cursor: url("../images/tool-button-eyedropper.gif") 2 24, crosshair;
+}
+#canvas-mouse[data-mouse="Text"]{
+	cursor: text
 }
 /**
  * 	工具栏
@@ -144,16 +156,20 @@ nav h1{
 
 
 .tool .flood-fill{
-	background: transparent url("../images/tool-button-floodfill.gif") no-repeat center center/80% 80%;
+	background-image:url("../images/tool-button-floodfill.gif");
 }
 .tool .eraser{
-	background: transparent url("../images/tool-button-eraser.gif") no-repeat center center/80% 80%;
+	background-image:url("../images/tool-button-eraser.gif");
 }
 .tool .select{
-	background: transparent url("../images/tool-button-select.gif") no-repeat center center/80% 80%;
+	background-image:url("../images/tool-button-select.gif");
 }
 .tool .eye-dropper{
-	background: transparent url("../images/tool-button-eyedropper.gif") no-repeat center center/80% 80%;
+	background-image:url("../images/tool-button-eyedropper.gif");
+}
+
+.tool .spectrum-color{
+	margin:4px 0 0 10px;
 }
 /**
  * 	工具属性面版

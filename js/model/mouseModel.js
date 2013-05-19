@@ -11,7 +11,9 @@
         Cross,
         Pen,
         Eraser,
-        Text;
+        Text,
+        FloodFill,
+        EyeDropper;
     
     /**
      * 鼠标类
@@ -156,6 +158,7 @@
             //设置鼠标图形
             this.setMouseShape(new global.painter.model.shapeModel[index]());
             this.initMouseShape();//初始化鼠标图形
+            this.setImage();//设置鼠标图片
         };
         
         this.paint = function(context){
@@ -168,42 +171,64 @@
     Text = function(){
         this.name = "Text";
         this.init = function(option, points){
+            this.setImage();//设置鼠标图片
+        };
+        
+        this.paint = function(context){
+        };        
+    };
+    
+    Text.prototype = new Mouse();
+    
+    FloodFill = function(){
+        this.name = "FloodFill";
+        this.init = function(option, points){
             var 
-                index = "Line";
+                index = "CircleStroke";
             //设置参数
             this.setOption({
                 strokeStyle:'#000',
                 opacity:50,
-                size:option.size
+                radius:Math.ceil(option.lineWidth / 2, 10)
             });
             this.setPoints(points);//设置点    
             //设置鼠标图形
             this.setMouseShape(new global.painter.model.shapeModel[index]());
             this.initMouseShape();//初始化鼠标图形
+            this.setImage();//设置鼠标图片
         };
         
         this.paint = function(context){
             this.getMouseShape().paint(context);
-        };
-        
-        this.setPoints = function(points){
-            var                
-                len = this.option.size,
-                startX = points.x,
-                startY = points.y - len,
-                endX = points.x,
-                endY = points.y,
-                temp = {
-                    startX:startX,
-                    startY:startY,
-                    endX:endX,
-                    endY:endY
-                };
-            return this.setOption(temp);                
-        };
+        };        
     };
     
-    Text.prototype = new Mouse();
+    FloodFill.prototype = new Mouse();
+    
+    EyeDropper = function(){
+        this.name = "EyeDropper";
+        this.init = function(option, points){
+            var 
+                index = "CircleStroke";
+            //设置参数
+            this.setOption({
+                strokeStyle:'#000',
+                opacity:50,
+                radius:Math.ceil(option.lineWidth / 2, 10)
+            });
+            this.setPoints(points);//设置点    
+            //设置鼠标图形
+            this.setMouseShape(new global.painter.model.shapeModel[index]());
+            this.initMouseShape();//初始化鼠标图形
+            this.setImage();//设置鼠标图片
+        };
+        
+        this.paint = function(context){
+            this.getMouseShape().paint(context);
+        };        
+    };
+    
+    EyeDropper.prototype = new Mouse();
     
     //添加工具到数据层
     global.painter = global.painter || {};
@@ -214,4 +239,6 @@
     global.painter.model.mouseModel.Pen = Pen;
     global.painter.model.mouseModel.Eraser = Eraser;
     global.painter.model.mouseModel.Text = Text;
+    global.painter.model.mouseModel.FloodFill = FloodFill;
+    global.painter.model.mouseModel.EyeDropper = EyeDropper;
 }(jQuery, window));
