@@ -82,7 +82,20 @@
                     $("#nav-edit-flipy").trigger('click');//触发撤销按钮事件
                     e.preventDefault();//阻止默认事件
                 }         
-             });            
+             });
+             
+             //绑定窗口大小改变事件
+             $(global).bind("resize", function(e){
+                 var 
+                    canvas = global.painter.canvas,
+                    currentCanvas = canvas.currentCanvasContainer.getCanvas(),
+                    bufferCanvas = canvas.bufferCanvasContainer.getCanvas(),
+                    mouseCanvas = canvas.mouseCanvasContainer.getCanvas();
+                 //更新各个画布   
+                 currentCanvas.updateSize();
+                 bufferCanvas.updateSize();
+                 mouseCanvas.updateSize();
+             });
          }
     };
     

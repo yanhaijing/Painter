@@ -127,34 +127,38 @@
                     mouseTool = null,
                     mouse = '',
                     mouseOption = null,
-                    mouseShape = null;
-                
-                point = {
-                    x:e.pageX - offsetLeft,
-                    y:e.pageY - offsetTop
-                };                                
-                mouse = currentTool.getMouse();//获取鼠标名称
-                mouseOption = currentTool.getOption();//获取参数
-                mouseShape = new global.painter.model.mouseModel[mouse]();//创建鼠标对象                            
-                mouseShape.init(mouseOption, point);//初始化鼠标图形
-                //绘制鼠标图形到鼠标层
-                mouseCanvas.clear();
-                mouseCanvas.paint(mouseShape); 
-                
-                
-                //鼠标按下绘制图形操作
-                if(status){     
-                    index = currentTool.getName();
-                    //添加鼠标坐标
-                    pointList = that.getPointList();
-                    pointList.add(point);                                                                                               
-                    option = currentTool.setPoint(pointList);  
+                    mouseShape = null,
+                    className = currentTool.getClassName();
                     
-                    shape = new global.painter.model.shapeModel[index]();  
-                    shape.init(option); 
-                    bufferCanvas.clear();
-                    bufferCanvas.paint(shape);  
-                }                           
+                //判断工具是否为图形类
+                if(className === "shape"){
+                    point = {
+                        x:e.pageX - offsetLeft,
+                        y:e.pageY - offsetTop
+                    };                                
+                    mouse = currentTool.getMouse();//获取鼠标名称
+                    mouseOption = currentTool.getOption();//获取参数
+                    mouseShape = new global.painter.model.mouseModel[mouse]();//创建鼠标对象                            
+                    mouseShape.init(mouseOption, point);//初始化鼠标图形
+                    //绘制鼠标图形到鼠标层
+                    mouseCanvas.clear();
+                    mouseCanvas.paint(mouseShape); 
+                    
+                    
+                    //鼠标按下绘制图形操作
+                    if(status){     
+                        index = currentTool.getName();
+                        //添加鼠标坐标
+                        pointList = that.getPointList();
+                        pointList.add(point);                                                                                               
+                        option = currentTool.setPoint(pointList);  
+                        
+                        shape = new global.painter.model.shapeModel[index]();  
+                        shape.init(option); 
+                        bufferCanvas.clear();
+                        bufferCanvas.paint(shape);  
+                    }
+                }                                           
             });
             
             //绑定鼠标按下事件
@@ -184,17 +188,19 @@
                     pointList = that.getPointList(),
                     index = currentTool.getName(),
                     shape = null,
-                    option = null;
+                    option = null,
+                    className = currentTool.getClassName();
+                if(className === "shape"){
+                    that.getPointList().add(point);//添加鼠标坐标
+                    that.setClickStatus(false);//更新鼠标点击状态
+                    //绘制图形
+                    shape = new global.painter.model.shapeModel[index]()
+                    option = currentTool.setPoint(pointList);    
+                    shape.init(option); 
+                    currentCanvas.paint(shape);
                     
-                that.getPointList().add(point);//添加鼠标坐标
-                that.setClickStatus(false);//更新鼠标点击状态
-                //绘制图形
-                shape = new global.painter.model.shapeModel[index]()
-                option = currentTool.setPoint(pointList);    
-                shape.init(option); 
-                currentCanvas.paint(shape);
-                
-                bufferCanvas.clear();//清除缓冲画布
+                    bufferCanvas.clear();//清除缓冲画布
+                }                    
             });
             
             //绑定鼠标离开

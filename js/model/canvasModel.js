@@ -266,6 +266,11 @@
             return this.top;
         },
         
+        updateSize:function(){
+            this.updateHeight();
+            this.updateWidth();
+            this.repaint();//重绘画布
+        },
         /**
          * 初始化高度
          * @method initHeight

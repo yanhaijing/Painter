@@ -40,6 +40,7 @@
 	 */
 	Tool = function(option){
 		this.name = 'Tool';
+		this.className = "shape";
 		/**
 		 * 当前工具对应的鼠标对象
 		 * @property mouse
@@ -62,7 +63,10 @@
 	 * @class Tool.prototype
 	 * @strict
 	 */
-	Tool.prototype = {		
+	Tool.prototype = {
+	    getClassName:function(){
+	       return this.className; 
+	    },		
 		/**
 		 * 获取名字
 		 * @method getName
