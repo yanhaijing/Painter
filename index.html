@@ -28,7 +28,7 @@
 			  <div class="bar" style="width: 100%;"></div>
 			</div>
 			<p>
-				Loading please wait a while...
+				Loading core module please wait a while...
 			</p>
 		</div><!-- end .loading -->
 		<div class="container-fluid">
@@ -137,6 +137,10 @@
 						<div id="tool-shape-attribute-panel" class="tool-attribute-panel" title="形状属性面板">
 							<label>size：<input class="width" type="range" min="1" max="100" value="1" data-attr="lineWidth" /><span>1</span></label>
 							<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>	
+							<label>shadowOffsetX：<input class="shadow-offsetx" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetX" /><span>0</span></label>
+							<label>shadowOffsetY：<input class="shadow-offsety" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetY" /><span>0</span></label>
+							<label>shadowBlur：<input class="shadow-blur" type="range" min="0" max="10" value="0" data-attr="shadowBlur" /><span>0</span></label>
+							<label>shadowColor：<input class="shadow-color" type="color" data-attr="shadowColor" /></label>	
 							lineJoin:
 							<label class="checkbox">
 								<input data-attr="lineJoin" name="line-join" type="radio" value="miter" checked="true" /><span>miter</span>
@@ -169,7 +173,31 @@
 						<button class="ellipes-stroke" title="椭圆" data-tool="stroke" data-tool-class="EllipesStroke"></button>
 						<div id="tool-stroke-attribute-panel" class="tool-attribute-panel" title="轮廓属性面板">
 							<label>size：<input type="range" min="1" max="100" data-attr="lineWidth" value="1" /><span>1</span></label>
-							<label>opacity：<input type="range" max="100" data-attr="opacity" value="100" /><span>100</span></label>							
+							<label>opacity：<input type="range" max="100" data-attr="opacity" value="100" /><span>100</span></label>	
+							<label>shadowOffsetX：<input class="shadow-offsetx" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetX" /><span>0</span></label>
+							<label>shadowOffsetY：<input class="shadow-offsety" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetY" /><span>0</span></label>
+							<label>shadowBlur：<input class="shadow-blur" type="range" min="0" max="10" value="0" data-attr="shadowBlur" /><span>0</span></label>
+							<label>shadowColor：<input class="shadow-color" type="color" data-attr="shadowColor" /></label>	
+							lineJoin:
+							<label class="checkbox">
+								<input data-attr="lineJoin" name="line-join" type="radio" value="miter" checked="true" /><span>miter</span>
+							</label>
+							<label class="checkbox">
+								<input data-attr="lineJoin" name="line-join" type="radio" value="bevel" /><span>bevel</span>
+							</label>
+							<label class="checkbox">
+								<input data-attr="lineJoin" name="line-join" type="radio" value="round" /><span>round</span>
+							</label>						
+							lineCap:
+							<label class="checkbox">
+								<input name="line-cap" type="radio" data-attr="lineCap" value="butt" checked="true" /><span>butt</span>
+							</label>
+							<label class="checkbox">
+								<input name="line-cap" type="radio" data-attr="lineCap" value="round" /><span>round</span>
+							</label>
+							<label class="checkbox">
+								<input name="line-cap" type="radio" data-attr="lineCap" value="square" /><span>square</span>
+							</label>						
 						</div>					
 					</div><!-- end .brush -->
 					

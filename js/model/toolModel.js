@@ -6,13 +6,20 @@
 (function($, global){
 	"use strict";
 	
-	var 
+	var
+	   //所有工具超级父类 
 	   Tool,
+	   //图形工具父类
+	   Shape,
 	   Line,
 	   CurveClosed,
 	   Rect,
 	   RectRound,
 	   Circle,
+	   //椭圆工具类
+       Ellipes,
+	   //轮廓工具父类
+	   Stroke,
 	   Pen,
 	   CurveClosedStroke,
 	   RectStroke,
@@ -22,9 +29,7 @@
 	   FloodFill,
 	   EyeDropper,
 	   //十字工具类
-	   Cross,
-	   //椭圆工具类
-	   Ellipes,
+	   Cross,	   
 	   EllipesStroke,
 	   //文字类
 	   Text,
@@ -112,6 +117,69 @@
 	};
 	
 	/**
+     * 图形类工具超级父类
+     * @class Shape
+     * @constructor
+     * @extends Shape.prorotype
+     */
+	Shape = function(){
+	    /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+	    this.name = "Shape";
+	    /**
+         * 当前工具对应的鼠标对象
+         * @property mouse
+         * @type String
+         * @default 'Tool'
+         */
+	    this.mouse = "Cross";
+	    
+	    /**
+	     * 初始化图形类属性面板的参数
+	     * @method initAttribute
+	     */
+	    this.initAttribute = function(){
+	        //获取当前属性
+            var 
+              $attributePanel = $('#tool-shape-attribute-panel'),
+              width = $('.width',$attributePanel).eq(0).val(),
+              opacity = $('.opacity',$attributePanel).eq(0).val(),
+              color = $('#tool-wrap .tool .color').eq(0).val(),
+              lineJoin = $(':radio[name="line-join"]',$attributePanel).val(),
+              shadowOffsetX = $('.shadow-offsetx',$attributePanel).eq(0).val(),
+              shadowOffsetY = $('.shadow-offsety',$attributePanel).eq(0).val(),
+              shadowBlur = $('.shadow-blur',$attributePanel).eq(0).val(),
+              shadowColor = $('.shadow-color',$attributePanel).eq(0).val(),
+              lineCap = $(':radio[name="line-cap"]',$attributePanel).val();       
+            
+            //设置参数
+            return this.setOption({
+                lineWidth: width,
+                opacity: opacity,
+                strokeStyle: color,
+                fillStyle:color,
+                lineJoin:lineJoin,
+                lineCap:lineCap,
+                shadowOffsetX:shadowOffsetX,
+                shadowOffsetY:shadowOffsetY,
+                shadowBlur:shadowBlur,
+                shadowColor:shadowColor
+            });
+	    }
+	};
+	
+	/**
+	 * 图形类工具原型
+	 * @class Shape.prototype
+	 * @static
+	 * @extends Tool
+	 */
+	Shape.prototype = new Tool();
+	/**
 	 * 直线工具对象
 	 * @class Line
 	 * @constructor
@@ -127,36 +195,12 @@
 		this.name = 'Line';
 		
 		/**
-         * 当前工具对应的鼠标对象
-         * @property mouse
-         * @type String
-         * @default 'Tool'
-         */
-        this.mouse = "Cross";
-		
-		/**
 		 * 初始化
 		 * @method init 
 		 * @return {Bollean} 初始化是否成功
 		 */
 		this.init = function(){
-		    //获取当前属性
-		    var 
-		      $attributePanel = $('#tool-shape-attribute-panel'),
-		      width = $('.width',$attributePanel).eq(0).val(),
-		      opacity = $('.opacity',$attributePanel).eq(0).val(),
-		      color = $('#tool-wrap .tool .color').eq(0).val(),
-		      lineJoin = $(':radio[name="line-join"]',$attributePanel).val(),
-		      lineCap = $(':radio[name="line-cap"]',$attributePanel).val();	      
-			
-			//设置参数
-			return this.setOption({
-                lineWidth: width,
-                opacity: opacity,
-                strokeStyle: color,
-                lineJoin:lineJoin,
-                lineCap:lineCap
-            });
+		    this.initAttribute();//初始化属性面板参数
 		};
 		
 		/**
@@ -188,8 +232,57 @@
 	 * @class Line.prototype
 	 * @strict
 	 */
-	Line.prototype = new Tool();
+	Line.prototype = new Shape();
 	
+	/**
+     * 闭合曲线工具对象
+     * @class CurveClosed
+     * @constructor
+     * @extend Pen.prototype
+     */
+    CurveClosed = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = 'CurveClosed';
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            this.initAttribute();//初始化属性面板参数
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var 
+               list = pointList.getList();
+             
+             this.option.list = [];//更新当前列表  
+             return this.setOption({
+                 list:list
+             });
+        };
+    };
+    
+    /**
+     * 闭合曲线工具原型
+     * @class CurveClosed.prototype
+     * @strict
+     */
+    CurveClosed.prototype = new Shape();
+    
+    
 	/**
      * 矩形工具对象
      * @class Rect
@@ -204,28 +297,13 @@
          * @defult 'line' 
          */
         this.name = 'Rect';
-        this.mouse = "Cross";
         /**
          * 初始化
          * @method init 
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
-            //获取当前属性
-            var 
-              $attributePanel = $('#tool-shape-attribute-panel'),
-              width = $('.width',$attributePanel).eq(0).val(),
-              opacity = $('.opacity',$attributePanel).eq(0).val(),
-              color = $('#tool-wrap .tool .color').eq(0).val();       
-            
-            //设置参数
-            return this.setOption({
-                lineWidth: width,
-                opacity: opacity,
-                strokeStyle: color,
-                fillStyle:color,
-                lineJoin:"miter"
-            });
+            this.initAttribute();//初始化属性面板参数
         };
         
         /**
@@ -257,7 +335,7 @@
      * @class Rect.prototype
      * @strict
      */
-    Rect.prototype = new Tool();
+    Rect.prototype = new Shape();
     
     /**
      * 圆角矩形工具对象
@@ -272,31 +350,7 @@
          * @type String
          * @defult 'line' 
          */
-        this.name = 'RectRound';
-        this.mouse = "Cross";
-        
-        /**
-         * 初始化
-         * @method init 
-         * @return {Bollean} 初始化是否成功
-         */
-        this.init = function(){
-            //获取当前属性
-            var 
-              $attributePanel = $('#tool-shape-attribute-panel'),
-              width = $('.width',$attributePanel).eq(0).val(),
-              opacity = $('.opacity',$attributePanel).eq(0).val(),
-              color = $('#tool-wrap .tool .color').eq(0).val();       
-            
-            //设置参数
-            return this.setOption({
-                lineWidth: width,
-                opacity: opacity,
-                strokeStyle: color,
-                fillStyle:color,
-                lineJoin:"round"
-            });
-        };        
+        this.name = 'RectRound';                
     };
     
     /**
@@ -320,7 +374,6 @@
          * @defult 'line' 
          */
         this.name = 'Circle';
-        this.mouse = "Cross";
         
         /**
          * 初始化
@@ -328,20 +381,7 @@
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
-            //获取当前属性
-            var 
-              $attributePanel = $('#tool-shape-attribute-panel'),
-              width = $('.width',$attributePanel).eq(0).val(),
-              opacity = $('.opacity',$attributePanel).eq(0).val(),
-              color = $('#tool-wrap .tool .color').eq(0).val();       
-            
-            //设置参数
-            return this.setOption({
-                lineWidth: width,
-                opacity: opacity,
-                strokeStyle: color,
-                fillStyle:color
-            });
+            this.initAttribute();//初始化属性面板参数
         };
         
         /**
@@ -368,11 +408,129 @@
     };
     
     /**
-     * 椭圆工具原型
+     * 圆工具原型
      * @class Circle.prototype
      * @strict
      */
-    Circle.prototype = new Tool();
+    Circle.prototype = new Shape();
+    
+    /**
+     * 椭圆工具对象
+     * @class Ellipes
+     * @constructor
+     * @extend Ellipes.prototype
+     */
+    Ellipes = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = 'Ellipes';
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            this.initAttribute();//初始化属性面板参数
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var
+                startPoint = pointList.getStart(),
+                endPoint = pointList.getEnd(),
+                x = (startPoint.x + endPoint.x) / 2,//计算园中心坐标
+                y = (startPoint.y + endPoint.y) / 2,
+                width = Math.abs(startPoint.x - endPoint.x),
+                height = Math.abs(startPoint.y - endPoint.y);
+            return this.setOption({
+                x:x,
+                y:y,
+                width:width,
+                height:height
+            });
+        };
+    };
+    
+    /**
+     * 椭圆工具原型
+     * @class Ellipes.prototype
+     * @strict
+     */
+    Ellipes.prototype = new Shape();
+    
+    
+    /**
+     * 轮廓类工具超级父类
+     * @class Stroke
+     * @constructor
+     * @extends Stroke.prorotype
+     */
+    Stroke = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = "Stroke";
+        /**
+         * 当前工具对应的鼠标对象
+         * @property mouse
+         * @type String
+         * @default 'Tool'
+         */
+        this.mouse = "Cross";
+        
+        /**
+         * 初始化图形类属性面板的参数
+         * @method initAttribute
+         */
+        this.initAttribute = function(){
+            //获取当前属性
+            var 
+              $attributePanel = $('#tool-stroke-attribute-panel'),
+              width = $('.width',$attributePanel).eq(0).val(),
+              opacity = $('.opacity',$attributePanel).eq(0).val(),
+              color = $('#tool-wrap .tool .color').eq(0).val(),
+              lineJoin = $(':radio[name="line-join"]',$attributePanel).val(),
+              shadowOffsetX = $('.shadow-offsetx',$attributePanel).eq(0).val(),
+              shadowOffsetY = $('.shadow-offsety',$attributePanel).eq(0).val(),
+              shadowBlur = $('.shadow-blur',$attributePanel).eq(0).val(),
+              shadowColor = $('.shadow-color',$attributePanel).eq(0).val(),
+              lineCap = $(':radio[name="line-cap"]',$attributePanel).val();       
+            
+            //设置参数
+            return this.setOption({
+                lineWidth: width,
+                opacity: opacity,
+                strokeStyle: color,
+                lineJoin:lineJoin,
+                lineCap:lineCap,
+                shadowOffsetX:shadowOffsetX,
+                shadowOffsetY:shadowOffsetY,
+                shadowBlur:shadowBlur,
+                shadowColor:shadowColor
+            });
+        }
+    };
+    
+    /**
+     * 轮廓类工具原型
+     * @class Stroke.prototype
+     * @static
+     * @extends Tool
+     */
+    Stroke.prototype = new Tool();
     
     /**
      * 铅笔工具对象
@@ -397,18 +555,7 @@
          */
         this.init = function(){
             //获取当前属性
-            var 
-              $attributePanel = $('#tool-stroke-attribute-panel'),
-              width = $('.width',$attributePanel).eq(0).val(),
-              opacity = $('.opacity',$attributePanel).eq(0).val(),
-              color = $('#tool-wrap .tool .color').eq(0).val();       
-            
-            //设置参数
-            return this.setOption({
-                lineWidth: width,
-                opacity: opacity,
-                strokeStyle: color
-            });
+            this.initAttribute();
         };
         
         /**
@@ -427,13 +574,13 @@
              });
         };
     };
-    
+           
     /**
      * 铅笔工具原型
      * @class Pen.prototype
      * @strict
      */
-    Pen.prototype = new Tool();
+    Pen.prototype = new Stroke();
     
     /**
      * 闭合曲线工具对象
@@ -457,31 +604,7 @@
      * @class CurveClosedStroke.prototype
      * @strict
      */
-    CurveClosedStroke.prototype = new Pen();
-    
-        /**
-     * 闭合曲线工具对象
-     * @class CurveClosed
-     * @constructor
-     * @extend Pen.prototype
-     */
-    CurveClosed = function(){
-        /**
-         * 名称
-         * @property name
-         * @type String
-         * @defult 'line' 
-         */
-        this.name = 'CurveClosed';
-        this.mouse = "Cross";
-    };
-    
-    /**
-     * 闭合曲线工具原型
-     * @class CurveClosed.prototype
-     * @strict
-     */
-    CurveClosed.prototype = new Pen();
+    CurveClosedStroke.prototype = new Pen();        
     
     /**
      * 矩形工具对象
@@ -497,7 +620,6 @@
          * @defult 'line' 
          */
         this.name = 'RectStroke';
-        this.mouse = "Cross";
         
         /**
          * 初始化
@@ -506,20 +628,7 @@
          */
         this.init = function(){
             //获取当前属性
-            var 
-              $attributePanel = $('#tool-stroke-attribute-panel'),
-              width = $('.width',$attributePanel).eq(0).val(),
-              opacity = $('.opacity',$attributePanel).eq(0).val(),
-              color = $('#tool-wrap .tool .color').eq(0).val();       
-            
-            //设置参数
-            return this.setOption({
-                lineWidth: width,
-                opacity: opacity,
-                strokeStyle: color,
-                fillStyle:color,
-                lineJoin:"miter"
-            });
+            this.initAttribute();
         };
         
         /**
@@ -551,7 +660,7 @@
      * @class RectStroke.prototype
      * @strict
      */
-    RectStroke.prototype = new Tool();
+    RectStroke.prototype = new Stroke();
     
     /**
      * 圆角矩形工具对象
@@ -567,7 +676,6 @@
          * @defult 'line' 
          */
         this.name = 'RectRoundStroke';
-        this.mouse = "Cross";
         
         /**
          * 初始化
@@ -576,20 +684,7 @@
          */
         this.init = function(){
             //获取当前属性
-            var 
-              $attributePanel = $('#tool-stroke-attribute-panel'),
-              width = $('.width',$attributePanel).eq(0).val(),
-              opacity = $('.opacity',$attributePanel).eq(0).val(),
-              color = $('#tool-wrap .tool .color').eq(0).val();       
-            
-            //设置参数
-            return this.setOption({
-                lineWidth: width,
-                opacity: opacity,
-                strokeStyle: color,
-                fillStyle:color,
-                lineJoin:"round"
-            });
+            this.initAttribute();
         };        
     };
     
@@ -614,7 +709,6 @@
          * @defult 'line' 
          */
         this.name = 'CircleStroke';
-        this.mouse = "Cross";
         
         /**
          * 初始化
@@ -623,19 +717,7 @@
          */
         this.init = function(){
             //获取当前属性
-            var 
-              $attributePanel = $('#tool-stroke-attribute-panel'),
-              width = $('.width',$attributePanel).eq(0).val(),
-              opacity = $('.opacity',$attributePanel).eq(0).val(),
-              color = $('#tool-wrap .tool .color').eq(0).val();       
-            
-            //设置参数
-            return this.setOption({
-                lineWidth: width,
-                opacity: opacity,
-                strokeStyle: color,
-                fillStyle:color
-            });
+            this.initAttribute();
         };
         
         /**
@@ -666,7 +748,62 @@
      * @class CircleStroke.prototype
      * @strict
      */
-    CircleStroke.prototype = new Tool();
+    CircleStroke.prototype = new Stroke();
+    
+    /**
+     * 十字工具对象
+     * @class EllipesStroke
+     * @constructor
+     * @extend EllipesStroke.prototype
+     */
+    EllipesStroke = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @defult 'line' 
+         */
+        this.name = 'EllipesStroke';
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            this.initAttribute();
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var
+                startPoint = pointList.getStart(),
+                endPoint = pointList.getEnd(),
+                x = (startPoint.x + endPoint.x) / 2,//计算园中心坐标
+                y = (startPoint.y + endPoint.y) / 2,
+                width = Math.abs(startPoint.x - endPoint.x),
+                height = Math.abs(startPoint.y - endPoint.y);
+            return this.setOption({
+                x:x,
+                y:y,
+                width:width,
+                height:height
+            });
+        };      
+    };
+    
+    /**
+     * 十字工具原型
+     * @class EllipesStroke.prototype
+     * @strict
+     */
+    EllipesStroke.prototype = new Stroke();
     
     /**
      * 橡皮工具对象
@@ -890,118 +1027,8 @@
      * @class Cross.prototype
      * @strict
      */
-    Cross.prototype = new Tool();
-    
-    /**
-     * 十字工具对象
-     * @class Ellipes
-     * @constructor
-     * @extend Ellipes.prototype
-     */
-    Ellipes = function(){
-        /**
-         * 名称
-         * @property name
-         * @type String
-         * @defult 'line' 
-         */
-        this.name = 'Ellipes';
-        this.mouse = "Cross";
+    Cross.prototype = new Tool();        
         
-        /**
-         * 初始化
-         * @method init 
-         * @return {Bollean} 初始化是否成功
-         */
-        this.init = function(){
-            //获取当前属性
-            var 
-              $attributePanel = $('#tool-shape-attribute-panel'),
-              width = $('.width',$attributePanel).eq(0).val(),
-              opacity = $('.opacity',$attributePanel).eq(0).val(),
-              color = $('#tool-wrap .tool .color').eq(0).val();
-            //设置参数
-            return this.setOption({
-                lineWidth:width,
-                strokeStyle:color,
-                opacity:opacity,
-                fillStyle:color
-            });
-        };
-        
-        /**
-         * 设置坐标参数参数
-         * @method setPoint
-         * @param {Object} 参数
-         * @return {Object} 设置完的参数
-         */
-        this.setPoint = function(pointList){
-            var
-                startPoint = pointList.getStart(),
-                endPoint = pointList.getEnd(),
-                x = (startPoint.x + endPoint.x) / 2,//计算园中心坐标
-                y = (startPoint.y + endPoint.y) / 2,
-                width = Math.abs(startPoint.x - endPoint.x),
-                height = Math.abs(startPoint.y - endPoint.y);
-            return this.setOption({
-                x:x,
-                y:y,
-                width:width,
-                height:height
-            });
-        };
-    };
-    
-    /**
-     * 十字工具原型
-     * @class Ellipes.prototype
-     * @strict
-     */
-    Ellipes.prototype = new Tool();
-    
-    /**
-     * 十字工具对象
-     * @class EllipesStroke
-     * @constructor
-     * @extend EllipesStroke.prototype
-     */
-    EllipesStroke = function(){
-        /**
-         * 名称
-         * @property name
-         * @type String
-         * @defult 'line' 
-         */
-        this.name = 'EllipesStroke';
-        this.mouse = "Cross";
-        
-        /**
-         * 初始化
-         * @method init 
-         * @return {Bollean} 初始化是否成功
-         */
-        this.init = function(){
-            //获取当前属性
-            var 
-              $attributePanel = $('#tool-stroke-attribute-panel'),
-              width = $('.width',$attributePanel).eq(0).val(),
-              opacity = $('.opacity',$attributePanel).eq(0).val(),
-              color = $('#tool-wrap .tool .color').eq(0).val();
-            //设置参数
-            return this.setOption({
-                lineWidth:width,
-                strokeStyle:color,
-                opacity:opacity
-            });
-        };      
-    };
-    
-    /**
-     * 十字工具原型
-     * @class EllipesStroke.prototype
-     * @strict
-     */
-    EllipesStroke.prototype = new Ellipes();
     
     /**
      * 十字工具对象

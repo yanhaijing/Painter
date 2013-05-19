@@ -195,7 +195,7 @@
 			         value = $this.val(),
 			         currentTool = global.painter.tool.currentToolContainer.getTool(),
 			         option = {},
-			         $info = $this.next();
+			         $info = $this.next("span");
 			    
 			    //更新当前工具对象参数     
 			    option[attr] = value;

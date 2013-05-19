@@ -6,12 +6,19 @@
 (function($, global){
     "use strict";
     var
+        //图形类所有图形的超级父类
         Shape = null,
+        //填充+轮廓类图形父类
+        FillStroke,
         Line = null,
         CurveClosed,
         Rect = null,
         RectRound = null,
         Circle = null,
+        //椭圆类
+        Ellipes,
+        //轮廓类工具超级父类
+        Stroke,
         Pen = null,
         CurveClosedStroke,
         RectStroke = null,
@@ -22,8 +29,7 @@
         EyeDropper,
         //十字类
         Cross,
-        //椭圆类
-        Ellipes,
+        
         //椭圆类
         EllipesStroke,
         //文字类
@@ -116,6 +122,51 @@
 	};
 	
 	/**
+	 * 填充轮廓类图形超级父类
+	 * @class FillStroke
+	 * @constructor
+	 * @extends FillStroke.prototype
+	 */
+	FillStroke = function(){
+	    /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+	    this.name = "FillStroke";
+	    
+	    /**
+	     * 设置填充轮廓类图形的属性
+	     * @method setAttributes
+	     * @param {Object} context 设置的上下文
+	     */
+	    this.setAttributes = function(context){
+	        var 
+               option = this.getOption();
+               
+           //设置直线属性
+            context.strokeStyle = option.strokeStyle;
+            context.fillStyle = option.fillStyle;
+            context.lineWidth = option.lineWidth;
+            context.globalAlpha = option.opacity / 100;
+            context.lineJoin = option.lineJoin;
+            context.lineCap = option.lineCap;
+            context.shadowOffsetX = option.shadowOffsetX;
+            context.shadowOffsetY = option.shadowOffsetY;
+            context.shadowBlur = option.shadowBlur;
+            context.shadowColor = option.shadowColor;
+	    }
+	};
+	/**
+     * 填充轮廓类图形超级父类原型
+     * @class FillStroke
+     * @static
+     * @extends Shape
+     */
+	FillStroke.prototype = new Shape();
+	
+	/**
 	 * 直线对象
 	 * @class Line
 	 * @constructor
@@ -142,11 +193,7 @@
 	        context.save();//保存上下文信
 	        
 	        //设置直线属性
-            context.strokeStyle = option.strokeStyle;
-            context.lineWidth = option.lineWidth;
-            context.globalAlpha = option.opacity / 100;
-            context.lineJoin = option.lineJoin;
-            context.lineCap = option.lineCap;
+            this.setAttributes(context);
 	        
 	        
 	        //描述直线
@@ -166,7 +213,7 @@
 	 * @class Line.prototype
 	 * @static 
 	 */
-	Line.prototype = new Shape();
+	Line.prototype = new FillStroke();
 	
 	/**
      * 闭合曲线对象
@@ -199,10 +246,7 @@
             context.save();//保存上下文信息            
             
             //设置属性
-            context.strokeStyle = option.strokeStyle;
-            context.fillStyle = option.fillStyle;
-            context.lineWidth = option.lineWidth;
-            context.globalAlpha = option.opacity / 100;           
+            this.setAttributes(context);           
             
             //绘制
             context.beginPath();
@@ -223,7 +267,7 @@
      * @class CurveClosed.prototype
      * @static 
      */
-    CurveClosed.prototype = new Shape();
+    CurveClosed.prototype = new FillStroke();
     
 	/**
 	 * 矩形对象
@@ -252,11 +296,7 @@
             context.save();//保存上下文信息            
             
             //设置属性
-            context.strokeStyle = option.strokeStyle;
-            context.fillStyle = option.fillStyle;
-            context.lineWidth = option.lineWidth;
-            context.globalAlpha = option.opacity / 100;  
-            context.lineJoin = option.lineJoin;          
+            this.setAttributes(context);           
             
             //绘制
             context.fillRect(option.left, option.top, option.width, option.height);
@@ -270,7 +310,7 @@
      * @class Rect.prototype
      * @static 
      */
-    Rect.prototype = new Shape();
+    Rect.prototype = new FillStroke();
     
     /**
      * 圆角矩形对象
@@ -322,10 +362,7 @@
             context.save();//保存上下文信息            
             
             //设置属性
-            context.strokeStyle = option.strokeStyle;
-            context.fillStyle = option.fillStyle;
-            context.lineWidth = option.lineWidth;
-            context.globalAlpha = option.opacity / 100;           
+            this.setAttributes(context);           
             
             //绘制
             context.beginPath();
@@ -342,7 +379,113 @@
      * @class Circle.prototype
      * @static 
      */
-    Circle.prototype = new Shape();
+    Circle.prototype = new FillStroke();
+    
+    //绘制椭圆方法
+    function EllipesDraw(context, x, y, width, height){
+       var k = (width/0.75)/2,
+           w = width/2,
+           h = height/2;
+       context.beginPath();
+       context.moveTo(x, y-h);
+       context.bezierCurveTo(x+k, y-h, x+k, y+h, x, y+h);
+       context.bezierCurveTo(x-k, y+h, x-k, y-h, x, y-h);
+       context.closePath();
+       return context;
+    }
+    /**
+     * 椭圆类对象
+     * @class Ellipes
+     * @constructor
+     * @extends Ellipes.prorotype 
+     */
+    Ellipes = function(){
+       /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = 'Ellipes';
+        
+        /**
+         * 绘制矩形图形
+         * @method paint
+         * @param {Object} context 绘图上下文 
+         */
+        this.paint = function(context){
+           var 
+               option = this.getOption(),
+               x = option.x,
+               y = option.y,
+               width = option.width,
+               height = option.height;
+            
+            context.save();//保存上下文信息            
+            
+            //设置属性
+            this.setAttributes(context); 
+            
+            //描述图形
+            EllipesDraw(context, x, y, width, height);        
+            
+            //绘制  
+            context.fill();
+            context.stroke();          
+            context.restore();//回复上下文
+        };   
+    };
+        
+    /**
+     * 椭圆类原型
+     * @class Ellipes.prototype
+     * @static 
+     */
+    Ellipes.prototype = new FillStroke();
+    
+    /**
+     * 轮廓类图形超级父类
+     * @class Stroke
+     * @constructor
+     * @extends Stroke.prototype
+     */
+    Stroke = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = "Stroke";
+        
+        /**
+         * 设置填充轮廓类图形的属性
+         * @method setAttributes
+         * @param {Object} context 设置的上下文
+         */
+        this.setAttributes = function(context){
+            var 
+               option = this.getOption();
+               
+           //设置直线属性
+            context.strokeStyle = option.strokeStyle;
+            context.lineWidth = option.lineWidth;
+            context.globalAlpha = option.opacity / 100;
+            context.lineJoin = option.lineJoin;
+            context.lineCap = option.lineCap;
+            context.shadowOffsetX = option.shadowOffsetX;
+            context.shadowOffsetY = option.shadowOffsetY;
+            context.shadowBlur = option.shadowBlur;
+            context.shadowColor = option.shadowColor;
+        }
+    };
+    /**
+     * 轮廓类图形超级父类原型
+     * @class Stroke
+     * @static
+     * @extends Shape
+     */
+    Stroke.prototype = new Shape();
     
     /**
      * 铅笔对象
@@ -375,9 +518,7 @@
             context.save();//保存上下文信息            
             
             //设置属性
-            context.strokeStyle = option.strokeStyle;
-            context.lineWidth = option.lineWidth;
-            context.globalAlpha = option.opacity / 100;           
+            this.setAttributes(context);           
             
             //绘制
             context.beginPath();
@@ -395,8 +536,9 @@
      * 铅笔对象原型
      * @class Pen.prototype
      * @static 
+     * @extends Stroke
      */
-    Pen.prototype = new Shape();
+    Pen.prototype = new Stroke();
     
     /**
      * 铅笔对象
@@ -429,9 +571,7 @@
             context.save();//保存上下文信息            
             
             //设置属性
-            context.strokeStyle = option.strokeStyle;
-            context.lineWidth = option.lineWidth;
-            context.globalAlpha = option.opacity / 100;           
+            this.setAttributes(context);            
             
             //绘制
             context.beginPath();
@@ -451,14 +591,7 @@
      * @class CurveClosedStroke.prototype
      * @static 
      */
-    CurveClosedStroke.prototype = new Shape();
-    
-    /**
-     * 铅笔对象
-     * @class CurveClosedStroke
-     * @constructor
-     * @extends CurveClosedStroke.prorotype 
-     */
+    CurveClosedStroke.prototype = new Stroke();    
     
     /**
      * 矩形对象
@@ -487,11 +620,7 @@
             context.save();//保存上下文信息            
             
             //设置属性
-            context.strokeStyle = option.strokeStyle;
-            context.fillStyle = option.fillStyle;
-            context.lineWidth = option.lineWidth;
-            context.globalAlpha = option.opacity / 100;  
-            context.lineJoin = option.lineJoin;          
+            this.setAttributes(context);           
             
             //绘制
             context.strokeRect(option.left, option.top, option.width, option.height);
@@ -504,7 +633,7 @@
      * @class RectStroke.prototype
      * @static 
      */
-    RectStroke.prototype = new Shape();
+    RectStroke.prototype = new Stroke();
     
     /**
      * 圆角矩形对象
@@ -556,9 +685,7 @@
             context.save();//保存上下文信息            
             
             //设置属性
-            context.strokeStyle = option.strokeStyle;
-            context.lineWidth = option.lineWidth;
-            context.globalAlpha = option.opacity / 100;           
+            this.setAttributes(context);            
             
             //绘制
             context.beginPath();
@@ -574,7 +701,56 @@
      * @class CircleStroke.prototype
      * @static 
      */
-    CircleStroke.prototype = new Shape();
+    CircleStroke.prototype = new Stroke();
+    
+    /**
+     * 椭圆类对象
+     * @class EllipesStroke
+     * @constructor
+     * @extends EllipesStroke.prorotype 
+     */
+    EllipesStroke = function(){
+       /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = 'EllipesStroke';
+        
+        /**
+         * 绘制矩形图形
+         * @method paint
+         * @param {Object} context 绘图上下文 
+         */
+        this.paint = function(context){
+           var 
+               option = this.getOption(),
+               x = option.x,
+               y = option.y,
+               width = option.width,
+               height = option.height;
+            
+            context.save();//保存上下文信息            
+            
+            //设置属性
+            this.setAttributes(context); 
+            
+            //描述图形
+            EllipesDraw(context, x, y, width, height);       
+            
+            //绘制  
+            context.stroke();          
+            context.restore();//回复上下文
+        };   
+    };
+        
+    /**
+     * 椭圆类原型
+     * @class EllipesStroke.prototype
+     * @static 
+     */
+    EllipesStroke.prototype = new Stroke();
     
     Eraser = function(){
        /**
@@ -774,122 +950,7 @@
      * @class Cross.prototype
      * @static 
      */
-    Cross.prototype = new Shape();
-    
-    //绘制椭圆方法
-    function EllipesDraw(context, x, y, width, height){
-       var k = (width/0.75)/2,
-           w = width/2,
-           h = height/2;
-       context.beginPath();
-       context.moveTo(x, y-h);
-       context.bezierCurveTo(x+k, y-h, x+k, y+h, x, y+h);
-       context.bezierCurveTo(x-k, y+h, x-k, y-h, x, y-h);
-       context.closePath();
-       return context;
-    }
-    /**
-     * 椭圆类对象
-     * @class Ellipes
-     * @constructor
-     * @extends Ellipes.prorotype 
-     */
-    Ellipes = function(){
-       /**
-         * 名称
-         * @property name
-         * @type String
-         * @default Shape
-         */
-        this.name = 'Ellipes';
-        
-        /**
-         * 绘制矩形图形
-         * @method paint
-         * @param {Object} context 绘图上下文 
-         */
-        this.paint = function(context){
-           var 
-               option = this.getOption(),
-               x = option.x,
-               y = option.y,
-               width = option.width,
-               height = option.height;
-            
-            context.save();//保存上下文信息            
-            
-            //设置属性
-            context.strokeStyle = option.strokeStyle;
-            context.lineWidth = option.lineWidth;
-            context.fillStyle = option.fillStyle; 
-            
-            //描述图形
-            EllipesDraw(context, x, y, width, height);        
-            
-            //绘制  
-            context.fill();
-            context.stroke();          
-            context.restore();//回复上下文
-        };   
-    };
-        
-    /**
-     * 椭圆类原型
-     * @class Ellipes.prototype
-     * @static 
-     */
-    Ellipes.prototype = new Shape();
-    
-    /**
-     * 椭圆类对象
-     * @class EllipesStroke
-     * @constructor
-     * @extends EllipesStroke.prorotype 
-     */
-    EllipesStroke = function(){
-       /**
-         * 名称
-         * @property name
-         * @type String
-         * @default Shape
-         */
-        this.name = 'EllipesStroke';
-        
-        /**
-         * 绘制矩形图形
-         * @method paint
-         * @param {Object} context 绘图上下文 
-         */
-        this.paint = function(context){
-           var 
-               option = this.getOption(),
-               x = option.x,
-               y = option.y,
-               width = option.width,
-               height = option.height;
-            
-            context.save();//保存上下文信息            
-            
-            //设置属性
-            context.strokeStyle = option.strokeStyle;
-            context.lineWidth = option.lineWidth;
-            context.fillStyle = option.fillStyle; 
-            
-            //描述图形
-            EllipesDraw(context, x, y, width, height);       
-            
-            //绘制  
-            context.stroke();          
-            context.restore();//回复上下文
-        };   
-    };
-        
-    /**
-     * 椭圆类原型
-     * @class EllipesStroke.prototype
-     * @static 
-     */
-    EllipesStroke.prototype = new Shape();
+    Cross.prototype = new Shape();                
     
     /**
      * 椭圆类对象
