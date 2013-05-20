@@ -63,7 +63,7 @@ nav h1{
 	position: absolute;
 	top:0;
 	left:0;
-	cursor: none, crosshair
+	cursor: none
 }
 #canvas-mouse[data-mouse="Pen"]{
 	cursor: url("../images/tool-button-pen.gif") 0 24, crosshair;
@@ -178,8 +178,35 @@ nav h1{
 .tool-attribute-panel{
 	display: inline-block
 }
+.tool-attribute-panel legend{
+	font-size: 14px;
+	margin-bottom:5px;
+	font-weight: bold;
+	line-height: 1.2em;
+}
 .tool-attribute-panel input{
 	width:80px
+}
+.tool-attribute-panel input[type="radio"]{
+	width:auto
+}
+.tool-attribute-panel .radios label{
+	display: inline-block
+}
+.tool-attribute-panel .radios input{
+	vertical-align: top;
+	margin-right:5px
+}
+#tool-text-attribute-panel input[type="checkbox"]{
+	width:auto;
+	vertical-align: top;
+	display:inline-block;
+	float: none;
+	margin-left: 5px;	
+}
+#tool-text-attribute-panel .checkbox{
+	display:inline-block;
+	padding-left: 0
 }
 /**
  * 	工具面板

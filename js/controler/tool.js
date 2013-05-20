@@ -53,11 +53,13 @@
 		 * @method initAttributePanel 
 		 */
 		initAttributePanel:function(){
-		    var 
-		          $attributePanels = $('.tool-attribute-panel'),
+		    var
+		          $toolWrap = $("#tool-wrap"),
+		          $at = $("footer"),
+		          $attributePanels = $('.tool-attribute-panel', $toolWrap),
 		          $defaultAttributePanel = $attributePanels.filter('#tool-shape-attribute-panel');  
 		            
-		    $attributePanels.dialog({position:'right bottom', autoOpen: false});//初始化所有属性面板
+		    $attributePanels.dialog({position: {my: "right bottom", at: "right bottom", of: $at}, autoOpen: false});//初始化所有属性面板
 		    
 		    this.setCurrentAttributePanel($defaultAttributePanel);//设置所有面板
 		    this.openAttributePanel($defaultAttributePanel);//打开当前面板

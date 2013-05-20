@@ -968,6 +968,28 @@
         this.name = 'Text';
         
         /**
+         * 设置填充轮廓类图形的属性
+         * @method setAttributes
+         * @param {Object} context 设置的上下文
+         */
+        this.setAttributes = function(context){
+            var 
+               option = this.getOption();
+               
+           //设置直线属性
+            context.shadowOffsetX = option.shadowOffsetX;
+            context.shadowOffsetY = option.shadowOffsetY;
+            context.shadowBlur = option.shadowBlur;
+            context.shadowColor = option.shadowColor;
+            context.strokeStyle = option.strokeStyle;
+            context.fillStyle = option.fillStyle;
+            context.globalAlpha = option.opacity / 100;
+            context.font = option.italic + " " + option.bold + " " + option.size + "px " + option.family;
+            context.lineWidth = option.border;
+            context.textAlign = option.textAlign;
+        };
+        
+        /**
          * 绘制矩形图形
          * @method paint
          * @param {Object} context 绘图上下文 
@@ -982,12 +1004,7 @@
             context.save();//保存上下文信息            
             
             //设置属性
-            context.strokeStyle = option.strokeStyle;
-            context.fillStyle = option.fillStyle;
-            context.globalAlpha = option.opacity / 100;
-            context.font = option.italic + " " + option.bold + " " + option.size + "px " + option.family;
-            context.lineWidth = option.border;
-            context.textAlign = option.textAlign; 
+            this.setAttributes(context);  
             
             //绘制图形
             context.fillText(text, x, y);       
@@ -1033,12 +1050,7 @@
             context.save();//保存上下文信息            
             
             //设置属性
-            context.strokeStyle = option.strokeStyle;
-            context.globalAlpha = option.opacity / 100;
-            context.font = option.size + "px";
-            context.font = $.trim(option.italic + " " + option.bold + " " + option.size + "px " + option.family);
-            context.lineWidth = option.border;
-            context.textAlign = option.textAlign; 
+            this.setAttributes(context); 
             
             //绘制图形      
             context.strokeText(text, x, y);          
@@ -1051,7 +1063,7 @@
      * @class TextStroke.prototype
      * @static 
      */
-    TextStroke.prototype = new Shape();
+    TextStroke.prototype = new Text();
 	
 	//添加变量
 	global.painter = global.painter || {};

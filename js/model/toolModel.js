@@ -140,9 +140,9 @@
 	    
 	    /**
 	     * 初始化图形类属性面板的参数
-	     * @method initAttribute
+	     * @method initAttributes
 	     */
-	    this.initAttribute = function(){
+	    this.initAttributes = function(){
 	        //获取当前属性
             var 
               $attributePanel = $('#tool-shape-attribute-panel'),
@@ -200,7 +200,7 @@
 		 * @return {Bollean} 初始化是否成功
 		 */
 		this.init = function(){
-		    this.initAttribute();//初始化属性面板参数
+		    this.initAttributes();//初始化属性面板参数
 		};
 		
 		/**
@@ -255,7 +255,7 @@
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
-            this.initAttribute();//初始化属性面板参数
+            this.initAttributes();//初始化属性面板参数
         };
         
         /**
@@ -303,7 +303,7 @@
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
-            this.initAttribute();//初始化属性面板参数
+            this.initAttributes();//初始化属性面板参数
         };
         
         /**
@@ -381,7 +381,7 @@
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
-            this.initAttribute();//初始化属性面板参数
+            this.initAttributes();//初始化属性面板参数
         };
         
         /**
@@ -435,7 +435,7 @@
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
-            this.initAttribute();//初始化属性面板参数
+            this.initAttributes();//初始化属性面板参数
         };
         
         /**
@@ -493,9 +493,9 @@
         
         /**
          * 初始化图形类属性面板的参数
-         * @method initAttribute
+         * @method initAttributes
          */
-        this.initAttribute = function(){
+        this.initAttributes = function(){
             //获取当前属性
             var 
               $attributePanel = $('#tool-stroke-attribute-panel'),
@@ -555,7 +555,7 @@
          */
         this.init = function(){
             //获取当前属性
-            this.initAttribute();
+            this.initAttributes();
         };
         
         /**
@@ -628,7 +628,7 @@
          */
         this.init = function(){
             //获取当前属性
-            this.initAttribute();
+            this.initAttributes();
         };
         
         /**
@@ -684,7 +684,7 @@
          */
         this.init = function(){
             //获取当前属性
-            this.initAttribute();
+            this.initAttributes();
         };        
     };
     
@@ -717,7 +717,7 @@
          */
         this.init = function(){
             //获取当前属性
-            this.initAttribute();
+            this.initAttributes();
         };
         
         /**
@@ -772,7 +772,7 @@
          */
         this.init = function(){
             //获取当前属性
-            this.initAttribute();
+            this.initAttributes();
         };
         
         /**
@@ -1052,6 +1052,14 @@
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
+            this.initAttributes();
+        };
+        
+        /**
+         * 初始化图形类属性面板的参数
+         * @method initAttributes
+         */
+        this.initAttributes = function(){           
             //获取当前属性
             var 
               $attributePanel = $('#tool-text-attribute-panel'),
@@ -1062,6 +1070,10 @@
               family = $('.font',$attributePanel).eq(0).val(),
               bold = $('.bold',$attributePanel).eq(0).attr("checked") === "checked" ? "bold" : "",
               italic = $('.italic',$attributePanel).eq(0).attr("checked") === "checked" ? "italic" : "",
+              shadowOffsetX = $('.shadow-offsetx',$attributePanel).eq(0).val(),
+              shadowOffsetY = $('.shadow-offsety',$attributePanel).eq(0).val(),
+              shadowBlur = $('.shadow-blur',$attributePanel).eq(0).val(),
+              shadowColor = $('.shadow-color',$attributePanel).eq(0).val(),
               color = $('#tool-wrap .tool .color').eq(0).val();
             //设置参数
             return this.setOption({
@@ -1073,7 +1085,11 @@
                 border:border,
                 family:family,
                 bold:bold,
-                italic:italic
+                italic:italic,
+                shadowOffsetX:shadowOffsetX,
+                shadowOffsetY:shadowOffsetY,
+                shadowBlur:shadowBlur,
+                shadowColor:shadowColor
             });
         };
         

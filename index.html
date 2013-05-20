@@ -135,32 +135,41 @@
 						<button class="circle" title="圆" data-tool="shape" data-tool-class="Circle"></button>	
 						<button class="ellipes" title="椭圆" data-tool="shape" data-tool-class="Ellipes"></button>	
 						<div id="tool-shape-attribute-panel" class="tool-attribute-panel" title="形状属性面板">
-							<label>size：<input class="width" type="range" min="1" max="100" value="1" data-attr="lineWidth" /><span>1</span></label>
-							<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>	
-							<label>shadowOffsetX：<input class="shadow-offsetx" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetX" /><span>0</span></label>
-							<label>shadowOffsetY：<input class="shadow-offsety" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetY" /><span>0</span></label>
-							<label>shadowBlur：<input class="shadow-blur" type="range" min="0" max="10" value="0" data-attr="shadowBlur" /><span>0</span></label>
-							<label>shadowColor：<input class="shadow-color" type="color" data-attr="shadowColor" /></label>	
-							lineJoin:
-							<label class="checkbox">
-								<input data-attr="lineJoin" name="line-join" type="radio" value="miter" checked="true" /><span>miter</span>
-							</label>
-							<label class="checkbox">
-								<input data-attr="lineJoin" name="line-join" type="radio" value="bevel" /><span>bevel</span>
-							</label>
-							<label class="checkbox">
-								<input data-attr="lineJoin" name="line-join" type="radio" value="round" /><span>round</span>
-							</label>						
-							lineCap:
-							<label class="checkbox">
-								<input name="line-cap" type="radio" data-attr="lineCap" value="butt" checked="true" /><span>butt</span>
-							</label>
-							<label class="checkbox">
-								<input name="line-cap" type="radio" data-attr="lineCap" value="round" /><span>round</span>
-							</label>
-							<label class="checkbox">
-								<input name="line-cap" type="radio" data-attr="lineCap" value="square" /><span>square</span>
-							</label>													
+							<form>
+								<label>size：<input class="width" type="range" min="1" max="100" value="1" data-attr="lineWidth" /><span>1</span></label>
+								<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>	
+								<fieldset>
+									<legend>shadow</legend>
+									<label>shadowOffsetX：<input class="shadow-offsetx" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetX" /><span>0</span></label>
+									<label>shadowOffsetY：<input class="shadow-offsety" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetY" /><span>0</span></label>
+									<label>shadowBlur：<input class="shadow-blur" type="range" min="0" max="10" value="0" data-attr="shadowBlur" /><span>0</span></label>
+									<label>shadowColor：<input class="shadow-color" type="color" data-attr="shadowColor" /></label>
+								</fieldset>
+								<fieldset class="radios">										
+									<legend>lineJoin</legend>
+									<label>
+										<input data-attr="lineJoin" name="line-join" type="radio" value="miter" checked="true" /><span>miter</span>
+									</label>
+									<label>
+										<input data-attr="lineJoin" name="line-join" type="radio" value="bevel" /><span>bevel</span>
+									</label>
+									<label>
+										<input data-attr="lineJoin" name="line-join" type="radio" value="round" /><span>round</span>
+									</label>
+								</fieldset>
+								<fieldset class="radios">										
+									<legend>lineCap</legend>															
+									<label>
+										<input name="line-cap" type="radio" data-attr="lineCap" value="butt" checked="true" /><span>butt</span>
+									</label>
+									<label>
+										<input name="line-cap" type="radio" data-attr="lineCap" value="round" /><span>round</span>
+									</label>
+									<label>
+										<input name="line-cap" type="radio" data-attr="lineCap" value="square" /><span>square</span>
+									</label>
+								</fieldset>
+							</form>													
 						</div>					
 					</div><!-- end .shape -->
 					
@@ -172,32 +181,41 @@
 						<button class="circle-stroke" title="圆形" data-tool="stroke" data-tool-class="CircleStroke"></button>
 						<button class="ellipes-stroke" title="椭圆" data-tool="stroke" data-tool-class="EllipesStroke"></button>
 						<div id="tool-stroke-attribute-panel" class="tool-attribute-panel" title="轮廓属性面板">
-							<label>size：<input type="range" min="1" max="100" data-attr="lineWidth" value="1" /><span>1</span></label>
-							<label>opacity：<input type="range" max="100" data-attr="opacity" value="100" /><span>100</span></label>	
-							<label>shadowOffsetX：<input class="shadow-offsetx" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetX" /><span>0</span></label>
-							<label>shadowOffsetY：<input class="shadow-offsety" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetY" /><span>0</span></label>
-							<label>shadowBlur：<input class="shadow-blur" type="range" min="0" max="10" value="0" data-attr="shadowBlur" /><span>0</span></label>
-							<label>shadowColor：<input class="shadow-color" type="color" data-attr="shadowColor" /></label>	
-							lineJoin:
-							<label class="checkbox">
-								<input data-attr="lineJoin" name="line-join" type="radio" value="miter" checked="true" /><span>miter</span>
-							</label>
-							<label class="checkbox">
-								<input data-attr="lineJoin" name="line-join" type="radio" value="bevel" /><span>bevel</span>
-							</label>
-							<label class="checkbox">
-								<input data-attr="lineJoin" name="line-join" type="radio" value="round" /><span>round</span>
-							</label>						
-							lineCap:
-							<label class="checkbox">
-								<input name="line-cap" type="radio" data-attr="lineCap" value="butt" checked="true" /><span>butt</span>
-							</label>
-							<label class="checkbox">
-								<input name="line-cap" type="radio" data-attr="lineCap" value="round" /><span>round</span>
-							</label>
-							<label class="checkbox">
-								<input name="line-cap" type="radio" data-attr="lineCap" value="square" /><span>square</span>
-							</label>						
+							<form>
+								<label>size：<input class="width" type="range" min="1" max="100" value="1" data-attr="lineWidth" /><span>1</span></label>
+								<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>	
+								<fieldset >
+									<legend>shadow</legend>
+									<label>shadowOffsetX：<input class="shadow-offsetx" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetX" /><span>0</span></label>
+									<label>shadowOffsetY：<input class="shadow-offsety" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetY" /><span>0</span></label>
+									<label>shadowBlur：<input class="shadow-blur" type="range" min="0" max="10" value="0" data-attr="shadowBlur" /><span>0</span></label>
+									<label>shadowColor：<input class="shadow-color" type="color" data-attr="shadowColor" /></label>
+								</fieldset>
+								<fieldset class="radios">										
+									<legend>lineJoin</legend>
+									<label>
+										<input data-attr="lineJoin" name="line-join" type="radio" value="miter" checked="true" /><span>miter</span>
+									</label>
+									<label>
+										<input data-attr="lineJoin" name="line-join" type="radio" value="bevel" /><span>bevel</span>
+									</label>
+									<label>
+										<input data-attr="lineJoin" name="line-join" type="radio" value="round" /><span>round</span>
+									</label>
+								</fieldset>
+								<fieldset class="radios">										
+									<legend>lineCap</legend>															
+									<label>
+										<input name="line-cap" type="radio" data-attr="lineCap" value="butt" checked="true" /><span>butt</span>
+									</label>
+									<label>
+										<input name="line-cap" type="radio" data-attr="lineCap" value="round" /><span>round</span>
+									</label>
+									<label>
+										<input name="line-cap" type="radio" data-attr="lineCap" value="square" /><span>square</span>
+									</label>
+								</fieldset>
+							</form>						
 						</div>					
 					</div><!-- end .brush -->
 					
@@ -212,26 +230,34 @@
 						<button class="text-stroke" title="文本轮廓" data-tool="text" data-tool-class="TextStroke"> </button>
 						在属性面板输入要输入的文字，在画布上想要输入的位置点击	
 						<div id="tool-text-attribute-panel" class="tool-attribute-panel" title="文字属性面板">
-							<label>text: <input class="text" type="text" placeholder="输入要输入的文字" data-attr="text" /></label>
-							<label>font:
-								<select class="font" data-attr="family">
-									<option selected="true" class="serif" value="serif">serif</option>
-									<option class="sans-serif" value="sans-serif">sans-serif</option>								
-								</select>	
-							</label>
-							<label><b>bold:</b>
-							  <input class="bold" type="checkbox" value="bold" data-attr="bold">
-							</label>
-							<label><i>italic:</i>
-							  <input class="italic" type="checkbox" value="italic" data-attr="italic">
-							</label>							
-							<label>size：<input class="size" type="range" min="8" max="100" data-attr="size" value="10" /><span>10</span><span>px</span></label>	
-							<label>border：<input class="border" type="range" min="1" max="100" data-attr="border" value="1" /><span>1</span><span></span></label>
-							<label>opacity：<input class="opacity" type="range" max="100" data-attr="opacity" value="100" /><span>100</span></label>	
-							<label>shadowOffsetX：<input class="shadow-offsetx" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetX" /><span>0</span></label>
-							<label>shadowOffsetY：<input class="shadow-offsety" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetY" /><span>0</span></label>
-							<label>shadowBlur：<input class="shadow-blur" type="range" min="0" max="10" value="0" data-attr="shadowBlur" /><span>0</span></label>
-							<label>shadowColor：<input class="shadow-color" type="color" data-attr="shadowColor" /></label>
+							<form>
+								<label>text: <input class="text" type="text" placeholder="输入要输入的文字" data-attr="text" /></label>
+								<fieldset>
+									<legend>property</legend>
+									<label>font:
+										<select class="font" data-attr="family">
+											<option selected="true" class="serif" value="serif">serif</option>
+											<option class="sans-serif" value="sans-serif">sans-serif</option>								
+										</select>	
+									</label>
+									<label class="checkbox"><b>bold:</b>
+									  <input class="bold" type="checkbox" value="bold" data-attr="bold">
+									</label>
+									<label class="checkbox"><i>italic:</i>
+									  <input class="italic" type="checkbox" value="italic" data-attr="italic">
+									</label>							
+									<label>size：<input class="size" type="range" min="8" max="100" data-attr="size" value="10" /><span>10</span><span>px</span></label>	
+									<label>border：<input class="border" type="range" min="1" max="100" data-attr="border" value="1" /><span>1</span><span></span></label>								
+									<label>opacity：<input class="opacity" type="range" max="100" data-attr="opacity" value="100" /><span>100</span></label>	
+								</fieldset>
+								<fieldset>
+									<legend>shadow</legend>
+									<label>shadowOffsetX：<input class="shadow-offsetx" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetX" /><span>0</span></label>
+									<label>shadowOffsetY：<input class="shadow-offsety" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetY" /><span>0</span></label>
+									<label>shadowBlur：<input class="shadow-blur" type="range" min="0" max="10" value="0" data-attr="shadowBlur" /><span>0</span></label>
+									<label>shadowColor：<input class="shadow-color" type="color" data-attr="shadowColor" /></label>
+								</fieldset>
+							</form>
 						</div>					
 					</div><!-- end .brush -->
 					
@@ -265,7 +291,7 @@
 			</div>
 		</div><!-- end .container -->
 		<!-- import jquery js -->
-		<script src="js/jquery-1.7.1.js"></script>
+		<script src="js/jquery-1.9.1.js"></script>
 		
 		<script src="plugins/bootstrap/js/bootstrap.js"></script>
 		
@@ -274,15 +300,8 @@
 		<link rel='stylesheet' href='plugins/spectrum/spectrum.css' />	
 		
 		<!-- import jquery ui -->
-		<link rel="stylesheet" href="plugins/jqueryui/themes/base/jquery.ui.all.css">
-		<script src="plugins/jqueryui/external/jquery.bgiframe-2.1.2.js"></script>
-		<script src="plugins/jqueryui/ui/jquery.ui.core.js"></script>
-		<script src="plugins/jqueryui/ui/jquery.ui.widget.js"></script>
-		<script src="plugins/jqueryui/ui/jquery.ui.mouse.js"></script>
-		<script src="plugins/jqueryui/ui/jquery.ui.draggable.js"></script>
-		<script src="plugins/jqueryui/ui/jquery.ui.position.js"></script>
-		<script src="plugins/jqueryui/ui/jquery.ui.resizable.js"></script>
-		<script src="plugins/jqueryui/ui/jquery.ui.dialog.js"></script>
+		<link rel="stylesheet" href="plugins/jqueryui+/themes/base/jquery.ui.all.css" />
+		<script src="plugins/jqueryui+/ui/jquery-ui.js"></script>
 		
 		<!-- import my js -->
 				
@@ -314,13 +333,14 @@
 		
 		<!-- 提示消息js -->
 		<script src="plugins/torangetek/torangetek.messager.js"></script>
+		
+		<!-- 导入load js -->
+		<script src="js/controler/loading.js"></script>
 				
 		<!-- 分享组件js -->
 		<script src="js/controler/share.js"></script>
 		<script src="http://qzonestyle.gtimg.cn/qzone/app/qzlike/qzopensl.js#jsdate=20111201" charset="utf-8"></script>
 		<script src="http://mat1.gtimg.com/app/openjs/openjs.js#autoboot=no&debug=no"></script>
-		<script src="http://connect.qq.com/widget/loader/loader.js" widget="shareqq" charset="utf-8"></script>
-		<!-- 导入load js -->
-		<script src="js/controler/loading.js"></script>		
+		<script src="http://connect.qq.com/widget/loader/loader.js" widget="shareqq" charset="utf-8"></script>			
 	</body>
 </html>
