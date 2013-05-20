@@ -6,5 +6,7 @@
     "use strict";
     var load = 1;
     global.console.log("load",load++);
-    $("#loading").fadeOut();    
+    $(function(){
+        $("#loading").fadeOut();
+    });           
 }(jQuery, window));
