@@ -147,8 +147,11 @@
 						<button class="ellipes" title="椭圆" data-tool="shape" data-tool-class="Ellipes"></button>	
 						<div id="tool-shape-attribute-panel" class="tool-attribute-panel" title="形状属性面板">
 							<form>
-								<label>size：<input class="width" type="range" min="1" max="100" value="1" data-attr="lineWidth" /><span>1</span></label>
-								<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>	
+								<fieldset>
+									<legend>property</legend>
+									<label>size：<input class="width" type="range" min="1" max="100" value="1" data-attr="lineWidth" /><span>1</span></label>
+									<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>	
+								</fieldset>
 								<fieldset>
 									<legend>shadow</legend>
 									<label>shadowOffsetX：<input class="shadow-offsetx" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetX" /><span>0</span></label>
@@ -193,8 +196,11 @@
 						<button class="ellipes-stroke" title="椭圆" data-tool="stroke" data-tool-class="EllipesStroke"></button>
 						<div id="tool-stroke-attribute-panel" class="tool-attribute-panel" title="轮廓属性面板">
 							<form>
-								<label>size：<input class="width" type="range" min="1" max="100" value="1" data-attr="lineWidth" /><span>1</span></label>
-								<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>	
+								<fieldset>
+									<legend>property</legend>
+									<label>size：<input class="width" type="range" min="1" max="100" value="1" data-attr="lineWidth" /><span>1</span></label>
+									<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>	
+								</fieldset>
 								<fieldset >
 									<legend>shadow</legend>
 									<label>shadowOffsetX：<input class="shadow-offsetx" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetX" /><span>0</span></label>
@@ -232,7 +238,44 @@
 					
 					<div class="eraser wrap">	
 						<div id="tool-eraser-attribute-panel" class="tool-attribute-panel" title="橡皮属性面板">
-							<label>size：<input type="range" min="1" max="100" data-attr="lineWidth" value="1" /><span>1</span></label>						
+							<form>
+								<fieldset>
+									<legend>property</legend>
+									<label>size：<input type="range" min="1" max="100" data-attr="lineWidth" value="1" /><span>1</span></label>
+									<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>	
+								</fieldset>							
+								<fieldset >
+									<legend>shadow</legend>
+									<label>shadowOffsetX：<input class="shadow-offsetx" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetX" /><span>0</span></label>
+									<label>shadowOffsetY：<input class="shadow-offsety" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetY" /><span>0</span></label>
+									<label>shadowBlur：<input class="shadow-blur" type="range" min="0" max="10" value="0" data-attr="shadowBlur" /><span>0</span></label>
+									<label>shadowColor：<input class="shadow-color" type="color" data-attr="shadowColor" value="#ffffff" /></label>
+								</fieldset>
+								<fieldset class="radios">										
+										<legend>lineJoin</legend>
+										<label>
+											<input data-attr="lineJoin" name="line-join" type="radio" value="miter" checked="true" /><span>miter</span>
+										</label>
+										<label>
+											<input data-attr="lineJoin" name="line-join" type="radio" value="bevel" /><span>bevel</span>
+										</label>
+										<label>
+											<input data-attr="lineJoin" name="line-join" type="radio" value="round" /><span>round</span>
+										</label>
+									</fieldset>
+									<fieldset class="radios">										
+										<legend>lineCap</legend>															
+										<label>
+											<input name="line-cap" type="radio" data-attr="lineCap" value="butt" checked="true" /><span>butt</span>
+										</label>
+										<label>
+											<input name="line-cap" type="radio" data-attr="lineCap" value="round" /><span>round</span>
+										</label>
+										<label>
+											<input name="line-cap" type="radio" data-attr="lineCap" value="square" /><span>square</span>
+										</label>
+									</fieldset>
+								</form>						
 						</div>					
 					</div><!-- end .brush -->
 					
@@ -274,7 +317,12 @@
 					
 					<div class="flood-fill wrap">	
 						<div id="tool-flood-fill-attribute-panel" class="tool-attribute-panel" title="油漆桶属性面板">
-							<label>opacity：<input type="range" max="100" data-attr="opacity" value="100" /><span>100</span></label>	
+							<form>
+								<fieldset>
+									<legend>property</legend>
+									<label>opacity：<input type="range" max="100" data-attr="opacity" value="100" /><span>100</span></label>	
+								</fieldset>
+							</form>
 						</div>					
 					</div><!-- end .brush -->
 				</div><!-- end .tool-panel -->

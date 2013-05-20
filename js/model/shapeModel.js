@@ -778,7 +778,14 @@
             
             //设置属性
             context.strokeStyle = option.color;
-            context.lineWidth = option.lineWidth;          
+            context.lineWidth = option.lineWidth;
+            context.shadowOffsetX = option.shadowOffsetX;
+            context.shadowOffsetY = option.shadowOffsetY;
+            context.shadowBlur = option.shadowBlur;
+            context.shadowColor = option.shadowColor;
+            context.lineJoin = option.lineJoin;
+            context.lineCap = option.lineCap;
+            context.globalAlpha = option.opacity / 100;          
             
             //绘制
             context.beginPath();
@@ -929,7 +936,14 @@
             
             //设置属性
             context.strokeStyle = option.strokeStyle;
-            context.lineWidth = option.lineWidth; 
+            context.lineWidth = option.lineWidth;
+            context.shadowOffsetX = option.shadowOffsetX;
+            context.shadowOffsetY = option.shadowOffsetY;
+            context.shadowBlur = option.shadowBlur;
+            context.shadowColor = option.shadowColor;
+            context.lineJoin = option.lineJoin;
+            context.lineCap = option.lineCap;
+            context.globalAlpha = option.opacity / 100; 
             
             //描述图形
             context.beginPath();

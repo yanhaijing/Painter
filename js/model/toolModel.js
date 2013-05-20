@@ -501,12 +501,12 @@
               $attributePanel = $('#tool-stroke-attribute-panel'),
               width = $('.width',$attributePanel).eq(0).val(),
               opacity = $('.opacity',$attributePanel).eq(0).val(),
-              color = $('#tool-wrap .tool .color').eq(0).val(),
-              lineJoin = $(':radio[name="line-join"]',$attributePanel).val(),
+              color = $('#tool-wrap .tool .color').eq(0).val(),              
               shadowOffsetX = $('.shadow-offsetx',$attributePanel).eq(0).val(),
               shadowOffsetY = $('.shadow-offsety',$attributePanel).eq(0).val(),
               shadowBlur = $('.shadow-blur',$attributePanel).eq(0).val(),
               shadowColor = $('.shadow-color',$attributePanel).eq(0).val(),
+              lineJoin = $(':radio[name="line-join"]',$attributePanel).val(),
               lineCap = $(':radio[name="line-cap"]',$attributePanel).val();       
             
             //设置参数
@@ -832,12 +832,23 @@
               $attributePanel = $('#tool-eraser-attribute-panel'),
               width = $('.width',$attributePanel).eq(0).val(),
               opacity = $('.opacity',$attributePanel).eq(0).val(),
-              color = $('#tool-wrap .tool .color').eq(0).val();       
+              shadowOffsetX = $('.shadow-offsetx',$attributePanel).eq(0).val(),
+              shadowOffsetY = $('.shadow-offsety',$attributePanel).eq(0).val(),
+              shadowBlur = $('.shadow-blur',$attributePanel).eq(0).val(),
+              shadowColor = $('.shadow-color',$attributePanel).eq(0).val(),
+              lineJoin = $(':radio[name="line-join"]',$attributePanel).val(),
+              lineCap = $(':radio[name="line-cap"]',$attributePanel).val();       
             
             //设置参数
             return this.setOption({
                 lineWidth: width,
-                color:'#fff'
+                color:'#fff',
+                shadowOffsetX:shadowOffsetX,
+                shadowOffsetY:shadowOffsetY,
+                shadowBlur:shadowBlur,
+                shadowColor:shadowColor,
+                lineJoin: lineJoin,
+                lineCap:lineCap
             });
         };
         

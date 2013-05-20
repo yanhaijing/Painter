@@ -34,7 +34,7 @@
                 lineWidth:1,
                 strokeStyle:option.strokeStyle,
                 radius:Math.ceil(option.lineWidth /2),
-                opacity:80
+                opacity:100                
             });
             this.setPoints(points);//设置点    
             //设置鼠标图形
@@ -121,7 +121,14 @@
             this.setOption({
                 length:10,
                 lineHeight:1,
-                strokeStyle:option.strokeStyle
+                opacity:100,
+                strokeStyle:option.strokeStyle,
+                lineJoin:option.lineJoin,
+                lineCap:option.lineCap,
+                shadowOffsetX:option.shadowOffsetX,
+                shadowOffsetY:option.shadowOffsetY,
+                shadowBlur:option.shadowBlur,
+                shadowColor:option.shadowColor
             });
             this.setPoints(points);//设置点    
             //设置鼠标图形
@@ -151,8 +158,14 @@
             //设置参数
             this.setOption({
                 strokeStyle:'#000',
-                opacity:50,
-                radius:Math.ceil(option.lineWidth / 2, 10)
+                opacity:option.opacity,
+                radius:Math.ceil(option.lineWidth / 2, 10),
+                lineJoin:option.lineJoin,
+                lineCap:option.lineCap,
+                shadowOffsetX:option.shadowOffsetX,
+                shadowOffsetY:option.shadowOffsetY,
+                shadowBlur:option.shadowBlur,
+                shadowColor:option.shadowColor
             });
             this.setPoints(points);//设置点    
             //设置鼠标图形
@@ -188,7 +201,7 @@
             //设置参数
             this.setOption({
                 strokeStyle:'#000',
-                opacity:50,
+                opacity:90,
                 radius:Math.ceil(option.lineWidth / 2, 10)
             });
             this.setPoints(points);//设置点    
@@ -213,7 +226,7 @@
             //设置参数
             this.setOption({
                 strokeStyle:'#000',
-                opacity:50,
+                opacity:90,
                 radius:Math.ceil(option.lineWidth / 2, 10)
             });
             this.setPoints(points);//设置点    
