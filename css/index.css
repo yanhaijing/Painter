@@ -9,14 +9,50 @@
 	height:100%;
 	background:#fff;
 	text-align: center;
-	font-size: 36px
 }
 .loading .progress{
-	margin: 10% auto 0;
+	margin: 5% auto 0;
 	width: 60%
 }
 .loading p{
 	margin-top:50px
+}
+.check-result,.check{
+	display: none
+}
+.check,.load{
+	font-size: 36px;
+}
+.check-result{
+	margin-top:30px
+}
+.check-result ul{
+	list-style: decimal
+}
+.check-result ul li{
+	text-align:left;
+	margin:10px 0 10px 25%
+}
+.check-result ul strong{
+	display: inline-block;
+	width:100px
+}
+.check-result ul span{
+	font-weight: bold
+}
+.check-result ul span.support{
+	color: #51A351;	
+}
+.check-result ul span.unsupport{
+	color: #F89406;
+}
+
+.check-result ul small{
+	margin-left: 30px;
+	color: #888888
+}
+.check-result .select, .check-result .sorry{
+	display: none
 }
 /*
  * header
@@ -57,7 +93,8 @@ nav h1{
  */
 .canvas-wrap{
 	position: relative;
-	background:#ffffff
+	background:#ffffff;
+	box-shadow: 0 0 3px #999
 }
 .canvas-paint{
 	position: absolute;

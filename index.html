@@ -37,10 +37,39 @@
 		<div id="loading" class="loading">			
 			<div class="progress progress-striped active">
 			  <div class="bar" style="width: 100%;"></div>
-			</div>
-			<p>
+			</div>			
+			<p class="load">
 				Loading core module please wait a while...
 			</p>
+			<p class="check">
+				Checking environment
+			</p>
+			<div class="check-result">
+				<ul>
+					<li class="check-canvas">
+						<strong>Canvas</strong>
+						<span class="unsupport">支持</span>
+						<small>注:支持意味着你能绘制，不支持不能绘制，你可能需要更换浏览器</small>
+					</li>
+					<li class="check-canvas-text">
+						<strong>绘制文字</strong>
+						<span class="unsupport">支持</span>
+						<small>注:支持意味着你能绘制文字，不支持不能绘制，若要绘制文字你可能需要更换浏览器</small>
+					</li>
+					<li class="check-range">
+						<strong>滑块</strong>
+						<span class="unsupport">支持</span>
+						<small>注:支持意味着你能运用滑块元素，不支持不能实用滑块，降级为输入框，如果你需要更好的体验可能要升级浏览器</small>
+					</li>
+				</ul>
+				<p class="select">
+					您的浏览器并不支持所有功能，但可以使用大部分功能，可能造成体验不完整，若想完整体验您可升级浏览器，推荐chrome，firefox，opera，safari，ie9+<br>
+					<button class="btn btn-success btn-large">马上使用</button>
+				</p>
+				<p class="sorry">
+					sorry，您的浏览器不支持html5，请升级浏览器吧
+				</p>
+			</div>			
 		</div><!-- end .loading -->
 		<div class="container-fluid">
 			<nav class="navbar">
@@ -391,8 +420,10 @@
 		<!-- 提示消息js -->
 		<script src="plugins/torangetek/torangetek.messager.js"></script>
 		
+		<!-- 检测环境 -->
+		<script src="plugins/modernizr/modernizr.custom.35897.js"></script>
 		<!-- 导入load js -->
-		<script src="js/controler/loading.js"></script>
+		<script src="js/controler/loading.js"></script>		
 				
 		<!-- 分享组件js -->
 		<script src="js/controler/share.js"></script>
