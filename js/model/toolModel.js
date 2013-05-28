@@ -135,6 +135,7 @@
 	 */
 	Line.prototype = new Tool();
 	
+	
 	/**
      * 矩形工具对象
      * @class Rectangle
@@ -204,6 +205,7 @@
      */
     Rectangle.prototype = new Tool();
     
+    
     /**
      * 圆角矩形工具对象
      * @class RoundRectangle
@@ -242,6 +244,7 @@
             });
         };        
     };
+    
     
     /**
      * 圆角矩形工具原型
@@ -309,6 +312,7 @@
              });
         };
     };
+    
     
     /**
      * 椭圆工具原型
@@ -400,6 +404,7 @@
      */
     ClosedCurve.prototype = new Pen();
     
+    
     /**
      * 橡皮工具对象
      * @class Eraser
@@ -459,8 +464,9 @@
      */
     Eraser.prototype = new Tool();
     
+    
     /**
-     * 橡皮工具对象
+     * 油漆桶工具对象
      * @class FloodFill
      * @constructor
      * @extend FloodFill.prototype
@@ -505,14 +511,14 @@
     };
     
     /**
-     * 橡皮工具原型
+     * 油漆桶工具原型
      * @class FloodFill.prototype
      * @strict
      */
     FloodFill.prototype = new Tool();
     
     /**
-     * 橡皮工具对象
+     * 吸管工具对象
      * @class EyeDropper
      * @constructor
      * @extend EyeDropper.prototype
@@ -557,7 +563,7 @@
     };
     
     /**
-     * 橡皮工具原型
+     * 吸管工具原型
      * @class FloodFill.prototype
      * @strict
      */

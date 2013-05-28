@@ -424,14 +424,14 @@
     };
     
     /**
-     * 铅笔对象原型
+     * 橡皮对象原型
      * @class Eraser.prototype
      * @static 
      */
     Eraser.prototype = new Shape();
     
         /**
-     * 铅笔对象
+     * 油漆桶对象
      * @class FloodFill
      * @constructor
      * @extends FloodFill.prorotype 
@@ -443,7 +443,7 @@
          * @type String
          * @default Shape
          */
-        this.name = 'Eraser';
+        this.name = 'FloodFill';
         
         /**
          * 绘制矩形图形
@@ -457,23 +457,25 @@
             context.save();//保存上下文信息            
             
             //设置属性
-            context.fillStyle = option.fillStyle;          
+            context.fillStyle = option.fillStyle;  
+            context.globalAlpha = option.opacity / 100;         
             
             //绘制
-            context.fillRect(0,0,1000,400);
+            context.fillRect(0,0,global.painter.canvas.currentCanvasContainer.getCanvas().getWidth()
+,global.painter.canvas.currentCanvasContainer.getCanvas().getHeight());
             context.restore();//回复上下文
         };
-    };
-    
+    }; 
     /**
-     * 铅笔对象原型
+     * 油漆桶对象原型
      * @class FloodFill.prototype
      * @static 
      */
     FloodFill.prototype = new Shape();
+   
     
-            /**
-     * 铅笔对象
+    /**
+     * 吸管对象
      * @class EyeDropper
      * @constructor
      * @extends EyeDropper.prorotype 
@@ -505,7 +507,7 @@
     };
     
     /**
-     * 铅笔对象原型
+     * 吸管对象原型
      * @class EyeDropper.prototype
      * @static 
      */

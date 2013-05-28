@@ -26,7 +26,10 @@ nav h1{
 .canvas-paint{
 	position: absolute;
 	top:0;
-	left:0
+	left:0;
+}
+.canvas-layer,.canvas-buffer{
+	outline:1px solid #9294aa;
 }
 /**
  * 	工具栏
@@ -132,3 +135,10 @@ nav h1{
 footer p{
 	text-align:center
 }
+.navbar-inner,.container-fluid{
+	background: rgba(244,119,213,0.3);
+}
+.tool-panel{
+	background: rgba(244,119,213,0);
+}
+
