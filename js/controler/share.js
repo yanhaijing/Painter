@@ -38,6 +38,5 @@
         s.push(i + '=' + encodeURIComponent(p[i] || ''));
     }
     $("#nav-share-qq > a").attr("href", "http://connect.qq.com/widget/shareqq/index.html?" + s.join('&'));
-    //document.write(['<a class="qcShareQQDiv" href="http://connect.qq.com/widget/shareqq/index.html?', s.join('&'), '" target="_blank">分享到QQ</a>'].join(''));
 })(); 
 

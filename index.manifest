@@ -8,6 +8,7 @@ js/controler/canvas.js
 js/controler/loading.js
 js/controler/nav.js
 js/controler/tool.js
+js/controler/share.js
 js/model/canvasContainerModel.js
 js/model/canvasModel.js
 js/model/mouseModel.js
