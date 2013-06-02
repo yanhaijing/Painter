@@ -30,7 +30,7 @@ css/reset.css
 plugins/bootstrap/css/bootstrap.min.css
 plugins/bootstrap/css/bootstrap-responsive.min.css
 plugins/bootstrap/img/glyphicons-halflings.png
-plugins/bootstrap/bootstrap.min.js
+plugins/bootstrap/js/bootstrap.min.js
 
 #jqueryui+
 plugins/jqueryui+/ui/minified/jquery-ui.min.js
