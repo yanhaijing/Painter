@@ -330,11 +330,66 @@ nav h1{
 .tool-panel .text .text-stroke{
 	background-image:url("../images/tool-button-text-stroke.gif");
 }
+#tool-text-attribute-panel .font{
+	font-size: 18px;
+}
+#tool-text-attribute-panel .font option{
+	font-size: 24px;
+	font-weight: bolder
+}
 #tool-text-attribute-panel .font .serif{
 	font-family: serif
 }
 #tool-text-attribute-panel .font .sans-serif{
 	font-family:sans-serif
+}
+#tool-text-attribute-panel .font .arial{
+	font-family:"Arial";
+}
+#tool-text-attribute-panel .font .arial-black{
+	font-family:"Arial Black"
+}
+#tool-text-attribute-panel .font .terminal{
+	font-family:Terminal
+}
+#tool-text-attribute-panel .font .verdana{
+	font-family:Verdana
+}
+#tool-text-attribute-panel .font .fangzhengshuti{
+	font-family:"方正舒体"
+}
+#tool-text-attribute-panel .font .fangzhengyaoti{
+	font-family:"方正姚体"
+}
+#tool-text-attribute-panel .font .heiti{
+	font-family:"黑体"
+}
+#tool-text-attribute-panel .font .huawencaiyun{
+	font-family:"华文彩云"
+}
+#tool-text-attribute-panel .font .huawenhupo{
+	font-family:"华文琥珀"
+}
+#tool-text-attribute-panel .font .huawenxinwei{
+	font-family:"华文新魏"
+}
+#tool-text-attribute-panel .font .huawenzhongsong{
+	font-family:"华文中宋"
+}
+#tool-text-attribute-panel .font .kaiti{
+	font-family:"楷体_GB2312"
+}
+#tool-text-attribute-panel .font .lishu{
+	font-family:"隶书"
+}
+#tool-text-attribute-panel .font .songti{
+	font-family:"宋体"
+}
+#tool-text-attribute-panel .font .weiruanyahei{
+	font-family:"微软黑体"
+}
+#tool-text-attribute-panel .font .youyuan{
+	font-family:"幼圆"
 }
 /**
  * 	文字工具属性面板
