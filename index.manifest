@@ -1,0 +1,14 @@
+CACHE MANIFEST 
+# 上一行是必须书写的。
+
+#js
+js/*
+
+#css
+css/*
+
+#plugins
+plugins/*
+
+#images
+images/*
