@@ -883,7 +883,6 @@
                color = "rgba(".concat(r, ",", g, ",", b, ",", a, ")");
                
             $color.spectrum("set", color);
-            global.console.log(color,datas);
         };  
         this.repaint = function(){
             //do nothing

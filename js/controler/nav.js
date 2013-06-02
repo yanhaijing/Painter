@@ -33,7 +33,6 @@
                     currentCanvasDom = global.painter.canvas.currentCanvasContainer.getCanvas().getCanvas(),
                     $imgView = $("#save-image").get(0);                                 
                 $imgView.src = currentCanvasDom.toDataURL();
-                global.console.log("导出按钮被点击了");
             });
             
             //绑定保存按钮事件
@@ -41,40 +40,34 @@
                 var currentCanvas = global.painter.canvas.currentCanvasContainer.getCanvas();
                 currentCanvas.save();//撤销上一部
                 $.fn.TorangeNotice({type:'success', content:'保存成功'});//弹出提示
-                global.console.log("保存按钮被点击了");
             });
             
             //帮顶撤销按钮事件
             $document.delegate("#nav-edit-undo", "click", function(e){
                 var currentCanvas = global.painter.canvas.currentCanvasContainer.getCanvas();
                 currentCanvas.undo();//撤销上一部
-                global.console.log("撤销按钮被电击了");
             });
             
             //帮顶清空按钮事件
             $document.delegate("#nav-edit-clear", "click", function(e){
                 var currentCanvas = global.painter.canvas.currentCanvasContainer.getCanvas();
-                currentCanvas.clear();//撤销上一部
-                global.console.log("清空按钮被点击了");
+                currentCanvas.clear();//撤销上一部            
             });
             
             //帮顶倒置按钮事件
             $document.delegate("#nav-edit-convert", "click", function(e){
                 var currentCanvas = global.painter.canvas.currentCanvasContainer.getCanvas();
                 currentCanvas.convert();//撤销上一部
-                global.console.log("倒置按钮被点击了");
             });
             //帮顶水平按钮事件
             $document.delegate("#nav-edit-flipx", "click", function(e){
                 var currentCanvas = global.painter.canvas.currentCanvasContainer.getCanvas();
                 currentCanvas.flipX();//撤销上一部
-                global.console.log("水平翻转按钮被点击了");
             });
             //帮顶垂直翻转按钮事件
             $document.delegate("#nav-edit-flipy", "click", function(e){
                 var currentCanvas = global.painter.canvas.currentCanvasContainer.getCanvas();
                 currentCanvas.flipY();//撤销上一部
-                global.console.log("水平翻转按钮被点击了");
             });                        
        }
     };

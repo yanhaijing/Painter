@@ -205,7 +205,6 @@
 			    
 			    //更新提示
 			    $info.html(value);
-			    global.console.log($this.val());
 			});
 			//绑定属性面板复选框属性更改事件
 			$document.delegate('.tool-attribute-panel :checkbox', "change", function(e){
@@ -221,7 +220,6 @@
                 option[attr] = checked === "checked" ? value : "";//获取数据
                 currentTool.setOption(option);
 
-                global.console.log(option[attr]);
             });
             //绑定属性面板单选框属性更改事件
             $document.delegate('.tool-attribute-panel :radio', "change", function(e){
@@ -235,8 +233,6 @@
                 //更新当前工具对象参数     
                 option[attr] = value;//获取数据
                 currentTool.setOption(option);
-
-                global.console.log(option[attr]);
             });
 		}
 	};

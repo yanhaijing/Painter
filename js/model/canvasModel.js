@@ -495,7 +495,6 @@
                 }
                 value = global.JSON.stringify(tempList);
                 storage.save(key, value);               
-                global.console.log("保存数据");
             }                                   
         },
         
@@ -526,7 +525,6 @@
                 
                 //重绘
                 this.repaint();
-                global.console.log("载入数据");
             }
         },
         
