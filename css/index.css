@@ -13,7 +13,8 @@
 }
 .loading .progress{
 	margin: 5% auto 0;
-	width: 60%
+	width: 60%;
+	font-style: oblique
 }
 .loading p{
 	margin-top:5%
