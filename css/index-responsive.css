@@ -1,0 +1,37 @@
+/* 大屏幕 */
+@media (min-width: 1200px) {}
+ 
+/* 平板电脑和小屏电脑之间的分辨率 */
+@media (min-width: 768px) and (max-width: 979px) {}
+ 
+/* 横向放置的手机和竖向放置的平板之间的分辨率 */
+@media (max-width: 767px) {
+	.check-result ul small{
+		display: none
+	}
+	nav h1{
+		display: none
+	}
+	.tool button{
+		width:14%
+	}
+	.tool .spectrum-color{
+		width:5%;
+		height:70%;
+		padding:0
+	}
+	.spectrum-color .sp-dd{
+		display: none
+	}
+}
+ 
+/* 横向放置的手机及分辨率更小的设备 */
+@media (max-width: 480px) {	
+	.navbar .nav > li > a{
+		padding: 10px 5px;
+	}
+	.check,.load{
+		font-size: 18px;
+		line-height: 1.2em
+	}
+}

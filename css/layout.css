@@ -60,21 +60,7 @@ body{
 	margin:auto;
 	height:50%
 }
-.tool button{
-	width:40px;
-	height:40px;
-	margin:10px 0 0 10px
-}
 .tool-panel{
 	background:#FFFFFF;
 	height:50%
-}
-/**
- * 	工具面板
- * -----------------------------------
- */
-.tool-panel button{
-	width:40px;
-	height:40px;
-	margin:10px 0 0 10px
 }

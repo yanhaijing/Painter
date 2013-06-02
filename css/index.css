@@ -9,19 +9,21 @@
 	height:100%;
 	background:#fff;
 	text-align: center;
+	left:0
 }
 .loading .progress{
 	margin: 5% auto 0;
 	width: 60%
 }
 .loading p{
-	margin-top:50px
+	margin-top:5%
 }
 .check-result,.check{
 	display: none
 }
 .check,.load{
 	font-size: 36px;
+	line-height: 1.5em
 }
 .check-result{
 	margin-top:30px
@@ -125,7 +127,11 @@ nav h1{
  * 	工具栏
  * -----------------------------------
  */
+
 .tool button{
+	width:40px;
+	height:80%;
+	margin:5px 0 0 0.1%;
 	border:0;
 	border-radius: 5px;
 	background-repeat:no-repeat;
@@ -206,7 +212,7 @@ nav h1{
 }
 
 .tool .spectrum-color{
-	margin:4px 0 0 10px;
+	margin:4px 0 0 0.1%;
 }
 /**
  * 	工具属性面版
@@ -249,7 +255,11 @@ nav h1{
  * 	工具面板
  * -----------------------------------
  */
+
 .tool-panel button{
+	width:40px;
+	height:80%;
+	margin:5px 0 0 0.2%;
 	border:0;
 	border-radius:5px;
 	background-repeat:no-repeat;
@@ -258,6 +268,7 @@ nav h1{
 }
 .tool-panel .wrap{
 	display:none;
+	height: 100%
 }
 .tool-panel .wrap button:hover{
 	background-color:#E5DEDE
