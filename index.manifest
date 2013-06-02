@@ -43,6 +43,8 @@ plugins/jqueryui+/themes/base/minified/images/ui-icons_222222_256x240.png
 plugins/jqueryui+/themes/base/minified/images/ui-bg_highlight-soft_75_cccccc_1x100.png
 plugins/jqueryui+/themes/base/minified/images/ui-bg_glass_75_e6e6e6_1x400.png
 plugins/jqueryui+/themes/base/minified/images/ui-icons_888888_256x240.png
+plugins/jqueryui+/themes/base/minified/images/ui-bg_glass_75_dadada_1x400.png
+plugins/jqueryui+/themes/base/minified/images/ui-icons_454545_256x240.png
 
 #modernizr
 plugins/modernizr/modernizr.custom.35897.js
