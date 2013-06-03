@@ -92,11 +92,13 @@
                     canvas = global.painter.canvas,
                     currentCanvas = canvas.currentCanvasContainer.getCanvas(),
                     bufferCanvas = canvas.bufferCanvasContainer.getCanvas(),
-                    mouseCanvas = canvas.mouseCanvasContainer.getCanvas();
+                    mouseCanvas = canvas.mouseCanvasContainer.getCanvas(),
+                    negativeCanvas = global.painter.canvas.negativeCanvasContainer.getCanvas();
                  //更新各个画布   
                  currentCanvas.updateSize();
                  bufferCanvas.updateSize();
                  mouseCanvas.updateSize();
+                 negativeCanvas.updateSize();
              });
              
              //=================================================
@@ -120,9 +122,21 @@
              //确定事件
              $document.delegate("#negative-modal-ok", "click", function(e){
                  var
-                    $negativeCanvas = $("#image-negative");
-                
-                 $negativeCanvas.attr("src", fileResult);    
+                    negativeCanvas = global.painter.canvas.negativeCanvasContainer.getCanvas(),
+                    image = new global.painter.model.shapeModel.ImageShape(),
+                    img = new Image();
+                 
+                 img.src = fileResult;
+                 
+                 img.onload = function(){
+                     image.init({
+                         x:0,
+                         y:0,
+                         image: img
+                     });
+                     
+                     negativeCanvas.paint(image);
+                 };   
              });
              
               //=================================================

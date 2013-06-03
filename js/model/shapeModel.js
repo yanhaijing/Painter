@@ -1122,6 +1122,9 @@
                y = option.y,
                image = option.image;
             
+            if(image.src === undefined){
+                return 0;
+            }
             context.save();//保存上下文信息            
             
             //设置属性
