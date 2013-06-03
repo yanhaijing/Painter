@@ -63,15 +63,29 @@
          */
         init:function(){
             var
+            
+                negativeCanvasDom = $('.canvas-negative').get(0),
+                negativeCanvas = new global.painter.model.CanvasModel(),
+                negativeCanvasContainer = Object.create(global.painter.model.CanvasContainerModel),
+                
                 currentCanvasDom = $('.canvas-layer').get(0),
                 currentCanvas = new global.painter.model.CanvasModel(),
                 currentCanvasContainer = Object.create(global.painter.model.CanvasContainerModel),
+                
                 bufferCanvasDom = $('.canvas-buffer').get(0),
                 bufferCanvas = new global.painter.model.CanvasModel(),
                 bufferCanvasContainer = Object.create(global.painter.model.CanvasContainerModel),
+                
                 mouseCanvasDom = $('.canvas-mouse').get(0),
                 mouseCanvas = new global.painter.model.CanvasModel(),
                 mouseCanvasContainer = Object.create(global.painter.model.CanvasContainerModel);
+            
+            //初始化当前缓冲画布
+            negativeCanvas.init(negativeCanvasDom, "negativeCanvas");
+            negativeCanvasContainer.init(negativeCanvas);
+            global.painter = global.painter || {};
+            global.painter.canvas = global.painter.canvas || {};
+            global.painter.canvas.negativeCanvasContainer = negativeCanvasContainer;
                 
             //初始化当前画布
             currentCanvas.init(currentCanvasDom, "currentCanvas");

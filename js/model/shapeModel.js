@@ -35,7 +35,12 @@
         //文字类
         Text,
         //文本轮廓类
-        TextStroke;
+        TextStroke,
+        
+        //图像
+        ImageShape;
+        
+        
     /**
      * Shape 构造函数
      * @class Shape
@@ -118,7 +123,16 @@
          */
          repaint:function(context){
             this.paint(context);
-         }
+         },
+         
+         /**
+         * 设置填充轮廓类图形的属性
+         * @method setAttributes
+         * @param {Object} context 设置的上下文
+         */
+        setAttributes:function(context){
+            //nothing
+        }
 	};
 	
 	/**
@@ -1077,6 +1091,51 @@
      * @static 
      */
     TextStroke.prototype = new Text();
+    
+    /**
+     * 图像类对象
+     * @class ImageShape
+     * @constructor
+     * @extends ImageShape.prorotype 
+     */
+    ImageShape = function(){
+       /**
+         * 名称
+         * @property name
+         * @type String
+         * @default Shape
+         */
+        this.name = 'ImageShape';        
+        
+        /**
+         * 绘制矩形图形
+         * @method paint
+         * @param {Object} context 绘图上下文 
+         */
+        this.paint = function(context){
+           var 
+               option = this.getOption(),
+               x = option.x,
+               y = option.y,
+               image = option.image;
+            
+            context.save();//保存上下文信息            
+            
+            //设置属性
+            this.setAttributes(context); 
+            
+            //绘制图形      
+            context.drawImage(image, x, y);          
+            context.restore();//回复上下文
+        };   
+    };
+        
+    /**
+     * 图像类原型
+     * @class ImageShape.prototype
+     * @static 
+     */
+    ImageShape.prototype = new Shape();
 	
 	//添加变量
 	global.painter = global.painter || {};
@@ -1100,4 +1159,5 @@
 	global.painter.model.shapeModel.EllipesStroke = EllipesStroke;
 	global.painter.model.shapeModel.Text = Text;
 	global.painter.model.shapeModel.TextStroke = TextStroke;
+	global.painter.model.shapeModel.ImageShape = ImageShape;
 }(jQuery, window));

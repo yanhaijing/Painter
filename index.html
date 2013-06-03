@@ -88,6 +88,9 @@
 									<a href="#"><b class="icon-folder-open"></b> 打开<i>Ctrl+O</i></a>
 								</li>
 								<li>
+									<a id="nav-file-negative"  data-toggle="modal" href="#negative-modal"><b class="icon-folder-open"></b> 导入底片<i></i></a>
+								</li>
+								<li>
 									<a id="nav-file-save" href="#"><b class="icon-ok"></b> 保存 <i>Ctrl+S</i></a>
 								</li>
 								<li>
@@ -149,6 +152,8 @@
 			<div class="row-fluid main-wrap">
 				<div class="span12 canvas-wrap">
 					<canvas width="1000" height="400" id="canvas-background" class="canvas-paint canvas-background"></canvas>
+					<canvas width="1000" height="400" class="canvas-paint canvas-negative"></canvas>
+					<img id="image-negative" class="canvas-paint negative" />
 					<canvas width="1000" height="400" class="canvas-paint canvas-layer"></canvas>
 					<canvas width="1000" height="400" class="canvas-paint canvas-buffer"></canvas>
 					<canvas width="1000" height="400" id="canvas-mouse" class="canvas-paint canvas-mouse"></canvas>
@@ -381,6 +386,30 @@
 				</p>
 			</footer>
 			
+			<!-- 导入底片 -->
+			<div id="negative-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				  <div class="modal-header">
+				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				    <h3 id="myModalLabel">导入底片</h3>
+				  </div>
+				  <div class="modal-body">
+				    <form>
+				    	<fieldset>
+				    		<legend>导入图片</legend>
+				    		<input id="negative-modal-file" type="file" />
+				    	</fieldset>
+				    	<p>				    		
+				    		<img id="negative-modal-view" />
+				    	</p>
+				    </form>
+				  </div>
+				  <div class="modal-footer">
+				    <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+				    <button id="negative-modal-ok" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">确定</button>
+				  </div>
+				</div>
+			</div><!-- end .container -->
+		
 			<!-- 保存图片预览 -->
 			<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			  <div class="modal-header">
@@ -391,7 +420,7 @@
 			    <p><img id="save-image" src="images/Painter.gif" style="outline: 1px solid #ff0"></p>
 			  </div>
 			  <div class="modal-footer">
-			    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+			    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>			    
 			  </div>
 			</div>
 		</div><!-- end .container -->

@@ -22,7 +22,8 @@
          
          bindEvent:function(){
              var
-                $document = $(document);
+                $document = $(document),
+                fileResult = null;
              
              //绑定撤销键盘事件ctrl+z   
              $document.bind("keydown", function(e){
@@ -95,6 +96,39 @@
                  currentCanvas.updateSize();
                  bufferCanvas.updateSize();
                  mouseCanvas.updateSize();
+             });
+             
+             //=================================================
+             //帮顶导入底片模态框事件
+             
+             //文件输入框改变事件
+             $document.delegate("#negative-modal-file", "change", function(e){
+                 var
+                    files = e.target.files,
+                    reader = new FileReader(),
+                    $view = $("#negative-modal-view"),
+                    url = createObjectURL(files[0]);
+                 
+                 function createObjectURL(blob){
+                     if(window.URL){
+                         return window.URL.createObjectURL(blob);
+                     }else if(window.webkitURL){
+                         return window.webkitURL.createObjectURL(blob);
+                     }else{
+                         return null;
+                     }
+                 }
+                 
+                 fileResult = url;
+                 $view.attr("src", url);
+             });
+             
+             //确定事件
+             $document.delegate("#negative-modal-ok", "click", function(e){
+                 var
+                    $negativeCanvas = $("#image-negative");
+                
+                 $negativeCanvas.attr("src", fileResult);    
              });
          }
     };
