@@ -32,6 +32,7 @@ css/index-responsive.css
 plugins/bootstrap/css/bootstrap.min.css
 plugins/bootstrap/css/bootstrap-responsive.min.css
 plugins/bootstrap/img/glyphicons-halflings.png
+plugins/bootstrap/img/glyphicons-halflings-white.png
 plugins/bootstrap/js/bootstrap.min.js
 
 #jqueryui+

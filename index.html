@@ -111,6 +111,9 @@
 									<a id="nav-edit-clear" href="#"><b class="icon-trash"></b> 清空<i>Ctrl+D</i></a>
 								</li>
 								<li>
+									<a id="nav-edit-clear-negative" href="#"><b class="icon-trash"></b> 清空底片<i></i></a>
+								</li>
+								<li>
 									<a id="nav-edit-convert" href="#"><b class="icon-random"></b> 倒置<i>Ctrl+R</i></a>
 								</li>
 								<li>
@@ -398,11 +401,22 @@
 				    <form>
 				    	<fieldset>
 				    		<legend>导入图片</legend>
-				    		<input id="negative-modal-file" type="file" accept="images" />
+				    		<label><input id="negative-modal-file" type="file" accept="image/*" /></label>				    		
 				    	</fieldset>
-				    	<p>				    		
-				    		<img id="negative-modal-view" />
-				    	</p>
+				    	<fieldset>
+				    		<legend>属性</legend>
+				    		<label>x坐标 <input id="negative-modal-x" type="number" min="0" max="2000" value="10" /></label>
+				    		<label>y坐标 <input id="negative-modal-y" type="number" min="0" max="1000" value="10" /></label>
+				    		<label>宽度 <input id="negative-modal-width" type="number" min="0" max="2000" value="800" /></label>
+				    		<label>高度 <input id="negative-modal-height" type="number" min="0" max="1000" value="600" /></label>
+				    	</fieldset>
+				    	<fieldset>
+				    		<legend>预览</legend>
+				    		<figure>
+					    		<figcaption>预览</figcaption>
+					    		<img id="negative-modal-view" />
+					    	</figure>
+				    	</fieldset>				    				    					    						    	
 				    </form>
 				  </div>
 				  <div class="modal-footer">
@@ -422,11 +436,22 @@
 				    <form>
 				    	<fieldset>
 				    		<legend>导入图片</legend>
-				    		<input id="image-modal-file" type="file" />
+				    		<label><input id="image-modal-file" type="file" accept="image/*" /></label>				    		
 				    	</fieldset>
-				    	<p>				    		
-				    		<img id="image-modal-view" />
-				    	</p>
+				    	<fieldset>
+				    		<legend>属性</legend>
+				    		<label>x坐标 <input id="image-modal-x" type="number" min="0" max="2000" value="10" /></label>
+				    		<label>y坐标 <input id="image-modal-y" type="number" min="0" max="1000" value="10" /></label>
+				    		<label>宽度 <input id="image-modal-width" type="number" min="0" max="2000" value="800" /></label>
+				    		<label>高度 <input id="image-modal-height" type="number" min="0" max="1000" value="600" /></label>
+				    	</fieldset>
+				    	<fieldset>
+				    		<legend>预览</legend>
+				    		<figure>
+					    		<figcaption>预览</figcaption>
+					    		<img id="image-modal-view" />
+					    	</figure>
+				    	</fieldset>				    				    					    						    	
 				    </form>
 				  </div>
 				  <div class="modal-footer">

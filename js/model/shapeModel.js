@@ -1120,19 +1120,24 @@
                option = this.getOption(),
                x = option.x,
                y = option.y,
-               image = option.image;
+               src = option.src,
+               width = option.width,
+               height = option.height,
+               image = new Image(),
+               that = this;
             
-            if(image.src === undefined){
-                return 0;
-            }
-            context.save();//保存上下文信息            
+            image.src = src;
             
-            //设置属性
-            this.setAttributes(context); 
+            image.onload = function(){
+                context.save();//保存上下文信息            
             
-            //绘制图形      
-            context.drawImage(image, x, y);          
-            context.restore();//回复上下文
+                //设置属性
+                that.setAttributes(context); 
+                
+                //绘制图形      
+                context.drawImage(image, x, y, width, height);          
+                context.restore();//回复上下文
+            };            
         };   
     };
         

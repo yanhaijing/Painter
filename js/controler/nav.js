@@ -54,6 +54,12 @@
                 currentCanvas.clear();//撤销上一部            
             });
             
+            //帮顶清空底片按钮事件
+            $document.delegate("#nav-edit-clear-negative", "click", function(e){
+                var negativeCanvas = global.painter.canvas.negativeCanvasContainer.getCanvas();
+                negativeCanvas.clear();//撤销上一部            
+            });
+            
             //帮顶倒置按钮事件
             $document.delegate("#nav-edit-convert", "click", function(e){
                 var currentCanvas = global.painter.canvas.currentCanvasContainer.getCanvas();

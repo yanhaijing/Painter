@@ -26,6 +26,10 @@
                 fileResult = null,
                 imageResult = null;
              
+             //帮顶关闭事件
+             $(window).unload(function(e){
+                 $("#nav-edit-save").trigger('click');//触发撤销按钮事件
+             });
              //绑定撤销键盘事件ctrl+z   
              $document.bind("keydown", function(e){
                 if(e.ctrlKey && e.keyCode === 90){
@@ -108,14 +112,27 @@
              $document.delegate("#negative-modal-file", "change", function(e){
                  var
                     files = e.target.files,
-                    reader = new FileReader(),
-                    $view = $("#negative-modal-view");
+                    reader = new FileReader();
                  
                  reader.readAsDataURL(files[0]);
                  
                  reader.onload = function(){
+                     var
+                     
+                         $negativeModal = $("#negative-modal"),
+                         $view = $("#negative-modal-view", $negativeModal);
                      fileResult = reader.result;
                      $view.attr("src", reader.result);
+                     
+                     $view.bind("load", function(){
+                         var
+                         
+                             $negativeModal = $("#negative-modal"),
+                             $width = $("#negative-modal-width", $negativeModal),
+                             $height = $("#negative-modal-height", $negativeModal);
+                         $width.val($(this).width());
+                         $height.val($(this).height());
+                     });                     
                  }; 
              });
              
@@ -124,19 +141,21 @@
                  var
                     negativeCanvas = global.painter.canvas.negativeCanvasContainer.getCanvas(),
                     image = new global.painter.model.shapeModel.ImageShape(),
-                    img = new Image();
+                    $negativeModal = $("#negative-modal"),
+                    x = $("#negative-modal-x", $negativeModal).val(),
+                    y = $("#negative-modal-y", $negativeModal).val(),
+                    width = $("#negative-modal-width", $negativeModal).val(),
+                    height = $("#negative-modal-height", $negativeModal).val();                 
                  
-                 img.src = fileResult;
+                 image.init({
+                     x:x,
+                     y:y,
+                     width:width,
+                     height:height,
+                     src: fileResult
+                 });
                  
-                 img.onload = function(){
-                     image.init({
-                         x:0,
-                         y:0,
-                         image: img
-                     });
-                     
-                     negativeCanvas.paint(image);
-                 };   
+                 negativeCanvas.paint(image);  
              });
              
               //=================================================
@@ -146,14 +165,27 @@
              $document.delegate("#image-modal-file", "change", function(e){
                  var
                     files = e.target.files,
-                    reader = new FileReader(),
-                    $view = $("#image-modal-view");
+                    reader = new FileReader();
                  
                  reader.readAsDataURL(files[0]);
                  
                  reader.onload = function(){
+                     var
+                     
+                         $imageModal = $("#image-modal"),
+                         $view = $("#image-modal-view", $imageModal);
                      imageResult = reader.result;
                      $view.attr("src", reader.result);
+                     
+                     $view.bind("load", function(){
+                         var
+                         
+                             $imageModal = $("#image-modal"),
+                             $width = $("#image-modal-width", $imageModal),
+                             $height = $("#image-modal-height", $imageModal);
+                         $width.val($(this).width());
+                         $height.val($(this).height());
+                     });                     
                  };                
              });
              
@@ -162,19 +194,21 @@
                  var
                     currentCanvas = global.painter.canvas.currentCanvasContainer.getCanvas(),
                     image = new global.painter.model.shapeModel.ImageShape(),
-                    img = new Image();
+                    $imageModal = $("#image-modal"),
+                    x = $("#image-modal-x", $imageModal).val(),
+                    y = $("#image-modal-y", $imageModal).val(),
+                    width = $("#image-modal-width", $imageModal).val(),
+                    height = $("#image-modal-height", $imageModal).val();                 
                  
-                 img.src = imageResult;
+                 image.init({
+                     x:x,
+                     y:y,
+                     width:width,
+                     height:height,
+                     src: imageResult
+                 });
                  
-                 img.onload = function(){
-                     image.init({
-                         x:0,
-                         y:0,
-                         image: img
-                     });
-                     
-                     currentCanvas.paint(image);
-                 };                     
+                 currentCanvas.paint(image);                   
              });
          }
     };
