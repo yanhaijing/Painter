@@ -91,6 +91,9 @@
 									<a id="nav-file-negative"  data-toggle="modal" href="#negative-modal"><b class="icon-folder-open"></b> 导入底片<i></i></a>
 								</li>
 								<li>
+									<a id="nav-file-image"  data-toggle="modal" href="#image-modal"><b class="icon-folder-open"></b> 导入图片<i></i></a>
+								</li>
+								<li>
 									<a id="nav-file-save" href="#"><b class="icon-ok"></b> 保存 <i>Ctrl+S</i></a>
 								</li>
 								<li>
@@ -406,6 +409,30 @@
 				  <div class="modal-footer">
 				    <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
 				    <button id="negative-modal-ok" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">确定</button>
+				  </div>
+				</div>
+			</div><!-- end .container -->
+			
+			<!-- 导入底片 -->
+			<div id="image-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				  <div class="modal-header">
+				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				    <h3 id="myModalLabel">导入图片</h3>
+				  </div>
+				  <div class="modal-body">
+				    <form>
+				    	<fieldset>
+				    		<legend>导入图片</legend>
+				    		<input id="image-modal-file" type="file" />
+				    	</fieldset>
+				    	<p>				    		
+				    		<img id="image-modal-view" />
+				    	</p>
+				    </form>
+				  </div>
+				  <div class="modal-footer">
+				    <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+				    <button id="image-modal-ok" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">插入</button>
 				  </div>
 				</div>
 			</div><!-- end .container -->

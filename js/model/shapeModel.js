@@ -60,9 +60,9 @@
 	     * 图形参数
 	     * @property option
 	     * @type Object
-	     * @default null 
+	     * @default {} 
 	     */
-	    this.option = null;
+	    this.option = {};
 	};
 	
 	/**
@@ -104,7 +104,9 @@
          * @return {Bollean} 是否设置成功
          */
         setOption:function(option){
-            this.option = option;
+            $.extend(true, this.option, option);
+            
+            return this.option;
         },
         
         /**

@@ -23,7 +23,8 @@
          bindEvent:function(){
              var
                 $document = $(document),
-                fileResult = null;
+                fileResult = null,
+                imageResult = null;
              
              //绑定撤销键盘事件ctrl+z   
              $document.bind("keydown", function(e){
@@ -106,21 +107,14 @@
                  var
                     files = e.target.files,
                     reader = new FileReader(),
-                    $view = $("#negative-modal-view"),
-                    url = createObjectURL(files[0]);
+                    $view = $("#negative-modal-view");
                  
-                 function createObjectURL(blob){
-                     if(window.URL){
-                         return window.URL.createObjectURL(blob);
-                     }else if(window.webkitURL){
-                         return window.webkitURL.createObjectURL(blob);
-                     }else{
-                         return null;
-                     }
-                 }
+                 reader.readAsDataURL(files[0]);
                  
-                 fileResult = url;
-                 $view.attr("src", url);
+                 reader.onload = function(){
+                     fileResult = reader.result;
+                     $view.attr("src", reader.result);
+                 }; 
              });
              
              //确定事件
@@ -129,6 +123,44 @@
                     $negativeCanvas = $("#image-negative");
                 
                  $negativeCanvas.attr("src", fileResult);    
+             });
+             
+              //=================================================
+             //帮顶导入图片模态框事件
+             
+             //文件输入框改变事件
+             $document.delegate("#image-modal-file", "change", function(e){
+                 var
+                    files = e.target.files,
+                    reader = new FileReader(),
+                    $view = $("#image-modal-view");
+                 
+                 reader.readAsDataURL(files[0]);
+                 
+                 reader.onload = function(){
+                     imageResult = reader.result;
+                     $view.attr("src", reader.result);
+                 };                
+             });
+             
+             //确定事件
+             $document.delegate("#image-modal-ok", "click", function(e){
+                 var
+                    currentCanvas = global.painter.canvas.currentCanvasContainer.getCanvas(),
+                    image = new global.painter.model.shapeModel.ImageShape(),
+                    img = new Image();
+                 
+                 img.src = imageResult;
+                 
+                 img.onload = function(){
+                     image.init({
+                         x:0,
+                         y:0,
+                         image: img
+                     });
+                     
+                     currentCanvas.paint(image);
+                 };                     
              });
          }
     };
