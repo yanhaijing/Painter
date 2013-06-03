@@ -95,6 +95,7 @@
          * @param {Object} option 参数
          */
         initOption:function(option){
+			this.option = {};//初始化为空
             this.setOption(option);
         },
         /**
