@@ -40,6 +40,7 @@
                 var currentCanvas = global.painter.canvas.currentCanvasContainer.getCanvas();
                 currentCanvas.save();//撤销上一部
                 $.fn.TorangeNotice({type:'success', content:'保存成功'});//弹出提示
+                window.console.log("触发保存事件");
             });
             
             //帮顶撤销按钮事件

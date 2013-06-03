@@ -27,8 +27,11 @@
                 imageResult = null;
              
              //帮顶关闭事件
+             $(window).bind("beforeunload", function(e){
+                 return "图片尚未导出，您确定离开吗？";
+             });
              $(window).unload(function(e){
-                 $("#nav-edit-save").trigger('click');//触发撤销按钮事件
+                 $("#nav-file-save").trigger('click');//触发撤销按钮事件
              });
              //绑定撤销键盘事件ctrl+z   
              $document.bind("keydown", function(e){
