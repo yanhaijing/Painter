@@ -70,13 +70,6 @@ nav h1{
 	font-size: 16px;
 	line-height: 1.2em
 }
-#nav-share-qq,#nav-share-qzone{
-	padding: 10px 0 0 20px;
-	height:30px
-}
-#nav-share-qweibo{
-	padding: 5px 0 10px 20px;
-}
 #menu > li >ul >li{
 	position:relative
 }
