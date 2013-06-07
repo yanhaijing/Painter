@@ -1,0 +1,8 @@
+.container-fluid{
+	background-image: url(../images/pink.jpg);
+	background-size:100% 100%;
+	//opacity:0.3;
+}
+/*.tool-panel{
+	background: rgba(244,119,213,1);
+}

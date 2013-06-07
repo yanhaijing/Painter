@@ -135,10 +135,3 @@ nav h1{
 footer p{
 	text-align:center
 }
-.navbar-inner,.container-fluid{
-	background: rgba(244,119,213,0.3);
-}
-.tool-panel{
-	background: rgba(244,119,213,0);
-}
-
