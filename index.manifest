@@ -3,7 +3,6 @@ CACHE MANIFEST
 #version 1.0.0
 
 #js
-js/jquery-1.9.1.min.js
 js/controler/index.js
 js/controler/canvas.js
 js/controler/loading.js
@@ -28,6 +27,9 @@ css/index-responsive.css
 
 #plugins
 #====================================
+
+#jquery
+plugins/jquery/jquery-1.9.1.min.js
 
 #bootstrap
 plugins/bootstrap/css/bootstrap.min.css

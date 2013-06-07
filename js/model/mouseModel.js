@@ -1,8 +1,8 @@
 /**
  * 鼠标形状js
  * @author yan
- * @namespace model
  * @module mouse
+ * @namespace painter.model.mouseModel
  */
 (function($, global){
     "use strict";
@@ -19,13 +19,39 @@
      * 鼠标类
      * @class Mouse
      * @constructor
-     * @extends Mouse.prorotype
+     * @extends painter.model.mouseModel.Mouse.prototype
      */    
     Mouse = function(){
+        /**
+         * 鼠标名称
+         * @property name
+         * @type String
+         * @default "Mouse"
+         */
         this.name = "Mouse";
+        
+        /**
+         * 参数
+         * @property option
+         * @type Object
+         * @default {}
+         */
         this.option = {};
+        
+        /**
+         * 鼠标名称
+         * @property mouseShape
+         * @type Object
+         * @default null
+         */
         this.mouseShape = null;
         
+        /**
+         * 初始化
+         * @method init
+         * @param {Object} option 参数对象
+         * @param {Array} points 点
+         */
         this.init = function(option, points){
             var 
                 index = 'CircleStroke';
@@ -43,16 +69,20 @@
             this.setImage();//设置鼠标图片
         };
         
+        /**
+         * 绘制鼠标图形
+         * @method paint
+         * @param {Object} context 上下文对象
+         */
         this.paint = function(context){
             this.getMouseShape().paint(context);
         };
     };
     
     /**
-     * 鼠标类
-     * @class Mouse
-     * @constructor
-     * @extends Mouse.prorotype
+     * 鼠标类原型
+     * @class Mouse.prototype
+     * @static
      */
     Mouse.prototype = {        
         /**
@@ -89,19 +119,46 @@
             return $.extend(true, {}, this.option);//放回选项对象的深拷贝
         },
         
+        /**
+         * 获取鼠标图形对象
+         * @method getMouseShape 
+         * @return {Object} 返回鼠标图形对象
+         */
         getMouseShape:function(){
             return this.mouseShape;
         },
+        
+        /**
+         * 设置鼠标图形对象
+         * @method setMouseShape 
+         * @param {Object} mouseShape 鼠标图形对象
+         */
         setMouseShape:function(mouseShape){
             this.mouseShape = mouseShape;
             return mouseShape;
         },
+        
+        /**
+         * 设置点坐标
+         * @method setPoints 
+         * @param {Object} points 点坐标对象
+         */
         setPoints:function(points){
             this.setOption(points);
         },
+        
+        /**
+         * 初始化鼠标图形对象
+         * @method initMouseShape 
+         */
         initMouseShape:function(){
             this.getMouseShape().init(this.getOption());
         },
+        
+        /**
+         * 初始化鼠标图片
+         * @method setImage 
+         */
         setImage:function(){
             var
                 $mouseCanvas = $('#canvas-mouse'),
@@ -111,9 +168,28 @@
             return true;
         }
     };
-    
+
+    /**
+     * 十字类
+     * @class Cross
+     * @constructor
+     * @extends painter.model.mouseModel.Cross.prototype
+     */    
     Cross = function(){
+        /**
+         * 鼠标名称
+         * @property name
+         * @type String
+         * @default "Cross"
+         */
         this.name = "Cross";
+        
+        /**
+         * 初始化
+         * @method init
+         * @param {Object} option 参数对象
+         * @param {Array} points 点
+         */
         this.init = function(option, points){
             var 
                 index = this.getName();
@@ -137,21 +213,69 @@
             this.setImage();//设置鼠标图片
         };
         
+        /**
+         * 绘制鼠标图形
+         * @method paint
+         * @param {Object} context 上下文对象
+         */
         this.paint = function(context){
             this.getMouseShape().paint(context);
         };
     };
     
+    /**
+     * 十字类原型
+     * @class Cross.prototype
+     * @static
+     * @extends painter.model.mouseModel.Mouse
+     */
     Cross.prototype = new Mouse();
     
+    /**
+     * 铅笔类
+     * @class Pen
+     * @constructor
+     * @extends painter.model.mouseModel.Pen.prototype
+     */
     Pen = function(){
+        /**
+         * 鼠标名称
+         * @property name
+         * @type String
+         * @default "Pen"
+         */
         this.name = "Pen";
     };
     
+     /**
+     * 铅笔类原型
+     * @class Pen.prototype
+     * @static
+     * @extends painter.model.mouseModel.Mouse
+     */
     Pen.prototype = new Mouse();
     
+    /**
+     * 橡皮类
+     * @class Eraser
+     * @constructor
+     * @extends painter.model.mouseModel.Eraser.prototype
+     */
     Eraser = function(){
+        /**
+         * 鼠标名称
+         * @property name
+         * @type String
+         * @default "Eraser"
+         */
         this.name = "Eraser";
+        
+        /**
+         * 初始化
+         * @method init
+         * @param {Object} option 参数对象
+         * @param {Array} points 点
+         */
         this.init = function(option, points){
             var 
                 index = "CircleStroke";
@@ -174,27 +298,87 @@
             this.setImage();//设置鼠标图片
         };
         
+        /**
+         * 绘制鼠标图形
+         * @method paint
+         * @param {Object} context 上下文对象
+         */
         this.paint = function(context){
             this.getMouseShape().paint(context);
         };        
     };
     
+    /**
+     * 橡皮类原型
+     * @class Eraser.prototype
+     * @static
+     * @extends painter.model.mouseModel.Mouse
+     */
     Eraser.prototype = new Mouse();
     
+    /**
+     * 文本类
+     * @class Text
+     * @constructor
+     * @extends painter.model.mouseModel.Text.prototype
+     */
     Text = function(){
+        /**
+         * 鼠标名称
+         * @property name
+         * @type String
+         * @default "Text"
+         */
         this.name = "Text";
+        
+        /**
+         * 初始化
+         * @method init
+         * @param {Object} option 参数对象
+         * @param {Array} points 点
+         */
         this.init = function(option, points){
             this.setImage();//设置鼠标图片
         };
         
+        /**
+         * 绘制鼠标图形
+         * @method paint
+         * @param {Object} context 上下文对象
+         */
         this.paint = function(context){
         };        
     };
     
+    /**
+     * 文本类原型
+     * @class Text.prototype
+     * @static
+     * @extends painter.model.mouseModel.Mouse
+     */
     Text.prototype = new Mouse();
     
+    /**
+     * 油漆桶类
+     * @class FloodFill
+     * @constructor
+     * @extends painter.model.mouseModel.FloodFill.prototype
+     */
     FloodFill = function(){
+        /**
+         * 鼠标名称
+         * @property name
+         * @type String
+         * @default "FloodFill"
+         */
         this.name = "FloodFill";
+        
+        /**
+         * 初始化
+         * @method init
+         * @param {Object} option 参数对象
+         * @param {Array} points 点
+         */
         this.init = function(option, points){
             var 
                 index = "CircleStroke";
@@ -211,15 +395,44 @@
             this.setImage();//设置鼠标图片
         };
         
+        /**
+         * 绘制鼠标图形
+         * @method paint
+         * @param {Object} context 上下文对象
+         */
         this.paint = function(context){
             this.getMouseShape().paint(context);
         };        
     };
     
+    /**
+     * 油漆桶类原型
+     * @class FloodFill.prototype
+     * @static
+     * @extends painter.model.mouseModel.Mouse
+     */
     FloodFill.prototype = new Mouse();
     
+    /**
+     * 吸管类
+     * @class EyeDropper
+     * @constructor
+     * @extends painter.model.mouseModel.EyeDropper.prototype
+     */
     EyeDropper = function(){
+        /**
+         * 鼠标名称
+         * @property name
+         * @type String
+         * @default "EyeDropper"
+         */
         this.name = "EyeDropper";
+        
+        /**
+         * 绘制鼠标图形
+         * @method paint
+         * @param {Object} context 上下文对象
+         */
         this.init = function(option, points){
             var 
                 index = "CircleStroke";
@@ -236,11 +449,22 @@
             this.setImage();//设置鼠标图片
         };
         
+        /**
+         * 绘制鼠标图形
+         * @method paint
+         * @param {Object} context 上下文对象
+         */
         this.paint = function(context){
             this.getMouseShape().paint(context);
         };        
     };
     
+    /**
+     * 吸管类原型
+     * @class EyeDropper.prototype
+     * @static
+     * @extends painter.model.mouseModel.Mouse
+     */
     EyeDropper.prototype = new Mouse();
     
     //添加工具到数据层

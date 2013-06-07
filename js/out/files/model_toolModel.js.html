@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>model\toolModel.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/painter.controler.Canvas.html">painter.controler.Canvas</a></li>
+            
+                <li><a href="../classes/painter.controler.Index.html">painter.controler.Index</a></li>
+            
+                <li><a href="../classes/painter.controler.Nav.html">painter.controler.Nav</a></li>
+            
+                <li><a href="../classes/painter.controler.Tool.html">painter.controler.Tool</a></li>
+            
+                <li><a href="../classes/painter.controler.Tool.prototype.html">painter.controler.Tool.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.CanvasContainerModel.html">painter.model.CanvasContainerModel</a></li>
+            
+                <li><a href="../classes/painter.model.CanvasModel.html">painter.model.CanvasModel</a></li>
+            
+                <li><a href="../classes/painter.model.CanvasModel.prototype.html">painter.model.CanvasModel.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.mouseModel.Cross.html">painter.model.mouseModel.Cross</a></li>
+            
+                <li><a href="../classes/painter.model.mouseModel.Cross.prototype.html">painter.model.mouseModel.Cross.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.mouseModel.Eraser.html">painter.model.mouseModel.Eraser</a></li>
+            
+                <li><a href="../classes/painter.model.mouseModel.Eraser.prototype.html">painter.model.mouseModel.Eraser.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.mouseModel.EyeDropper.html">painter.model.mouseModel.EyeDropper</a></li>
+            
+                <li><a href="../classes/painter.model.mouseModel.EyeDropper.prototype.html">painter.model.mouseModel.EyeDropper.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.mouseModel.FloodFill.html">painter.model.mouseModel.FloodFill</a></li>
+            
+                <li><a href="../classes/painter.model.mouseModel.FloodFill.prototype.html">painter.model.mouseModel.FloodFill.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.mouseModel.Mouse.html">painter.model.mouseModel.Mouse</a></li>
+            
+                <li><a href="../classes/painter.model.mouseModel.Mouse.prototype.html">painter.model.mouseModel.Mouse.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.mouseModel.Pen.html">painter.model.mouseModel.Pen</a></li>
+            
+                <li><a href="../classes/painter.model.mouseModel.Pen.prototype.html">painter.model.mouseModel.Pen.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.mouseModel.Text.html">painter.model.mouseModel.Text</a></li>
+            
+                <li><a href="../classes/painter.model.mouseModel.Text.prototype.html">painter.model.mouseModel.Text.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.PointList.html">painter.model.PointList</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Circle.html">painter.model.shapeModel.Circle</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Circle.prototype.html">painter.model.shapeModel.Circle.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.CircleStroke.html">painter.model.shapeModel.CircleStroke</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.CircleStroke.prototype.html">painter.model.shapeModel.CircleStroke.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Cross.html">painter.model.shapeModel.Cross</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Cross.prototype.html">painter.model.shapeModel.Cross.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.CurveClosed.html">painter.model.shapeModel.CurveClosed</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.CurveClosed.prototype.html">painter.model.shapeModel.CurveClosed.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.CurveClosedStroke.html">painter.model.shapeModel.CurveClosedStroke</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.CurveClosedStroke.prototype.html">painter.model.shapeModel.CurveClosedStroke.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Ellipes.html">painter.model.shapeModel.Ellipes</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Ellipes.prototype.html">painter.model.shapeModel.Ellipes.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.EllipesStroke.html">painter.model.shapeModel.EllipesStroke</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.EllipesStroke.prototype.html">painter.model.shapeModel.EllipesStroke.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Eraser.html">painter.model.shapeModel.Eraser</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Eraser.prototype.html">painter.model.shapeModel.Eraser.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.EyeDropper.html">painter.model.shapeModel.EyeDropper</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.EyeDropper.prototype.html">painter.model.shapeModel.EyeDropper.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.FillStroke.html">painter.model.shapeModel.FillStroke</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.FillStroke.prototype.html">painter.model.shapeModel.FillStroke.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.FloodFill.html">painter.model.shapeModel.FloodFill</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.FloodFill.prototype.html">painter.model.shapeModel.FloodFill.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.ImageShape.html">painter.model.shapeModel.ImageShape</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.ImageShape.prototype.html">painter.model.shapeModel.ImageShape.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Line.html">painter.model.shapeModel.Line</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Line.prototype.html">painter.model.shapeModel.Line.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Pen.html">painter.model.shapeModel.Pen</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Pen.prototype.html">painter.model.shapeModel.Pen.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Rect.html">painter.model.shapeModel.Rect</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Rect.prototype.html">painter.model.shapeModel.Rect.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.RectRound.html">painter.model.shapeModel.RectRound</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.RectRound.prototype.html">painter.model.shapeModel.RectRound.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.RectRoundStroke.html">painter.model.shapeModel.RectRoundStroke</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.RectRoundStroke.prototype.html">painter.model.shapeModel.RectRoundStroke.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.RectStroke.html">painter.model.shapeModel.RectStroke</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.RectStroke.prototype.html">painter.model.shapeModel.RectStroke.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Shape.html">painter.model.shapeModel.Shape</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Shape.prototype.html">painter.model.shapeModel.Shape.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Stroke.html">painter.model.shapeModel.Stroke</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Stroke.prototype.html">painter.model.shapeModel.Stroke.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Text.html">painter.model.shapeModel.Text</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.Text.prototype.html">painter.model.shapeModel.Text.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.TextStroke.html">painter.model.shapeModel.TextStroke</a></li>
+            
+                <li><a href="../classes/painter.model.shapeModel.TextStroke.prototype.html">painter.model.shapeModel.TextStroke.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.StorageModel.html">painter.model.StorageModel</a></li>
+            
+                <li><a href="../classes/painter.model.StorageModel.prototype.html">painter.model.StorageModel.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.ToolContainerModel.html">painter.model.ToolContainerModel</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Circle.html">painter.model.toolModel.Circle</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Circle.prototype.html">painter.model.toolModel.Circle.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.CircleStroke.html">painter.model.toolModel.CircleStroke</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.CircleStroke.prototype.html">painter.model.toolModel.CircleStroke.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Cross.html">painter.model.toolModel.Cross</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Cross.prototype.html">painter.model.toolModel.Cross.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.CurveClosed.html">painter.model.toolModel.CurveClosed</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.CurveClosed.prototype.html">painter.model.toolModel.CurveClosed.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.CurveClosedStroke.html">painter.model.toolModel.CurveClosedStroke</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.CurveClosedStroke.prototype.html">painter.model.toolModel.CurveClosedStroke.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Ellipes.html">painter.model.toolModel.Ellipes</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Ellipes.prototype.html">painter.model.toolModel.Ellipes.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.EllipesStroke.html">painter.model.toolModel.EllipesStroke</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.EllipesStroke.prototype.html">painter.model.toolModel.EllipesStroke.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Eraser.html">painter.model.toolModel.Eraser</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Eraser.prototype.html">painter.model.toolModel.Eraser.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.EyeDropper.html">painter.model.toolModel.EyeDropper</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.FloodFill.html">painter.model.toolModel.FloodFill</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.FloodFill.prototype.html">painter.model.toolModel.FloodFill.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Line.html">painter.model.toolModel.Line</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Line.prototype.html">painter.model.toolModel.Line.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Pen.html">painter.model.toolModel.Pen</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Pen.prototype.html">painter.model.toolModel.Pen.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Rect.html">painter.model.toolModel.Rect</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Rect.prototype.html">painter.model.toolModel.Rect.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.RectRound.html">painter.model.toolModel.RectRound</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.RectRound.prototype.html">painter.model.toolModel.RectRound.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.RectRoundStroke.html">painter.model.toolModel.RectRoundStroke</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.RectRoundStroke.prototype.html">painter.model.toolModel.RectRoundStroke.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.RectStroke.html">painter.model.toolModel.RectStroke</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.RectStroke.prototype.html">painter.model.toolModel.RectStroke.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Shape.html">painter.model.toolModel.Shape</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Shape.prototype.html">painter.model.toolModel.Shape.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Stroke.html">painter.model.toolModel.Stroke</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Stroke.prototype.html">painter.model.toolModel.Stroke.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Text.html">painter.model.toolModel.Text</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Text.prototype.html">painter.model.toolModel.Text.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.TextStroke.html">painter.model.toolModel.TextStroke</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.TextStroke.prototype.html">painter.model.toolModel.TextStroke.prototype</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Tool.html">painter.model.toolModel.Tool</a></li>
+            
+                <li><a href="../classes/painter.model.toolModel.Tool.prototype.html">painter.model.toolModel.Tool.prototype</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/canvas.html">canvas</a></li>
+            
+                <li><a href="../modules/canvasContainerModel.html">canvasContainerModel</a></li>
+            
+                <li><a href="../modules/canvasModel.html">canvasModel</a></li>
+            
+                <li><a href="../modules/index.html">index</a></li>
+            
+                <li><a href="../modules/loading.html">loading</a></li>
+            
+                <li><a href="../modules/mouse.html">mouse</a></li>
+            
+                <li><a href="../modules/nav.html">nav</a></li>
+            
+                <li><a href="../modules/pointListModel.html">pointListModel</a></li>
+            
+                <li><a href="../modules/shapeModel.html">shapeModel</a></li>
+            
+                <li><a href="../modules/storageModel.html">storageModel</a></li>
+            
+                <li><a href="../modules/tool.html">tool</a></li>
+            
+                <li><a href="../modules/toolContainerModel.html">toolContainerModel</a></li>
+            
+                <li><a href="../modules/toolModel.html">toolModel</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: model\toolModel.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+ * @author yan
+ * @module toolModel
+ * @main toolModel
+ * @namespace painter.model.toolModel
+ */
+
+(function($, global){
+	&quot;use strict&quot;;
+	
+	var
+	   //所有工具超级父类 
+	   Tool,
+	   //图形工具父类
+	   Shape,
+	   Line,
+	   CurveClosed,
+	   Rect,
+	   RectRound,
+	   Circle,
+	   //椭圆工具类
+       Ellipes,
+	   //轮廓工具父类
+	   Stroke,
+	   Pen,
+	   CurveClosedStroke,
+	   RectStroke,
+       RectRoundStroke,
+       CircleStroke,
+	   Eraser,
+	   FloodFill,
+	   EyeDropper,
+	   //十字工具类
+	   Cross,	   
+	   EllipesStroke,
+	   //文字类
+	   Text,
+	   //文字轮廓类
+	   TextStroke;
+	
+	/**
+	 * 工具对象
+	 * @class Tool
+	 * @constructor
+	 * @param {Object} option 当前工具参数
+	 * @extends painter.model.toolModel.Tool.prototype
+	 */
+	Tool = function(option){
+	    /**
+         * 当前工具对应的名称
+         * @property name
+         * @type String
+         * @default &#x27;Tool&#x27;
+         */
+		this.name = &#x27;Tool&#x27;;
+		
+		/**
+         * 当前工具对应的类名
+         * @property className
+         * @type String
+         * @default &#x27;shape&#x27;
+         */
+		this.className = &quot;shape&quot;;
+		
+		/**
+		 * 当前工具对应的鼠标对象
+		 * @property mouse
+		 * @type String
+		 * @default &#x27;Mouse&#x27;
+		 */
+		this.mouse = &quot;Mouse&quot;;
+		
+		/**
+         * 当前工具对应的参数
+         * @property option
+         * @type Object
+         * @default {
+         *  strokeStyle:&#x27;#000&#x27;,
+         *  fillStyle:&#x27;#000&#x27;,
+         *  lineWidth:1
+         *}
+         */
+		this.option = {
+			strokeStyle:&#x27;#000&#x27;,
+			fillStyle:&#x27;#000&#x27;,
+			lineWidth:1
+		};
+		
+		//设置参数
+		option !== undefined ? $.extend(this.option, option) : 0;
+	};
+	
+	/**
+	 * 工具原型
+	 * @class Tool.prototype
+	 * @static
+	 */
+	Tool.prototype = {
+	    /**
+         * 获取类别名字
+         * @method getClassName
+         * @return {String} 当前的类别名字
+         */
+	    getClassName:function(){
+	       return this.className; 
+	    },
+	     
+		/**
+		 * 获取名字
+		 * @method getName
+		 * @return {String} 当前的名字
+		 */
+		getName:function(){
+			return this.name;	
+		},
+		
+		/**
+		 * 设置工具参数对象
+		 * @method setOption
+		 * @param {Object} option 设置的参数集和
+		 * @return {Object} 成功返回设置对象，失败返回null
+		 */
+		setOption:function(option){
+			//检查入口参数是否是对象
+			if(typeof option === &#x27;object&#x27;){
+				$.extend(true, this.option, option);
+				return this.getOption();
+			} 
+			
+			return null;
+		},
+		
+		/**
+		 * 获取工具参数对象
+		 * @method getOption 
+		 * @return {Object} 返回当前工具参数对象
+		 */
+		getOption:function(){
+			return $.extend(true, {}, this.option);//放回选项对象的深拷贝
+		},
+		
+		/**
+		 * 获取当前工具对应的鼠标
+		 * @method getMouse
+		 * @param {String} 鼠标的索引
+		 */
+		getMouse:function(){
+		    return this.mouse;
+		}
+	};
+	
+	/**
+     * 图形类工具超级父类
+     * @class Shape
+     * @constructor
+     * @extends painter.model.toolModel.Shape.prototype
+     */
+	Shape = function(){
+	    /**
+         * 名称
+         * @property name
+         * @type String
+         * @default &#x27;line&#x27; 
+         */
+	    this.name = &quot;Shape&quot;;
+	    /**
+         * 当前工具对应的鼠标对象
+         * @property mouse
+         * @type String
+         * @default &#x27;Tool&#x27;
+         */
+	    this.mouse = &quot;Cross&quot;;
+	    
+	    /**
+	     * 初始化图形类属性面板的参数
+	     * @method initAttributes
+	     * @return {Object} 当前工具 参数
+	     */
+	    this.initAttributes = function(){
+	        //获取当前属性
+            var 
+              $attributePanel = $(&#x27;#tool-shape-attribute-panel&#x27;),
+              width = $(&#x27;.width&#x27;,$attributePanel).eq(0).val(),
+              opacity = $(&#x27;.opacity&#x27;,$attributePanel).eq(0).val(),
+              color = $(&#x27;#tool-wrap .tool .color&#x27;).eq(0).val(),
+              lineJoin = $(&#x27;:radio[name=&quot;line-join&quot;]&#x27;,$attributePanel).val(),
+              shadowOffsetX = $(&#x27;.shadow-offsetx&#x27;,$attributePanel).eq(0).val(),
+              shadowOffsetY = $(&#x27;.shadow-offsety&#x27;,$attributePanel).eq(0).val(),
+              shadowBlur = $(&#x27;.shadow-blur&#x27;,$attributePanel).eq(0).val(),
+              shadowColor = $(&#x27;.shadow-color&#x27;,$attributePanel).eq(0).val(),
+              lineCap = $(&#x27;:radio[name=&quot;line-cap&quot;]&#x27;,$attributePanel).val();       
+            
+            //设置参数
+            return this.setOption({
+                lineWidth: width,
+                opacity: opacity,
+                strokeStyle: color,
+                fillStyle:color,
+                lineJoin:lineJoin,
+                lineCap:lineCap,
+                shadowOffsetX:shadowOffsetX,
+                shadowOffsetY:shadowOffsetY,
+                shadowBlur:shadowBlur,
+                shadowColor:shadowColor
+            });
+	    };
+	};
+	
+	/**
+	 * 图形类工具原型
+	 * @class Shape.prototype
+	 * @static
+	 * @extends painter.model.toolModel.Tool
+	 */
+	Shape.prototype = new Tool();
+	/**
+	 * 直线工具对象
+	 * @class Line
+	 * @constructor
+	 * @extends painter.model.toolModel.Line.prototype
+	 */
+	Line = function(){
+	    /**
+	     * 名称
+	     * @property name
+	     * @type String
+	     * @default &#x27;line&#x27; 
+	     */
+		this.name = &#x27;Line&#x27;;
+		
+		/**
+		 * 初始化
+		 * @method init 
+		 * @return {Bollean} 初始化是否成功
+		 */
+		this.init = function(){
+		    this.initAttributes();//初始化属性面板参数
+		};
+		
+		/**
+		 * 设置坐标参数参数
+		 * @method setPoint
+		 * @param {Object} 参数
+		 * @return {Object} 设置完的参数
+		 */
+		this.setPoint = function(pointList){
+		    var 
+               startPoint = pointList.getStart(),
+               endPoint = pointList.getEnd(),
+               startX = startPoint.x,
+               startY = startPoint.y,
+               endX = endPoint.x,
+               endY = endPoint.y;
+               
+             return this.setOption({
+                 startX: startX,
+                 startY: startY,
+                 endX: endX,
+                 endY: endY
+             });
+		};
+	};
+	
+	/**
+	 * 直线工具原型
+	 * @class Line.prototype
+	 * @static
+	 * @extends painter.model.toolModel.Shape
+	 */
+	Line.prototype = new Shape();
+	
+	/**
+     * 闭合曲线工具对象
+     * @class CurveClosed
+     * @constructor
+     * @extends painter.model.toolModel.CurveClosed.prototype
+     */
+    CurveClosed = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @default &#x27;line&#x27; 
+         */
+        this.name = &#x27;CurveClosed&#x27;;
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            this.initAttributes();//初始化属性面板参数
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var 
+               list = pointList.getList();
+             
+             this.option.list = [];//更新当前列表  
+             return this.setOption({
+                 list:list
+             });
+        };
+    };
+    
+    /**
+     * 闭合曲线工具原型
+     * @class CurveClosed.prototype
+     * @static
+     * @extends painter.model.toolModel.Shape
+     */
+    CurveClosed.prototype = new Shape();
+    
+    
+	/**
+     * 矩形工具对象
+     * @class Rect
+     * @constructor
+     * @extends painter.model.toolModel.Rect.prototype
+     */
+    Rect = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @default &#x27;line&#x27; 
+         */
+        this.name = &#x27;Rect&#x27;;
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            this.initAttributes();//初始化属性面板参数
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var 
+               startPoint = pointList.getStart(),
+               endPoint = pointList.getEnd(),
+               left = startPoint.x,
+               top = startPoint.y,
+               width = endPoint.x - left,
+               height = endPoint.y - top;
+               
+             return this.setOption({
+                 left: left,
+                 top: top,
+                 width: width,
+                 height: height
+             });
+        };
+    };
+    
+    /**
+     * 矩形工具原型
+     * @class Rect.prototype
+     * @static
+     * @extends painter.model.toolModel.Shape
+     */
+    Rect.prototype = new Shape();
+    
+    /**
+     * 圆角矩形工具对象
+     * @class RectRound
+     * @constructor
+     * @extends painter.model.toolModel.RectRound.prototype
+     */
+    RectRound = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @default &#x27;line&#x27; 
+         */
+        this.name = &#x27;RectRound&#x27;;                
+    };
+    
+    /**
+     * 圆角矩形工具原型
+     * @class RectRound.prototype
+     * @static
+     * @extends painter.model.toolModel.Rect
+     */
+    RectRound.prototype = new Rect();
+    
+    /**
+     * 椭圆工具对象
+     * @class Circle
+     * @constructor
+     * @extends painter.model.toolModel.Circle.prototype
+     */
+    Circle = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @default &#x27;line&#x27; 
+         */
+        this.name = &#x27;Circle&#x27;;
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            this.initAttributes();//初始化属性面板参数
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var 
+               startPoint = pointList.getStart(),
+               endPoint = pointList.getEnd(),
+               x = (startPoint.x + endPoint.x) / 2,//计算园中心坐标
+               y = (startPoint.y + endPoint.y) / 2,
+               radius = Math.abs(Math.sqrt(Math.pow(startPoint.x, 2) + Math.pow(startPoint.y, 2)) - 
+                    Math.sqrt(Math.pow(endPoint.x, 2) + Math.pow(endPoint.y, 2))) / 2;
+               
+             return this.setOption({
+                 x:x,
+                 y:y,
+                 radius:radius
+             });
+        };
+    };
+    
+    /**
+     * 圆工具原型
+     * @class Circle.prototype
+     * @static
+     * @extends painter.model.toolModel.Shape
+     */
+    Circle.prototype = new Shape();
+    
+    /**
+     * 椭圆工具对象
+     * @class Ellipes
+     * @constructor
+     * @extends painter.model.toolModel.Ellipes.prototype
+     */
+    Ellipes = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @default &#x27;line&#x27; 
+         */
+        this.name = &#x27;Ellipes&#x27;;
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            this.initAttributes();//初始化属性面板参数
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var
+                startPoint = pointList.getStart(),
+                endPoint = pointList.getEnd(),
+                x = (startPoint.x + endPoint.x) / 2,//计算园中心坐标
+                y = (startPoint.y + endPoint.y) / 2,
+                width = Math.abs(startPoint.x - endPoint.x),
+                height = Math.abs(startPoint.y - endPoint.y);
+            return this.setOption({
+                x:x,
+                y:y,
+                width:width,
+                height:height
+            });
+        };
+    };
+    
+    /**
+     * 椭圆工具原型
+     * @class Ellipes.prototype
+     * @static
+     * @extends painter.model.toolModel.Shape
+     */
+    Ellipes.prototype = new Shape();
+    
+    
+    /**
+     * 轮廓类工具超级父类
+     * @class Stroke
+     * @constructor
+     * @extends painter.model.toolModel.Stroke.prototype
+     */
+    Stroke = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @default &#x27;line&#x27; 
+         */
+        this.name = &quot;Stroke&quot;;
+        /**
+         * 当前工具对应的鼠标对象
+         * @property mouse
+         * @type String
+         * @default &#x27;Tool&#x27;
+         */
+        this.mouse = &quot;Cross&quot;;
+        
+        /**
+         * 初始化图形类属性面板的参数
+         * @method initAttributes
+         */
+        this.initAttributes = function(){
+            //获取当前属性
+            var 
+              $attributePanel = $(&#x27;#tool-stroke-attribute-panel&#x27;),
+              width = $(&#x27;.width&#x27;,$attributePanel).eq(0).val(),
+              opacity = $(&#x27;.opacity&#x27;,$attributePanel).eq(0).val(),
+              color = $(&#x27;#tool-wrap .tool .color&#x27;).eq(0).val(),              
+              shadowOffsetX = $(&#x27;.shadow-offsetx&#x27;,$attributePanel).eq(0).val(),
+              shadowOffsetY = $(&#x27;.shadow-offsety&#x27;,$attributePanel).eq(0).val(),
+              shadowBlur = $(&#x27;.shadow-blur&#x27;,$attributePanel).eq(0).val(),
+              shadowColor = $(&#x27;.shadow-color&#x27;,$attributePanel).eq(0).val(),
+              lineJoin = $(&#x27;:radio[name=&quot;line-join&quot;]&#x27;,$attributePanel).val(),
+              lineCap = $(&#x27;:radio[name=&quot;line-cap&quot;]&#x27;,$attributePanel).val();       
+            
+            //设置参数
+            return this.setOption({
+                lineWidth: width,
+                opacity: opacity,
+                strokeStyle: color,
+                lineJoin:lineJoin,
+                lineCap:lineCap,
+                shadowOffsetX:shadowOffsetX,
+                shadowOffsetY:shadowOffsetY,
+                shadowBlur:shadowBlur,
+                shadowColor:shadowColor
+            });
+        }
+    };
+    
+    /**
+     * 轮廓类工具原型
+     * @class Stroke.prototype
+     * @static
+     * @extends painter.model.toolModel.Tool
+     */
+    Stroke.prototype = new Tool();
+    
+    /**
+     * 铅笔工具对象
+     * @class Pen
+     * @constructor
+     * @extends painter.model.toolModel.Pen.prototype
+     */
+    Pen = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @default &#x27;line&#x27; 
+         */
+        this.name = &#x27;Pen&#x27;;
+        
+        /**
+         * 工具类对应的鼠标
+         * @property mouse
+         * @type String
+         * @default &#x27;Pen&#x27; 
+         */
+        this.mouse =&quot;Pen&quot;;
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            this.initAttributes();
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var 
+               list = pointList.getList();
+             
+             this.option.list = [];//更新当前列表  
+             return this.setOption({
+                 list:list
+             });
+        };
+    };
+           
+    /**
+     * 铅笔工具原型
+     * @class Pen.prototype
+     * @static
+     * @extends painter.model.toolModel.Stroke
+     */
+    Pen.prototype = new Stroke();
+    
+    /**
+     * 闭合曲线工具对象
+     * @class CurveClosedStroke
+     * @constructor
+     * @extends painter.model.toolModel.CurveClosedStroke.prototype
+     */
+    CurveClosedStroke = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @default &#x27;line&#x27; 
+         */
+        this.name = &#x27;CurveClosedStroke&#x27;;
+        
+        /**
+         * 工具类对应的鼠标
+         * @property mouse
+         * @type String
+         * @default &#x27;Pen&#x27; 
+         */
+        this.mouse = &quot;Cross&quot;;
+    };
+    
+    /**
+     * 闭合曲线工具原型
+     * @class CurveClosedStroke.prototype
+     * @static
+     * @extends painter.model.toolModel.Pen
+     */
+    CurveClosedStroke.prototype = new Pen();        
+    
+    /**
+     * 矩形工具对象
+     * @class RectStroke
+     * @constructor
+     * @extends painter.model.toolModel.RectStroke.prototype
+     */
+    RectStroke = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @default &#x27;line&#x27; 
+         */
+        this.name = &#x27;RectStroke&#x27;;
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            this.initAttributes();
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var 
+               startPoint = pointList.getStart(),
+               endPoint = pointList.getEnd(),
+               left = startPoint.x,
+               top = startPoint.y,
+               width = endPoint.x - left,
+               height = endPoint.y - top;
+               
+             return this.setOption({
+                 left: left,
+                 top: top,
+                 width: width,
+                 height: height
+             });
+        };
+    };
+    
+    /**
+     * 矩形工具原型
+     * @class RectStroke.prototype
+     * @static
+     * @extends painter.model.toolModel.Stroke
+     */
+    RectStroke.prototype = new Stroke();
+    
+    /**
+     * 圆角矩形工具对象
+     * @class RectRoundStroke
+     * @constructor
+     * @extends painter.model.toolModel.RectRoundStroke.prototype
+     */
+    RectRoundStroke = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @default &#x27;line&#x27; 
+         */
+        this.name = &#x27;RectRoundStroke&#x27;;
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            this.initAttributes();
+        };        
+    };
+    
+    /**
+     * 圆角矩形工具原型
+     * @class RectRoundStroke.prototype
+     * @static
+     * @extends painter.model.toolModel.RectStroke
+     */
+    RectRoundStroke.prototype = new RectStroke();
+    
+    /**
+     * 椭圆工具对象
+     * @class CircleStroke
+     * @constructor
+     * @extends painter.model.toolModel.CircleStroke.prototype
+     */
+    CircleStroke = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @default &#x27;line&#x27; 
+         */
+        this.name = &#x27;CircleStroke&#x27;;
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            this.initAttributes();
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var 
+               startPoint = pointList.getStart(),
+               endPoint = pointList.getEnd(),
+               x = (startPoint.x + endPoint.x) / 2,//计算园中心坐标
+               y = (startPoint.y + endPoint.y) / 2,
+               radius = Math.abs(Math.sqrt(Math.pow(startPoint.x, 2) + Math.pow(startPoint.y, 2)) - 
+                    Math.sqrt(Math.pow(endPoint.x, 2) + Math.pow(endPoint.y, 2))) / 2;
+               
+             return this.setOption({
+                 x:x,
+                 y:y,
+                 radius:radius
+             });
+        };
+    };
+    
+    /**
+     * 椭圆工具原型
+     * @class CircleStroke.prototype
+     * @static
+     * @extends painter.model.toolModel.Stroke
+     */
+    CircleStroke.prototype = new Stroke();
+    
+    /**
+     * 十字工具对象
+     * @class EllipesStroke
+     * @constructor
+     * @extends painter.model.toolModel.EllipesStroke.prototype
+     */
+    EllipesStroke = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @default &#x27;line&#x27; 
+         */
+        this.name = &#x27;EllipesStroke&#x27;;
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            this.initAttributes();
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var
+                startPoint = pointList.getStart(),
+                endPoint = pointList.getEnd(),
+                x = (startPoint.x + endPoint.x) / 2,//计算园中心坐标
+                y = (startPoint.y + endPoint.y) / 2,
+                width = Math.abs(startPoint.x - endPoint.x),
+                height = Math.abs(startPoint.y - endPoint.y);
+            return this.setOption({
+                x:x,
+                y:y,
+                width:width,
+                height:height
+            });
+        };      
+    };
+    
+    /**
+     * 十字工具原型
+     * @class EllipesStroke.prototype
+     * @static
+     * @extends painter.model.toolModel.Stroke
+     */
+    EllipesStroke.prototype = new Stroke();
+    
+    /**
+     * 橡皮工具对象
+     * @class Eraser
+     * @constructor
+     * @extends painter.model.toolModel.Eraser.prototype
+     */
+    Eraser = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @default &#x27;Eraser&#x27; 
+         */
+        this.name = &#x27;Eraser&#x27;;
+        
+        /**
+         * 鼠标名称
+         * @property mouse
+         * @type String
+         * @default &#x27;Eraser&#x27; 
+         */
+        this.mouse = &quot;Eraser&quot;;
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            var 
+              $attributePanel = $(&#x27;#tool-eraser-attribute-panel&#x27;),
+              width = $(&#x27;.width&#x27;,$attributePanel).eq(0).val(),
+              opacity = $(&#x27;.opacity&#x27;,$attributePanel).eq(0).val(),
+              shadowOffsetX = $(&#x27;.shadow-offsetx&#x27;,$attributePanel).eq(0).val(),
+              shadowOffsetY = $(&#x27;.shadow-offsety&#x27;,$attributePanel).eq(0).val(),
+              shadowBlur = $(&#x27;.shadow-blur&#x27;,$attributePanel).eq(0).val(),
+              shadowColor = $(&#x27;.shadow-color&#x27;,$attributePanel).eq(0).val(),
+              lineJoin = $(&#x27;:radio[name=&quot;line-join&quot;]&#x27;,$attributePanel).val(),
+              lineCap = $(&#x27;:radio[name=&quot;line-cap&quot;]&#x27;,$attributePanel).val();       
+            
+            //设置参数
+            return this.setOption({
+                lineWidth: width,
+                color:&#x27;#fff&#x27;,
+                shadowOffsetX:shadowOffsetX,
+                shadowOffsetY:shadowOffsetY,
+                shadowBlur:shadowBlur,
+                shadowColor:shadowColor,
+                lineJoin: lineJoin,
+                lineCap:lineCap
+            });
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var 
+               list = pointList.getList();
+             
+             this.option.list = [];//更新当前列表  
+             return this.setOption({
+                 list:list
+             });
+        };
+    };
+    
+    /**
+     * 橡皮工具原型
+     * @class Eraser.prototype
+     * @static
+     * @extends painter.model.toolModel.Tool
+     */
+    Eraser.prototype = new Tool();
+    
+    /**
+     * 油漆桶工具对象
+     * @class FloodFill
+     * @constructor
+     * @extends painter.model.toolModel.FloodFill.prototype
+     */
+    FloodFill = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @default &#x27;FloodFill&#x27; 
+         */
+        this.name = &#x27;FloodFill&#x27;;
+        
+        /**
+         * 鼠标名称
+         * @property mouse
+         * @type String
+         * @default &#x27;FloodFill&#x27; 
+         */
+        this.mouse = &quot;FloodFill&quot;;
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //获取当前属性
+            var 
+              $attributePanel = $(&#x27;#tool-eraser-attribute-panel&#x27;),
+              opacity = $(&#x27;.opacity&#x27;,$attributePanel).eq(0).val(),
+              color = $(&#x27;#tool-wrap .tool .color&#x27;).eq(0).val(),
+              canvas = global.painter.canvas.currentCanvasContainer.getCanvas(),
+              width = canvas.getWidth(),
+              height = canvas.getHeight();       
+            
+            //设置参数
+            return this.setOption({
+                fillStyle:color,
+                width:width,
+                height:height
+            });
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            return this.getOption();
+        };
+    };
+    
+    /**
+     * 油漆桶工具原型
+     * @class FloodFill.prototype
+     * @static
+     * @extends painter.model.toolModel.Tool
+     */
+    FloodFill.prototype = new Tool();
+    
+    /**
+     * 吸管工具对象
+     * @class EyeDropper
+     * @constructor
+     * @extends painter.model.toolModel.EyeDropper.prototype
+     */
+    EyeDropper = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @default &#x27;EyeDropper&#x27; 
+         */
+        this.name = &#x27;EyeDropper&#x27;;
+        
+        /**
+         * 鼠标名称
+         * @property mouse
+         * @type String
+         * @default &#x27;EyeDropper&#x27; 
+         */
+        this.mouse = &quot;EyeDropper&quot;;
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //设置参数
+            return this.setOption({
+                
+            });
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var
+                endPoint = pointList.getEnd(),
+                x = endPoint.x,
+                y = endPoint.y;
+            return this.setOption({
+                x:x,
+                y:y
+            });
+        };
+    };
+    
+    /**
+     * 吸管工具原型
+     * @class FloodFill.prototype
+     * @static
+     * @extends painter.model.toolModel.Tool
+     */
+    EyeDropper.prototype = new Tool();
+    
+    /**
+     * 十字工具对象
+     * @class Cross
+     * @constructor
+     * @extends painter.model.toolModel.Cross.prototype
+     */
+    Cross = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @default &#x27;Cross&#x27; 
+         */
+        this.name = &#x27;Cross&#x27;;
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            //设置参数
+            return this.setOption({
+                lineWidth:1,
+                strokeStyle:&#x27;#000000&#x27;,
+                length:10
+            });
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var
+                endPoint = pointList.getEnd(),
+                x = endPoint.x,
+                y = endPoint.y;
+            return this.setOption({
+                x:x,
+                y:y
+            });
+        };
+    };
+    
+    /**
+     * 十字工具原型
+     * @class Cross.prototype
+     * @static
+     * @extends painter.model.toolModel.Tool
+     */
+    Cross.prototype = new Tool();        
+        
+    
+    /**
+     * 十字工具对象
+     * @class Text
+     * @constructor
+     * @extends painter.model.toolModel.Text.prototype
+     */
+    Text = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @default &#x27;Text&#x27; 
+         */
+        this.name = &#x27;Text&#x27;;
+        
+        /**
+         * 鼠标名称
+         * @property mouse
+         * @type String
+         * @default &#x27;Text&#x27; 
+         */
+        this.mouse = &quot;Text&quot;;
+        
+        /**
+         * 初始化
+         * @method init 
+         * @return {Bollean} 初始化是否成功
+         */
+        this.init = function(){
+            this.initAttributes();
+        };
+        
+        /**
+         * 初始化图形类属性面板的参数
+         * @method initAttributes
+         */
+        this.initAttributes = function(){           
+            //获取当前属性
+            var 
+              $attributePanel = $(&#x27;#tool-text-attribute-panel&#x27;),
+              opacity = $(&#x27;.opacity&#x27;,$attributePanel).eq(0).val(),
+              text = $(&#x27;.text&#x27;,$attributePanel).eq(0).val(),
+              size = $(&#x27;.size&#x27;,$attributePanel).eq(0).val(),
+              border = $(&#x27;.border&#x27;,$attributePanel).eq(0).val(),
+              family = $(&#x27;.font&#x27;,$attributePanel).eq(0).val(),
+              bold = $(&#x27;.bold&#x27;,$attributePanel).eq(0).attr(&quot;checked&quot;) === &quot;checked&quot; ? &quot;bold&quot; : &quot;&quot;,
+              italic = $(&#x27;.italic&#x27;,$attributePanel).eq(0).attr(&quot;checked&quot;) === &quot;checked&quot; ? &quot;italic&quot; : &quot;&quot;,
+              shadowOffsetX = $(&#x27;.shadow-offsetx&#x27;,$attributePanel).eq(0).val(),
+              shadowOffsetY = $(&#x27;.shadow-offsety&#x27;,$attributePanel).eq(0).val(),
+              shadowBlur = $(&#x27;.shadow-blur&#x27;,$attributePanel).eq(0).val(),
+              shadowColor = $(&#x27;.shadow-color&#x27;,$attributePanel).eq(0).val(),
+              color = $(&#x27;#tool-wrap .tool .color&#x27;).eq(0).val();
+            //设置参数
+            return this.setOption({
+                strokeStyle:color,
+                opacity:opacity,
+                fillStyle:color,
+                text:text,
+                size:size,
+                border:border,
+                family:family,
+                bold:bold,
+                italic:italic,
+                shadowOffsetX:shadowOffsetX,
+                shadowOffsetY:shadowOffsetY,
+                shadowBlur:shadowBlur,
+                shadowColor:shadowColor
+            });
+        };
+        
+        /**
+         * 设置坐标参数参数
+         * @method setPoint
+         * @param {Object} 参数
+         * @return {Object} 设置完的参数
+         */
+        this.setPoint = function(pointList){
+            var
+                startPoint = pointList.getStart(),
+                endPoint = pointList.getEnd(),
+                x = startPoint.x,//计算园中心坐标
+                y = startPoint.y,
+                textAlign = x &lt;= endPoint.x ? &quot;left&quot; : &quot;right&quot;;
+            return this.setOption({
+                x:x,
+                y:y,
+                textAlign:textAlign
+            });
+        };      
+    };
+    
+    /**
+     * 十字工具原型
+     * @class Text.prototype
+     * @static
+     * @extends painter.model.toolModel.Tool
+     */
+    Text.prototype = new Tool();
+    
+    /**
+     * 十字工具对象
+     * @class TextStroke
+     * @constructor
+     * @extends painter.model.toolModel.TextStroke.prototype
+     */
+    TextStroke = function(){
+        /**
+         * 名称
+         * @property name
+         * @type String
+         * @default &#x27;line&#x27; 
+         */
+        this.name = &#x27;TextStroke&#x27;;            
+    };
+    
+    /**
+     * 十字工具原型
+     * @class TextStroke.prototype
+     * @static
+     * @extends painter.model.toolModel.Text
+     */
+    TextStroke.prototype = new Text();
+	
+	//添加工具到数据层
+	global.painter = global.painter || {};
+	global.painter.model = global.painter.model || {};
+	global.painter.model.toolModel = global.painter.model.toolModel || {};
+	global.painter.model.toolModel.Line = Line;
+	global.painter.model.toolModel.CurveClosed = CurveClosed;
+	global.painter.model.toolModel.Rect = Rect;
+	global.painter.model.toolModel.RectRound = RectRound;
+	global.painter.model.toolModel.Circle = Circle;
+	global.painter.model.toolModel.Pen = Pen;
+	global.painter.model.toolModel.CurveClosedStroke = CurveClosedStroke;
+	global.painter.model.toolModel.RectStroke = RectStroke;
+    global.painter.model.toolModel.RectRoundStroke = RectRoundStroke;
+    global.painter.model.toolModel.CircleStroke = CircleStroke;
+	global.painter.model.toolModel.Eraser = Eraser;
+	global.painter.model.toolModel.FloodFill = FloodFill;
+	global.painter.model.toolModel.EyeDropper = EyeDropper;
+	global.painter.model.toolModel.Cross = Cross;
+	global.painter.model.toolModel.Ellipes = Ellipes;
+	global.painter.model.toolModel.EllipesStroke = EllipesStroke;
+	global.painter.model.toolModel.Text = Text;
+	global.painter.model.toolModel.TextStroke = TextStroke;
+}(jQuery, window));
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

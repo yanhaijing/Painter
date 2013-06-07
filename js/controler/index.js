@@ -1,7 +1,7 @@
 /**
  * 主页js
- * @namespace controler
  * @module index
+ * @namespace painter.controler
  */
 (function($, global){
     "use strict";
@@ -20,6 +20,10 @@
              this.bindEvent();
          },
          
+         /**
+          * 帮顶事件
+          * @event bindEvent
+          */
          bindEvent:function(){
              var
                 $document = $(document),

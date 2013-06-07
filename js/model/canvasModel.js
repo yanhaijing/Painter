@@ -1,8 +1,8 @@
 /**
  * 画布对象
  * @author yan
- * @namespace model
  * @module canvasModel
+ * @namespace painter.model
  */
 (function($, global){
     "use strict";
@@ -11,7 +11,7 @@
      * 画布对象
      * @class CanvasModel
      * @constructor
-     * @extends CanvasModel.prorotype
+     * @extends painter.model.CanvasModel.prototype
      */
     var CanvasModel = function(){
         /**
@@ -21,6 +21,13 @@
          * @default null
          */
         this.canvas = null;
+        
+        /**
+         * 当前画布的名称
+         * @property name
+         * @type String
+         * @default "Canvas"
+         */
         this.name = "Canvas";
         
         /**
@@ -31,8 +38,28 @@
          */
         this.shapeList = [];
         
+        /**
+         * 当前画布的覆盖方式
+         * @property convertStatus
+         * @type String
+         * @default 'source-over'
+         */
         this.convertStatus = 'source-over';
+        
+        /**
+         * 当前画布的x轴翻转状态
+         * @property flipXStatus
+         * @type Bollean
+         * @default false
+         */
         this.flipXStatus = false;
+        
+        /**
+         * 当前画布的y轴翻转状态
+         * @property flipYStatus
+         * @type Bollean
+         * @default false
+         */
         this.flipYStatus = false;
         
         /**
@@ -78,8 +105,8 @@
     
     /**
      * 画布对象原型
-     * @class CanvasModel.prorotype
-     * @strict
+     * @class CanvasModel.prototype
+     * @static
      */
     CanvasModel.prototype = {
         /**
@@ -97,16 +124,34 @@
            this.initName(name);
            this.load();//载入图形
         },
+        
+        /**
+         * 初始化画布名称
+         * @method initName
+         * @param {String} name 名称
+         */
         initName:function(name){
             this.setName(name);
         },
         
+        /**
+         * 设置画布名称
+         * @method setName
+         * @param {String} name 名称
+         */
         setName:function(name){
             this.name = name;  
         },
+        
+        /**
+         * 获取画布名称
+         * @method getName
+         * @return {String} 名称
+         */
         getName:function(){
            return this.name; 
         },
+        
         /**
          * 初始化画布对象
          * @method initCanvas
@@ -115,6 +160,7 @@
         initCanvas:function(canvas){
            this.setCanvas(canvas);
         },
+        
         /**
          * 设置当前画布对象帮顶的画布元素
          * @method setCanvas
@@ -145,10 +191,11 @@
         initContext2D:function(){
            this.setContext2D();
         },
+        
         /**
          * 获取2d上下文
          * @method getContext2D
-         * @rerurn {Object} 画布2D上下文对象
+         * @return {Object} 画布2D上下文对象
          */
         getContext2D:function(){
             return this.context2D;
@@ -213,6 +260,7 @@
             this.left =left;
             return left;
         },
+        
         /**
          * 获取left
          * @method getLeft
@@ -266,11 +314,16 @@
             return this.top;
         },
         
+        /**
+         * 更新尺寸
+         * @method updateSize
+         */
         updateSize:function(){
             this.updateHeight();
             this.updateWidth();
             this.repaint();//重绘画布
         },
+        
         /**
          * 初始化高度
          * @method initHeight
@@ -278,6 +331,7 @@
         initHeight:function(){
             this.updateHeight();  
         },
+        
         /**
          * 更新高度,更新画布元素高度为父元素高度，并设置画布类高度
          * @method updateHeight
@@ -294,6 +348,7 @@
             
             return this.setHeight(height);   
         },
+        
         /**
          * 设置当前画布类对象高度
          * @method setHeight
@@ -305,6 +360,7 @@
            this.height = height;
            return height;
         },
+        
         /**
          * 获取当前花布列对象高度
          * @method getHieght
@@ -321,6 +377,7 @@
         initWidth:function(){
             this.updateWidth();  
         },
+        
         /**
          * 更新高度,从画布元素重新获取高度
          * @method updateWidth
@@ -336,6 +393,7 @@
             $canvas.attr('width', width);
             return this.setWidth(width);
         },
+        
         /**
          * 设置当前画布类对象高度
          * @method setWidth
@@ -348,6 +406,7 @@
            
            return this.width;
         },
+        
         /**
          * 获取当前花布列对象高度
          * @method getWidth
@@ -396,6 +455,7 @@
         addShape:function(shape){
             this.shapeList.push(shape);
         },
+        
         /**
          * 删除队尾图形
          * @method deleteShape
@@ -403,6 +463,7 @@
         deleteShape:function(){
             this.shapeList.pop();
         },
+        
         /**
          * 清除图形队列
          * @method clearShapeList
@@ -541,6 +602,10 @@
             }, time);
         },
         
+        /**
+         * 画布x轴翻转
+         * @method flipX
+         */
         flipX:function(){
             var
                 context = this.getContext2D(),
@@ -558,6 +623,11 @@
             // 画布恢复正常
             context.restore();
         },
+        
+        /**
+         * 画布y轴翻转
+         * @method flipX
+         */
         flipY:function(){
             var
                 context = this.getContext2D(),

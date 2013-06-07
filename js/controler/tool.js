@@ -1,7 +1,8 @@
 /**
  * 工具模块
  * @author yan
- * @namespace controls
+ * @module tool
+ * @namespace painter.controler
  */
 
 (function($, global){
@@ -13,7 +14,7 @@
 	 * 工具类
 	 * @class Tool
 	 * @constructor
-	 * @extends Tool.prorotype
+	 * @extends painter.controler.Tool.prototype
 	 */
 	Tool = function(){
 	    /**

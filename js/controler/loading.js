@@ -1,5 +1,7 @@
 /**
  * @author yan
+ * @module loading
+ * @namespace painter.controler
  */
 
 (function($, global){

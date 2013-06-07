@@ -1,8 +1,8 @@
 /**
  * 画布容器对象
  * @author yan
- * @namespace model
  * @module canvasContainerModel
+ * @namespace painter.model
  */
 (function($, global){
     "use strict";

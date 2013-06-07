@@ -1,8 +1,8 @@
 /**
  * 画布控制器
  * @author yan
- * @namespace controler
  * @module canvas
+ * @namespace painter.controler
  */
 
 (function($, global){
@@ -57,6 +57,7 @@
             this.clickStatus = status;
             return status; 
         },
+        
         /**
          * 初始化
          * @method init

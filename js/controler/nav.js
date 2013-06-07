@@ -1,8 +1,8 @@
 /**
  * 导航栏js
  * @author 颜海镜
- * @namespace controler
  * @module nav
+ * @namespace painter.controler
  */
 (function($, global){
     "use strict";

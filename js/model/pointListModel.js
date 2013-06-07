@@ -1,7 +1,7 @@
 /**
  * @author yan
- * @namespace model
- * 
+ * @module pointListModel
+ * @namespace painter.model
  */
 
 (function($, global){
@@ -31,15 +31,38 @@
             this.list.push(point);
             return this.list;
         },
+        
+        /**
+         * 获取开始节点
+         * @method getStart
+         * @return {Object} 第一个点对象
+         */
         getStart:function(){
             return this.list[0];
         },
+        
+        /**
+         * 获取结束节点
+         * @method getEnd
+         * @return {Object} 第最后一个点对象
+         */
         getEnd:function(){
             return this.list[this.list.length - 1];
-        },        
+        },
+        
+        /**
+         * 获取结束节点
+         * @method getList
+         * @return {Array} 点列表
+         */        
         getList:function(){
             return this.list;
         },
+        
+        /**
+         * 初始化
+         * @method init
+         */
         init:function(){
             this.list = [];
             return this.list;   

@@ -1,8 +1,8 @@
 /**
  * 工具容器对象
  * @author yan
- * @namespace model
  * @module toolContainerModel
+ * @namespace painter.model
  */
 
 (function($, global){
