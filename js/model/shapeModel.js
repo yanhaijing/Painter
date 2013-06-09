@@ -921,7 +921,12 @@
                color = "rgba(".concat(r, ",", g, ",", b, ",", a, ")");
                
             $color.spectrum("set", color);
-        };  
+        };
+        
+        /**
+         * 重绘
+         * @method repaint
+         */  
         this.repaint = function(){
             //do nothing
         } 

@@ -160,14 +160,14 @@
          * 名称
          * @property name
          * @type String
-         * @default 'line' 
+         * @default 'Shape' 
          */
 	    this.name = "Shape";
 	    /**
          * 当前工具对应的鼠标对象
          * @property mouse
          * @type String
-         * @default 'Tool'
+         * @default 'Cross'
          */
 	    this.mouse = "Cross";
 	    
@@ -224,7 +224,7 @@
 	     * 名称
 	     * @property name
 	     * @type String
-	     * @default 'line' 
+	     * @default 'Line' 
 	     */
 		this.name = 'Line';
 		
@@ -280,7 +280,7 @@
          * 名称
          * @property name
          * @type String
-         * @default 'line' 
+         * @default 'CurveClosed' 
          */
         this.name = 'CurveClosed';
         
@@ -330,7 +330,7 @@
          * 名称
          * @property name
          * @type String
-         * @default 'line' 
+         * @default 'Rect' 
          */
         this.name = 'Rect';
         /**
@@ -385,7 +385,7 @@
          * 名称
          * @property name
          * @type String
-         * @default 'line' 
+         * @default 'RectRound' 
          */
         this.name = 'RectRound';                
     };
@@ -409,7 +409,7 @@
          * 名称
          * @property name
          * @type String
-         * @default 'line' 
+         * @default 'Circle' 
          */
         this.name = 'Circle';
         
@@ -464,7 +464,7 @@
          * 名称
          * @property name
          * @type String
-         * @default 'line' 
+         * @default 'Ellipes' 
          */
         this.name = 'Ellipes';
         
@@ -520,14 +520,14 @@
          * 名称
          * @property name
          * @type String
-         * @default 'line' 
+         * @default 'Stroke' 
          */
         this.name = "Stroke";
         /**
          * 当前工具对应的鼠标对象
          * @property mouse
          * @type String
-         * @default 'Tool'
+         * @default 'Cross'
          */
         this.mouse = "Cross";
         
@@ -583,7 +583,7 @@
          * 名称
          * @property name
          * @type String
-         * @default 'line' 
+         * @default 'Pen' 
          */
         this.name = 'Pen';
         
@@ -641,7 +641,7 @@
          * 名称
          * @property name
          * @type String
-         * @default 'line' 
+         * @default 'CurveClosedStroke' 
          */
         this.name = 'CurveClosedStroke';
         
@@ -649,7 +649,7 @@
          * 工具类对应的鼠标
          * @property mouse
          * @type String
-         * @default 'Pen' 
+         * @default 'Cross' 
          */
         this.mouse = "Cross";
     };
@@ -673,7 +673,7 @@
          * 名称
          * @property name
          * @type String
-         * @default 'line' 
+         * @default 'RectStroke' 
          */
         this.name = 'RectStroke';
         
@@ -730,19 +730,9 @@
          * 名称
          * @property name
          * @type String
-         * @default 'line' 
+         * @default 'RectRoundStroke' 
          */
-        this.name = 'RectRoundStroke';
-        
-        /**
-         * 初始化
-         * @method init 
-         * @return {Bollean} 初始化是否成功
-         */
-        this.init = function(){
-            //获取当前属性
-            this.initAttributes();
-        };        
+        this.name = 'RectRoundStroke';       
     };
     
     /**
@@ -764,7 +754,7 @@
          * 名称
          * @property name
          * @type String
-         * @default 'line' 
+         * @default 'CircleStroke' 
          */
         this.name = 'CircleStroke';
         
@@ -820,7 +810,7 @@
          * 名称
          * @property name
          * @type String
-         * @default 'line' 
+         * @default 'EllipesStroke' 
          */
         this.name = 'EllipesStroke';
         
