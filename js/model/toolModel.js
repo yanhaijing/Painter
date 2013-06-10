@@ -987,7 +987,14 @@
          * @return {Object} 设置完的参数
          */
         this.setPoint = function(pointList){
-            return this.getOption();
+            var
+                endPoint = pointList.getEnd(),
+                x = endPoint.x,
+                y = endPoint.y;
+            return this.setOption({
+                x:x,
+                y:y
+            });
         };
     };
     

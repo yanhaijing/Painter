@@ -866,8 +866,12 @@
         this.paint = function(context){
             var 
                option = this.getOption(),
+               x = option.x,
+               y = option.y,
                width = option.width,
-               height = option.height;
+               height = option.height,
+               imageData = context.getImageData(0, 0, width, height),
+               datas = imageData.data;
             
             context.save();//保存上下文信息            
             
