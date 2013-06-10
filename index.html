@@ -173,7 +173,7 @@
 					<button class="flood-fill" title="填充工具" data-current-tool="FloodFill" data-tool-panel="flood-fill"></button>
 					<button class="eye-dropper" title="吸管工具" data-current-tool="EyeDropper" data-tool-panel="eye-dropper"></button>
 					<button class="text" title="文字工具" data-tool-panel="text" data-current-tool="Text"></button>
-					<input class="color" type="text" title="颜色" value="#000000"/>					
+					<input class="color" type="text" title="颜色" value="rgba(0,0,0,1)"/>					
 				</div><!-- end .tool -->
 				<div class="tool-panel">
 					<div class="shape wrap">
@@ -315,7 +315,7 @@
 									</fieldset>
 								</form>						
 						</div>					
-					</div><!-- end .brush -->
+					</div><!-- end .eraser -->
 					
 					<div class="text wrap">
 						<button class="text" title="文本" data-tool="text" data-tool-class="Text"> </button>
@@ -373,7 +373,7 @@
 							<form>
 								<fieldset>
 									<legend>property</legend>
-									<label>opacity：<input type="range" max="100" data-attr="opacity" value="100" /><span>100</span></label>	
+									<label>opacity：<input class="opacity" type="range" max="100" data-attr="opacity" value="100" /><span>100</span></label>	
 								</fieldset>
 							</form>
 						</div>					

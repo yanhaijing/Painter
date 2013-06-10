@@ -866,21 +866,81 @@
         this.paint = function(context){
             var 
                option = this.getOption(),
+               color = option.fillStyle,
+               start = color.indexOf("(") + 1,
+               temp = color.slice(start, -1),
+               temps = temp.split(","),
+               colorObj = {
+                   r:parseInt(temps[0], 10),
+                   g:parseInt(temps[1], 10),
+                   b:parseInt(temps[2], 10),
+                   a:Math.ceil((temps[3]||1) * 255)
+               },             
                x = option.x,
-               y = option.y,
+               y = option.y,               
                width = option.width,
                height = option.height,
                imageData = context.getImageData(0, 0, width, height),
-               datas = imageData.data;
+               datas = imageData.data,
+               index = (width * y + x) * 4,
+               r = datas[index],
+               g = datas[index + 1],
+               b = datas[index + 2],
+               a = datas[index + 3] / 255,
+               sourceColor = "rgba(".concat(r, ",", g, ",", b, ",", a, ")");
             
+            function flood(x, y, width, height, datas, sourceColor, desColor, desColorObj){
+                var
+                    index = (width * y + x) * 4,
+                    r = datas[index],
+                    g = datas[index + 1],
+                    b = datas[index + 2],
+                    a = datas[index + 3] / 255,
+                    color = "rgba(".concat(r, ",", g, ",", b, ",", a, ")");
+                
+                //如果当前像素颜色和  目的颜色相等，返回
+                if(color === desColor){
+                    return 1;
+                }
+                
+                //如果颜色和元颜色一样,递归
+                if(color === sourceColor){
+                    //颜色一样替换颜色为目的颜色
+                    datas[index] = desColorObj.r;
+                    datas[index + 1] = desColorObj.g;
+                    datas[index + 2] = desColorObj.b;
+                    datas[index + 3] = desColorObj.a;
+                    
+                    //递归
+                    if(x > 0){
+                        flood(x - 1, y, width, height, datas, sourceColor, desColor, desColorObj);
+                    }
+                    if(x < width){
+                        flood(x + 1, y, width, height, datas, sourceColor, desColor, desColorObj);
+                    }
+                    if(y > 0){
+                        flood(x, y-1, width, height, datas, sourceColor, desColor, desColorObj);
+                    }
+                    if(y < height){
+                        flood(x, y+1, width, height, datas, sourceColor, desColor, desColorObj);
+                    }
+                }
+                
+                return 0;
+            }
+            
+            try{
+                flood(x, y, width, height, datas, sourceColor, color, colorObj);
+            }catch(ex){
+                global.console.log(ex.message);
+            }
+                       
             context.save();//保存上下文信息            
             
             //设置属性
-            context.fillStyle = option.fillStyle;
             context.globalAlpha = option.opacity / 100;          
-            
+            context.putImageData(imageData, 0, 0);
             //绘制
-            context.fillRect(0,0,width,height);
             context.restore();//回复上下文
         };
     };
