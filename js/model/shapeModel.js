@@ -937,11 +937,11 @@
                        
             context.save();//保存上下文信息            
             
-            //设置属性
-            context.globalAlpha = option.opacity / 100;          
+            //绘制         
             context.putImageData(imageData, 0, 0);
-            //绘制
-            context.restore();//回复上下文
+            
+            //回复上下文
+            context.restore();
         };
     };
     
@@ -993,7 +993,7 @@
          */  
         this.repaint = function(){
             //do nothing
-        } 
+        }; 
     };
     
     /**

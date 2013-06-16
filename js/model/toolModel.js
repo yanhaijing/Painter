@@ -967,7 +967,6 @@
             //获取当前属性
             var 
               $attributePanel = $('#tool-flood-fill-attribute-panel'),
-              opacity = $('.opacity',$attributePanel).eq(0).val(),
               color = $('#tool-wrap .tool .color').eq(0).val(),
               canvas = global.painter.canvas.currentCanvasContainer.getCanvas(),
               width = canvas.getWidth(),
@@ -975,7 +974,6 @@
             
             //设置参数
             return this.setOption({
-                opacity: opacity,
                 fillStyle:color,
                 width:width,
                 height:height
