@@ -16,7 +16,6 @@
 	   Line,
 	   CurveClosed,
 	   Rect,
-	   RectRound,
 	   Circle,
 	   //椭圆工具类
        Ellipes,
@@ -25,7 +24,6 @@
 	   Pen,
 	   CurveClosedStroke,
 	   RectStroke,
-       RectRoundStroke,
        CircleStroke,
 	   Eraser,
 	   FloodFill,
@@ -372,31 +370,7 @@
      * @static
      * @extends painter.model.toolModel.Shape
      */
-    Rect.prototype = new Shape();
-    
-    /**
-     * 圆角矩形工具对象
-     * @class RectRound
-     * @constructor
-     * @extends painter.model.toolModel.RectRound.prototype
-     */
-    RectRound = function(){
-        /**
-         * 名称
-         * @property name
-         * @type String
-         * @default 'RectRound' 
-         */
-        this.name = 'RectRound';                
-    };
-    
-    /**
-     * 圆角矩形工具原型
-     * @class RectRound.prototype
-     * @static
-     * @extends painter.model.toolModel.Rect
-     */
-    RectRound.prototype = new Rect();
+    Rect.prototype = new Shape();      
     
     /**
      * 椭圆工具对象
@@ -717,31 +691,7 @@
      * @static
      * @extends painter.model.toolModel.Stroke
      */
-    RectStroke.prototype = new Stroke();
-    
-    /**
-     * 圆角矩形工具对象
-     * @class RectRoundStroke
-     * @constructor
-     * @extends painter.model.toolModel.RectRoundStroke.prototype
-     */
-    RectRoundStroke = function(){
-        /**
-         * 名称
-         * @property name
-         * @type String
-         * @default 'RectRoundStroke' 
-         */
-        this.name = 'RectRoundStroke';       
-    };
-    
-    /**
-     * 圆角矩形工具原型
-     * @class RectRoundStroke.prototype
-     * @static
-     * @extends painter.model.toolModel.RectStroke
-     */
-    RectRoundStroke.prototype = new RectStroke();
+    RectStroke.prototype = new Stroke();    
     
     /**
      * 椭圆工具对象
@@ -1253,12 +1203,10 @@
 	global.painter.model.toolModel.Line = Line;
 	global.painter.model.toolModel.CurveClosed = CurveClosed;
 	global.painter.model.toolModel.Rect = Rect;
-	global.painter.model.toolModel.RectRound = RectRound;
 	global.painter.model.toolModel.Circle = Circle;
 	global.painter.model.toolModel.Pen = Pen;
 	global.painter.model.toolModel.CurveClosedStroke = CurveClosedStroke;
 	global.painter.model.toolModel.RectStroke = RectStroke;
-    global.painter.model.toolModel.RectRoundStroke = RectRoundStroke;
     global.painter.model.toolModel.CircleStroke = CircleStroke;
 	global.painter.model.toolModel.Eraser = Eraser;
 	global.painter.model.toolModel.FloodFill = FloodFill;

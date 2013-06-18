@@ -180,7 +180,6 @@
 						<button class="line" title="直线" data-tool="shape" data-tool-class="Line"></button>
 						<button class="curve-closed" title="闭合曲线" data-tool="shape" data-tool-class="CurveClosed"></button>
 						<button class="rect" title="矩形" data-tool="shape" data-tool-class="Rect"></button>
-						<button class="rect-round" title="圆角矩形" data-tool="shape" data-tool-class="RectRound"></button>
 						<button class="circle" title="圆" data-tool="shape" data-tool-class="Circle"></button>	
 						<button class="ellipes" title="椭圆" data-tool="shape" data-tool-class="Ellipes"></button>	
 						<div id="tool-shape-attribute-panel" class="tool-attribute-panel" title="形状属性面板">
@@ -229,7 +228,6 @@
 						<button class="pen" title="铅笔" data-tool="stroke" data-tool-class="Pen"> </button>
 						<button class="curve-closed-stroke" title="闭合曲线" data-tool="stroke" data-tool-class="CurveClosedStroke"></button>
 						<button class="rect-stroke" title="矩形" data-tool="stroke" data-tool-class="RectStroke"> </button>
-						<button class="rect-round-stroke" title="圆角矩形" data-tool="stroke" data-tool-class="RectRoundStroke"></button>
 						<button class="circle-stroke" title="圆形" data-tool="stroke" data-tool-class="CircleStroke"></button>
 						<button class="ellipes-stroke" title="椭圆" data-tool="stroke" data-tool-class="EllipesStroke"></button>
 						<div id="tool-stroke-attribute-panel" class="tool-attribute-panel" title="轮廓属性面板">
@@ -281,14 +279,7 @@
 									<legend>property</legend>
 									<label>size：<input type="range" min="1" max="100" data-attr="lineWidth" value="1" /><span>1</span></label>
 									<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>	
-								</fieldset>							
-								<fieldset >
-									<legend>shadow</legend>
-									<label>shadowOffsetX：<input class="shadow-offsetx" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetX" /><span>0</span></label>
-									<label>shadowOffsetY：<input class="shadow-offsety" type="range" min="-10" max="10" value="0" data-attr="shadowOffsetY" /><span>0</span></label>
-									<label>shadowBlur：<input class="shadow-blur" type="range" min="0" max="10" value="0" data-attr="shadowBlur" /><span>0</span></label>
-									<label>shadowColor：<input class="shadow-color" type="color" data-attr="shadowColor" value="#ffffff" /></label>
-								</fieldset>
+								</fieldset>															
 								<fieldset class="radios">										
 										<legend>lineJoin</legend>
 										<label>

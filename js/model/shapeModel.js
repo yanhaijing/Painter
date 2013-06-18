@@ -14,7 +14,6 @@
         Line = null,
         CurveClosed,
         Rect = null,
-        RectRound = null,
         Circle = null,
         //椭圆类
         Ellipes,
@@ -23,7 +22,6 @@
         Pen = null,
         CurveClosedStroke,
         RectStroke = null,
-        RectRoundStroke = null,
         CircleStroke = null,
         Eraser,
         FloodFill,
@@ -334,30 +332,6 @@
     Rect.prototype = new FillStroke();
     
     /**
-     * 圆角矩形对象
-     * @class RectRound
-     * @constructor
-     * @extends painter.model.shapeModel.RectRound.prototype 
-     */
-    RectRound = function(){
-       /**
-         * 名称
-         * @property name
-         * @type String
-         * @default RectRound
-         */
-        this.name = 'RectRound';
-    };
-    
-    /**
-     * 矩形对象原型
-     * @class RectRound.prototype
-     * @static 
-     * @extends painter.model.shapeModel.Rect
-     */
-    RectRound.prototype = new Rect();
-    
-    /**
      * 椭圆对象
      * @class Circle
      * @constructor
@@ -660,31 +634,7 @@
      * @static 
      * @extends painter.model.shapeModel.Stroke
      */
-    RectStroke.prototype = new Stroke();
-    
-    /**
-     * 圆角矩形对象
-     * @class RectRoundStroke
-     * @constructor
-     * @extends painter.model.shapeModel.RectRoundStroke.prototype 
-     */
-    RectRoundStroke = function(){
-       /**
-         * 名称
-         * @property name
-         * @type String
-         * @default 'RectRoundStroke'
-         */
-        this.name = 'RectRoundStroke';
-    };
-    
-    /**
-     * 矩形对象原型
-     * @class RectRoundStroke.prototype
-     * @static 
-     * @extends painter.model.shapeModel.RectStroke
-     */
-    RectRoundStroke.prototype = new RectStroke();
+    RectStroke.prototype = new Stroke();      
     
     /**
      * 椭圆对象
@@ -1250,12 +1200,10 @@
 	global.painter.model.shapeModel.Line = Line;
 	global.painter.model.shapeModel.CurveClosed = CurveClosed;
 	global.painter.model.shapeModel.Rect = Rect;
-	global.painter.model.shapeModel.RectRound = RectRound;
 	global.painter.model.shapeModel.Circle = Circle;
 	global.painter.model.shapeModel.Pen = Pen;
 	global.painter.model.shapeModel.CurveClosedStroke = CurveClosedStroke;
 	global.painter.model.shapeModel.RectStroke = RectStroke;
-    global.painter.model.shapeModel.RectRoundStroke = RectRoundStroke;
     global.painter.model.shapeModel.CircleStroke = CircleStroke;
 	global.painter.model.shapeModel.Eraser = Eraser;
 	global.painter.model.shapeModel.FloodFill = FloodFill;

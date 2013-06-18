@@ -150,9 +150,6 @@ nav h1{
 .tool button[data-current-tool="Rect"]{
 	background-image:url("../images/tool-button-rect.gif");
 }
-.tool button[data-current-tool="RectRound"]{
-	background-image:url("../images/tool-button-rect-round.gif");
-}
 .tool button[data-current-tool="Circle"]{
 	background-image:url("../images/tool-button-circle.gif");
 }
@@ -170,9 +167,6 @@ nav h1{
 }
 .tool button[data-current-tool="RectStroke"]{
 	background-image:url("../images/tool-button-rect-stroke.gif");
-}
-.tool button[data-current-tool="RectRoundStroke"]{
-	background-image:url("../images/tool-button-rect-round-stroke.gif");
 }
 .tool button[data-current-tool="CircleStroke"]{
 	background-image:url("../images/tool-button-circle-stroke.gif");
@@ -283,9 +277,6 @@ nav h1{
 .tool-panel .shape .rect{
 	background-image:url("../images/tool-button-rect.gif");
 }
-.tool-panel .shape .rect-round{
-	background-image:url("../images/tool-button-rect-round.gif");
-}
 .tool-panel .shape .circle{
 	background-image:url("../images/tool-button-circle.gif");
 }
@@ -304,9 +295,6 @@ nav h1{
 }
 .tool-panel .stroke .rect-stroke{
 	background-image:url("../images/tool-button-rect-stroke.gif");
-}
-.tool-panel .stroke .rect-round-stroke{
-	background-image:url("../images/tool-button-rect-round-stroke.gif");
 }
 .tool-panel .stroke .circle-stroke{
 	background-image:url("../images/tool-button-circle-stroke.gif");
