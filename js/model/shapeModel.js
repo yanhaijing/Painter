@@ -837,50 +837,70 @@
                g = datas[index + 1],
                b = datas[index + 2],
                a = datas[index + 3] / 255,
-               sourceColor = "rgba(".concat(r, ",", g, ",", b, ",", a, ")");
+               sourceColor = "rgba(".concat(r, ",", g, ",", b, ",", a, ")"),
+               stacks = [{x:x, y:y}];
             
-            function flood(x, y, width, height, datas, sourceColor, desColor, desColorObj){
+            function flood(stacks, width, height, datas, sourceColor, desColor, desColorObj){
                 var
                     index = (width * y + x) * 4,
                     r = datas[index],
                     g = datas[index + 1],
                     b = datas[index + 2],
                     a = datas[index + 3] / 255,
-                    color = "rgba(".concat(r, ",", g, ",", b, ",", a, ")");
+                    color = "rgba(".concat(r, ",", g, ",", b, ",", a, ")"),
+                    temp = null;
                 
-                //如果当前像素颜色和  目的颜色相等，返回
-                if(color === desColor){
-                    return 1;
-                }
-                
-                //如果颜色和元颜色一样,递归
-                if(color === sourceColor){
-                    //颜色一样替换颜色为目的颜色
-                    datas[index] = desColorObj.r;
-                    datas[index + 1] = desColorObj.g;
-                    datas[index + 2] = desColorObj.b;
-                    datas[index + 3] = desColorObj.a;
+                function isNotEmpty(stacks){
+                    if(stacks.length !== 0){
+                        return true;
+                    }
                     
-                    //递归
-                    if(x > 0){
-                        flood(x - 1, y, width, height, datas, sourceColor, desColor, desColorObj);
-                    }
-                    if(x < width){
-                        flood(x + 1, y, width, height, datas, sourceColor, desColor, desColorObj);
-                    }
-                    if(y > 0){
-                        flood(x, y-1, width, height, datas, sourceColor, desColor, desColorObj);
-                    }
-                    if(y < height){
-                        flood(x, y+1, width, height, datas, sourceColor, desColor, desColorObj);
-                    }
+                    return false;
                 }
+                
+                while(isNotEmpty(stacks)){
+                    temp = stacks.pop();
+                    index = (width * temp.y + temp.x) * 4;
+                    r = datas[index];
+                    g = datas[index + 1];
+                    b = datas[index + 2];
+                    a = datas[index + 3] / 255;
+                    color = "rgba(".concat(r, ",", g, ",", b, ",", a, ")");
+                    
+                    //如果当前像素颜色和  目的颜色相等，返回
+                    if(color === desColor){
+                        continue;
+                    }
+                    
+                    //如果颜色和元颜色一样,递归
+                    if(color === sourceColor){
+                        //颜色一样替换颜色为目的颜色
+                        datas[index] = desColorObj.r;
+                        datas[index + 1] = desColorObj.g;
+                        datas[index + 2] = desColorObj.b;
+                        datas[index + 3] = desColorObj.a;
+                        
+                        //递归
+                        if(x > 0){
+                            stacks.push({x:temp.x-1, y:temp.y});
+                        }
+                        if(x < width){
+                            stacks.push({x:temp.x+1, y:temp.y});
+                        }
+                        if(y > 0){
+                            stacks.push({x:temp.x, y:temp.y-1});
+                        }
+                        if(y < height){
+                            stacks.push({x:temp.x, y:temp.y+1});
+                        }
+                    }
+                }            
                 
                 return 0;
             }
             
             try{
-                flood(x, y, width, height, datas, sourceColor, color, colorObj);
+                flood(stacks, width, height, datas, sourceColor, color, colorObj);
             }catch(ex){
                 global.console.log(ex.message);
             }
