@@ -918,6 +918,7 @@
             var 
               $attributePanel = $('#tool-flood-fill-attribute-panel'),
               color = $('#tool-wrap .tool .color').eq(0).val(),
+              allowance = parseInt($('.allowance',$attributePanel).eq(0).val(), 10),
               canvas = global.painter.canvas.currentCanvasContainer.getCanvas(),
               width = canvas.getWidth(),
               height = canvas.getHeight();       
@@ -926,7 +927,8 @@
             return this.setOption({
                 fillStyle:color,
                 width:width,
-                height:height
+                height:height,
+                allowance:allowance
             });
         };
         

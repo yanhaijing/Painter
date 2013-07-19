@@ -816,6 +816,7 @@
         this.paint = function(context){
             var 
                option = this.getOption(),
+               allowance = option.allowance,
                color = option.fillStyle,
                start = color.indexOf("(") + 1,
                temp = color.slice(start, -1),
@@ -838,9 +839,15 @@
                b = datas[index + 2],
                a = datas[index + 3] / 255,
                sourceColor = "rgba(".concat(r, ",", g, ",", b, ",", a, ")"),
+               sourceColorObj = {
+                   r:r,
+                   g:g,
+                   b:b,
+                   a:a
+               },
                stacks = [{x:x, y:y}];
             
-            function flood(stacks, width, height, datas, sourceColor, desColor, desColorObj){
+            function flood(stacks, allowance, width, height, datas, sourceColor, sourceColorObj, desColor, desColorObj){
                 var
                     index = (width * y + x) * 4,
                     r = datas[index],
@@ -873,7 +880,7 @@
                     }
                     
                     //如果颜色和元颜色一样,递归
-                    if(color === sourceColor){
+                    if((Math.abs(r - sourceColorObj.r) < allowance) && (Math.abs(g - sourceColorObj.g) < allowance) && (Math.abs(b - sourceColorObj.b) < allowance) && (Math.abs(a - sourceColorObj.a) < allowance/256)){
                         //颜色一样替换颜色为目的颜色
                         datas[index] = desColorObj.r;
                         datas[index + 1] = desColorObj.g;
@@ -900,7 +907,7 @@
             }
             
             try{
-                flood(stacks, width, height, datas, sourceColor, color, colorObj);
+                flood(stacks, allowance, width, height, datas, sourceColor, sourceColorObj, color, colorObj);
             }catch(ex){
                 global.console.log(ex.message);
             }

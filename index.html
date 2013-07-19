@@ -277,7 +277,7 @@
 							<form>
 								<fieldset>
 									<legend>property</legend>
-									<label>size：<input type="range" min="1" max="100" data-attr="lineWidth" value="1" /><span>1</span></label>
+									<label>size：<input class="size" type="range" min="1" max="100" data-attr="lineWidth" value="1" /><span>1</span></label>
 									<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>	
 								</fieldset>															
 								<fieldset class="radios">										
@@ -307,6 +307,17 @@
 								</form>						
 						</div>					
 					</div><!-- end .eraser -->
+					
+					<div class="flood-fill wrap">  
+                        <div id="tool-flood-fill-attribute-panel" class="tool-attribute-panel" title="油漆桶属性面板">
+                            <form>
+                                <fieldset>
+                                    <legend>property</legend>
+                                    <label>allowance：<input class="allowance" type="range" min="1" max="256" data-attr="allowance" value="1" /><span>1</span></label>                                
+                                </fieldset>                                                                                        
+                            </form>                     
+                        </div>                  
+                    </div><!-- end .floodfill -->
 					
 					<div class="text wrap">
 						<button class="text" title="文本" data-tool="text" data-tool-class="Text"> </button>
