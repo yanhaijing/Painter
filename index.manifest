@@ -1,6 +1,6 @@
 CACHE MANIFEST 
 #上一行是必须书写的。
-#version 1.0.00
+#version 1.0.01
 
 #js
 js/controler/index.js
@@ -81,3 +81,5 @@ images/tool-button-rect.gif
 images/tool-button-rect-stroke.gif
 images/tool-button-text.gif
 images/tool-button-text-stroke.gif
+images/weibo_14x14.png
+images/btn-index.png

@@ -79,6 +79,13 @@ nav h1{
 	color:#888888;
 	opacity:0.8
 }
+.icon-weibo {
+    background: url("../images/weibo_14x14.png");
+}
+
+#nav-share-weibo .weibo:hover .icon-weibo {
+    background: url("../images/weibo_14x14.png");
+}
 /**
  * 	主要区域
  * =======================================
@@ -389,4 +396,8 @@ footer p{
 
 .weibo{
     padding: 0 5px
+}
+.alipay img {
+    width: auto;
+    height: 1.5em
 }
