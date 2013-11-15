@@ -1,7 +1,7 @@
-<a href="https://github.com/yanhaijing/Painter">
+<a href="http://yanhaijing.github.io/Painter/">
   <img src="./images/Painter.gif" width="100px">
 </a>
-#[Painter](https://github.com/yanhaijing/Painter)
+#[Painter](http://yanhaijing.github.io/Painter/)
 
 Painter is the painter base on html5's Canvas,You just need a support html5 browsers that you like.
 
@@ -19,12 +19,17 @@ Painter is the painter base on html5's Canvas,You just need a support html5 brow
 
 **yanhaijing**
 
-- [Twitter](http://t.qq.com/yanhaijing1234 "yanhaijing's Twitter")
-- [Email](http://yanhaijing1234@gmail.com "yanhaijing's Email")
+- [Weibo](http://weibo.com/yanhaijing1234 "yanhaijing's Weibo")
+- [Email](mailto:yanhaijing@yeah.net "yanhaijing's Email")
+- [GithubPages](http://yanhaijing.github.io "yanhaijing's GithubPages")
+- [Blog](http://www.cnblogs.com/yanhaijing/ "yanhaijing's Blog")
 
 **luyu**
 
-- [Twitter](http://t.qq.com/wsluyu/ "luyu's Twitter")
+- [Weibo](http://weibo.com/wsluyu2011 "luyu's Weibo")
+
+##Issues
+- [report question](https://github.com/yanhaijing/Painter/issues "report question")
 
 ##Copyright and license
 
