@@ -13,7 +13,7 @@ Painter is the painter base on html5's Canvas,You just need a support html5 brow
 * chrome
 * opera
 * safira
-* ie10+
+* ie9+
 
 ##Authors
 
@@ -21,12 +21,13 @@ Painter is the painter base on html5's Canvas,You just need a support html5 brow
 
 - [Weibo](http://weibo.com/yanhaijing1234 "yanhaijing's Weibo")
 - [Email](mailto:yanhaijing@yeah.net "yanhaijing's Email")
-- [GithubPages](http://yanhaijing.github.io "yanhaijing's GithubPages")
-- [Blog](http://www.cnblogs.com/yanhaijing/ "yanhaijing's Blog")
+- [Blog](http://yanhaijing.com "yanhaijing's Blog")
 
 **luyu**
 
 - [Weibo](http://weibo.com/wsluyu2011 "luyu's Weibo")
+- [Email](mailto:wsluyu2011@163.com "luyu's Email")
+- [Blog](http://www.cnblogs.com/wsluyu/ "luyu's Blog")
 
 ##Issues
 - [report question](https://github.com/yanhaijing/Painter/issues "report question")

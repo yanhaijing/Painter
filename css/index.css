@@ -70,6 +70,17 @@ nav h1{
 	font-size: 16px;
 	line-height: 1.2em
 }
+.beta{
+    background:#999999;
+    border-radius: 5px;
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    font-size: 12px;
+    line-height: 1;
+    margin: 13px 0 0 -14px;
+    padding: 2px 5px;
+}
 #menu > li >ul >li{
 	position:relative
 }
@@ -79,12 +90,33 @@ nav h1{
 	color:#888888;
 	opacity:0.8
 }
-.icon-weibo {
-    background: url("../images/weibo_14x14.png");
+.icon-qq{
+    background:url(../images/qq.png) no-repeat 0 0;
+}
+#nav-share-qq .qq:hover .icon-qq{
+    background-image: url("../images/qq.png");
+}
+.icon-qzone, 
+.icon-weibo, 
+.icon-qweibo {
+    background-image: url("../images/social.png");
+    background-repeat: no-repeat;
+    background-size:14px 132px;
+}
+.icon-qzone{
+    background-position: 0 -17px;
+}
+.icon-weibo{
+    background-position: 0 -68px;
+}
+.icon-qweibo{
+    background-position: 0 0;
 }
 
+#nav-share-qzone .qzone:hover .icon-qzone, 
+#nav-share-qweibo .qweibo:hover .icon-qweibo, 
 #nav-share-weibo .weibo:hover .icon-weibo {
-    background: url("../images/weibo_14x14.png");
+    background-image: url("../images/social.png");
 }
 /**
  * 	主要区域
