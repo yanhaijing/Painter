@@ -884,6 +884,10 @@
                     datas[index + 2] = desColorObj.b;
                     datas[index + 3] = desColorObj.a;
             	}
+            	
+            	if(sourceColor === desColor){
+                    return 0;
+                }
         		stack.push({x: x, y: y});//入栈
         		
         		while(stack.length > 0)
