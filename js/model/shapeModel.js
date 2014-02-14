@@ -846,7 +846,126 @@
                    a:a
                },
                stacks = [{x:x, y:y}];
-            
+               
+            //扫描线填充算法
+            function scanlineSeedFill(x, y, width, height, datas, sourceColor, sourceColorObj, desColor, desColorObj, allowance) {
+            	var
+            		savex,
+            		xleft,
+            		xright,
+            		flag,
+            		xenter,
+            		stack = [],
+            		temp;
+            	
+            	function getpixel(x, y, width) {
+            		var
+            			index,
+            			r,
+            			g,
+            			b,
+            			a,
+            			color;
+            		index = (width * y + x) * 4;
+                    r = datas[index];
+                    g = datas[index + 1];
+                    b = datas[index + 2];
+                    a = datas[index + 3] / 255;
+                    color = "rgba(".concat(r, ",", g, ",", b, ",", a, ")");
+                    
+                    return color;
+            	}	
+            	function putpixel(x, y, desColorObj, datas){
+            		var
+            			index = (width * y + x) * 4;
+            		//颜色一样替换颜色为目的颜
+                    datas[index] = desColorObj.r;
+                    datas[index + 1] = desColorObj.g;
+                    datas[index + 2] = desColorObj.b;
+                    datas[index + 3] = desColorObj.a;
+            	}
+        		stack.push({x: x, y: y});//入栈
+        		
+        		while(stack.length > 0)
+				{
+					temp = stack.pop(); /*栈顶象素出栈*/
+					savex = temp.x; /*保存种子坐标x分量的值*/
+					x = temp.x;
+					y = temp.y;
+					while(getpixel(x, y, width) === sourceColor && x <= width) /*获取该点的颜色值*/
+					{
+						putpixel(x, y, desColorObj, datas); /*填充种子右侧的象素*/
+						x++;
+					}
+					xright = x - 1; /*得到种子区段的右端点*/
+					x = savex - 1; /*准备向种子左侧填充*/
+					while(getpixel(x, y, width) === sourceColor && x >= 0) /*获取该点的颜色值*/
+					{
+						putpixel(x, y, desColorObj, datas); /*填充种子左侧的象素*/
+						x--;
+					}
+					xleft = x + 1; /*得到种子区段的左端点*/
+					x = xleft;
+					y = y + 1; /*考虑种子相邻的上扫描线*/
+					if (y < height) {
+						while(x <= xright)
+						{
+							flag=0; /*找到新种子的标志：0为假；1为真*/
+							while((getpixel(x, y, width) == sourceColor) && x < xright)
+							{
+								if(flag == 0)
+								flag = 1;
+								x++;
+							}
+							if(flag == 1)
+							{
+								if((x == xright)&&(getpixel(x, y, width) === sourceColor))
+									stack.push({x: x, y: y}); /*新区间超过xright,将代表该区段的象素进栈*/
+								else
+									stack.push({x: x - 1, y: y});/*新区段右端点作为种子进栈*/
+								flag=0;
+							}
+							xenter=x;
+							while((getpixel(x, y, width) !== sourceColor) && x < xright)
+							{
+								x++;/*向右跳过分隔带*/
+							}
+							if(xenter==x) x++;/*处理特殊情况,以退出while(x<=xright)循环*/
+						}
+					}					
+					
+					x=xleft; /*为下扫描线的处理作准备*/
+					y=y-2;
+					/*检查相邻的下扫描线,找新区段,并将每个新区段右端的象素作为种子
+					入栈,其方法与上扫描线的处理一样,这里省略。要求同学补充完整。*/
+					if (y > 0) {
+						while(x <= xright)
+						{
+							flag=0; /*找到新种子的标志：0为假；1为真*/
+							while((getpixel(x, y, width) == sourceColor) && x < xright)
+							{
+								if(flag == 0)
+								flag = 1;
+								x++;
+							}
+							if(flag == 1)
+							{
+								if((x == xright)&&(getpixel(x, y, width) === sourceColor))
+									stack.push({x: x, y: y}); /*新区间超过xright,将代表该区段的象素进栈*/
+								else
+									stack.push({x: x - 1, y: y});/*新区段右端点作为种子进栈*/
+								flag=0;
+							}
+							xenter=x;
+							while((getpixel(x, y, width) !== sourceColor) && x < xright)
+							{
+								x++;/*向右跳过分隔带*/
+							}
+							if(xenter==x) x++;/*处理特殊情况,以退出while(x<=xright)循环*/
+						}
+					}
+				}
+            }
             function flood(stacks, allowance, width, height, datas, sourceColor, sourceColorObj, desColor, desColorObj){
                 var
                     index = (width * y + x) * 4,
@@ -907,7 +1026,7 @@
             }
             
             try{
-                flood(stacks, allowance, width, height, datas, sourceColor, sourceColorObj, color, colorObj);
+                scanlineSeedFill(x, y, width, height, datas, sourceColor, sourceColorObj, color, colorObj, allowance);
             }catch(ex){
                 global.console.log(ex.message);
             }
