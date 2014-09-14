@@ -197,17 +197,24 @@
                     option = null,
                     className = currentTool.getClassName();
 
-                that.getPointList().init();//初始化坐标列表
-                that.getPointList().add(point);//添加鼠标坐标
-                that.setClickStatus(true);
 
                 //文本令处理
                 if (className === 'Text') {
-                    $('#text-input').css({
-                        top: point.y - 14,
-                        left: point.x - 5
-                    }).removeClass('hide').empty();
-                    window.setTimeout(function () {$('#text-input').focus();}, 0);
+                    if ($('#text-input').hasClass('hide')) {
+                        that.getPointList().init();//初始化坐标列表
+                        that.getPointList().add(point);//添加鼠标坐标
+                        //that.setClickStatus(true);
+                        $('#text-input').css({
+                            top: point.y - 14,
+                            left: point.x - 5
+                        }).removeClass('hide').empty();
+                        window.setTimeout(function () {$('#text-input').focus();}, 0);
+                    }
+
+                } else {
+                    that.getPointList().init();//初始化坐标列表
+                    that.getPointList().add(point);//添加鼠标坐标
+                    that.setClickStatus(true);
                 }
             });
             $document.delegate('#text-input', 'blur', function (e) {
@@ -220,7 +227,6 @@
                 $this.addClass('hide');
                 that.setClickStatus(false);//更新鼠标点击状态
                 //绘制图形
-                console.log(text, '123');
                 if (text.length > 0) {
                     shape = new global.painter.model.shapeModel[index]();
                     currentTool.setPoint(pointList);

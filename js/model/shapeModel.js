@@ -1229,7 +1229,7 @@ console.log(text);
             //绘制图形
             text.forEach(function (val, key) {
                 context.fillText(val, x, y + option.size * key);
-                context.strokeText(val, x, y + option.size * key);
+                //context.strokeText(val, x, y + option.size * key);
             });
             context.restore();//回复上下文
         };
