@@ -1,6 +1,6 @@
 CACHE MANIFEST 
 #上一行是必须书写的。
-#version 1.0.04
+#version 1.0.5
 
 #js
 js/controler/index.js

@@ -15,34 +15,34 @@
 
 		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
 		<link rel="shortcut icon" href="images/Painter.gif" />
-		
+
 		<!-- bootstrap css -->
 		<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css" />
-		<link href="plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">				
-		
+		<link href="plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+
 		<!-- 主页css  -->
 		<link rel="stylesheet" href="css/layout.css" />
 		<link rel="stylesheet" href="css/index.css" />
 		<link rel="stylesheet" href="css/index-responsive.css" />
-		
+
 		<!-- jquery ui css -->
 		<link rel="stylesheet" href="plugins/jqueryui+/themes/base/minified/jquery-ui.min.css" />
 		<link rel="stylesheet" href="plugins/jqueryui+/themes/base/minified/jquery.ui.core.min.css" />
 		<link rel="stylesheet" href="plugins/jqueryui+/themes/base/minified/jquery.ui.dialog.min.css" />
 		<link rel="stylesheet" href="plugins/jqueryui+/themes/base/minified/jquery.ui.theme.min.css" />
-		
+
 		<!-- color css -->
 		<link rel='stylesheet' href='plugins/spectrum/spectrum.css' />
-		
+
 		<!-- 添加百度统计 -->
 		<script src="js/baidu.js"></script>
 	</head>
 
 	<body>
-		<div id="loading" class="loading">			
+		<div id="loading" class="loading">
 			<div class="progress progress-striped active">
 			  <div class="bar" style="width: 100%;"></div>
-			</div>			
+			</div>
 			<p class="load">
 				Loading core module please wait a while...
 			</p>
@@ -74,7 +74,7 @@
 				<p class="sorry">
 					sorry，您的浏览器不支持html5，请升级浏览器吧
 				</p>
-			</div>			
+			</div>
 		</div><!-- end .loading -->
 		<div class="container-fluid">
 			<nav class="navbar">
@@ -126,7 +126,7 @@
 									<a id="nav-edit-flipy" href="#"><b class="icon-resize-vertical"></b> 垂直翻转<i>Ctrl+V</i></a>
 								</li>
 							</ul>
-						</li><!-- end .edit -->																		
+						</li><!-- end .edit -->
 						<li class="dropdown help">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#">帮助 <b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -138,7 +138,7 @@
 								</li>
 								<li>
 									<a target="_blank" href="https://github.com/yanhaijing/Painter#readme"><b class="icon-question-sign"></b> 关于Painter</a>
-								</li>								
+								</li>
 							</ul>
 						</li><!-- end .help -->
 						<li class="dropdown social">
@@ -155,12 +155,12 @@
                                 </li>
 								<li id="nav-share-weibo">
                                     <a class="weibo" href="#" target="_blank" rel="nofollow"><b class="icon-weibo"></b> 新浪微博</a>
-                                </li>																
+                                </li>
 							</ul>
 						</li><!-- end .share -->
 					</ul><!-- end .nav -->
 				</div><!-- end .navbar-inner -->
-			</nav>			
+			</nav>
 			<div class="row-fluid main-wrap">
 				<div class="span12 canvas-wrap">
 					<canvas width="1000" height="400" id="canvas-background" class="canvas-paint canvas-background"></canvas>
@@ -168,35 +168,36 @@
 					<canvas width="1000" height="400" class="canvas-paint canvas-layer"></canvas>
 					<canvas width="1000" height="400" class="canvas-paint canvas-buffer"></canvas>
 					<canvas width="1000" height="400" id="canvas-mouse" class="canvas-paint canvas-mouse"></canvas>
+				    <div id="text-input" class="text-input hide" contenteditable></div>
 				</div><!-- end .canvas-wrap -->
 				<!-- <div class="span3 info">
-					
+
 				</div><!-- end .info -->
 			</div><!-- end .main-wrap -->
-			
+
 			<div id="tool-wrap" class="tool-wrap">
 				<div class="tool">
-					<button class="shape active" title="形状工具" data-current-tool="Line" data-tool-panel="shape"></button>					
+					<button class="shape active" title="形状工具" data-current-tool="Line" data-tool-panel="shape"></button>
 					<button class="stroke" title="轮廓工具" data-current-tool="Pen" data-tool-panel="stroke"></button>
 					<button class="eraser" title="橡皮擦工具" data-current-tool="Eraser" data-tool-panel="eraser"></button>
 					<button class="flood-fill" title="填充工具" data-current-tool="FloodFill" data-tool-panel="flood-fill"></button>
 					<button class="eye-dropper" title="吸管工具" data-current-tool="EyeDropper" data-tool-panel="eye-dropper"></button>
 					<button class="text" title="文字工具" data-tool-panel="text" data-current-tool="Text"></button>
-					<input class="color" type="text" title="颜色" value="rgba(0,0,0,1)"/>					
+					<input class="color" type="text" title="颜色" value="rgba(0,0,0,1)"/>
 				</div><!-- end .tool -->
 				<div class="tool-panel">
 					<div class="shape wrap">
 						<button class="line" title="直线" data-tool="shape" data-tool-class="Line"></button>
 						<button class="curve-closed" title="闭合曲线" data-tool="shape" data-tool-class="CurveClosed"></button>
 						<button class="rect" title="矩形" data-tool="shape" data-tool-class="Rect"></button>
-						<button class="circle" title="圆" data-tool="shape" data-tool-class="Circle"></button>	
-						<button class="ellipes" title="椭圆" data-tool="shape" data-tool-class="Ellipes"></button>	
+						<button class="circle" title="圆" data-tool="shape" data-tool-class="Circle"></button>
+						<button class="ellipes" title="椭圆" data-tool="shape" data-tool-class="Ellipes"></button>
 						<div id="tool-shape-attribute-panel" class="tool-attribute-panel" title="形状属性面板">
 							<form>
 								<fieldset>
 									<legend>property</legend>
 									<label>size：<input class="width" type="range" min="1" max="100" value="1" data-attr="lineWidth" /><span>1</span></label>
-									<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>	
+									<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>
 								</fieldset>
 								<fieldset>
 									<legend>shadow</legend>
@@ -205,7 +206,7 @@
 									<label>shadowBlur：<input class="shadow-blur" type="range" min="0" max="10" value="0" data-attr="shadowBlur" /><span>0</span></label>
 									<label>shadowColor：<input class="shadow-color" type="color" data-attr="shadowColor" /></label>
 								</fieldset>
-								<fieldset class="radios">										
+								<fieldset class="radios">
 									<legend>lineJoin</legend>
 									<label>
 										<input data-attr="lineJoin" name="line-join" type="radio" value="miter" checked="true" /><span>miter</span>
@@ -217,8 +218,8 @@
 										<input data-attr="lineJoin" name="line-join" type="radio" value="round" /><span>round</span>
 									</label>
 								</fieldset>
-								<fieldset class="radios">										
-									<legend>lineCap</legend>															
+								<fieldset class="radios">
+									<legend>lineCap</legend>
 									<label>
 										<input name="line-cap" type="radio" data-attr="lineCap" value="butt" checked="true" /><span>butt</span>
 									</label>
@@ -229,10 +230,10 @@
 										<input name="line-cap" type="radio" data-attr="lineCap" value="square" /><span>square</span>
 									</label>
 								</fieldset>
-							</form>													
-						</div>					
+							</form>
+						</div>
 					</div><!-- end .shape -->
-					
+
 					<div class="stroke wrap">
 						<button class="pen" title="铅笔" data-tool="stroke" data-tool-class="Pen"> </button>
 						<button class="curve-closed-stroke" title="闭合曲线" data-tool="stroke" data-tool-class="CurveClosedStroke"></button>
@@ -244,7 +245,7 @@
 								<fieldset>
 									<legend>property</legend>
 									<label>size：<input class="width" type="range" min="1" max="100" value="1" data-attr="lineWidth" /><span>1</span></label>
-									<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>	
+									<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>
 								</fieldset>
 								<fieldset >
 									<legend>shadow</legend>
@@ -253,7 +254,7 @@
 									<label>shadowBlur：<input class="shadow-blur" type="range" min="0" max="10" value="0" data-attr="shadowBlur" /><span>0</span></label>
 									<label>shadowColor：<input class="shadow-color" type="color" data-attr="shadowColor" /></label>
 								</fieldset>
-								<fieldset class="radios">										
+								<fieldset class="radios">
 									<legend>lineJoin</legend>
 									<label>
 										<input data-attr="lineJoin" name="line-join" type="radio" value="miter" checked="true" /><span>miter</span>
@@ -265,8 +266,8 @@
 										<input data-attr="lineJoin" name="line-join" type="radio" value="round" /><span>round</span>
 									</label>
 								</fieldset>
-								<fieldset class="radios">										
-									<legend>lineCap</legend>															
+								<fieldset class="radios">
+									<legend>lineCap</legend>
 									<label>
 										<input name="line-cap" type="radio" data-attr="lineCap" value="butt" checked="true" /><span>butt</span>
 									</label>
@@ -277,19 +278,19 @@
 										<input name="line-cap" type="radio" data-attr="lineCap" value="square" /><span>square</span>
 									</label>
 								</fieldset>
-							</form>						
-						</div>					
+							</form>
+						</div>
 					</div><!-- end .stroke -->
-					
-					<div class="eraser wrap">	
+
+					<div class="eraser wrap">
 						<div id="tool-eraser-attribute-panel" class="tool-attribute-panel" title="橡皮属性面板">
 							<form>
 								<fieldset>
 									<legend>property</legend>
 									<label>size：<input class="size" type="range" min="1" max="100" data-attr="lineWidth" value="1" /><span>1</span></label>
-									<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>	
-								</fieldset>															
-								<fieldset class="radios">										
+									<label>opacity：<input class="opacity" type="range" max="100" value="100" data-attr="opacity" /><span>100</span></label>
+								</fieldset>
+								<fieldset class="radios">
 										<legend>lineJoin</legend>
 										<label>
 											<input data-attr="lineJoin" name="line-join" type="radio" value="miter" checked="true" /><span>miter</span>
@@ -301,8 +302,8 @@
 											<input data-attr="lineJoin" name="line-join" type="radio" value="round" /><span>round</span>
 										</label>
 									</fieldset>
-									<fieldset class="radios">										
-										<legend>lineCap</legend>															
+									<fieldset class="radios">
+										<legend>lineCap</legend>
 										<label>
 											<input name="line-cap" type="radio" data-attr="lineCap" value="butt" checked="true" /><span>butt</span>
 										</label>
@@ -313,27 +314,26 @@
 											<input name="line-cap" type="radio" data-attr="lineCap" value="square" /><span>square</span>
 										</label>
 									</fieldset>
-								</form>						
-						</div>					
+								</form>
+						</div>
 					</div><!-- end .eraser -->
-					
-					<div class="flood-fill wrap">  
+
+					<div class="flood-fill wrap">
                         <div id="tool-flood-fill-attribute-panel" class="tool-attribute-panel" title="油漆桶属性面板">
                             <form>
                                 <fieldset>
                                     <legend>property</legend>
-                                    <label>allowance：<input class="allowance" type="range" min="1" max="256" data-attr="allowance" value="1" /><span>1</span></label>                                
-                                </fieldset>                                                                                        
-                            </form>                     
-                        </div>                  
+                                    <label>allowance：<input class="allowance" type="range" min="1" max="256" data-attr="allowance" value="1" /><span>1</span></label>
+                                </fieldset>
+                            </form>
+                        </div>
                     </div><!-- end .floodfill -->
-					
+
 					<div class="text wrap">
 						<button class="text" title="文本" data-tool="text" data-tool-class="Text"> </button>
 						<button class="text-stroke" title="文本轮廓" data-tool="text" data-tool-class="TextStroke"> </button>
 						<div id="tool-text-attribute-panel" class="tool-attribute-panel" title="文字属性面板">
 							<form>
-								<label>text: <input class="text" type="text" placeholder="输入要输入的文字" data-attr="text" /></label>
 								<fieldset>
 									<legend>property</legend>
 									<label>font:
@@ -355,18 +355,18 @@
 											<option class="lishu" value="隶书">隶书</option>
 											<option class="songti" value="宋体">宋体</option>
 											<option class="weiruanyahei" value="微软黑体">微软黑体</option>
-											<option class="youyuan" value="幼圆">幼圆</option>								
-										</select>	
+											<option class="youyuan" value="幼圆">幼圆</option>
+										</select>
 									</label>
 									<label class="checkbox"><b>bold:</b>
 									  <input class="bold" type="checkbox" value="bold" data-attr="bold">
 									</label>
 									<label class="checkbox"><i>italic:</i>
 									  <input class="italic" type="checkbox" value="italic" data-attr="italic">
-									</label>							
-									<label>size：<input class="size" type="range" min="8" max="100" data-attr="size" value="10" /><span>10</span><span>px</span></label>	
-									<label>border：<input class="border" type="range" min="1" max="100" data-attr="border" value="1" /><span>1</span><span></span></label>								
-									<label>opacity：<input class="opacity" type="range" max="100" data-attr="opacity" value="100" /><span>100</span></label>	
+									</label>
+									<label>size：<input class="size" type="range" min="8" max="100" data-attr="size" value="10" /><span>10</span><span>px</span></label>
+									<label>border：<input class="border" type="range" min="1" max="100" data-attr="border" value="1" /><span>1</span><span></span></label>
+									<label>opacity：<input class="opacity" type="range" max="100" data-attr="opacity" value="100" /><span>100</span></label>
 								</fieldset>
 								<fieldset>
 									<legend>shadow</legend>
@@ -376,20 +376,20 @@
 									<label>shadowColor：<input class="shadow-color" type="color" data-attr="shadowColor" /></label>
 								</fieldset>
 							</form>
-						</div>					
-					</div><!-- end .text -->					
+						</div>
+					</div><!-- end .text -->
 				</div><!-- end .tool-panel -->
 			</div><!-- end .tool-wrap -->
-			
+
 			<footer>
 				<p>
-					Copyright &copy; 2013 - 2014 <a href="http://yanhaijing.com" target="_blank" title="颜海镜的博客">yanhaijing</a> &amp; <a href="https://github.com/wsluyu" target="_blank" title="luyu的微博">luyu</a>. All Rights Reserved				    
+					Copyright &copy; 2013 - 2014 <a href="http://yanhaijing.com" target="_blank" title="颜海镜的博客">yanhaijing</a> &amp; <a href="https://github.com/wsluyu" target="_blank" title="luyu的微博">luyu</a>. All Rights Reserved
 				    <a class="github" href="https://github.com/yanhaijing/" target="_blank" title="GitHub"> <img width="20" height="20" align="GitHub" src="images/auth-github.png" /></a>
           			<a class="weibo" href="http://weibo.com/yanhaijing1234/profile" target="_blank" title="weibo"> <img width="20" height="20" align="weibo" src="images/auth-weibo.png" /></a>
 				    <a class="alipay" href='http://me.alipay.com/yanhaijing' target="_blank" title="支付宝向他付款"> <img alt="支付宝向他付款" src='images/btn-index.png' /></a>
 				</p>
 			</footer>
-			
+
 			<!-- 导入底片 -->
 			<div id="negative-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				  <div class="modal-header">
@@ -400,7 +400,7 @@
 				    <form>
 				    	<fieldset>
 				    		<legend>导入图片</legend>
-				    		<label><input id="negative-modal-file" type="file" accept="image/*" /></label>				    		
+				    		<label><input id="negative-modal-file" type="file" accept="image/*" /></label>
 				    	</fieldset>
 				    	<fieldset>
 				    		<legend>属性</legend>
@@ -415,7 +415,7 @@
 					    		<figcaption>预览</figcaption>
 					    		<img id="negative-modal-view" />
 					    	</figure>
-				    	</fieldset>				    				    					    						    	
+				    	</fieldset>
 				    </form>
 				  </div>
 				  <div class="modal-footer">
@@ -424,7 +424,7 @@
 				  </div>
 				</div>
 			</div><!-- end .container -->
-			
+
 			<!-- 导入底片 -->
 			<div id="image-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				  <div class="modal-header">
@@ -435,7 +435,7 @@
 				    <form>
 				    	<fieldset>
 				    		<legend>导入图片</legend>
-				    		<label><input id="image-modal-file" type="file" accept="image/*" /></label>				    		
+				    		<label><input id="image-modal-file" type="file" accept="image/*" /></label>
 				    	</fieldset>
 				    	<fieldset>
 				    		<legend>属性</legend>
@@ -450,7 +450,7 @@
 					    		<figcaption>预览</figcaption>
 					    		<img id="image-modal-view" />
 					    	</figure>
-				    	</fieldset>				    				    					    						    	
+				    	</fieldset>
 				    </form>
 				  </div>
 				  <div class="modal-footer">
@@ -459,7 +459,7 @@
 				  </div>
 				</div>
 			</div><!-- end .container -->
-		
+
 			<!-- 保存图片预览 -->
 			<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			  <div class="modal-header">
@@ -470,58 +470,58 @@
 			    <p><img id="save-image" src="images/Painter.gif" style="outline: 1px solid #ff0"></p>
 			  </div>
 			  <div class="modal-footer">
-			    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>			    
+			    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
 			  </div>
 			</div>
 		</div><!-- end .container -->
 		<!-- import jquery js -->
 		<script src="plugins/jquery/jquery-1.9.1.min.js"></script>
-		
+
 		<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-		
+
 		<!-- import spectrum -->
-		<script src='plugins/spectrum/spectrum.js'></script>			
-		
-		<!-- import jquery ui js -->				
+		<script src='plugins/spectrum/spectrum.js'></script>
+
+		<!-- import jquery ui js -->
 		<script src="plugins/jqueryui+/ui/minified/jquery-ui.min.js"></script>
-		
+
 		<!-- import my js -->
-				
+
 		<!-- 添加存储类js -->
 		<script src="js/model/storageModel.js"></script>
 		<!-- 添加鼠标模型类 -->
 		<script src="js/model/mouseModel.js"></script>
-		
+
 		<!-- 添加点列表对象 -->
 		<script src="js/model/pointListModel.js"></script>
 		<!-- import shape js -->
 		<script src="js/model/shapeModel.js"></script>
-		
+
 		<!-- import nav js -->
-		<script src="js/controler/nav.js"></script>				
-		
+		<script src="js/controler/nav.js"></script>
+
 		<!-- import tool js -->
 		<script src="js/model/toolModel.js"></script>
 		<script src="js/model/toolContainerModel.js"></script>
 		<script src="js/controler/tool.js"></script>
-		
+
 		<!-- import canvas -->
 		<script src="js/model/canvasModel.js"></script>
 		<script src="js/model/canvasContainerModel.js"></script>
 		<script src="js/controler/canvas.js"></script>
-		
+
 		<!-- 导入主页js -->
 		<script src="js/controler/index.js"></script>
-		
+
 		<!-- 提示消息js -->
 		<script src="plugins/torangetek/torangetek.messager.js"></script>
-		
+
 		<!-- 检测环境 -->
 		<script src="plugins/modernizr/modernizr.custom.35897.js"></script>
 		<!-- 导入load js -->
-		<script src="js/controler/loading.js"></script>		
-				
+		<script src="js/controler/loading.js"></script>
+
 		<!-- 分享组件js -->
-		<script src="js/controler/share.js"></script>			
+		<script src="js/controler/share.js"></script>
 	</body>
 </html>

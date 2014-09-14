@@ -44,7 +44,7 @@
 	font-weight: bold
 }
 .check-result ul span.support{
-	color: #51A351;	
+	color: #51A351;
 }
 .check-result ul span.unsupport{
 	color: #F89406;
@@ -96,8 +96,8 @@ nav h1{
 #nav-share-qq .qq:hover .icon-qq{
     background-image: url("../images/qq.png");
 }
-.icon-qzone, 
-.icon-weibo, 
+.icon-qzone,
+.icon-weibo,
 .icon-qweibo {
     background-image: url("../images/social.png");
     background-repeat: no-repeat;
@@ -113,8 +113,8 @@ nav h1{
     background-position: 0 0;
 }
 
-#nav-share-qzone .qzone:hover .icon-qzone, 
-#nav-share-qweibo .qweibo:hover .icon-qweibo, 
+#nav-share-qzone .qzone:hover .icon-qzone,
+#nav-share-qweibo .qweibo:hover .icon-qweibo,
 #nav-share-weibo .weibo:hover .icon-weibo {
     background-image: url("../images/social.png");
 }
@@ -136,6 +136,16 @@ nav h1{
 	top:0;
 	left:0;
 	cursor: none
+}
+.hide{
+    display:none;
+}
+.text-input{
+    position: absolute;
+    top: 0;
+    left:0;
+    padding: 3px 5px;
+    border: 1px dashed blue;
 }
 #canvas-mouse[data-mouse="Pen"]{
 	cursor: url("../images/tool-button-pen.gif") 0 24, crosshair;
@@ -272,7 +282,7 @@ nav h1{
 	vertical-align: top;
 	display:inline-block;
 	float: none;
-	margin-left: 5px;	
+	margin-left: 5px;
 }
 #tool-text-attribute-panel .checkbox{
 	display:inline-block;

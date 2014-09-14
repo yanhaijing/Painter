@@ -7,9 +7,9 @@
 
 (function($, global){
 	"use strict";
-	
+
 	var
-	   //所有工具超级父类 
+	   //所有工具超级父类
 	   Tool,
 	   //图形工具父类
 	   Shape,
@@ -29,13 +29,13 @@
 	   FloodFill,
 	   EyeDropper,
 	   //十字工具类
-	   Cross,	   
+	   Cross,
 	   EllipesStroke,
 	   //文字类
 	   Text,
 	   //文字轮廓类
 	   TextStroke;
-	
+
 	/**
 	 * 工具对象
 	 * @class Tool
@@ -51,7 +51,7 @@
          * @default 'Tool'
          */
 		this.name = 'Tool';
-		
+
 		/**
          * 当前工具对应的类名
          * @property className
@@ -59,7 +59,7 @@
          * @default 'shape'
          */
 		this.className = "shape";
-		
+
 		/**
 		 * 当前工具对应的鼠标对象
 		 * @property mouse
@@ -67,7 +67,7 @@
 		 * @default 'Mouse'
 		 */
 		this.mouse = "Mouse";
-		
+
 		/**
          * 当前工具对应的参数
          * @property option
@@ -83,11 +83,11 @@
 			fillStyle:'#000',
 			lineWidth:1
 		};
-		
+
 		//设置参数
 		option !== undefined ? $.extend(this.option, option) : 0;
 	};
-	
+
 	/**
 	 * 工具原型
 	 * @class Tool.prototype
@@ -100,18 +100,18 @@
          * @return {String} 当前的类别名字
          */
 	    getClassName:function(){
-	       return this.className; 
+	       return this.className;
 	    },
-	     
+
 		/**
 		 * 获取名字
 		 * @method getName
 		 * @return {String} 当前的名字
 		 */
 		getName:function(){
-			return this.name;	
+			return this.name;
 		},
-		
+
 		/**
 		 * 设置工具参数对象
 		 * @method setOption
@@ -123,20 +123,20 @@
 			if(typeof option === 'object'){
 				$.extend(true, this.option, option);
 				return this.getOption();
-			} 
-			
+			}
+
 			return null;
 		},
-		
+
 		/**
 		 * 获取工具参数对象
-		 * @method getOption 
+		 * @method getOption
 		 * @return {Object} 返回当前工具参数对象
 		 */
 		getOption:function(){
 			return $.extend(true, {}, this.option);//放回选项对象的深拷贝
 		},
-		
+
 		/**
 		 * 获取当前工具对应的鼠标
 		 * @method getMouse
@@ -146,7 +146,7 @@
 		    return this.mouse;
 		}
 	};
-	
+
 	/**
      * 图形类工具超级父类
      * @class Shape
@@ -158,7 +158,7 @@
          * 名称
          * @property name
          * @type String
-         * @default 'Shape' 
+         * @default 'Shape'
          */
 	    this.name = "Shape";
 	    /**
@@ -168,7 +168,7 @@
          * @default 'Cross'
          */
 	    this.mouse = "Cross";
-	    
+
 	    /**
 	     * 初始化图形类属性面板的参数
 	     * @method initAttributes
@@ -176,7 +176,7 @@
 	     */
 	    this.initAttributes = function(){
 	        //获取当前属性
-            var 
+            var
               $attributePanel = $('#tool-shape-attribute-panel'),
               width = $('.width',$attributePanel).eq(0).val(),
               opacity = $('.opacity',$attributePanel).eq(0).val(),
@@ -186,8 +186,8 @@
               shadowOffsetY = $('.shadow-offsety',$attributePanel).eq(0).val(),
               shadowBlur = $('.shadow-blur',$attributePanel).eq(0).val(),
               shadowColor = $('.shadow-color',$attributePanel).eq(0).val(),
-              lineCap = $(':radio[name="line-cap"]',$attributePanel).val();       
-            
+              lineCap = $(':radio[name="line-cap"]',$attributePanel).val();
+
             //设置参数
             return this.setOption({
                 lineWidth: width,
@@ -203,7 +203,7 @@
             });
 	    };
 	};
-	
+
 	/**
 	 * 图形类工具原型
 	 * @class Shape.prototype
@@ -222,19 +222,19 @@
 	     * 名称
 	     * @property name
 	     * @type String
-	     * @default 'Line' 
+	     * @default 'Line'
 	     */
 		this.name = 'Line';
-		
+
 		/**
 		 * 初始化
-		 * @method init 
+		 * @method init
 		 * @return {Bollean} 初始化是否成功
 		 */
 		this.init = function(){
 		    this.initAttributes();//初始化属性面板参数
 		};
-		
+
 		/**
 		 * 设置坐标参数参数
 		 * @method setPoint
@@ -242,14 +242,14 @@
 		 * @return {Object} 设置完的参数
 		 */
 		this.setPoint = function(pointList){
-		    var 
+		    var
                startPoint = pointList.getStart(),
                endPoint = pointList.getEnd(),
                startX = startPoint.x,
                startY = startPoint.y,
                endX = endPoint.x,
                endY = endPoint.y;
-               
+
              return this.setOption({
                  startX: startX,
                  startY: startY,
@@ -258,7 +258,7 @@
              });
 		};
 	};
-	
+
 	/**
 	 * 直线工具原型
 	 * @class Line.prototype
@@ -266,7 +266,7 @@
 	 * @extends painter.model.toolModel.Shape
 	 */
 	Line.prototype = new Shape();
-	
+
 	/**
      * 闭合曲线工具对象
      * @class CurveClosed
@@ -278,19 +278,19 @@
          * 名称
          * @property name
          * @type String
-         * @default 'CurveClosed' 
+         * @default 'CurveClosed'
          */
         this.name = 'CurveClosed';
-        
+
         /**
          * 初始化
-         * @method init 
+         * @method init
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
             this.initAttributes();//初始化属性面板参数
         };
-        
+
         /**
          * 设置坐标参数参数
          * @method setPoint
@@ -298,16 +298,16 @@
          * @return {Object} 设置完的参数
          */
         this.setPoint = function(pointList){
-            var 
+            var
                list = pointList.getList();
-             
-             this.option.list = [];//更新当前列表  
+
+             this.option.list = [];//更新当前列表
              return this.setOption({
                  list:list
              });
         };
     };
-    
+
     /**
      * 闭合曲线工具原型
      * @class CurveClosed.prototype
@@ -315,8 +315,8 @@
      * @extends painter.model.toolModel.Shape
      */
     CurveClosed.prototype = new Shape();
-    
-    
+
+
 	/**
      * 矩形工具对象
      * @class Rect
@@ -328,18 +328,18 @@
          * 名称
          * @property name
          * @type String
-         * @default 'Rect' 
+         * @default 'Rect'
          */
         this.name = 'Rect';
         /**
          * 初始化
-         * @method init 
+         * @method init
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
             this.initAttributes();//初始化属性面板参数
         };
-        
+
         /**
          * 设置坐标参数参数
          * @method setPoint
@@ -347,14 +347,14 @@
          * @return {Object} 设置完的参数
          */
         this.setPoint = function(pointList){
-            var 
+            var
                startPoint = pointList.getStart(),
                endPoint = pointList.getEnd(),
                left = startPoint.x,
                top = startPoint.y,
                width = endPoint.x - left,
                height = endPoint.y - top;
-               
+
              return this.setOption({
                  left: left,
                  top: top,
@@ -363,15 +363,15 @@
              });
         };
     };
-    
+
     /**
      * 矩形工具原型
      * @class Rect.prototype
      * @static
      * @extends painter.model.toolModel.Shape
      */
-    Rect.prototype = new Shape();      
-    
+    Rect.prototype = new Shape();
+
     /**
      * 椭圆工具对象
      * @class Circle
@@ -383,19 +383,19 @@
          * 名称
          * @property name
          * @type String
-         * @default 'Circle' 
+         * @default 'Circle'
          */
         this.name = 'Circle';
-        
+
         /**
          * 初始化
-         * @method init 
+         * @method init
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
             this.initAttributes();//初始化属性面板参数
         };
-        
+
         /**
          * 设置坐标参数参数
          * @method setPoint
@@ -403,14 +403,14 @@
          * @return {Object} 设置完的参数
          */
         this.setPoint = function(pointList){
-            var 
+            var
                startPoint = pointList.getStart(),
                endPoint = pointList.getEnd(),
                x = (startPoint.x + endPoint.x) / 2,//计算园中心坐标
                y = (startPoint.y + endPoint.y) / 2,
-               radius = Math.abs(Math.sqrt(Math.pow(startPoint.x, 2) + Math.pow(startPoint.y, 2)) - 
+               radius = Math.abs(Math.sqrt(Math.pow(startPoint.x, 2) + Math.pow(startPoint.y, 2)) -
                     Math.sqrt(Math.pow(endPoint.x, 2) + Math.pow(endPoint.y, 2))) / 2;
-               
+
              return this.setOption({
                  x:x,
                  y:y,
@@ -418,7 +418,7 @@
              });
         };
     };
-    
+
     /**
      * 圆工具原型
      * @class Circle.prototype
@@ -426,7 +426,7 @@
      * @extends painter.model.toolModel.Shape
      */
     Circle.prototype = new Shape();
-    
+
     /**
      * 椭圆工具对象
      * @class Ellipes
@@ -438,19 +438,19 @@
          * 名称
          * @property name
          * @type String
-         * @default 'Ellipes' 
+         * @default 'Ellipes'
          */
         this.name = 'Ellipes';
-        
+
         /**
          * 初始化
-         * @method init 
+         * @method init
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
             this.initAttributes();//初始化属性面板参数
         };
-        
+
         /**
          * 设置坐标参数参数
          * @method setPoint
@@ -473,7 +473,7 @@
             });
         };
     };
-    
+
     /**
      * 椭圆工具原型
      * @class Ellipes.prototype
@@ -481,8 +481,8 @@
      * @extends painter.model.toolModel.Shape
      */
     Ellipes.prototype = new Shape();
-    
-    
+
+
     /**
      * 轮廓类工具超级父类
      * @class Stroke
@@ -494,7 +494,7 @@
          * 名称
          * @property name
          * @type String
-         * @default 'Stroke' 
+         * @default 'Stroke'
          */
         this.name = "Stroke";
         /**
@@ -504,25 +504,25 @@
          * @default 'Cross'
          */
         this.mouse = "Cross";
-        
+
         /**
          * 初始化图形类属性面板的参数
          * @method initAttributes
          */
         this.initAttributes = function(){
             //获取当前属性
-            var 
+            var
               $attributePanel = $('#tool-stroke-attribute-panel'),
               width = $('.width',$attributePanel).eq(0).val(),
               opacity = $('.opacity',$attributePanel).eq(0).val(),
-              color = $('#tool-wrap .tool .color').eq(0).val(),              
+              color = $('#tool-wrap .tool .color').eq(0).val(),
               shadowOffsetX = $('.shadow-offsetx',$attributePanel).eq(0).val(),
               shadowOffsetY = $('.shadow-offsety',$attributePanel).eq(0).val(),
               shadowBlur = $('.shadow-blur',$attributePanel).eq(0).val(),
               shadowColor = $('.shadow-color',$attributePanel).eq(0).val(),
               lineJoin = $(':radio[name="line-join"]',$attributePanel).val(),
-              lineCap = $(':radio[name="line-cap"]',$attributePanel).val();       
-            
+              lineCap = $(':radio[name="line-cap"]',$attributePanel).val();
+
             //设置参数
             return this.setOption({
                 lineWidth: width,
@@ -537,7 +537,7 @@
             });
         }
     };
-    
+
     /**
      * 轮廓类工具原型
      * @class Stroke.prototype
@@ -545,7 +545,7 @@
      * @extends painter.model.toolModel.Tool
      */
     Stroke.prototype = new Tool();
-    
+
     /**
      * 铅笔工具对象
      * @class Pen
@@ -557,28 +557,28 @@
          * 名称
          * @property name
          * @type String
-         * @default 'Pen' 
+         * @default 'Pen'
          */
         this.name = 'Pen';
-        
+
         /**
          * 工具类对应的鼠标
          * @property mouse
          * @type String
-         * @default 'Pen' 
+         * @default 'Pen'
          */
         this.mouse ="Pen";
-        
+
         /**
          * 初始化
-         * @method init 
+         * @method init
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
             //获取当前属性
             this.initAttributes();
         };
-        
+
         /**
          * 设置坐标参数参数
          * @method setPoint
@@ -586,16 +586,16 @@
          * @return {Object} 设置完的参数
          */
         this.setPoint = function(pointList){
-            var 
+            var
                list = pointList.getList();
-             
-             this.option.list = [];//更新当前列表  
+
+             this.option.list = [];//更新当前列表
              return this.setOption({
                  list:list
              });
         };
     };
-           
+
     /**
      * 铅笔工具原型
      * @class Pen.prototype
@@ -603,7 +603,7 @@
      * @extends painter.model.toolModel.Stroke
      */
     Pen.prototype = new Stroke();
-    
+
     /**
      * 闭合曲线工具对象
      * @class CurveClosedStroke
@@ -615,27 +615,27 @@
          * 名称
          * @property name
          * @type String
-         * @default 'CurveClosedStroke' 
+         * @default 'CurveClosedStroke'
          */
         this.name = 'CurveClosedStroke';
-        
+
         /**
          * 工具类对应的鼠标
          * @property mouse
          * @type String
-         * @default 'Cross' 
+         * @default 'Cross'
          */
         this.mouse = "Cross";
     };
-    
+
     /**
      * 闭合曲线工具原型
      * @class CurveClosedStroke.prototype
      * @static
      * @extends painter.model.toolModel.Pen
      */
-    CurveClosedStroke.prototype = new Pen();        
-    
+    CurveClosedStroke.prototype = new Pen();
+
     /**
      * 矩形工具对象
      * @class RectStroke
@@ -647,20 +647,20 @@
          * 名称
          * @property name
          * @type String
-         * @default 'RectStroke' 
+         * @default 'RectStroke'
          */
         this.name = 'RectStroke';
-        
+
         /**
          * 初始化
-         * @method init 
+         * @method init
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
             //获取当前属性
             this.initAttributes();
         };
-        
+
         /**
          * 设置坐标参数参数
          * @method setPoint
@@ -668,14 +668,14 @@
          * @return {Object} 设置完的参数
          */
         this.setPoint = function(pointList){
-            var 
+            var
                startPoint = pointList.getStart(),
                endPoint = pointList.getEnd(),
                left = startPoint.x,
                top = startPoint.y,
                width = endPoint.x - left,
                height = endPoint.y - top;
-               
+
              return this.setOption({
                  left: left,
                  top: top,
@@ -684,15 +684,15 @@
              });
         };
     };
-    
+
     /**
      * 矩形工具原型
      * @class RectStroke.prototype
      * @static
      * @extends painter.model.toolModel.Stroke
      */
-    RectStroke.prototype = new Stroke();    
-    
+    RectStroke.prototype = new Stroke();
+
     /**
      * 椭圆工具对象
      * @class CircleStroke
@@ -704,20 +704,20 @@
          * 名称
          * @property name
          * @type String
-         * @default 'CircleStroke' 
+         * @default 'CircleStroke'
          */
         this.name = 'CircleStroke';
-        
+
         /**
          * 初始化
-         * @method init 
+         * @method init
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
             //获取当前属性
             this.initAttributes();
         };
-        
+
         /**
          * 设置坐标参数参数
          * @method setPoint
@@ -725,14 +725,14 @@
          * @return {Object} 设置完的参数
          */
         this.setPoint = function(pointList){
-            var 
+            var
                startPoint = pointList.getStart(),
                endPoint = pointList.getEnd(),
                x = (startPoint.x + endPoint.x) / 2,//计算园中心坐标
                y = (startPoint.y + endPoint.y) / 2,
-               radius = Math.abs(Math.sqrt(Math.pow(startPoint.x, 2) + Math.pow(startPoint.y, 2)) - 
+               radius = Math.abs(Math.sqrt(Math.pow(startPoint.x, 2) + Math.pow(startPoint.y, 2)) -
                     Math.sqrt(Math.pow(endPoint.x, 2) + Math.pow(endPoint.y, 2))) / 2;
-               
+
              return this.setOption({
                  x:x,
                  y:y,
@@ -740,7 +740,7 @@
              });
         };
     };
-    
+
     /**
      * 椭圆工具原型
      * @class CircleStroke.prototype
@@ -748,7 +748,7 @@
      * @extends painter.model.toolModel.Stroke
      */
     CircleStroke.prototype = new Stroke();
-    
+
     /**
      * 十字工具对象
      * @class EllipesStroke
@@ -760,20 +760,20 @@
          * 名称
          * @property name
          * @type String
-         * @default 'EllipesStroke' 
+         * @default 'EllipesStroke'
          */
         this.name = 'EllipesStroke';
-        
+
         /**
          * 初始化
-         * @method init 
+         * @method init
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
             //获取当前属性
             this.initAttributes();
         };
-        
+
         /**
          * 设置坐标参数参数
          * @method setPoint
@@ -794,9 +794,9 @@
                 width:width,
                 height:height
             });
-        };      
+        };
     };
-    
+
     /**
      * 十字工具原型
      * @class EllipesStroke.prototype
@@ -804,7 +804,7 @@
      * @extends painter.model.toolModel.Stroke
      */
     EllipesStroke.prototype = new Stroke();
-    
+
     /**
      * 橡皮工具对象
      * @class Eraser
@@ -816,26 +816,26 @@
          * 名称
          * @property name
          * @type String
-         * @default 'Eraser' 
+         * @default 'Eraser'
          */
         this.name = 'Eraser';
-        
+
         /**
          * 鼠标名称
          * @property mouse
          * @type String
-         * @default 'Eraser' 
+         * @default 'Eraser'
          */
         this.mouse = "Eraser";
-        
+
         /**
          * 初始化
-         * @method init 
+         * @method init
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
             //获取当前属性
-            var 
+            var
               $attributePanel = $('#tool-eraser-attribute-panel'),
               width = $('.width',$attributePanel).eq(0).val(),
               opacity = $('.opacity',$attributePanel).eq(0).val(),
@@ -844,8 +844,8 @@
               shadowBlur = $('.shadow-blur',$attributePanel).eq(0).val(),
               shadowColor = $('.shadow-color',$attributePanel).eq(0).val(),
               lineJoin = $(':radio[name="line-join"]',$attributePanel).val(),
-              lineCap = $(':radio[name="line-cap"]',$attributePanel).val();       
-            
+              lineCap = $(':radio[name="line-cap"]',$attributePanel).val();
+
             //设置参数
             return this.setOption({
                 opacity: opacity,
@@ -859,7 +859,7 @@
                 lineCap:lineCap
             });
         };
-        
+
         /**
          * 设置坐标参数参数
          * @method setPoint
@@ -867,16 +867,16 @@
          * @return {Object} 设置完的参数
          */
         this.setPoint = function(pointList){
-            var 
+            var
                list = pointList.getList();
-             
-             this.option.list = [];//更新当前列表  
+
+             this.option.list = [];//更新当前列表
              return this.setOption({
                  list:list
              });
         };
     };
-    
+
     /**
      * 橡皮工具原型
      * @class Eraser.prototype
@@ -884,7 +884,7 @@
      * @extends painter.model.toolModel.Tool
      */
     Eraser.prototype = new Tool();
-    
+
     /**
      * 油漆桶工具对象
      * @class FloodFill
@@ -896,33 +896,33 @@
          * 名称
          * @property name
          * @type String
-         * @default 'FloodFill' 
+         * @default 'FloodFill'
          */
         this.name = 'FloodFill';
-        
+
         /**
          * 鼠标名称
          * @property mouse
          * @type String
-         * @default 'FloodFill' 
+         * @default 'FloodFill'
          */
         this.mouse = "FloodFill";
-        
+
         /**
          * 初始化
-         * @method init 
+         * @method init
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
             //获取当前属性
-            var 
+            var
               $attributePanel = $('#tool-flood-fill-attribute-panel'),
               color = $('#tool-wrap .tool .color').eq(0).val(),
               allowance = parseInt($('.allowance',$attributePanel).eq(0).val(), 10),
               canvas = global.painter.canvas.currentCanvasContainer.getCanvas(),
               width = canvas.getWidth(),
-              height = canvas.getHeight();       
-            
+              height = canvas.getHeight();
+
             //设置参数
             return this.setOption({
                 fillStyle:color,
@@ -931,7 +931,7 @@
                 allowance:allowance
             });
         };
-        
+
         /**
          * 设置坐标参数参数
          * @method setPoint
@@ -949,7 +949,7 @@
             });
         };
     };
-    
+
     /**
      * 油漆桶工具原型
      * @class FloodFill.prototype
@@ -957,7 +957,7 @@
      * @extends painter.model.toolModel.Tool
      */
     FloodFill.prototype = new Tool();
-    
+
     /**
      * 吸管工具对象
      * @class EyeDropper
@@ -969,30 +969,30 @@
          * 名称
          * @property name
          * @type String
-         * @default 'EyeDropper' 
+         * @default 'EyeDropper'
          */
         this.name = 'EyeDropper';
-        
+
         /**
          * 鼠标名称
          * @property mouse
          * @type String
-         * @default 'EyeDropper' 
+         * @default 'EyeDropper'
          */
         this.mouse = "EyeDropper";
-        
+
         /**
          * 初始化
-         * @method init 
+         * @method init
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
             //设置参数
             return this.setOption({
-                
+
             });
         };
-        
+
         /**
          * 设置坐标参数参数
          * @method setPoint
@@ -1010,7 +1010,7 @@
             });
         };
     };
-    
+
     /**
      * 吸管工具原型
      * @class FloodFill.prototype
@@ -1018,7 +1018,7 @@
      * @extends painter.model.toolModel.Tool
      */
     EyeDropper.prototype = new Tool();
-    
+
     /**
      * 十字工具对象
      * @class Cross
@@ -1030,13 +1030,13 @@
          * 名称
          * @property name
          * @type String
-         * @default 'Cross' 
+         * @default 'Cross'
          */
         this.name = 'Cross';
-        
+
         /**
          * 初始化
-         * @method init 
+         * @method init
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
@@ -1047,7 +1047,7 @@
                 length:10
             });
         };
-        
+
         /**
          * 设置坐标参数参数
          * @method setPoint
@@ -1065,16 +1065,16 @@
             });
         };
     };
-    
+
     /**
      * 十字工具原型
      * @class Cross.prototype
      * @static
      * @extends painter.model.toolModel.Tool
      */
-    Cross.prototype = new Tool();        
-        
-    
+    Cross.prototype = new Tool();
+
+
     /**
      * 十字工具对象
      * @class Text
@@ -1086,37 +1086,36 @@
          * 名称
          * @property name
          * @type String
-         * @default 'Text' 
+         * @default 'Text'
          */
         this.name = 'Text';
-        
+        this.className = 'Text';
         /**
          * 鼠标名称
          * @property mouse
          * @type String
-         * @default 'Text' 
+         * @default 'Text'
          */
         this.mouse = "Text";
-        
+
         /**
          * 初始化
-         * @method init 
+         * @method init
          * @return {Bollean} 初始化是否成功
          */
         this.init = function(){
             this.initAttributes();
         };
-        
+
         /**
          * 初始化图形类属性面板的参数
          * @method initAttributes
          */
-        this.initAttributes = function(){           
+        this.initAttributes = function(){
             //获取当前属性
-            var 
+            var
               $attributePanel = $('#tool-text-attribute-panel'),
               opacity = $('.opacity',$attributePanel).eq(0).val(),
-              text = $('.text',$attributePanel).eq(0).val(),
               size = $('.size',$attributePanel).eq(0).val(),
               border = $('.border',$attributePanel).eq(0).val(),
               family = $('.font',$attributePanel).eq(0).val(),
@@ -1132,7 +1131,6 @@
                 strokeStyle:color,
                 opacity:opacity,
                 fillStyle:color,
-                text:text,
                 size:size,
                 border:border,
                 family:family,
@@ -1144,7 +1142,24 @@
                 shadowColor:shadowColor
             });
         };
-        
+        /**
+         * 设置工具参数对象
+         * @method setOption
+         * @param {Object} option 设置的参数集和
+         * @return {Object} 成功返回设置对象，失败返回null
+         */
+        this.setOption = function(option){
+            //检查入口参数是否是对象
+            if (option && option.text) {
+                this.option.text = [];
+            }
+            if(typeof option === 'object'){
+                $.extend(true, this.option, option);
+                return this.getOption();
+            }
+
+            return null;
+        },
         /**
          * 设置坐标参数参数
          * @method setPoint
@@ -1154,18 +1169,15 @@
         this.setPoint = function(pointList){
             var
                 startPoint = pointList.getStart(),
-                endPoint = pointList.getEnd(),
                 x = startPoint.x,//计算园中心坐标
-                y = startPoint.y,
-                textAlign = x <= endPoint.x ? "left" : "right";
+                y = startPoint.y;
             return this.setOption({
                 x:x,
-                y:y,
-                textAlign:textAlign
+                y:y
             });
-        };      
+        };
     };
-    
+
     /**
      * 十字工具原型
      * @class Text.prototype
@@ -1173,7 +1185,7 @@
      * @extends painter.model.toolModel.Tool
      */
     Text.prototype = new Tool();
-    
+
     /**
      * 十字工具对象
      * @class TextStroke
@@ -1185,11 +1197,11 @@
          * 名称
          * @property name
          * @type String
-         * @default 'line' 
+         * @default 'line'
          */
-        this.name = 'TextStroke';            
+        this.name = 'TextStroke';
     };
-    
+
     /**
      * 十字工具原型
      * @class TextStroke.prototype
@@ -1197,7 +1209,7 @@
      * @extends painter.model.toolModel.Text
      */
     TextStroke.prototype = new Text();
-	
+
 	//添加工具到数据层
 	global.painter = global.painter || {};
 	global.painter.model = global.painter.model || {};
