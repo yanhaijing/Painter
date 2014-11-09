@@ -1,7 +1,7 @@
 <a href="http://yanhaijing.github.io/Painter/">
   <img src="./images/Painter.gif" width="100px">
 </a>
-#[Painter](http://yanhaijing.github.io/Painter/)
+#[Painter](http://yanhaijing.github.io/Painter/) [![license](http://img.shields.io/npm/l/express.svg)](https://github.com/yanhaijing/Painter/blob/master/MIT-LICENSE.txt)
 
 Painter is the painter base on html5's Canvas,You just need a support html5 browsers that you like.
 
