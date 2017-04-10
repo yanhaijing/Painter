@@ -1,13 +1,13 @@
 <a href="http://yanhaijing.github.io/Painter/">
   <img src="./images/Painter.gif" width="100px">
 </a>
-#[Painter](http://yanhaijing.github.io/Painter/) [![license](http://img.shields.io/npm/l/express.svg)](https://github.com/yanhaijing/Painter/blob/master/MIT-LICENSE.txt)
+# [Painter](http://yanhaijing.github.io/Painter/) [![license](http://img.shields.io/npm/l/express.svg)](https://github.com/yanhaijing/Painter/blob/master/MIT-LICENSE.txt)
 
 Painter is the painter base on html5's Canvas,You just need a support html5 browsers that you like.
 
  
 
-##Platform
+## Platform
 
 * firefox
 * chrome
@@ -15,7 +15,7 @@ Painter is the painter base on html5's Canvas,You just need a support html5 brow
 * safira
 * ie9+
 
-##Authors
+## Authors
 
 **yanhaijing**
 
@@ -29,10 +29,10 @@ Painter is the painter base on html5's Canvas,You just need a support html5 brow
 - [Email](mailto:wsluyu2011@163.com "luyu's Email")
 - [Blog](http://www.cnblogs.com/wsluyu/ "luyu's Blog")
 
-##Issues
+## Issues
 - [report question](https://github.com/yanhaijing/Painter/issues "report question")
 
-##Copyright and license
+## Copyright and license
 
 Copyright © 2013 yanhaijing. All Rights Reserved
 
