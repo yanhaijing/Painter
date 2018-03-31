@@ -4,17 +4,15 @@
 
 # [Painter](http://yanhaijing.github.io/Painter/) [![license](http://img.shields.io/npm/l/express.svg)](https://github.com/yanhaijing/Painter/blob/master/MIT-LICENSE.txt)
 
-Painter is the painter base on html5's Canvas,You just need a support html5 browsers that you like.
+Painter is based on HTML5 Canvas. Painter works on all HTML5 supported browsers. 
 
- 
+## Supported Browsers
 
-## Platform
-
-* firefox
-* chrome
-* opera
-* safira
-* ie9+
+* Firefox
+* Chrome
+* Opera
+* Safari
+* IE9+
 
 ## Authors
 
@@ -31,7 +29,7 @@ Painter is the painter base on html5's Canvas,You just need a support html5 brow
 - [Blog](http://www.cnblogs.com/wsluyu/ "luyu's Blog")
 
 ## Issues
-- [report question](https://github.com/yanhaijing/Painter/issues "report question")
+- [Report Issues](https://github.com/yanhaijing/Painter/issues "report question")
 
 ## Copyright and license
 
