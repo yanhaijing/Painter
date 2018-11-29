@@ -64,3 +64,19 @@ body{
 	background:#FFFFFF;
 	height:50%
 }
+
+.flip-x {
+	filter: FlipH; /* IE only */
+	-moz-transform: matrix(-1, 0, 0, 1, 0, 0);
+	-webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+.flip-y {
+     filter: FlipH; /* IE only */
+     -moz-transform: matrix(1, 0, 0, -1, 0, 0);
+     -webkit-transform: matrix(1, 0, 0, -1, 0, 0);
+ }
+.flip-xy {
+    filter: FlipH; /* IE only */
+    -moz-transform: matrix(-1, 0, 0, -1, 0, 0);
+    -webkit-transform: matrix(-1, 0, 0, -1, 0, 0);
+}
