@@ -8,7 +8,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 		<title>Painter</title>
-		<meta name="description" content="绘图作业  html5 canvas" />
+		<meta name="description" content="绘图  html5 canvas" />
 		<meta name="author" content="yan" />
 		<meta name="mender" content="jahentao" />
 
@@ -35,7 +35,8 @@
 		<!-- color css -->
 		<link rel='stylesheet' href='plugins/spectrum/spectrum.css' />
 
-
+		<!-- 添加百度统计 -->
+		<script src="//yanhaijing.com/assets/plugin/tongji/baidu.js"></script>
 	</head>
 
 	<body>
@@ -90,9 +91,9 @@
 								<li>
 									<a href="#"><b class="icon-folder-open"></b> 打开<i>Ctrl+O</i></a>
 								</li>
-								<!--<li>-->
-									<!--<a id="nav-file-negative"  data-toggle="modal" href="#negative-modal"><b class="icon-share-alt"></b> 导入底片<i></i></a>-->
-								<!--</li>-->
+								<li>
+									<a id="nav-file-negative"  data-toggle="modal" href="#negative-modal"><b class="icon-share-alt"></b> 导入底片<i></i></a>
+								</li>
 								<li>
 									<a id="nav-file-image"  data-toggle="modal" href="#image-modal"><b class="icon-share-alt"></b> 插入图片<i></i></a>
 								</li>
@@ -140,6 +141,17 @@
 									<a target="_blank" href="https://github.com/yanhaijing/Painter#readme"><b class="icon-question-sign"></b> 关于Painter</a>
 								</li>
 								<li class="divider"></li>
+								<li class="dropdown-submenu">
+									<a tabindex="-1" href="#"><b class="icon-globe"></b>相关作品</a>
+								    <ul class="dropdown-menu">
+								    	<li>
+											<a target="_blank" href="http://sta.sh/muro/"><b class="icon-tags"></b> Muro</a>
+										</li>
+										<li>
+											<a target="_blank" href="http://editor.method.ac/"><b class="icon-tags"></b> Draw</a>
+										</li>
+								    </ul>
+								</li>
 							</ul>
 						</li><!-- end .help -->
 						<li class="dropdown social">
@@ -171,6 +183,9 @@
 					<canvas width="1000" height="400" id="canvas-mouse" class="canvas-paint canvas-mouse"></canvas>
 				    <div id="text-input" class="text-input hide" contenteditable></div>
 				</div><!-- end .canvas-wrap -->
+				<!-- <div class="span3 info">
+
+				</div><!-- end .info -->
 			</div><!-- end .main-wrap -->
 
 			<div id="tool-wrap" class="tool-wrap">
