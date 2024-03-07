@@ -10,6 +10,7 @@
 		<title>Painter</title>
 		<meta name="description" content="绘图  html5 canvas" />
 		<meta name="author" content="yan" />
+		<meta name="mender" content="jahentao" />
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -456,6 +457,11 @@
 				    		<label>宽度 <input id="image-modal-width" type="number" min="0" max="2000" value="800" /></label>
 				    		<label>高度 <input id="image-modal-height" type="number" min="0" max="1000" value="600" /></label>
 				    	</fieldset>
+						<fieldset>
+							<legend>图片操作</legend>
+							<label>左右翻转 <input id="image-modal-lr-reverse" type="checkbox" /></label>
+							<label>上下翻转 <input id="image-modal-ud-reverse" type="checkbox" /></label>
+						</fieldset>
 				    	<fieldset>
 				    		<legend>预览</legend>
 				    		<figure>
@@ -521,7 +527,9 @@
 		<script src="js/model/canvasModel.js"></script>
 		<script src="js/model/canvasContainerModel.js"></script>
 		<script src="js/controler/canvas.js"></script>
-
+		<!-- 导入图像变换-->
+		<script src="js/controler/pictureTransform.js"></script>
+		
 		<!-- 导入主页js -->
 		<script src="js/controler/index.js"></script>
 

@@ -19,9 +19,12 @@
          init:function(){
              this.bindEvent();
          },
-         
+
+        /**/
+        transformCommands: 0,
+
          /**
-          * 帮顶事件
+          * 绑定事件
           * @event bindEvent
           */
          bindEvent:function(){
@@ -30,7 +33,7 @@
                 fileResult = null,
                 imageResult = null;
              
-             //帮顶关闭事件
+             //绑定关闭事件
              $(window).bind("beforeunload", function(e){
                  return "图片尚未导出，您确定离开吗？";
              });
@@ -45,7 +48,7 @@
                     e.preventDefault();//阻止默认事件
                 }         
              });
-             //帮顶保存键盘事件ctrl+s
+             //绑定保存键盘事件ctrl+s
              $document.bind("keydown", function(e){
                 if(e.ctrlKey && e.keyCode === 83){
                     //撤销事件
@@ -54,7 +57,7 @@
                 }         
              });
              
-             //帮顶清楚事件
+             //绑定清除事件
              $document.bind("keydown", function(e){
                 if(e.ctrlKey && e.keyCode === 68){
                     //撤销事件
@@ -63,7 +66,7 @@
                 }         
              });
              
-             //帮顶导出事件
+             //绑定导出事件
              $document.bind("keydown", function(e){
                 if(e.ctrlKey && e.keyCode === 69){
                     //撤销事件
@@ -71,7 +74,7 @@
                     e.preventDefault();//阻止默认事件
                 }         
              }); 
-             //帮顶倒置事件
+             //绑定倒置事件
              $document.bind("keydown", function(e){
                 if(e.ctrlKey && e.keyCode === 82){
                     //撤销事件
@@ -80,7 +83,7 @@
                 }         
              });
              
-             //帮顶水平翻转快捷键事件
+             //绑定水平翻转快捷键事件
              $document.bind("keydown", function(e){
                 if(e.ctrlKey && e.keyCode === 72){
                     //撤销事件
@@ -88,7 +91,7 @@
                     e.preventDefault();//阻止默认事件
                 }         
              });
-             //帮顶垂直翻转反转事件
+             //绑定垂直翻转反转事件
              $document.bind("keydown", function(e){
                 if(e.ctrlKey && e.keyCode === 86){
                     //撤销事件
@@ -113,7 +116,7 @@
              });
              
              //=================================================
-             //帮顶导入底片模态框事件
+             //绑定导入底片模态框事件
              
              //文件输入框改变事件
              $document.delegate("#negative-modal-file", "change", function(e){
@@ -166,7 +169,7 @@
              });
              
               //=================================================
-             //帮顶导入图片模态框事件
+             //绑定导入图片模态框事件
              
              //文件输入框改变事件
              $document.delegate("#image-modal-file", "change", function(e){
@@ -192,8 +195,68 @@
                              $height = $("#image-modal-height", $imageModal);
                          $width.val($(this).width());
                          $height.val($(this).height());
-                     });                     
+                     });
                  };                
+             });
+
+             var transform = global.pictureTransform;
+
+             // 图片预览左右翻转处理事件
+             $document.delegate("#image-modal-lr-reverse", "click", function(e) {
+                 var $imageModal = $("#image-modal"),
+                 $view = $("#image-modal-view", $imageModal),
+                     flag = false;
+                 // 已上下翻转
+                 if ($("#image-modal-ud-reverse").prop("checked")) {
+                     flag = true;
+                     transform.addCommand({type: 2});
+                 }
+                 // 左右翻转
+                 if ($("#image-modal-lr-reverse").prop("checked")) {
+                     if (flag) {
+                         $view.removeClass("flip-y");
+                         $view.addClass("flip-xy");
+                     } else {
+                         $view.addClass("flip-x");
+                     }
+                     transform.addCommand({type: 1});
+                 } else {
+                     if (flag) {
+                         $view.removeClass("flip-xy");
+                         $view.addClass("flip-y");
+                     } else {
+                         $view.removeClass("flip-x");
+                     }
+                 }
+             });
+             // 图片预览上下翻转处理事件
+             $document.delegate("#image-modal-ud-reverse", "click", function(e) {
+                 var $imageModal = $("#image-modal"),
+                     $view = $("#image-modal-view", $imageModal),
+                     flag = false;
+                 $view.attr("class","");
+                 // 已左右翻转
+                 if ($("#image-modal-lr-reverse").prop("checked")) {
+                     flag = true;
+                     transform.addCommand({type: 1});
+                 }
+                 // 进行上下翻转
+                 if ($("#image-modal-ud-reverse").prop("checked")) {
+                     if (flag) {
+                         $view.removeClass("flip-x");
+                         $view.addClass("flip-xy");
+                     } else {
+                         $view.addClass("flip-y");
+                     }
+                     transform.addCommand({type: 2});
+                 } else {
+                     if (flag) {
+                         $view.removeClass("flip-xy");
+                         $view.addClass("flip-x");
+                     } else {
+                         $view.removeClass("flip-y");
+                     }
+                 }
              });
              
              //确定事件
@@ -215,7 +278,7 @@
                      src: imageResult
                  });
                  
-                 currentCanvas.paint(image);                   
+                 currentCanvas.paint(image);
              });
          }
     };

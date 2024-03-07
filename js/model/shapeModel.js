@@ -1331,6 +1331,9 @@ console.log(text);
 
                 //设置属性
                 that.setAttributes(context);
+								
+				//组合图片选择时的变换
+				global.pictureTransform.transform(context, option);
 
                 //绘制图形
                 context.drawImage(image, x, y, width, height);
